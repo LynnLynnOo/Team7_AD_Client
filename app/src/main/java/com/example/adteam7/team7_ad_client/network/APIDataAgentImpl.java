@@ -1,7 +1,6 @@
 package com.example.adteam7.team7_ad_client.network;
 
 import android.util.Log;
-import android.widget.Toast;
 
 import org.json.JSONObject;
 
@@ -15,11 +14,11 @@ import static android.content.ContentValues.TAG;
 public class APIDataAgentImpl implements APIDataAgent {
 
   // static String host = "localhost";
-   static String host = "172.17.4.197";
+  static private String host = "192.168.1.100";
    // http://localhost/Team7API/Token
-    static String baseURL;
-    static String imageURL;
-    static String tokenURL;
+   static private String baseURL;
+    static private String imageURL;
+    static private String tokenURL;
     //http://172.17.4.197/team7ad/Token
 
     static {
@@ -30,10 +29,10 @@ public class APIDataAgentImpl implements APIDataAgent {
     }
 
     @Override
-    public boolean login(String usname,String pass) {
+    public boolean login(String username, String password) {
         try {
-            String id = usname;//URLEncoder.encode(usname);
-            String pw = pass;//URLEncoder.encode(pass);
+            String id = URLEncoder.encode(username, "UTF-8");
+            String pw = URLEncoder.encode(password, "UTF-8");
             Log.e(TAG, "login: "+id+" and " +pw);
             String credential = String.format("username=%s&password=%s&grant_type=password", id, pw);
             String result = JSONParser.postStream(tokenURL, false, credential);
