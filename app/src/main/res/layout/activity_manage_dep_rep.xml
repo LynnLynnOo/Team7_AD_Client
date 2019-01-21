@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    tools:context=".activities.ManageDepRepActivity">
+
+    <TextView
+        android:layout_margin="@dimen/m_margin"
+        android:id="@+id/depconst"
+        android:textSize="16sp"
+        android:textColor="@color/txtColor"
+        android:text="Department name :"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_toRightOf="@+id/depconst"
+        android:id="@+id/depname"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/txtColor"
+        android:layout_marginLeft="@dimen/s_margin"
+        android:layout_marginRight="@dimen/m_margin"
+        android:layout_marginEnd="@dimen/m_margin"
+        android:layout_marginTop="@dimen/m_margin"
+        android:layout_marginBottom="@dimen/m_margin"
+        android:text="Zan Htun Khine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+<TextView
+    android:layout_margin="@dimen/m_margin"
+    android:id="@+id/currepconst"
+    android:textSize="16sp"
+    android:layout_below="@+id/depconst"
+    android:textColor="@color/txtColor"
+    android:text="Current Representative :"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_below="@id/depconst"
+        android:layout_toRightOf="@+id/currepconst"
+        android:id="@+id/currep"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/txtColor"
+        android:layout_marginLeft="@dimen/s_margin"
+        android:layout_marginRight="@dimen/m_margin"
+        android:layout_marginEnd="@dimen/m_margin"
+        android:layout_marginTop="@dimen/m_margin"
+        android:layout_marginBottom="@dimen/m_margin"
+        android:text="Zan Htun Khine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_margin="@dimen/m_margin"
+        android:id="@+id/consttxt"
+        android:layout_below="@+id/currepconst"
+        android:textSize="16sp"
+
+        android:textColor="@color/txtColor"
+        android:text="Select the Employee to assign Department representative : "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <RelativeLayout
+
+        android:id="@+id/spinlayout"
+        android:layout_below="@+id/consttxt"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_weight=".28"
+        android:layout_marginLeft="@dimen/m_margin"
+        android:layout_marginRight="@dimen/m_margin"
+        android:background="@drawable/bg_spinner"
+        android:orientation="horizontal">
+
+        <Spinner
+
+            android:id="@+id/sprEmp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/s_margin"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:spinnerMode="dropdown"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:src="@drawable/spinnerbg"/>
+
+    </RelativeLayout>
+    <Button
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/assign"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:text="@string/assign"
+        android:background="@drawable/loginbtn"
+        android:layout_marginTop="@dimen/l_margin"
+        android:layout_below="@+id/spinlayout"
+        android:layout_centerHorizontal="true"
+        android:textColor="#ffffff"/>
+
+</RelativeLayout>

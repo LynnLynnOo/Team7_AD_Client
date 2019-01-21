@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/welcome"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:context=".activities.SplashActivity">
+
+    <ImageView
+        android:id="@+id/zarla"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_above="@+id/wttv"
+        android:layout_centerHorizontal="true"
+        android:background="@mipmap/ic_launcher"/>
+
+    <TextView
+        android:id="@+id/wttv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="5dp"
+        android:text="Stationery Request Management"
+        android:textColor="#fff"
+        android:textSize="25sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/zzz"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/wttv"
+        android:layout_marginTop="20dp"
+        android:gravity="center|bottom"
+        android:textColor="#fff"
+        android:textSize="13sp"/>
+
+    <com.wang.avi.AVLoadingIndicatorView
+        android:id="@+id/avi"
+        style="@style/AVLoadingIndicatorView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/please_wait"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dp"
+        android:visibility="visible"
+        app:indicatorColor="#fff"
+        app:indicatorName="LineSpinFadeLoaderIndicator"/>
+
+    <TextView
+        android:id="@+id/please_wait"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="50dp"
+        android:text="Please Wait"/>
+
+</RelativeLayout>
