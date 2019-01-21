@@ -1,5 +1,6 @@
 package com.example.adteam7.team7_ad_client.activities;
 
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -32,7 +33,22 @@ APIDataAgent agent=new APIDataAgentImpl();
             @Override
             public void onClick(View v) {
                 Toast.makeText(LoginActivity.this, "login", Toast.LENGTH_SHORT).show();
-tes=agent.login(username.getText().toString(),passwrod.getText().toString());
+
+                new AsyncTask<Void, Void, Boolean>() {
+                    @Override
+                    protected Boolean doInBackground(Void... params) {
+                       tes =agent.login(username.getText().toString(),passwrod.getText().toString());
+                        return tes;
+
+                    }
+
+                    @Override
+                    protected void onPostExecute(Boolean emp) {
+                        //show(emp);
+                    }
+                }.execute();
+
+
 
             }
         });
