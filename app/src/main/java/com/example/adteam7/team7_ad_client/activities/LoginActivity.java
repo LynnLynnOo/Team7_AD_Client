@@ -1,8 +1,10 @@
 package com.example.adteam7.team7_ad_client.activities;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -39,12 +41,15 @@ APIDataAgent agent=new APIDataAgentImpl();
                     protected Boolean doInBackground(Void... params) {
                        tes =agent.login(username.getText().toString(),passwrod.getText().toString());
                         return tes;
-
                     }
 
                     @Override
-                    protected void onPostExecute(Boolean emp) {
+                    protected void onPostExecute(Boolean res) {
                         //show(emp);
+                        if (res){
+                            Intent i=new Intent(LoginActivity.this,MainActivity.class);
+                            startActivity(i);
+                        }
                     }
                 }.execute();
 
