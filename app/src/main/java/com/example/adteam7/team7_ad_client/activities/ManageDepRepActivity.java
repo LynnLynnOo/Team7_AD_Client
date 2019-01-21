@@ -9,7 +9,9 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.adteam7.team7_ad_client.R;
-
+/**
+ * Created by Kay Thi Swe Tun
+ **/
 public class ManageDepRepActivity extends AppCompatActivity {
     String[] items = {"All Categories",
             "Entertainment Products", "Kitchen Accessories", "Personal Care", "Household Accessories"};
@@ -32,7 +34,7 @@ Button assign;
         assign.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(ManageDepRepActivity.this, "Assigned", Toast.LENGTH_SHORT).show();
+               // Toast.makeText(ManageDepRepActivity.this, "Assigned", Toast.LENGTH_SHORT).show();
             }
         });
     }
