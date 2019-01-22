@@ -2,8 +2,9 @@ package com.example.adteam7.team7_ad_client.activities;
 
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,13 +14,15 @@ import com.example.adteam7.team7_ad_client.R;
 import com.example.adteam7.team7_ad_client.data.SessionManager;
 import com.example.adteam7.team7_ad_client.network.APIDataAgent;
 import com.example.adteam7.team7_ad_client.network.APIDataAgentImpl;
+import com.example.adteam7.team7_ad_client.network.JSONParser;
 
 /**
  * Created by Kay Thi Swe Tun
  **/
 public class LoginActivity extends AppCompatActivity {
-    APIDataAgent agent = new APIDataAgentImpl();
     EditText email, password;
+APIDataAgent agent=new APIDataAgentImpl();
+    EditText username,passwrod;
     private SessionManager session;
 
     Button login;
@@ -52,14 +55,17 @@ public class LoginActivity extends AppCompatActivity {
                     protected void onPostExecute(String result) {
                         //show(emp);
                         if (result != "fail") {
-
-                            session.createLoginSession(mail, pw, result);
+                            String c= JSONParser.access_token;
+                            session.createLoginSession(mail, pw, result,c);
 
                             Intent i=new Intent(LoginActivity.this,MainActivity.class);
                             startActivity(i);
                             finish();
                         } else {
                             Toast.makeText(LoginActivity.this, "Error logging in", Toast.LENGTH_SHORT).show();
+                           Intent i=new Intent(LoginActivity.this,MainActivity.class);
+                           startActivity(i);
+                          finish();
                         }
                     }
                 }.execute();

@@ -1,25 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg"
     android:orientation="vertical"
-    tools:context=".activities.LoginActivity">
-
+    tools:context=".activities.LoginActivity"
+    android:background="@drawable/bg"
+   >
     <RelativeLayout
-        android:id="@+id/relativeLayout"
+        android:background="#c7ffffff"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#c7ffffff">
+      >
 
         <TextView
             android:id="@+id/zarla_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@id/linearLayout"
+            android:layout_above="@id/identity"
             android:layout_alignParentTop="true"
             android:layout_marginTop="0dp"
             android:layout_marginBottom="0dp"
@@ -28,67 +29,71 @@
             android:textColor="@color/colorPrimaryDark"
             android:textSize="30sp" />
 
-        <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
+    <android.support.v7.widget.LinearLayoutCompat
+        android:id="@+id/identity"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="20dp"
+        android:paddingBottom="30dp"
+        android:layout_marginRight="20dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+<EditText
+    android:layout_width="280dp"
+    android:layout_height="40dp"
+    android:layout_gravity="center_horizontal"
+    android:background="@drawable/layout_bg"
+    android:ellipsize="end"
+    android:hint="Email"
+    android:text="Andrew-Pompeo@logic.u.edu"
+    android:inputType="textEmailAddress"
+    android:drawableStart="@drawable/email"
+    android:drawableLeft="@drawable/email"
+    android:maxLines="1"
+    android:minLines="1"
+    android:padding="5dp"
+    android:layout_margin="10dp"
+    android:paddingLeft="5dp"
+
+    android:textColorHint="#67817f"
+    tools:ignore="HardcodedText"
+    android:id="@+id/email"
+        />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="280dp"
+        android:layout_height="40dp"
+        android:paddingLeft="5dp"
+        android:layout_margin="10dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/layout_bg"
+        android:ellipsize="end"
+        android:hint="Password"
+        android:drawableStart="@drawable/pass"
+        android:drawableLeft="@drawable/pass"
+
+        android:text="Password1!"
+        android:maxLines="1"
+        android:minLines="1"
+        android:padding="5dp"
+        android:textColorHint="#67817f"
+        tools:ignore="HardcodedText"/>
+        <Button
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/login"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:text="@string/login"
+            android:background="@drawable/loginbtn"
+            android:layout_marginTop="12dp"
+            android:layout_below="@+id/loginpwd"
             android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:orientation="vertical"
-            android:paddingBottom="30dp">
-
-            <EditText
-                android:id="@+id/email"
-                android:layout_width="280dp"
-                android:layout_height="40dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_margin="10dp"
-                android:background="@drawable/layout_bg"
-                android:drawableStart="@drawable/pass"
-                android:drawableLeft="@drawable/pass"
-                android:ellipsize="end"
-                android:ems="10"
-                android:hint="Username"
-                android:inputType="textPersonName"
-                android:padding="5dp"
-                android:paddingLeft="5dp"
-                android:text="logic.u.edu"
-                android:textColorHint="#67817f" />
-
-            <EditText
-                android:id="@+id/password"
-                android:layout_width="280dp"
-                android:layout_height="40dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_margin="10dp"
-                android:background="@drawable/layout_bg"
-                android:drawableStart="@drawable/pass"
-                android:drawableLeft="@drawable/pass"
-                android:ellipsize="end"
-                android:hint="Password"
-                android:maxLines="1"
-
-                android:minLines="1"
-                android:padding="5dp"
-                android:paddingLeft="5dp"
-                android:text="Password1!"
-                android:textColorHint="#67817f"
-                tools:ignore="HardcodedText" />
-
-            <Button
-                android:id="@+id/login"
-                android:layout_width="150dp"
-                android:layout_height="40dp"
-                android:layout_below="@+id/loginpwd"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="12dp"
-                android:background="@drawable/loginbtn"
-                android:text="@string/login"
-                android:textColor="#ffffff" />
-        </LinearLayout>
+            android:textColor="#ffffff"/>
+</android.support.v7.widget.LinearLayoutCompat>
     </RelativeLayout>
 </FrameLayout>
