@@ -11,11 +11,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.example.adteam7.team7_ad_client.R;
 import com.example.adteam7.team7_ad_client.data.SessionManager;
-import com.example.adteam7.team7_ad_client.network.SendMailTask;
 
 /**
  * Created by Kay Thi Swe Tun
@@ -98,9 +96,9 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_camera) {
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
-            Toast.makeText(this, "About", Toast.LENGTH_SHORT).show();
-            new SendMailTask(MainActivity.this).execute("henrytlh@hotmail.com", "Title", "body");
-        } else if (id == R.id.nav_slideshow) {
+//            Toast.makeText(this, "About", Toast.LENGTH_SHORT).show();
+//            new SendMailTask(MainActivity.this).execute("henrytlh@hotmail.com", "Title", "body");
+        } else if (id == R.id.nav_delegateHead) {
             Intent i = new Intent(MainActivity.this, DelegateDepHeadActivity.class);
             startActivity(i);
         } else if (id == R.id.nav_manage) {

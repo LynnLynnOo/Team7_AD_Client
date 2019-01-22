@@ -15,6 +15,7 @@ public interface APIDataAgent {
     void delegateDepHeadSet();
     void assignDepRep();
 
+    String delegateActingDepHeadSet(DelegateDepHeadApiModel del);
     DelegateDepHeadApiModel delegateActingDepHeadGet();
 
 

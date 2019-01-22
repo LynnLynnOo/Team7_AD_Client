@@ -110,7 +110,28 @@ public class APIDataAgentImpl implements APIDataAgent {
         } catch (Exception e) {
             Log.e("Login", e.toString());
         }
-
         return null;
+    }
+
+    @Override
+    public String delegateActingDepHeadSet(DelegateDepHeadApiModel delHeadPost) {
+        String status = "Error at saving.";
+        try {
+            String id = session.getUserid();
+            delHeadPost.setUserId(id);
+            //http://192.168.1.100/team7ad/api/
+            String url = String.format("%sdepartmenthead/setdepartmenthead/", baseURL);
+            Log.i("Url", url);
+            Gson gson = new Gson();
+            String json = gson.toJson(delHeadPost);
+            Log.i("Json", json);
+            String result = JSONParser.postStream(url, true, json);
+            Log.i("PostResult", result);
+            status = "Successfully saved.";
+
+        } catch (Exception e) {
+            Log.e("JsonPost", e.toString());
+        }
+        return status;
     }
 }
