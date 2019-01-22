@@ -1,17 +1,16 @@
 package com.example.adteam7.team7_ad_client.data;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 public class DelegateDepHeadApiModel {
-    private LocalDateTime StartDate;
-    private LocalDateTime EndDate;
+    private String StartDate;
+    private String EndDate;
     private String UserId;
     private String DelegatedDepartmentHeadName;
     private String DepartmentName;
     private List<EmployeeDto> Employees;
 
-    public DelegateDepHeadApiModel(LocalDateTime startDate, LocalDateTime endDate, String userId, String delegatedDepartmentHeadName, String departmentName, List<EmployeeDto> employees) {
+    public DelegateDepHeadApiModel(String startDate, String endDate, String userId, String delegatedDepartmentHeadName, String departmentName, List<EmployeeDto> employees) {
         StartDate = startDate;
         EndDate = endDate;
         UserId = userId;
@@ -20,19 +19,19 @@ public class DelegateDepHeadApiModel {
         Employees = employees;
     }
 
-    public LocalDateTime getStartDate() {
+    public String getStartDate() {
         return StartDate;
     }
 
-    public void setStartDate(LocalDateTime startDate) {
+    public void setStartDate(String startDate) {
         StartDate = startDate;
     }
 
-    public LocalDateTime getEndDate() {
+    public String getEndDate() {
         return EndDate;
     }
 
-    public void setEndDate(LocalDateTime endDate) {
+    public void setEndDate(String endDate) {
         EndDate = endDate;
     }
 

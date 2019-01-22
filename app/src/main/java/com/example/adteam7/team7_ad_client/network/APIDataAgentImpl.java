@@ -98,7 +98,7 @@ public class APIDataAgentImpl implements APIDataAgent {
             //http://192.168.1.100/team7ad/api/
             String url = String.format("%sdepartmenthead/getdepartmenthead/%s", baseURL, id);
             String result = JSONParser.getStream(url);
-
+            Log.i("Json", result);
             Gson gson = new Gson();
             return gson.fromJson(result, DelegateDepHeadApiModel.class);
 
