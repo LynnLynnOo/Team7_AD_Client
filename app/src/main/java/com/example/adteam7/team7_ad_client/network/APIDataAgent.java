@@ -7,7 +7,7 @@ import com.example.adteam7.team7_ad_client.data.ManageDepRep;
  **/
 public interface APIDataAgent {
 
-    boolean login(String nam,String pss);
+    String login(String nam,String pss);
 
     void getEmpList();
     ManageDepRep delegateDepHeadGet();

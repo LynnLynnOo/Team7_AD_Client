@@ -40,19 +40,20 @@ APIDataAgent agent=new APIDataAgentImpl();
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new AsyncTask<Void, Void, Boolean>() {
+                new AsyncTask<Void, Void, String>() {
                     @Override
-                    protected Boolean doInBackground(Void... params) {
-                       tes =agent.login(u,p);
+                    protected String doInBackground(Void... params) {
+                       String tes =agent.login(u,p);
+
                         return tes;
                     }
 
                     @Override
-                    protected void onPostExecute(Boolean res) {
+                    protected void onPostExecute(String res) {
                         //show(emp);
-                        if (res){
+                        if (res!="fail"){
 
-                            session.createLoginSession(u,p);
+                            session.createLoginSession(u,p,res);
 
                             Intent i=new Intent(LoginActivity.this,MainActivity.class);
                             startActivity(i);
