@@ -55,11 +55,8 @@ APIDataAgent agent=new APIDataAgentImpl();
                     protected void onPostExecute(String result) {
                         //show(emp);
                         if (result != "fail") {
-
-                            session.createLoginSession(mail, pw, result);
-                        if (res!="fail"){
-                        String c= JSONParser.access_token;
-                            session.createLoginSession(u,p,res,c);
+                            String c= JSONParser.access_token;
+                            session.createLoginSession(mail, pw, result,c);
 
                             Intent i=new Intent(LoginActivity.this,MainActivity.class);
                             startActivity(i);

@@ -42,7 +42,7 @@
         android:orientation="vertical">
 
 
-<android.support.v7.widget.AppCompatEditText
+<EditText
     android:layout_width="280dp"
     android:layout_height="40dp"
     android:layout_gravity="center_horizontal"
@@ -61,10 +61,10 @@
 
     android:textColorHint="#67817f"
     tools:ignore="HardcodedText"
-    android:id="@+id/username"
+    android:id="@+id/email"
         />
 
-    <android.support.v7.widget.AppCompatEditText
+    <EditText
         android:id="@+id/password"
         android:layout_width="280dp"
         android:layout_height="40dp"

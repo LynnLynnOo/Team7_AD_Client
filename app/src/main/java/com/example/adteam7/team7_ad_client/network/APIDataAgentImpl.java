@@ -3,8 +3,11 @@ package com.example.adteam7.team7_ad_client.network;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.adteam7.team7_ad_client.data.DelegateDepHeadApiModel;
+import com.example.adteam7.team7_ad_client.data.Employee;
 import com.example.adteam7.team7_ad_client.data.ManageDepRep;
 import com.example.adteam7.team7_ad_client.data.SessionManager;
+import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -68,9 +71,9 @@ public class APIDataAgentImpl implements APIDataAgent {
         try {
             String id = session.getUserid();
 
-            //String url = String.format("%s/%s/%s", baseURL,"managedepartmentRep", id);
+            String url = String.format("%s/%s/%s", baseURL,"managedepartmentRep", id);
 
-            String url=String.format("http://192.168.1.166/team7ad/api/managedepartmentRep/19fb3f0d-5859-4c63-979d-632213e67711");
+            //String url=String.format("http://192.168.1.166/team7ad/api/managedepartmentRep/19fb3f0d-5859-4c63-979d-632213e67711");
             JSONParser.access_token=session.getToken();
           //  String res = JSONParser.getStream(url);
             JSONObject a=JSONParser.getJSONFromUrl(url);

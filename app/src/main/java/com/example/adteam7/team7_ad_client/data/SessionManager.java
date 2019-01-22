@@ -45,13 +45,13 @@ public class SessionManager {
         editor.apply();
     }
 
-    public void createLoginSession(String name, String password,String id) {
+    public void createLoginSession(String name, String password,String id,String token) {
 
         editor.putBoolean(IS_LOGIN, true);
         editor.putString(KEY_USERID, id);
         editor.putString(KEY_NAME, name);
         editor.putString(KEY_PASSWORD, password);
-
+        editor.putString(KEY_TOKEN,token);
         editor.commit();
     }
 
