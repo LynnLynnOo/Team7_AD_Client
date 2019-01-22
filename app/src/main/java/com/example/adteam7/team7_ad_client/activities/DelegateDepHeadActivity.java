@@ -4,7 +4,6 @@ import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -53,22 +52,7 @@ public class DelegateDepHeadActivity extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                StrictMode.setThreadPolicy(StrictMode.ThreadPolicy.LAX);
-                Spinner employeeListddl = findViewById(R.id.employeeList);
-                EditText endDate = findViewById(R.id.endDate);
-                EditText startDate = findViewById(R.id.startDate);
-
-                DelegateDepHeadApiModel newActDepHead = new DelegateDepHeadApiModel(
-                        startDate.getText().toString().trim(),
-                        endDate.getText().toString().trim(),
-                        null,
-                        employeeListddl.getSelectedItem().toString(),
-                        null,
-                        null
-                );
-                String status = agent.delegateActingDepHeadSet(newActDepHead);
-                Toast.makeText(DelegateDepHeadActivity.this, status, Toast.LENGTH_SHORT).show();
-                finish();
+                new AsyncCallerSet().execute();
             }
         });
     }
@@ -179,4 +163,48 @@ public class DelegateDepHeadActivity extends AppCompatActivity {
     }
 
     //For posting details to server
+    //For displaying items when entered
+    private class AsyncCallerSet extends AsyncTask<Void, Void, Void> {
+        ProgressDialog pdLoading = new ProgressDialog(DelegateDepHeadActivity.this);
+
+        Spinner employeeListddl = findViewById(R.id.employeeList);
+        EditText endDate = findViewById(R.id.endDate);
+        EditText startDate = findViewById(R.id.startDate);
+        String status = "";
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+            //this method will be running on UI thread
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+
+            //this method will be running on background thread so don't update UI frome here
+            //do your long running http tasks here,you dont want to pass argument and u can access the parent class' variable url over here
+            DelegateDepHeadApiModel newActDepHead = new DelegateDepHeadApiModel(
+                    startDate.getText().toString().trim(),
+                    endDate.getText().toString().trim(),
+                    null,
+                    employeeListddl.getSelectedItem().toString(),
+                    null,
+                    null
+            );
+            status = agent.delegateActingDepHeadSet(newActDepHead);
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            super.onPostExecute(result);
+
+            //this method will be running on UI thread
+            Toast.makeText(DelegateDepHeadActivity.this, status, Toast.LENGTH_SHORT).show();
+            finish();
+            pdLoading.dismiss();
+        }
+
+    }
 }

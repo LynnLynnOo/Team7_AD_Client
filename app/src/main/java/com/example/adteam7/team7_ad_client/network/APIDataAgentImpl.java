@@ -1,7 +1,6 @@
 package com.example.adteam7.team7_ad_client.network;
 
 import android.util.Log;
-import android.widget.Toast;
 
 import com.example.adteam7.team7_ad_client.data.DelegateDepHeadApiModel;
 import com.example.adteam7.team7_ad_client.data.Employee;
@@ -12,7 +11,6 @@ import com.google.gson.Gson;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +22,7 @@ import static android.content.ContentValues.TAG;
 public class APIDataAgentImpl implements APIDataAgent {
 
   // static String host = "localhost";
-   static String host = "192.168.1.166";
+  static String host = "192.168.1.100";
    // http://localhost/Team7API/Token
     static String baseURL;
     static String imageURL;
@@ -156,8 +154,10 @@ public class APIDataAgentImpl implements APIDataAgent {
             String json = gson.toJson(delHeadPost);
             Log.i("Json", json);
             String result = JSONParser.postStream(url, true, json);
+
             Log.i("PostResult", result);
-            status = "Successfully saved.";
+            if (result != null || result != "")
+                status = "Successfully saved.";
 
         } catch (Exception e) {
             Log.e("JsonPost", e.toString());
