@@ -1,6 +1,5 @@
 package com.example.adteam7.team7_ad_client.activities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -20,44 +19,53 @@ import com.example.adteam7.team7_ad_client.network.JSONParser;
 /**
  * Created by Kay Thi Swe Tun
  **/
-public class LoginActivity extends Activity {
-
+public class LoginActivity extends AppCompatActivity {
+    EditText email, password;
 APIDataAgent agent=new APIDataAgentImpl();
     EditText username,passwrod;
     private SessionManager session;
 
     Button login;
     boolean tes=false;
-    String u,p;
+    String mail, pw;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         login=findViewById(R.id.login);
-        username=findViewById(R.id.username);
-        passwrod=findViewById(R.id.password);
+        email = findViewById(R.id.email);
+        password = findViewById(R.id.password);
         session = SessionManager.getInstance();
-        u=username.getText().toString();
-        p=passwrod.getText().toString();
+//        email.setText("Google is your friend.");
+
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new  AsyncTask<Void, Void, String>() {
+                new AsyncTask<Void, Void, String>() {
                     @Override
                     protected String doInBackground(Void... params) {
+                        mail = email.getText().toString().trim();
+                        pw = password.getText().toString().trim();
+                        String result = agent.login(mail, pw);
 
-                       String tes =agent.login(u,p);
-
-                        return tes;
+                        return result;
                     }
 
                     @Override
-                    protected void onPostExecute(String res) {
+                    protected void onPostExecute(String result) {
                         //show(emp);
+                        if (result != "fail") {
+
+                            session.createLoginSession(mail, pw, result);
                         if (res!="fail"){
                         String c= JSONParser.access_token;
                             session.createLoginSession(u,p,res,c);
 
+                            Intent i=new Intent(LoginActivity.this,MainActivity.class);
+                            startActivity(i);
+                            finish();
+                        } else {
+                            Toast.makeText(LoginActivity.this, "Error logging in", Toast.LENGTH_SHORT).show();
                            Intent i=new Intent(LoginActivity.this,MainActivity.class);
                            startActivity(i);
                           finish();

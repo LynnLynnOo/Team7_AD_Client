@@ -3,7 +3,6 @@ package com.example.adteam7.team7_ad_client.network;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.example.adteam7.team7_ad_client.data.Employee;
 import com.example.adteam7.team7_ad_client.data.ManageDepRep;
 import com.example.adteam7.team7_ad_client.data.SessionManager;
 
@@ -33,19 +32,14 @@ public class APIDataAgentImpl implements APIDataAgent {
 
     static {
         //http://172.17.80.219/Team7API/Token
-        baseURL = String.format("http://%s/team7ad/api", host);
+        baseURL = String.format("http://%s/team7ad/api/", host);
         tokenURL = String.format("http://%s/team7ad/Token", host);
         imageURL = String.format("http://%s/myserviceEmp/photo", host);
-
-
-
     }
 
     @Override
     public String login(String usname,String pass) {
         try {
-
-
             String id = usname;//URLEncoder.encode(usname);
             String pw = pass;//URLEncoder.encode(pass);
             Log.e(TAG, "login: "+id+" and " +pw);
@@ -54,9 +48,9 @@ public class APIDataAgentImpl implements APIDataAgent {
             JSONObject res = new JSONObject(result);
             if (res.has("access_token"))
                 JSONParser.access_token = res.getString("access_token");
-             String usid=res.getString("userName");
+            String userId = res.getString("userName");
             Log.e(TAG, "login: "+res.getString("access_token") );
-            return usid;
+            return userId;
         } catch (Exception e) {
             JSONParser.access_token = "";
             Log.e("Login", e.toString());
@@ -121,5 +115,29 @@ public class APIDataAgentImpl implements APIDataAgent {
     @Override
     public void assignDepRep() {
 
+    }
+
+    @Override
+    public DelegateDepHeadApiModel delegateActingDepHeadGet() {
+        try {
+            String id = session.getUserid();
+
+            //http://192.168.1.100/team7ad/api/
+            String url = String.format("%sdepartmenthead/getdepartmenthead/%s", baseURL, id);
+            String result = JSONParser.getStream(url);
+            Log.i("Json", result);
+            Gson gson = new Gson();
+            return gson.fromJson(result, DelegateDepHeadApiModel.class);
+
+//            String deprep=depinfo.getString("DepartmentRepName");
+//
+//            Log.e(TAG, "delegateDepHeadGet: Rep Name"+ deprep);
+//            return null;
+
+        } catch (Exception e) {
+            Log.e("Login", e.toString());
+        }
+
+        return null;
     }
 }

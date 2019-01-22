@@ -1,0 +1,37 @@
+{
+  "StartDate": "0001-01-01T00:00:00",
+  "EndDate": "0001-01-01T00:00:00",
+  "UserId": null,
+  "DelegatedDepartmentHeadName": null,
+  "DepartmentName": "Business",
+  "Employees": [
+    {
+      "Id": "2db3e1fc-797d-4cee-9c7c-86793907201a",
+      "Name": "Willow Knauss"
+    },
+    {
+      "Id": "4c6c0841-cbb1-4b29-b33b-9aa19ffbbaf2",
+      "Name": "Donald Tan"
+    },
+    {
+      "Id": "703b9eda-169f-42be-9b4e-15efe8ebce86",
+      "Name": "Stephen Ng"
+    },
+    {
+      "Id": "b36a58f3-51f9-47eb-8601-bcc757a8cadb",
+      "Name": "Seth Pompeo"
+    },
+    {
+      "Id": "b7d7da6e-bad7-4e26-88db-9fc48107cd54",
+      "Name": "Jerry Coleman"
+    },
+    {
+      "Id": "edd1c0bd-2ab7-47f0-ab5b-b1bbfdfa13cc",
+      "Name": "Terrence the Cat"
+    },
+    {
+      "Id": "ee7ba4ac-cfee-48bb-9c4e-459deabad533",
+      "Name": "Melania Chan"
+    }
+  ]
+}

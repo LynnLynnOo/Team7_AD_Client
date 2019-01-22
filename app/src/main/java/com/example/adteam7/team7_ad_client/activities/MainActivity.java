@@ -15,7 +15,6 @@ import android.widget.Toast;
 
 import com.example.adteam7.team7_ad_client.R;
 import com.example.adteam7.team7_ad_client.data.SessionManager;
-
 import com.example.adteam7.team7_ad_client.network.SendMailTask;
 
 /**
@@ -104,7 +103,8 @@ public class MainActivity extends AppCompatActivity
             Toast.makeText(this, "About", Toast.LENGTH_SHORT).show();
             new SendMailTask(MainActivity.this).execute("henrytlh@hotmail.com", "Title", "body");
         } else if (id == R.id.nav_slideshow) {
-
+            Intent i = new Intent(MainActivity.this, DelegateDepHeadActivity.class);
+            startActivity(i);
         } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_share) {
