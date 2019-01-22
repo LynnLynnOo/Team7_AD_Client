@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity
             Toast.makeText(this, "About", Toast.LENGTH_SHORT).show();
             new SendMailTask(MainActivity.this).execute("henrytlh@hotmail.com", "Title", "body");
         } else if (id == R.id.nav_slideshow) {
-            Intent i = new Intent(MainActivity.this, DelegateDepRepActivity.class);
+            Intent i = new Intent(MainActivity.this, DelegateDepHeadActivity.class);
             startActivity(i);
         } else if (id == R.id.nav_manage) {
 
