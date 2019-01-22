@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.example.adteam7.team7_ad_client.R;
+import com.example.adteam7.team7_ad_client.data.SessionManager;
 import com.viksaa.sssplash.lib.activity.AwesomeSplash;
 import com.viksaa.sssplash.lib.cnst.Flags;
 import com.viksaa.sssplash.lib.model.ConfigSplash;
@@ -24,10 +25,7 @@ public class SplashActivity extends AwesomeSplash {
             TextView please_wait;
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.ENGLISH);
             private boolean state;
-          //  private SessionManager session;
-
-            //private AVLoadingIndicatorView mIndicatorView;
-
+          private SessionManager session;
 
             @Override
             public void initSplash (ConfigSplash configSplash){
@@ -57,10 +55,8 @@ public class SplashActivity extends AwesomeSplash {
             public void animationsFinished () {
                 //verifyStoragePermissions(this);
 
-               // session = SessionManager.getInstance();
-               // state = session.isLoggedIn();
-               // mIndicatorView = findViewById(R.id.avi);
-               // please_wait = findViewById(R.id.please_wait);
+               session = SessionManager.getInstance();
+               state = session.isLoggedIn();
 
                 new CountDownTimer(1800, 900) {
                     @Override
@@ -72,13 +68,12 @@ public class SplashActivity extends AwesomeSplash {
                     public void onFinish() {
                         if (state) {
 
-                            Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
+                            Intent intent = new Intent(SplashActivity.this, MainActivity.class);
                             startActivity(intent);
                             finish();
 
                         } else {
 
-                            // Toast.makeText(SplashActivity.this, "font name is the mmmmmm  " + session.getFont(), Toast.LENGTH_SHORT).show();
                             TextView txt = findViewById(R.id.wttv);
 
                             Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
@@ -88,6 +83,5 @@ public class SplashActivity extends AwesomeSplash {
                     }
                 }.start();
 
-               // session.setShow(false);
             }
         }

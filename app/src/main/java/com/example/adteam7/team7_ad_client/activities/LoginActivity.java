@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.adteam7.team7_ad_client.R;
+import com.example.adteam7.team7_ad_client.data.SessionManager;
 import com.example.adteam7.team7_ad_client.network.APIDataAgent;
 import com.example.adteam7.team7_ad_client.network.APIDataAgentImpl;
 
@@ -21,8 +22,11 @@ public class LoginActivity extends AppCompatActivity {
 
 APIDataAgent agent=new APIDataAgentImpl();
     EditText username,passwrod;
+    private SessionManager session;
+
     Button login;
     boolean tes=false;
+    String u,p;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,16 +34,16 @@ APIDataAgent agent=new APIDataAgentImpl();
         login=findViewById(R.id.login);
         username=findViewById(R.id.username);
         passwrod=findViewById(R.id.password);
-
+        session = SessionManager.getInstance();
+        u=username.getText().toString();
+        p=passwrod.getText().toString();
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(LoginActivity.this, "login", Toast.LENGTH_SHORT).show();
-
                 new AsyncTask<Void, Void, Boolean>() {
                     @Override
                     protected Boolean doInBackground(Void... params) {
-                       tes =agent.login(username.getText().toString(),passwrod.getText().toString());
+                       tes =agent.login(u,p);
                         return tes;
                     }
 
@@ -47,8 +51,12 @@ APIDataAgent agent=new APIDataAgentImpl();
                     protected void onPostExecute(Boolean res) {
                         //show(emp);
                         if (res){
+
+                            session.createLoginSession(u,p);
+
                             Intent i=new Intent(LoginActivity.this,MainActivity.class);
                             startActivity(i);
+                            finish();
                         }
                     }
                 }.execute();
@@ -57,11 +65,6 @@ APIDataAgent agent=new APIDataAgentImpl();
 
             }
         });
-if (tes){
-    Toast.makeText(this, "success", Toast.LENGTH_SHORT).show();
-}
-else{
-    Toast.makeText(this, "fail", Toast.LENGTH_SHORT).show();
-}
+
     }
 }

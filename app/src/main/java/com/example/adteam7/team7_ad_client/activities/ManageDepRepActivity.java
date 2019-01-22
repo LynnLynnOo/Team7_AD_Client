@@ -1,5 +1,7 @@
 package com.example.adteam7.team7_ad_client.activities;
 
+import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +11,9 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.adteam7.team7_ad_client.R;
+import com.example.adteam7.team7_ad_client.network.APIDataAgent;
+import com.example.adteam7.team7_ad_client.network.APIDataAgentImpl;
+
 /**
  * Created by Kay Thi Swe Tun
  **/
@@ -17,6 +22,8 @@ public class ManageDepRepActivity extends AppCompatActivity {
             "Entertainment Products", "Kitchen Accessories", "Personal Care", "Household Accessories"};
 Spinner spinEmp;
 Button assign;
+
+    APIDataAgent agent=new APIDataAgentImpl();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +42,20 @@ Button assign;
             @Override
             public void onClick(View v) {
                // Toast.makeText(ManageDepRepActivity.this, "Assigned", Toast.LENGTH_SHORT).show();
+                new AsyncTask<Void, Void, Boolean>() {
+                    @Override
+                    protected Boolean doInBackground(Void... params) {
+                        agent.delegateDepHeadGet();                      //  tes =agent.login(username.getText().toString(),passwrod.getText().toString());
+                        return false;
+                    }
+
+                    @Override
+                    protected void onPostExecute(Boolean res) {
+                        //show(emp);
+
+                    }
+                }.execute();
+
             }
         });
     }

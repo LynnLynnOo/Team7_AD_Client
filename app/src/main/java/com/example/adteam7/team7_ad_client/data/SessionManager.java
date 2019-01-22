@@ -1,0 +1,109 @@
+package com.example.adteam7.team7_ad_client.data;
+
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+import android.util.Log;
+
+import com.example.adteam7.team7_ad_client.Team7_AD_App;
+import com.example.adteam7.team7_ad_client.activities.LoginActivity;
+
+/**
+ * Created by dodo
+ **/
+public class SessionManager {
+
+    private static final String KEY_NAME = "name";
+    private static final String KEY_PASSWORD = "pwd";
+    private static final String KEY_TOKEN = "token";
+    private static final String IS_LOGIN = "IsLoggedIn";
+    // Sharedpref file name
+    private static final String PREF_NAME = "Team7ADPref";
+
+    private SharedPreferences pref;
+    private SharedPreferences.Editor editor;
+
+
+    private static SessionManager sessionManager;
+
+    public static SessionManager getInstance() {
+        if (sessionManager == null) {
+            sessionManager = new SessionManager();
+        }
+
+        return sessionManager;
+    }
+
+    // Constructor
+    private SessionManager() {
+        int PRIVATE_MODE = 0;
+        pref = PreferenceManager.getDefaultSharedPreferences
+                (Team7_AD_App.getContext());
+        editor = pref.edit();
+        editor.apply();
+    }
+
+    public void createLoginSession(String name, String password) {
+
+        editor.putBoolean(IS_LOGIN, true);
+        editor.putString(KEY_NAME, name);
+        editor.putString(KEY_PASSWORD, password);
+
+        editor.commit();
+    }
+
+    public boolean checkLogin(Context context) {
+
+        // Check login status
+        boolean status = true;
+        if (!this.isLoggedIn()) {
+
+            // user is not logged in redirect him to LoginActivity Activity
+            status = false;
+
+            Intent i = new Intent(context, LoginActivity.class);
+            // Closing all the Activities
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            // Add new Flag to start new Activity
+            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            // Staring LoginActivity Activity
+            context.startActivity(i);
+        }
+        return status;
+    }
+
+    /**
+     * Quick check for login
+     **/
+    // Get LoginActivity State
+    public boolean isLoggedIn() {
+        return pref.getBoolean(IS_LOGIN, false);
+
+    }
+
+
+    public String getUsername() {
+        String s = pref.getString(KEY_NAME, null);
+        Log.d("_context", "LOGINE NAME : " + s);
+        return s;
+
+    }
+
+    public void logoutUser(Context _context) {
+        // Clearing all data from Shared Preferences
+        String s = pref.getString(KEY_NAME, "");
+        editor.clear();
+        editor.putBoolean(IS_LOGIN, false);
+        editor.putString(KEY_NAME, s);
+        editor.commit();
+        // After logout redirect user to Loing Activity
+        Intent i = new Intent(_context, LoginActivity.class);
+        // Closing all the Activities
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        // Add new Flag to start new Activity
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        // Staring LoginActivity Activity
+        _context.startActivity(i);
+    }
+}

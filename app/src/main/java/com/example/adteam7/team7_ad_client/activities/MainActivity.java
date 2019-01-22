@@ -14,11 +14,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.adteam7.team7_ad_client.R;
+import com.example.adteam7.team7_ad_client.data.SessionManager;
+
 /**
  * Created by Kay Thi Swe Tun
  **/
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    private SessionManager session;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +38,7 @@ public class MainActivity extends AppCompatActivity
                         .setAction("Action", null).show();
             }
         });*/
+        session = SessionManager.getInstance();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -72,6 +76,12 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            return true;
+        }
+        if (id == R.id.logout) {
+            session.logoutUser(MainActivity.this);
+            finish();
+
             return true;
         }
 
