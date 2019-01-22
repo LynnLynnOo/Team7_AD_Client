@@ -15,6 +15,7 @@ import com.example.adteam7.team7_ad_client.activities.LoginActivity;
 public class SessionManager {
 
     private static final String KEY_NAME = "name";
+
     private static final String KEY_USERID = "id";
     private static final String KEY_PASSWORD = "pwd";
     private static final String KEY_TOKEN = "token";
@@ -45,13 +46,13 @@ public class SessionManager {
         editor.apply();
     }
 
-    public void createLoginSession(String name, String password,String id) {
+    public void createLoginSession(String name, String password,String id,String token) {
 
         editor.putBoolean(IS_LOGIN, true);
         editor.putString(KEY_USERID, id);
         editor.putString(KEY_NAME, name);
         editor.putString(KEY_PASSWORD, password);
-
+        editor.putString(KEY_TOKEN,token);
         editor.commit();
     }
 
@@ -88,6 +89,12 @@ public class SessionManager {
     public String getUsername() {
         String s = pref.getString(KEY_NAME, null);
         Log.d("_context", "LOGIN NAME : " + s);
+        return s;
+
+    }
+    public String getToken() {
+        String s = pref.getString(KEY_TOKEN, null);
+        Log.d("_context", "TOKEN: " + s);
         return s;
 
     }

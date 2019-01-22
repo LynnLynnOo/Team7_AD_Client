@@ -49,7 +49,7 @@
     android:background="@drawable/layout_bg"
     android:ellipsize="end"
     android:hint="Email"
-    android:text="Terrence-Meyers@logic.u.edu"
+    android:text="Andrew-Pompeo@logic.u.edu"
     android:inputType="textEmailAddress"
     android:drawableStart="@drawable/email"
     android:drawableLeft="@drawable/email"

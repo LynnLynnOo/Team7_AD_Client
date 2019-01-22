@@ -1,5 +1,6 @@
 package com.example.adteam7.team7_ad_client.activities;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -14,11 +15,12 @@ import com.example.adteam7.team7_ad_client.R;
 import com.example.adteam7.team7_ad_client.data.SessionManager;
 import com.example.adteam7.team7_ad_client.network.APIDataAgent;
 import com.example.adteam7.team7_ad_client.network.APIDataAgentImpl;
+import com.example.adteam7.team7_ad_client.network.JSONParser;
 
 /**
  * Created by Kay Thi Swe Tun
  **/
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends Activity {
 
 APIDataAgent agent=new APIDataAgentImpl();
     EditText username,passwrod;
@@ -40,9 +42,10 @@ APIDataAgent agent=new APIDataAgentImpl();
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new AsyncTask<Void, Void, String>() {
+                new  AsyncTask<Void, Void, String>() {
                     @Override
                     protected String doInBackground(Void... params) {
+
                        String tes =agent.login(u,p);
 
                         return tes;
@@ -52,12 +55,12 @@ APIDataAgent agent=new APIDataAgentImpl();
                     protected void onPostExecute(String res) {
                         //show(emp);
                         if (res!="fail"){
+                        String c= JSONParser.access_token;
+                            session.createLoginSession(u,p,res,c);
 
-                            session.createLoginSession(u,p,res);
-
-                            Intent i=new Intent(LoginActivity.this,MainActivity.class);
-                            startActivity(i);
-                            finish();
+                           Intent i=new Intent(LoginActivity.this,MainActivity.class);
+                           startActivity(i);
+                          finish();
                         }
                     }
                 }.execute();
