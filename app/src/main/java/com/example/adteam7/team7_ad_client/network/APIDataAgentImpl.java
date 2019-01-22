@@ -27,7 +27,7 @@ public class APIDataAgentImpl implements APIDataAgent {
     static {
         //http://172.17.80.219/Team7API/Token
         baseURL = String.format("http://%s/Team7API/api/Employee", host);
-        tokenURL = String.format("http://%s/Team7AD/Token", host);
+        tokenURL = String.format("http://%s/team7ad/Token", host);
         imageURL = String.format("http://%s/myserviceEmp/photo", host);
     }
 
