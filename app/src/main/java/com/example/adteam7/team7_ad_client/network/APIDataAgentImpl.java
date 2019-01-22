@@ -1,14 +1,11 @@
 package com.example.adteam7.team7_ad_client.network;
 
 import android.util.Log;
-import android.widget.Toast;
 
 import com.example.adteam7.team7_ad_client.data.ManageDepRep;
 import com.example.adteam7.team7_ad_client.data.SessionManager;
 
 import org.json.JSONObject;
-
-import java.net.URLEncoder;
 
 import static android.content.ContentValues.TAG;
 
@@ -18,7 +15,7 @@ import static android.content.ContentValues.TAG;
 public class APIDataAgentImpl implements APIDataAgent {
 
   // static String host = "localhost";
-   static String host = "172.17.80.219";
+  static String host = "192.168.1.100";
    // http://localhost/Team7API/Token
     static String baseURL;
     static String imageURL;
