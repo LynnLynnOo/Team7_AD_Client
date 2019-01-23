@@ -24,6 +24,10 @@
             android:id="@+id/nav_approveRejectPO"
             android:icon="@drawable/purchaseorder"
             android:title="Purchase Order" />
+        <item
+            android:id="@+id/nav_raiseAdjustment"
+            android:icon="@drawable/purchaseorder"
+            android:title="Raise Adjustment" />
     </group>
 
     <item android:title="Communicate">
