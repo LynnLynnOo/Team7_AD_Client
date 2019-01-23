@@ -22,7 +22,7 @@ import static android.content.ContentValues.TAG;
 public class APIDataAgentImpl implements APIDataAgent {
 
   // static String host = "localhost";
-  static String host = "172.17.68.83";
+  static String host = "192.168.1.166";
    // http://localhost/Team7API/Token
     static String baseURL;
     static String imageURL;
@@ -38,8 +38,10 @@ public class APIDataAgentImpl implements APIDataAgent {
         imageURL = String.format("http://%s/myserviceEmp/photo", host);
     }
 
+
+    //region Kay Thi Swe Tun
     @Override
-    public String login(String usname,String pass) {
+    public String login(String usname, String pass) {
         try {
             String id = usname;//URLEncoder.encode(usname);
             String pw = pass;//URLEncoder.encode(pass);
@@ -59,10 +61,7 @@ public class APIDataAgentImpl implements APIDataAgent {
         }
     }
 
-    @Override
-    public void getEmpList() {
 
-    }
 
     @Override
     public ManageDepRep delegateDepHeadGet() {
@@ -108,9 +107,24 @@ public class APIDataAgentImpl implements APIDataAgent {
 
        // return null;
     }
-    @Override
-    public void delegateDepHeadSet() {
 
+    //endregion
+
+    @Override
+    public String delegateDepHeadSet(ManageDepRep dep) {
+        JSONObject jemp = new JSONObject();
+        try {
+            jemp.put("DepartmentId", dep.getDepartmentId());
+            jemp.put("DepartmentName", dep.getDepartmentname());
+            jemp.put("DepartmentRepName", dep.getDepartmentRepName());
+            jemp.put("DepartmentRepId", dep.getDepartmentRepId());
+        } catch (Exception e) {
+        }
+
+        String rr = JSONParser.postStream(baseURL + "/managedepartmentEmp", true, jemp.toString());
+        Log.e(TAG, "delegateDepHeadSet: Show result" + rr);
+
+        return rr;
     }
 
     @Override
@@ -164,4 +178,16 @@ public class APIDataAgentImpl implements APIDataAgent {
         }
         return status;
     }
+
+
+    //region Zan Tun Khine
+
+
+    //region Approve Reject PO
+
+
+    //endregion
+
+
+    //endregion
 }

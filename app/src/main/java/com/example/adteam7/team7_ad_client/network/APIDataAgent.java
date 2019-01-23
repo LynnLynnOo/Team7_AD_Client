@@ -10,9 +10,10 @@ public interface APIDataAgent {
 
     String login(String nam,String pss);
 
-    void getEmpList();
+
     ManageDepRep delegateDepHeadGet();
-    void delegateDepHeadSet();
+
+    String delegateDepHeadSet(ManageDepRep dep);
     void assignDepRep();
 
     String delegateActingDepHeadSet(DelegateDepHeadApiModel del);

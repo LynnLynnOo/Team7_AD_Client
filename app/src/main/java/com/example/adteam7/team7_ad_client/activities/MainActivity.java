@@ -110,6 +110,12 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_send) {
 
+        } else if (id == R.id.nav_approveRejectPO) {
+            Intent i = new Intent(MainActivity.this, ApproveRejectPO.class);
+            startActivity(i);
+        } else if (id == R.id.nav_raiseAdjustment) {
+            Intent i = new Intent(MainActivity.this, RaiseAdjustmentActivity.class);
+            startActivity(i);
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

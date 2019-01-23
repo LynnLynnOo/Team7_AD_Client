@@ -10,7 +10,7 @@ import com.example.adteam7.team7_ad_client.Team7_AD_App;
 import com.example.adteam7.team7_ad_client.activities.LoginActivity;
 
 /**
- * Created by dodo
+ * Created by Kay Thi Swe Tun
  **/
 public class SessionManager {
 
