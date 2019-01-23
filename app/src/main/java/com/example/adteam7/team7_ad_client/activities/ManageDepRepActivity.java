@@ -77,8 +77,22 @@ dep.setDepartmentname(manageDepRep.getDepartmentname());
             public void onClick(View v) {
 
                 Toast.makeText(ManageDepRepActivity.this, "Assigned "+ spinEmp.getSelectedItem()+" as Department Representative", Toast.LENGTH_SHORT).show();
-              //  checkSelectedEmp();
-                agent.delegateDepHeadSet();
+                String repid=checkSelectedEmp();
+dep.setDepartmentRepName(spinEmp.getSelectedItem().toString());
+dep.setDepartmentRepId(repid);
+new AsyncTask<Void,Void,String>(){
+    @Override
+    protected String doInBackground(Void... voids) {
+        return agent.delegateDepHeadSet(dep);
+
+    }
+
+    @Override
+    protected void onPostExecute(String aVoid) {
+        super.onPostExecute(aVoid);
+    }
+}.execute();
+
             }
         });
 
@@ -86,5 +100,21 @@ dep.setDepartmentname(manageDepRep.getDepartmentname());
 
 
 
+    }
+
+    private String checkSelectedEmp() {
+        String newRepId="";
+        String n=spinEmp.getSelectedItem().toString();
+        for (Employee e:dep.getEmployees()
+             ) {
+            if (e.getName()==n){
+                newRepId=e.getEmpid();
+                return newRepId;
+            }
+
+        }
+
+
+        return newRepId;
     }
 }
