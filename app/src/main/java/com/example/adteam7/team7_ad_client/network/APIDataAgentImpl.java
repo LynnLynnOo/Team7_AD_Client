@@ -23,9 +23,9 @@ import static android.content.ContentValues.TAG;
  **/
 public class APIDataAgentImpl implements APIDataAgent {
 
-    // static String host = "localhost";
-    static String host = "172.17.81.143";
-    // http://localhost/Team7API/Token
+  // static String host = "localhost";
+   static String host = "192.168.1.166";
+   // http://localhost/Team7API/Token
     static String baseURL;
     static String imageURL;
     static String tokenURL;
@@ -152,7 +152,30 @@ String rr=JSONParser.postStream(baseURL+"/managedepartmentEmp",true,jemp.toStrin
         } catch (Exception e) {
             Log.e("Login", e.toString());
         }
-
         return null;
+    }
+
+    @Override
+    public String delegateActingDepHeadSet(DelegateDepHeadApiModel delHeadPost) {
+        String status = "Error at saving.";
+        try {
+            String id = session.getUserid();
+            delHeadPost.setUserId(id);
+            //http://192.168.1.100/team7ad/api/
+            String url = String.format("%sdepartmenthead/setdepartmenthead/", baseURL);
+            Log.i("Url", url);
+            Gson gson = new Gson();
+            String json = gson.toJson(delHeadPost);
+            Log.i("Json", json);
+            String result = JSONParser.postStream(url, true, json);
+
+            Log.i("PostResult", result);
+            if (result != null || result != "")
+                status = "Successfully saved.";
+
+        } catch (Exception e) {
+            Log.e("JsonPost", e.toString());
+        }
+        return status;
     }
 }

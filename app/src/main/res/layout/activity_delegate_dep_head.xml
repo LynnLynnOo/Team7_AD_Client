@@ -31,6 +31,7 @@
         android:layout_width="314dp"
         android:layout_height="28dp"
         android:layout_marginTop="8dp"
+        android:spinnerMode="dropdown"
         app:layout_constraintStart_toStartOf="@+id/textView4"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
@@ -84,8 +85,11 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
+        android:clickable="true"
         android:ems="10"
-        android:inputType="date"
+        android:focusable="false"
+        android:hint="Choose Start Date"
+        android:inputType="none"
         app:layout_constraintStart_toStartOf="@+id/textView5"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
@@ -94,8 +98,11 @@
         android:layout_width="284dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:clickable="true"
         android:ems="10"
-        android:inputType="date"
+        android:focusable="false"
+        android:hint="Choose End Date"
+        android:inputType="none"
         app:layout_constraintStart_toStartOf="@+id/textView6"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 

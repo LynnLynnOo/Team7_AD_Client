@@ -1,27 +1,27 @@
 package com.example.adteam7.team7_ad_client.data;
 
 public class EmployeeDto {
-    private String id;
-    private String name;
+    private String Id;
+    private String Name;
 
     public EmployeeDto(String id, String name) {
-        this.id = id;
-        this.name = name;
+        Id = id;
+        Name = name;
     }
 
     public String getId() {
-        return id;
+        return Id;
     }
 
     public void setId(String id) {
-        this.id = id;
+        Id = id;
     }
 
     public String getName() {
-        return name;
+        return Name;
     }
 
     public void setName(String name) {
-        this.name = name;
+        Name = name;
     }
 }

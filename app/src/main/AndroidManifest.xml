@@ -18,34 +18,27 @@
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
-        android:name=".Team7_AD_App"
         android:allowBackup="true"
+        android:name=".Team7_AD_App"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:networkSecurityConfig="@xml/security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-      <!--  <activity android:name=".activities.DelegateDepHeadActivity"></activity>-->
+        android:theme="@style/AppTheme"
+        android:networkSecurityConfig="@xml/security_config">
         <activity
             android:name=".activities.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
-        <!--<activity android:name=".activities.LoginActivity"></activity>-->
-        <activity android:name=".activities.SplashActivity"></activity>
-        <activity android:name=".activities.LoginActivity">
-
-
+        <activity android:name=".activities.ManageDepRepActivity"></activity>
+        <activity android:name=".activities.SplashActivity" >
         </activity>
-
-        <activity android:name=".activities.ManageDepRepActivity">
+        <activity android:name=".activities.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>
