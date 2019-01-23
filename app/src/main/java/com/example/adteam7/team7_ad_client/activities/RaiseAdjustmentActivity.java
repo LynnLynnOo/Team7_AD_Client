@@ -1,8 +1,11 @@
 package com.example.adteam7.team7_ad_client.activities;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
@@ -25,5 +28,15 @@ public class RaiseAdjustmentActivity extends AppCompatActivity {
         ListView lv = findViewById(R.id.AdjustmentList);
         lv.setAdapter(new SimpleAdapter(this, items, R.layout.adjustment_row, new String[]{"category", "itemDescription", "quantity", "currentStock", "amount"},
                 new int[]{R.id.category, R.id.description, R.id.quantity, R.id.stock, R.id.amount}));
+
+        Button button = findViewById(R.id.AddButton);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(RaiseAdjustmentActivity.this, AdjustmentDetailActivity.class);
+                startActivity(i);
+
+            }
+        });
     }
 }

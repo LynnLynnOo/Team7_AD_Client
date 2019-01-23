@@ -15,6 +15,12 @@
         android:text="Raise Adjustment"
         android:textSize="30dp" />
 
+    <Button
+        android:id="@+id/AddButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add" />
+
     <ListView
         android:id="@+id/AdjustmentList"
         android:layout_width="395dp"
