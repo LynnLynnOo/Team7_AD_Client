@@ -78,6 +78,7 @@ dep.setDepartmentname(manageDepRep.getDepartmentname());
 
                 Toast.makeText(ManageDepRepActivity.this, "Assigned "+ spinEmp.getSelectedItem()+" as Department Representative", Toast.LENGTH_SHORT).show();
                 String repid=checkSelectedEmp();
+                rep.setText(spinEmp.getSelectedItem().toString());
 dep.setDepartmentRepName(spinEmp.getSelectedItem().toString());
 dep.setDepartmentRepId(repid);
 new AsyncTask<Void,Void,String>(){
@@ -98,8 +99,12 @@ new AsyncTask<Void,Void,String>(){
 
 
 
+    }
 
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 
     private String checkSelectedEmp() {

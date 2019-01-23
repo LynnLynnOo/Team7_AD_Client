@@ -10,7 +10,7 @@ public interface APIDataAgent {
 
     String login(String nam,String pss);
 
-    void getEmpList();
+
     ManageDepRep delegateDepHeadGet();
     String delegateDepHeadSet(ManageDepRep dep);
     void assignDepRep();

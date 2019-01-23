@@ -23,14 +23,18 @@ import static android.content.ContentValues.TAG;
  **/
 public class APIDataAgentImpl implements APIDataAgent {
 
-  // static String host = "localhost";
-   static String host = "192.168.1.166";
-   // http://localhost/Team7API/Token
+    // static String host = "localhost";
+    static String host = "172.17.81.143";
+    // http://localhost/Team7API/Token
     static String baseURL;
     static String imageURL;
     static String tokenURL;
     //http://172.17.4.197/team7ad/Token
     SessionManager session = SessionManager.getInstance();
+
+
+
+
 
 
     static {
@@ -40,6 +44,8 @@ public class APIDataAgentImpl implements APIDataAgent {
         imageURL = String.format("http://%s/myserviceEmp/photo", host);
     }
 
+
+    //region Kay Thi Swe Tun
     @Override
     public String login(String usname,String pass) {
         try {
@@ -61,10 +67,7 @@ public class APIDataAgentImpl implements APIDataAgent {
         }
     }
 
-    @Override
-    public void getEmpList() {
 
-    }
 
     @Override
     public ManageDepRep delegateDepHeadGet() {
@@ -110,6 +113,9 @@ public class APIDataAgentImpl implements APIDataAgent {
 
        // return null;
     }
+
+    //endregion
+
     @Override
     public String delegateDepHeadSet(ManageDepRep dep) {
         JSONObject jemp = new JSONObject();
