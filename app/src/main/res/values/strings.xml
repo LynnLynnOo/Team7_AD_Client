@@ -25,4 +25,9 @@
         completions."
     </string>
     <string name="assign">Assign</string>
+    <!-- PO Details-->
+    <string name="label1">Request ID</string>
+    <string name="label2">Request By</string>
+    <string name="label3">Status</string>
+    <string name="label4">Request Date</string>
 </resources>
