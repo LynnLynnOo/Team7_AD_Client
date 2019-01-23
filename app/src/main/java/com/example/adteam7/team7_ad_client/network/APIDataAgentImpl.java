@@ -22,7 +22,7 @@ import static android.content.ContentValues.TAG;
 public class APIDataAgentImpl implements APIDataAgent {
 
   // static String host = "localhost";
-  static String host = " 172.17.151.50";
+  static String host = "172.17.151.50";
    // http://localhost/Team7API/Token
     static String baseURL;
     static String imageURL;
@@ -109,8 +109,20 @@ public class APIDataAgentImpl implements APIDataAgent {
        // return null;
     }
     @Override
-    public void delegateDepHeadSet() {
+    public String delegateDepHeadSet(ManageDepRep dep) {
+        JSONObject jemp = new JSONObject();
+        try {
+            jemp.put("DepartmentId", dep.getDepartmentId());
+            jemp.put("DepartmentName", dep.getDepartmentname());
+            jemp.put("DepartmentRepName", dep.getDepartmentRepName());
+            jemp.put("DepartmentRepId", dep.getDepartmentRepId());
+        } catch (Exception e) {
+        }
 
+String rr=JSONParser.postStream(baseURL+"/managedepartmentEmp",true,jemp.toString());
+        Log.e(TAG, "delegateDepHeadSet: Show result"+rr );
+
+        return rr;
     }
 
     @Override

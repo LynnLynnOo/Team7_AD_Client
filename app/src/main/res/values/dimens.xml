@@ -8,4 +8,5 @@
     <dimen name="m_margin">10dp</dimen>
     <dimen name="s_margin">5dp</dimen>
     <dimen name="l_margin">20dp</dimen>
+    <!--<dimen name="onePOrecord">onePOrecord</dimen>-->
 </resources>

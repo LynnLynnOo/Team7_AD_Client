@@ -12,7 +12,7 @@ public interface APIDataAgent {
 
     void getEmpList();
     ManageDepRep delegateDepHeadGet();
-    void delegateDepHeadSet();
+    String delegateDepHeadSet(ManageDepRep dep);
     void assignDepRep();
 
     String delegateActingDepHeadSet(DelegateDepHeadApiModel del);
