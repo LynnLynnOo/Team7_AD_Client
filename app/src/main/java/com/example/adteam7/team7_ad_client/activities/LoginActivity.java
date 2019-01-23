@@ -62,8 +62,6 @@ APIDataAgent agent=new APIDataAgentImpl();
                             finish();
                         } else {
                             Toast.makeText(LoginActivity.this, "Error logging in", Toast.LENGTH_SHORT).show();
-
-                            finish();
                         }
                     }
                 }.execute();
