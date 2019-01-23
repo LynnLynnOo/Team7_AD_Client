@@ -1,9 +1,8 @@
 package com.example.adteam7.team7_ad_client.activities;
 
-import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -35,10 +34,10 @@ TextView depname,rep;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manage_dep_rep);
-        spinEmp=findViewById(R.id.sprEmp);
-        assign=findViewById(R.id.assign);
-        depname=findViewById(R.id.depname);
-        rep=findViewById(R.id.currep);
+        spinEmp = findViewById(R.id.sprEmp);
+        assign = findViewById(R.id.assign);
+        depname = findViewById(R.id.depname);
+        rep = findViewById(R.id.currep);
 
         new AsyncTask<Void, Void, ManageDepRep>() {
             @Override
@@ -55,9 +54,9 @@ TextView depname,rep;
                 dep.setDepartmentRepName(manageDepRep.getDepartmentRepName());
                 dep.setDepartmentId(manageDepRep.getDepartmentId());
 
-dep.setDepartmentname(manageDepRep.getDepartmentname());
-                List<String> empnamelist=new ArrayList<>();
-                for (Employee e: dep.getEmployees()) {
+                dep.setDepartmentname(manageDepRep.getDepartmentname());
+                List<String> empnamelist = new ArrayList<>();
+                for (Employee e : dep.getEmployees()) {
                     empnamelist.add(e.getName());
                 }
 
@@ -71,32 +70,31 @@ dep.setDepartmentname(manageDepRep.getDepartmentname());
                 rep.setText(dep.getDepartmentRepName());
             }
         }.execute();
- String newrep;
+        String newrep;
         assign.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(ManageDepRepActivity.this, "Assigned "+ spinEmp.getSelectedItem()+" as Department Representative", Toast.LENGTH_SHORT).show();
-                String repid=checkSelectedEmp();
+                Toast.makeText(ManageDepRepActivity.this, "Assigned " + spinEmp.getSelectedItem() + " as Department Representative", Toast.LENGTH_SHORT).show();
+                String repid = checkSelectedEmp();
                 rep.setText(spinEmp.getSelectedItem().toString());
-dep.setDepartmentRepName(spinEmp.getSelectedItem().toString());
-dep.setDepartmentRepId(repid);
-new AsyncTask<Void,Void,String>(){
-    @Override
-    protected String doInBackground(Void... voids) {
-        return agent.delegateDepHeadSet(dep);
+                dep.setDepartmentRepName(spinEmp.getSelectedItem().toString());
+                dep.setDepartmentRepId(repid);
+                new AsyncTask<Void, Void, String>() {
+                    @Override
+                    protected String doInBackground(Void... voids) {
+                        return agent.delegateDepHeadSet(dep);
 
-    }
+                    }
 
-    @Override
-    protected void onPostExecute(String aVoid) {
-        super.onPostExecute(aVoid);
-    }
-}.execute();
+                    @Override
+                    protected void onPostExecute(String aVoid) {
+                        super.onPostExecute(aVoid);
+                    }
+                }.execute();
 
             }
         });
-
 
 
     }
@@ -108,12 +106,12 @@ new AsyncTask<Void,Void,String>(){
     }
 
     private String checkSelectedEmp() {
-        String newRepId="";
-        String n=spinEmp.getSelectedItem().toString();
-        for (Employee e:dep.getEmployees()
-             ) {
-            if (e.getName()==n){
-                newRepId=e.getEmpid();
+        String newRepId = "";
+        String n = spinEmp.getSelectedItem().toString();
+        for (Employee e : dep.getEmployees()
+        ) {
+            if (e.getName() == n) {
+                newRepId = e.getEmpid();
                 return newRepId;
             }
 

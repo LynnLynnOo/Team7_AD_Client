@@ -2,9 +2,8 @@ package com.example.adteam7.team7_ad_client.activities;
 
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -63,9 +62,6 @@ APIDataAgent agent=new APIDataAgentImpl();
                             finish();
                         } else {
                             Toast.makeText(LoginActivity.this, "Error logging in", Toast.LENGTH_SHORT).show();
-                           Intent i=new Intent(LoginActivity.this,MainActivity.class);
-                           startActivity(i);
-                          finish();
                         }
                     }
                 }.execute();

@@ -11,7 +11,6 @@ import com.google.gson.Gson;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +22,7 @@ import static android.content.ContentValues.TAG;
 public class APIDataAgentImpl implements APIDataAgent {
 
   // static String host = "localhost";
-  static String host = "172.17.151.50";
+  static String host = "192.168.1.100";
    // http://localhost/Team7API/Token
     static String baseURL;
     static String imageURL;
@@ -42,7 +41,7 @@ public class APIDataAgentImpl implements APIDataAgent {
 
     //region Kay Thi Swe Tun
     @Override
-    public String login(String usname,String pass) {
+    public String login(String usname, String pass) {
         try {
             String id = usname;//URLEncoder.encode(usname);
             String pw = pass;//URLEncoder.encode(pass);
@@ -61,7 +60,8 @@ public class APIDataAgentImpl implements APIDataAgent {
             return "fail";
         }
     }
-    
+
+
 
     @Override
     public ManageDepRep delegateDepHeadGet() {
@@ -121,8 +121,8 @@ public class APIDataAgentImpl implements APIDataAgent {
         } catch (Exception e) {
         }
 
-String rr=JSONParser.postStream(baseURL+"/managedepartmentEmp",true,jemp.toString());
-        Log.e(TAG, "delegateDepHeadSet: Show result"+rr );
+        String rr = JSONParser.postStream(baseURL + "/managedepartmentEmp", true, jemp.toString());
+        Log.e(TAG, "delegateDepHeadSet: Show result" + rr);
 
         return rr;
     }
