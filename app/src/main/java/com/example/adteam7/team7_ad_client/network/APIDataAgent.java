@@ -1,5 +1,6 @@
 package com.example.adteam7.team7_ad_client.network;
 
+import com.example.adteam7.team7_ad_client.data.DelegateDepHeadApiModel;
 import com.example.adteam7.team7_ad_client.data.ManageDepRep;
 
 /**
@@ -13,6 +14,9 @@ public interface APIDataAgent {
     ManageDepRep delegateDepHeadGet();
     void delegateDepHeadSet();
     void assignDepRep();
+
+    String delegateActingDepHeadSet(DelegateDepHeadApiModel del);
+    DelegateDepHeadApiModel delegateActingDepHeadGet();
 
 
 }

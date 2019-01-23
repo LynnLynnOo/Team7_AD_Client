@@ -1,5 +1,6 @@
 package com.example.adteam7.team7_ad_client.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -14,7 +15,6 @@ import android.widget.Toast;
 
 import com.example.adteam7.team7_ad_client.R;
 import com.example.adteam7.team7_ad_client.data.SessionManager;
-
 import com.example.adteam7.team7_ad_client.network.SendMailTask;
 
 /**
@@ -96,12 +96,15 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
+            Intent i=new Intent(MainActivity.this,ManageDepRepActivity.class);
+            startActivity(i);
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
-            Toast.makeText(this, "About", Toast.LENGTH_SHORT).show();
-            new SendMailTask(MainActivity.this).execute("henrytlh@hotmail.com", "Title", "body");
-        } else if (id == R.id.nav_slideshow) {
-
+//            Toast.makeText(this, "About", Toast.LENGTH_SHORT).show();
+//            new SendMailTask(MainActivity.this).execute("henrytlh@hotmail.com", "Title", "body");
+        } else if (id == R.id.nav_delegateHead) {
+            Intent i = new Intent(MainActivity.this, DelegateDepHeadActivity.class);
+            startActivity(i);
         } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_share) {
