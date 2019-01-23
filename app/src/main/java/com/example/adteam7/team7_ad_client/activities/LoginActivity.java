@@ -62,9 +62,8 @@ APIDataAgent agent=new APIDataAgentImpl();
                             startActivity(i);
                             finish();
                         } else {
-                            Toast.makeText(LoginActivity.this, "Error logging in", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, "Invalid Username and password", Toast.LENGTH_SHORT).show();
 
-                          finish();
                         }
                     }
                 }.execute();
