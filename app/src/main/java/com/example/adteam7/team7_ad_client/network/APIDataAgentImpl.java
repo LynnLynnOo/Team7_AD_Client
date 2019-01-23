@@ -1,7 +1,6 @@
 package com.example.adteam7.team7_ad_client.network;
 
 import android.util.Log;
-import android.widget.Toast;
 
 import com.example.adteam7.team7_ad_client.data.DelegateDepHeadApiModel;
 import com.example.adteam7.team7_ad_client.data.Employee;
@@ -24,7 +23,7 @@ import static android.content.ContentValues.TAG;
 public class APIDataAgentImpl implements APIDataAgent {
 
   // static String host = "localhost";
-   static String host = "192.168.1.166";
+  static String host = "172.17.151.50";
    // http://localhost/Team7API/Token
     static String baseURL;
     static String imageURL;
@@ -62,8 +61,7 @@ public class APIDataAgentImpl implements APIDataAgent {
             return "fail";
         }
     }
-
-
+    
 
     @Override
     public ManageDepRep delegateDepHeadGet() {
