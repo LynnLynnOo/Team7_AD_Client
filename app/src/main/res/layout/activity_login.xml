@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".activities.LoginActivity"
-    android:background="@drawable/bg"
-   >
+    android:background="@drawable/bg">
     <RelativeLayout
         android:background="#c7ffffff"
         android:layout_width="match_parent"
@@ -42,27 +39,26 @@
         android:orientation="vertical">
 
 
-<EditText
-    android:layout_width="280dp"
-    android:layout_height="40dp"
-    android:layout_gravity="center_horizontal"
-    android:background="@drawable/layout_bg"
-    android:ellipsize="end"
-    android:hint="Email"
-    android:text="Andrew-Pompeo@logic.u.edu"
-    android:inputType="textEmailAddress"
-    android:drawableStart="@drawable/email"
-    android:drawableLeft="@drawable/email"
-    android:maxLines="1"
-    android:minLines="1"
-    android:padding="5dp"
-    android:layout_margin="10dp"
-    android:paddingLeft="5dp"
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="280dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:background="@drawable/layout_bg"
+            android:drawableStart="@drawable/email"
+            android:drawableLeft="@drawable/email"
+            android:ellipsize="end"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
+            android:minLines="1"
+            android:padding="5dp"
+            android:paddingLeft="5dp"
 
-    android:textColorHint="#67817f"
-    tools:ignore="HardcodedText"
-    android:id="@+id/email"
-        />
+            android:text="@logic.u.edu"
+            android:textColorHint="#67817f"
+            tools:ignore="HardcodedText" />
 
     <EditText
         android:id="@+id/password"

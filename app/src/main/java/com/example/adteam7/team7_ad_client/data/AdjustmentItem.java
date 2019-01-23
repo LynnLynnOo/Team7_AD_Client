@@ -1,7 +1,6 @@
 package com.example.adteam7.team7_ad_client.data;
 
 import java.util.HashMap;
-import java.util.Map;
 
 public class AdjustmentItem extends HashMap<String, String> {
 

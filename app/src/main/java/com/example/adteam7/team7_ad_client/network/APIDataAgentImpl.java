@@ -23,9 +23,9 @@ import static android.content.ContentValues.TAG;
  **/
 public class APIDataAgentImpl implements APIDataAgent {
 
-    // static String host = "localhost";
-    static String host = "192.168.1.166";
-    // http://localhost/Team7API/Token
+  // static String host = "localhost";
+   static String host = "192.168.1.166";
+   // http://localhost/Team7API/Token
     static String baseURL;
     static String imageURL;
     static String tokenURL;
@@ -43,18 +43,18 @@ public class APIDataAgentImpl implements APIDataAgent {
 
     //region Kay Thi Swe Tun
     @Override
-    public String login(String usname, String pass) {
+    public String login(String usname,String pass) {
         try {
             String id = usname;//URLEncoder.encode(usname);
             String pw = pass;//URLEncoder.encode(pass);
-            Log.e(TAG, "login: " + id + " and " + pw);
+            Log.e(TAG, "login: "+id+" and " +pw);
             String credential = String.format("username=%s&password=%s&grant_type=password", id, pw);
             String result = JSONParser.postStream(tokenURL, false, credential);
             JSONObject res = new JSONObject(result);
             if (res.has("access_token"))
                 JSONParser.access_token = res.getString("access_token");
             String userId = res.getString("userName");
-            Log.e(TAG, "login: " + res.getString("access_token"));
+            Log.e(TAG, "login: "+res.getString("access_token") );
             return userId;
         } catch (Exception e) {
             JSONParser.access_token = "";
@@ -64,18 +64,19 @@ public class APIDataAgentImpl implements APIDataAgent {
     }
 
 
+
     @Override
     public ManageDepRep delegateDepHeadGet() {
         try {
             String id = session.getUserid();
 
-            String url = String.format("%s/%s/%s", baseURL, "managedepartmentRep", id);
+            String url = String.format("%s/%s/%s", baseURL,"managedepartmentRep", id);
 
             //String url=String.format("http://192.168.1.166/team7ad/api/managedepartmentRep/19fb3f0d-5859-4c63-979d-632213e67711");
-            JSONParser.access_token = session.getToken();
-            //  String res = JSONParser.getStream(url);
-            JSONObject a = JSONParser.getJSONFromUrl(url);
-            ManageDepRep rep = new ManageDepRep();
+            JSONParser.access_token=session.getToken();
+          //  String res = JSONParser.getStream(url);
+            JSONObject a=JSONParser.getJSONFromUrl(url);
+            ManageDepRep rep=new ManageDepRep();
 
             rep.setDepartmentId(a.getString("DepartmentId"));
             rep.setDepartmentname(a.getString("DepartmentName"));
@@ -83,30 +84,30 @@ public class APIDataAgentImpl implements APIDataAgent {
             rep.setDepartmentRepId(a.getString("DepartmentRepId"));
 
 
-            String url2 = String.format("%s/%s/%s", baseURL, "managedepartmentEmp", id);
-            JSONArray arr = JSONParser.getJSONArrayFromUrl(url2);
-            List<Employee> list = new ArrayList<>();
+           String url2 = String.format("%s/%s/%s", baseURL,"managedepartmentEmp", id);
+            JSONArray arr=JSONParser.getJSONArrayFromUrl(url2);
+            List<Employee> list=new ArrayList<>();
             try {
-                for (int i = 0; i < arr.length(); i++) {
+                for (int i =0; i<arr.length(); i++) {
                     JSONObject b = arr.getJSONObject(i);
                     list.add(new Employee(b.getString("EName"),
-                            b.getString("Empid"), b.getString("Email"), b.getString("phone")));
+                            b.getString("Empid"),b.getString("Email"), b.getString("phone")));
                 }
             } catch (Exception e) {
                 Log.e("Employee", "JSONArray error");
             }
 
-            rep.setEmployees(list);
-            // Log.e(TAG, "delegateDepHeadGet: Rep Name"+ deprep);
+          rep.setEmployees(list);
+           // Log.e(TAG, "delegateDepHeadGet: Rep Name"+ deprep);
             return rep;
 
         } catch (Exception e) {
-            JSONParser.access_token = "";
+           JSONParser.access_token = "";
             Log.e("Login", e.toString());
             return null;
         }
 
-        // return null;
+       // return null;
     }
 
     //endregion
@@ -122,8 +123,8 @@ public class APIDataAgentImpl implements APIDataAgent {
         } catch (Exception e) {
         }
 
-        String rr = JSONParser.postStream(baseURL + "/managedepartmentEmp", true, jemp.toString());
-        Log.e(TAG, "delegateDepHeadSet: Show result" + rr);
+String rr=JSONParser.postStream(baseURL+"/managedepartmentEmp",true,jemp.toString());
+        Log.e(TAG, "delegateDepHeadSet: Show result"+rr );
 
         return rr;
     }
