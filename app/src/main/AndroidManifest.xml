@@ -34,7 +34,14 @@
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" /> <!-- <activity android:name=".activities.LoginActivity"></activity> -->
         <activity android:name=".activities.SplashActivity" />
-        <activity android:name=".activities.LoginActivity"></activity>
+        <activity android:name=".activities.LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+
+        </activity>
         <activity android:name=".activities.ManageDepRepActivity"
             android:parentActivityName=".activities.MainActivity"></activity>
 
