@@ -2,9 +2,9 @@ package com.example.adteam7.team7_ad_client.network;
 
 import com.example.adteam7.team7_ad_client.data.DelegateDepHeadApiModel;
 import com.example.adteam7.team7_ad_client.data.ManageDepRep;
-import com.example.adteam7.team7_ad_client.data.PendingPO;
+import com.example.adteam7.team7_ad_client.data.StationeryRetrievalApiModel;
 
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Created by dodo
@@ -15,12 +15,12 @@ public interface APIDataAgent {
 
 
     ManageDepRep delegateDepHeadGet();
+
     String delegateDepHeadSet(ManageDepRep dep);
     void assignDepRep();
 
     String delegateActingDepHeadSet(DelegateDepHeadApiModel del);
     DelegateDepHeadApiModel delegateActingDepHeadGet();
 
-    //List<PendingPO> GetPendingPO();
-
+    ArrayList<StationeryRetrievalApiModel> RetrievalListGet();
 }

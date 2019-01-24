@@ -17,9 +17,13 @@
             android:icon="@drawable/ic_menu_slideshow"
             android:title="Delegate Dep Head" />
         <item
-            android:id="@+id/nav_approve"
+            android:id="@+id/nav_generateRetrieval"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:title="Generate Retrieval List" />
+        <item
+            android:id="@+id/nav_viewRequest"
+            android:icon="@drawable/ic_menu_share"
+            android:title="View Request" />
         <item
             android:id="@+id/nav_approveRejectPO"
             android:icon="@drawable/purchaseorder"

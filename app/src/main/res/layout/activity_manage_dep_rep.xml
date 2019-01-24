@@ -17,18 +17,18 @@
         android:layout_height="wrap_content" />
 
     <TextView
-        android:id="@+id/depname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/s_margin"
-        android:layout_marginTop="@dimen/m_margin"
-        android:layout_marginEnd="@dimen/m_margin"
-        android:layout_marginRight="@dimen/m_margin"
-        android:layout_marginBottom="@dimen/m_margin"
         android:layout_toRightOf="@+id/depconst"
-        android:textColor="@color/txtColor"
+        android:id="@+id/depname"
         android:textSize="16sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textColor="@color/txtColor"
+        android:layout_marginLeft="@dimen/s_margin"
+        android:layout_marginRight="@dimen/m_margin"
+        android:layout_marginEnd="@dimen/m_margin"
+        android:layout_marginTop="@dimen/m_margin"
+        android:layout_marginBottom="@dimen/m_margin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 
 <TextView
@@ -42,19 +42,19 @@
     android:layout_height="wrap_content" />
 
     <TextView
-        android:id="@+id/currep"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_below="@id/depconst"
-        android:layout_marginLeft="@dimen/s_margin"
-        android:layout_marginTop="@dimen/m_margin"
-        android:layout_marginEnd="@dimen/m_margin"
-        android:layout_marginRight="@dimen/m_margin"
-        android:layout_marginBottom="@dimen/m_margin"
         android:layout_toRightOf="@+id/currepconst"
-        android:textColor="@color/txtColor"
+        android:id="@+id/currep"
         android:textSize="16sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textColor="@color/txtColor"
+        android:layout_marginLeft="@dimen/s_margin"
+        android:layout_marginRight="@dimen/m_margin"
+        android:layout_marginEnd="@dimen/m_margin"
+        android:layout_marginTop="@dimen/m_margin"
+        android:layout_marginBottom="@dimen/m_margin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <TextView
         android:layout_margin="@dimen/m_margin"

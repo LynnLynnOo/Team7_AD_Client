@@ -2,7 +2,6 @@ package com.example.adteam7.team7_ad_client.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.MainThread;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -104,20 +103,21 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_delegateHead) {
             Intent i = new Intent(MainActivity.this, DelegateDepHeadActivity.class);
             startActivity(i);
-        } else if (id == R.id.nav_approve) {
+        } else if (id == R.id.nav_generateRetrieval) {
+            Intent i = new Intent(MainActivity.this, RetrievalListActivity.class);
+            startActivity(i);
+        } else if (id == R.id.nav_viewRequest) {
             Intent i = new Intent(MainActivity.this, ViewRequestActivity.class);
             startActivity(i);
-        } else if (id == R.id.nav_share) {
-
         } else if (id == R.id.nav_send) {
 
         } else if (id == R.id.nav_approveRejectPO) {
             Intent i = new Intent(MainActivity.this, ApproveRejectPO.class);
             startActivity(i);
-        } else if (id == R.id.nav_raiseAdjustment) {
+        } /*else if (id == R.id.nav_raiseAdjustment) {
             Intent i = new Intent(MainActivity.this, RaiseAdjustmentActivity.class);
             startActivity(i);
-        }
+        }*/
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
