@@ -31,7 +31,7 @@ public class ApproveRejectPO extends AppCompatActivity {
             @Override
             protected List<PendingPO> doInBackground(Void... params) {
                 List<PendingPO> polist = PendingPO.GetPendingPO();
-                Log.i("list", polist.get(0).get("PONo"));
+                //Log.i("list", polist.get(0).get("PONo"));
                 return polist;
             }
 

@@ -63,7 +63,7 @@ public class ApproveRejectPODetails extends AppCompatActivity {
                             new int[]{R.id.poTextViewDescription, R.id.poTextViewUnitPrice, R.id.poTextViewQty, R.id.poTextViewTotalAmount});
                     //,R.id.poTextViewPono,R.id.poTextViewDate,R.id.poTextViewOrderedBy,R.id.poTextViewAmount});
                     list.setAdapter(adapter);
-                    Log.i("list", SessionManager.getInstance().getUserid());
+                    Log.i("userID", SessionManager.getInstance().getUserid());
                 }
 
             }.execute(id);
@@ -84,7 +84,8 @@ public class ApproveRejectPODetails extends AppCompatActivity {
                 @Override
                 protected Void doInBackground(PendingPO... params) {
                     PendingPO.ApproveRejectPO(params[0], v.getId());
-                    //Log.i("Btn", Integer.toString(v.getId()));
+                    Log.i("Btn", Integer.toString(v.getId()));
+                    Log.i("userID", SessionManager.getInstance().getUserid());
 
                     Intent homepage = new Intent(ApproveRejectPODetails.this, ApproveRejectPO.class);
                     startActivity(homepage);

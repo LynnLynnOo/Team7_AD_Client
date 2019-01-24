@@ -2,6 +2,7 @@ package com.example.adteam7.team7_ad_client.data;
 
 import android.util.Log;
 
+import com.example.adteam7.team7_ad_client.R;
 import com.example.adteam7.team7_ad_client.network.JSONParser;
 
 import org.json.JSONArray;
@@ -146,10 +147,10 @@ public class PendingPO extends HashMap<String, String> {
             Log.e("PendingPO", "Error");
         }
 
-        if (btn == 2131230888)
+        if (btn == R.id.poButtonApprove)
             JSONParser.postStream1(baseURL + "/pendingpo/approve", jpo.toString());
 
-        else if (btn == 2131230889)
+        else if (btn == R.id.poButtonReject)
             JSONParser.postStream1(baseURL + "/pendingpo/reject", jpo.toString());
     }
     //endregion
