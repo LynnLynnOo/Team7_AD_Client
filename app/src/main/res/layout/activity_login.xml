@@ -42,27 +42,26 @@
         android:orientation="vertical">
 
 
-<EditText
-    android:layout_width="280dp"
-    android:layout_height="40dp"
-    android:layout_gravity="center_horizontal"
-    android:background="@drawable/layout_bg"
-    android:ellipsize="end"
-    android:hint="Email"
-    android:text="Andrew-Pompeo@logic.u.edu"
-    android:inputType="textEmailAddress"
-    android:drawableStart="@drawable/email"
-    android:drawableLeft="@drawable/email"
-    android:maxLines="1"
-    android:minLines="1"
-    android:padding="5dp"
-    android:layout_margin="10dp"
-    android:paddingLeft="5dp"
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="280dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:background="@drawable/layout_bg"
+            android:drawableStart="@drawable/email"
+            android:drawableLeft="@drawable/email"
+            android:ellipsize="end"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
+            android:minLines="1"
+            android:padding="5dp"
+            android:paddingLeft="5dp"
 
-    android:textColorHint="#67817f"
-    tools:ignore="HardcodedText"
-    android:id="@+id/email"
-        />
+            android:text="manager@logic.u.edu"
+            android:textColorHint="#67817f"
+            tools:ignore="HardcodedText" />
 
     <EditText
         android:id="@+id/password"

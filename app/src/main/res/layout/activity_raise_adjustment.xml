@@ -6,7 +6,7 @@
 
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/potextViewSerial"
         android:layout_width="242dp"
         android:layout_height="44dp"
         android:layout_marginStart="84dp"
