@@ -48,7 +48,8 @@
 
         <EditText
             android:layout_width="106dp"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:id="@+id/unitOfMeasure"/>
     </LinearLayout>
 
     <LinearLayout
@@ -62,7 +63,8 @@
 
         <EditText
             android:layout_width="106dp"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:id="@+id/quantity" />
     </LinearLayout>
 
     <Button
