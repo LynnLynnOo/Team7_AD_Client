@@ -2,8 +2,9 @@ package com.example.adteam7.team7_ad_client.activities;
 
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -61,7 +62,8 @@ APIDataAgent agent=new APIDataAgentImpl();
                             startActivity(i);
                             finish();
                         } else {
-                            Toast.makeText(LoginActivity.this, "Error logging in", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, "Invalid Username and password", Toast.LENGTH_SHORT).show();
+
                         }
                     }
                 }.execute();
