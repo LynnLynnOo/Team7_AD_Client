@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity
             Intent i = new Intent(MainActivity.this, DelegateDepHeadActivity.class);
             startActivity(i);
         } else if (id == R.id.nav_generateRetrieval) {
-            Intent i = new Intent(MainActivity.this, GenerateRetrievalList.class);
+            Intent i = new Intent(MainActivity.this, RetrievalListActivity.class);
             startActivity(i);
         } else if (id == R.id.nav_viewRequest) {
             Intent i = new Intent(MainActivity.this, ViewRequestActivity.class);

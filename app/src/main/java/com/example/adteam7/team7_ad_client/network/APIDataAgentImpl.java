@@ -1,18 +1,19 @@
 package com.example.adteam7.team7_ad_client.network;
 
 import android.util.Log;
-import android.widget.Toast;
 
 import com.example.adteam7.team7_ad_client.data.DelegateDepHeadApiModel;
 import com.example.adteam7.team7_ad_client.data.Employee;
 import com.example.adteam7.team7_ad_client.data.ManageDepRep;
 import com.example.adteam7.team7_ad_client.data.SessionManager;
+import com.example.adteam7.team7_ad_client.data.StationeryRetrievalApiModel;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.net.URLEncoder;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +25,7 @@ import static android.content.ContentValues.TAG;
 public class APIDataAgentImpl implements APIDataAgent {
 
   // static String host = "localhost";
-   static String host = "192.168.1.166";
+  static String host = "192.168.1.100";
    // http://localhost/Team7API/Token
     static String baseURL;
     static String imageURL;
@@ -134,23 +135,19 @@ String rr=JSONParser.postStream(baseURL+"/managedepartmentEmp",true,jemp.toStrin
 
     }
 
+    // region Author: Teh Li Heng for Delegate Department Head
     @Override
-    public DelegateDepHeadApiModel delegateActingDepHeadGet() {
+    public ArrayList<StationeryRetrievalApiModel> RetrievalListGet() {
         try {
-            String id = session.getUserid();
-
             //http://192.168.1.100/team7ad/api/
-            String url = String.format("%sdepartmenthead/getdepartmenthead/%s", baseURL, id);
+            String url = String.format("%sclerk/getretrievallist", baseURL);
             String result = JSONParser.getStream(url);
             Log.i("Json", result);
+
+            Type stationeryType = new TypeToken<ArrayList<StationeryRetrievalApiModel>>() {
+            }.getType();
             Gson gson = new Gson();
-            return gson.fromJson(result, DelegateDepHeadApiModel.class);
-
-//            String deprep=depinfo.getString("DepartmentRepName");
-//
-//            Log.e(TAG, "delegateDepHeadGet: Rep Name"+ deprep);
-//            return null;
-
+            return gson.fromJson(result, stationeryType);
         } catch (Exception e) {
             Log.e("Login", e.toString());
         }
@@ -180,7 +177,33 @@ String rr=JSONParser.postStream(baseURL+"/managedepartmentEmp",true,jemp.toStrin
         }
         return status;
     }
+    //endregion
 
+    // region Author: Teh Li Heng for Managing retrievals of clerk from warehouse
+    @Override
+    public DelegateDepHeadApiModel delegateActingDepHeadGet() {
+        try {
+            String id = session.getUserid();
+
+            //http://192.168.1.100/team7ad/api/
+            String url = String.format("%sdepartmenthead/getdepartmenthead/%s", baseURL, id);
+            String result = JSONParser.getStream(url);
+            Log.i("Json", result);
+            Gson gson = new Gson();
+            return gson.fromJson(result, DelegateDepHeadApiModel.class);
+
+//            String deprep=depinfo.getString("DepartmentRepName");
+//
+//            Log.e(TAG, "delegateDepHeadGet: Rep Name"+ deprep);
+//            return null;
+
+        } catch (Exception e) {
+            Log.e("Login", e.toString());
+        }
+        return null;
+    }
+
+    //endregion
 
     //region Zan Tun Khine
 

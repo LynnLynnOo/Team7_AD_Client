@@ -26,7 +26,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.GenerateRetrievalList"></activity>
+        <activity android:name=".activities.RetrievalListActivity"></activity>
         <activity android:name=".activities.AdjustmentDetailActivity" />
         <activity android:name=".activities.ApproveRejectPO" />
         <activity android:name=".activities.ApproveRequestActivity" />
