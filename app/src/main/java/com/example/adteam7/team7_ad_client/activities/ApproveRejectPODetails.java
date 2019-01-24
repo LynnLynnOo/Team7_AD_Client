@@ -23,7 +23,6 @@ public class ApproveRejectPODetails extends AppCompatActivity {
 
     boolean isNew = true;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,7 +77,6 @@ public class ApproveRejectPODetails extends AppCompatActivity {
         if (intent.hasExtra("id")) {
             isNew = false;
             String id = intent.getStringExtra("id");
-
 
             PendingPO po = new PendingPO(id, "", "", "", "", "", SessionManager.getInstance().getUserid());
             new AsyncTask<PendingPO, Void, Void>() {
