@@ -4,174 +4,145 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".activities.ApproveRejectPODetails">
 
-    <View
-        android:id="@+id/divider2"
-        android:layout_width="395dp"
-        android:layout_height="1dp"
-        android:background="?android:attr/listDivider"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <android.support.v7.widget.AppCompatImageView
+        android:layout_width="match_parent"
+        android:layout_height="243dp"
+        android:layout_marginTop="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/Heading"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.v7.widget.AppCompatImageView
+        android:layout_width="match_parent"
+        android:layout_height="243dp"
+        android:layout_marginBottom="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/Footer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+    <View
+        android:layout_marginTop="135dp"
+        android:layout_marginBottom="65dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        android:background="@drawable/panelbg"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.769" />
+        android:id="@+id/layoutpanel"/>
 
     <Button
         android:id="@+id/poButtonReject"
-        android:layout_width="187dp"
-        android:layout_height="66dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:onClick="ApproveReject"
-        android:text="Reject"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.964"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.983" />
+        android:background="@drawable/rejectbtn"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="35dp"
+        app:layout_constraintTop_toBottomOf="@id/layoutpanel"
+        app:layout_constraintLeft_toLeftOf="@id/layoutpanel"/>
 
     <Button
         android:id="@+id/poButtonApprove"
-        android:layout_width="187dp"
-        android:layout_height="66dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:onClick="ApproveReject"
-        android:text="Approve"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.04"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.983" />
+        android:background="@drawable/acceptbtn"
+        android:layout_marginRight="35dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintTop_toBottomOf="@id/layoutpanel"
+        app:layout_constraintRight_toRightOf="@id/layoutpanel"
 
-    <View
-        android:id="@+id/divider3"
-        android:layout_width="395dp"
-        android:layout_height="1dp"
-        android:background="?android:attr/listDivider"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.147" />
+     />
 
     <TextView
         android:id="@+id/poTextViewPono"
-        android:layout_width="180dp"
-        android:layout_height="41dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="PONUM"
-        android:textSize="22sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.043"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/headingText"
+        android:textSize="45sp"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.078"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
         tools:text="PO Number:" />
 
     <TextView
         android:id="@+id/poTextViewDate"
-        android:layout_width="180dp"
-        android:layout_height="41dp"
-        android:layout_marginBottom="636dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/headingText"
+        android:layout_marginRight="90dp"
         android:text="Date"
         android:textSize="22sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/poTextViewPono"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.969"
-        app:layout_constraintStart_toStartOf="parent"
         tools:text="Date:" />
 
     <ListView
         android:id="@+id/polistDetails"
-        android:layout_width="395dp"
-        android:layout_height="386dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.562"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.437" />
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="95dp"
+        app:layout_constraintBottom_toBottomOf="@id/layoutpanel"
+        app:layout_constraintEnd_toEndOf="@id/layoutpanel"
+        app:layout_constraintStart_toStartOf="@id/layoutpanel"
+        app:layout_constraintTop_toTopOf="@id/layoutpanel" />
 
     <TextView
         android:id="@+id/poTextViewAmount"
         android:layout_width="180dp"
         android:layout_height="43dp"
         android:text="TotalAmount"
+        android:textColor="@color/txtColor"
         android:textSize="22sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.961"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.888"
+        app:layout_constraintEnd_toEndOf="@id/tV_head_actadj"
+        app:layout_constraintTop_toBottomOf="@id/tV_head_actadj"
         tools:text="Total:" />
 
     <TextView
         android:id="@+id/poTextViewOrderedBy"
+        android:textColor="@color/txtColor"
         android:layout_width="180dp"
         android:layout_height="42dp"
         android:text="RaisedBy"
         android:textSize="22sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.043"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.888"
+        app:layout_constraintTop_toBottomOf="@id/textView2"
+        app:layout_constraintStart_toStartOf="@id/textView2"
         tools:text="Raised By:" />
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="181dp"
+        android:layout_width="160dp"
+        android:textColor="@color/txtColor"
         android:layout_height="42dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="10dp"
         android:text="Raised By:"
         android:textSize="22sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.039"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.821" />
+        app:layout_constraintStart_toStartOf="@id/layoutpanel"
+        app:layout_constraintTop_toBottomOf="@id/polistDetails"
+        />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/tV_head_actadj"
         android:layout_width="179dp"
         android:layout_height="42dp"
         android:text="Total:  (SGD)"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="10dp"
+        android:textColor="@color/txtColor"
         android:textSize="22sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.956"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.821" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="182dp"
-        android:layout_height="45dp"
-        android:text="PO Number:"
-        android:textSize="22sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.043"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.01" />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="179dp"
-        android:layout_height="47dp"
-        android:text="Date:"
-        android:textSize="22sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.969"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.007" />
+        app:layout_constraintEnd_toEndOf="@id/layoutpanel"
+        app:layout_constraintTop_toBottomOf="@id/polistDetails" />
 
 </android.support.constraint.ConstraintLayout>
