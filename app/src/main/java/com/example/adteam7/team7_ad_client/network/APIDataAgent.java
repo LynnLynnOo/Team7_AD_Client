@@ -3,8 +3,6 @@ package com.example.adteam7.team7_ad_client.network;
 import com.example.adteam7.team7_ad_client.data.DelegateDepHeadApiModel;
 import com.example.adteam7.team7_ad_client.data.ManageDepRep;
 import com.example.adteam7.team7_ad_client.data.StationeryRequestApiModel;
-
-import java.util.List;
 import com.example.adteam7.team7_ad_client.data.StationeryRetrievalApiModel;
 
 import java.util.ArrayList;
@@ -26,7 +24,7 @@ public interface APIDataAgent {
     String delegateActingDepHeadSet(DelegateDepHeadApiModel del);
     DelegateDepHeadApiModel delegateActingDepHeadGet();
 
-    /*method for approve request*/
+    /*method for approve request*//*
     /* Create by GJX*/
     StationeryRequestApiModel GetStationeryRequest(String requestId);
     ArrayList<StationeryRetrievalApiModel> RetrievalListGet();
