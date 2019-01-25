@@ -28,25 +28,25 @@ public class DisbursementDetail extends AppCompatActivity {
 
         String dno= getIntent().getStringExtra("disbno");
         if(dno!=null){
-            new AsyncGetDisbursementDetail().execute(dno);
+//            new AsyncGetDisbursementDetail().execute(dno);
         }
 
 
     }
 
-    private class AsyncGetDisbursementDetail extends AsyncTask<String, Void,List<DisbursementSationeryItem>> {
-        @Override
-        protected List<DisbursementSationeryItem> doInBackground(String... param) {
-            return agent.getDisbDetail(param[0]);
-        }
-
-        @Override
-        protected void onPostExecute(List<DisbursementSationeryItem> disbursementSationeryItems) {
-            super.onPostExecute(disbursementSationeryItems);
-            adapter=new ItemListAdapter(DisbursementDetail.this,disbursementSationeryItems);
-
-            itemsrv.setAdapter(adapter);
-
-        }
-    }
+//    private class AsyncGetDisbursementDetail extends AsyncTask<String, Void,List<DisbursementSationeryItem>> {
+//        @Override
+//        protected List<DisbursementSationeryItem> doInBackground(String... param) {
+//            return agent.getDisbDetail(param[0]);
+//        }
+//
+//        @Override
+//        protected void onPostExecute(List<DisbursementSationeryItem> disbursementSationeryItems) {
+//            super.onPostExecute(disbursementSationeryItems);
+//            adapter=new ItemListAdapter(DisbursementDetail.this,disbursementSationeryItems);
+//
+//            itemsrv.setAdapter(adapter);
+//
+//        }
+//    }
 }

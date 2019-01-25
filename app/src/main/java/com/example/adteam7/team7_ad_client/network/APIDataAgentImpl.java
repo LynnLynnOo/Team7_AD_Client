@@ -31,7 +31,7 @@ import static android.content.ContentValues.TAG;
 public class APIDataAgentImpl implements APIDataAgent {
 
   // static String host = "localhost";
-  static String host = "192.168.1.71";
+  static String host = "172.17.70.106";
    // http://localhost/Team7API/Token
     static String baseURL;
     static String imageURL;
@@ -225,7 +225,7 @@ String rr=JSONParser.postStream(baseURL+"/managedepartmentEmp",true,jemp.toStrin
             String result = JSONParser.postStream(url, true, json);
             Log.i("PostResult", result);
 
-            if (result != null && result != "")
+            if (result != null)
                 status = "Successfully saved.";
 
         } catch (Exception e) {
