@@ -312,7 +312,7 @@ try {
             }.getType();
             Gson gson = new Gson();
             ArrayList<StationeryRetrievalApiModel> sortedList = gson.fromJson(result, stationeryType);
-            sortedList.sort(Comparator.comparing(StationeryRetrievalApiModel::getDescription));
+            //sortedList.sort(Comparator.comparing(StationeryRetrievalApiModel::getDescription));
             return sortedList;
         } catch (Exception e) {
             Log.e("Login", e.toString());
@@ -323,7 +323,7 @@ try {
     @Override
     public String RetrievalListSet(List<StationeryRetrievalApiModel> models) {
         String status = "Error at saving.";
-        try {
+        /*try {
             SetRetrievalApiModel apiModel = new SetRetrievalApiModel(session.getUserid(), models);
 
             //http://192.168.1.100/team7ad/api/
@@ -340,7 +340,7 @@ try {
 
         } catch (Exception e) {
             Log.e("JsonPost", e.toString());
-        }
+        }*/
         return status;
     }
 
