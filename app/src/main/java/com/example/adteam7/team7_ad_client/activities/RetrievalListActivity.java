@@ -1,12 +1,22 @@
 package com.example.adteam7.team7_ad_client.activities;
 
+import android.content.Context;
 import android.graphics.Canvas;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
+import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.NumberPicker;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.adteam7.team7_ad_client.R;
 import com.example.adteam7.team7_ad_client.adapters.RetrievalAdapter;
@@ -23,6 +33,8 @@ public class RetrievalListActivity extends AppCompatActivity {
     APIDataAgent agent = new APIDataAgentImpl();
     SwipeController swipeController = null;
     private RetrievalAdapter mAdapter;
+    ArrayList<StationeryRetrievalApiModel> retrievalsToSend;
+    Button submit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,13 +43,25 @@ public class RetrievalListActivity extends AppCompatActivity {
 
 
         setRetrievalDataAdapter();
+        retrievalsToSend = new ArrayList<>(mAdapter.retrievals);
         setupRecyclerView();
+        submit = findViewById(R.id.submit);
 
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                StrictMode.setThreadPolicy(StrictMode.ThreadPolicy.LAX); //this needs to be changed
+                String status = agent.RetrievalListSet(retrievalsToSend);
+                Toast.makeText(RetrievalListActivity.this, status, Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        });
     }
 
     private void setRetrievalDataAdapter() {
-        StrictMode.setThreadPolicy(StrictMode.ThreadPolicy.LAX);
+        StrictMode.setThreadPolicy(StrictMode.ThreadPolicy.LAX); //this needs to be changed
         ArrayList<StationeryRetrievalApiModel> retrievals = agent.RetrievalListGet();
+
         mAdapter = new RetrievalAdapter(retrievals);
     }
 
@@ -49,10 +73,20 @@ public class RetrievalListActivity extends AppCompatActivity {
 
         swipeController = new SwipeController(new SwipeControllerActions() {
             @Override
-            public void onRightClicked(int position) {
-                mAdapter.retrievals.remove(position);
-                mAdapter.notifyItemRemoved(position);
-                mAdapter.notifyItemRangeChanged(position, mAdapter.getItemCount());
+            public void onRightClicked(int selectedPosition) {
+                //find exactly the same object in the list to send
+                StationeryRetrievalApiModel selectedRequest = mAdapter.retrievals.get(selectedPosition);
+                showRequestItemDialog(RetrievalListActivity.this, selectedRequest, selectedPosition);
+            }
+
+            @Override
+            public void onLeftClicked(int selectedPosition) {
+                StationeryRetrievalApiModel selectedRequest = mAdapter.retrievals.get(selectedPosition);
+                int positionToModify = retrievalsToSend.indexOf(selectedRequest);
+                retrievalsToSend.get(selectedPosition).setNewQuantity(selectedRequest.getNeededQuantity());
+                mAdapter.retrievals.remove(selectedPosition);
+                mAdapter.notifyItemRemoved(selectedPosition);
+                mAdapter.notifyItemRangeChanged(selectedPosition, mAdapter.getItemCount());
             }
         });
 
@@ -65,5 +99,70 @@ public class RetrievalListActivity extends AppCompatActivity {
                 swipeController.onDraw(c);
             }
         });
+    }
+
+    private void showRequestItemDialog(Context context, StationeryRetrievalApiModel selectedRequest, int selectedPosition) {
+
+        //First top layout for quantity picker
+        LinearLayout layoutForNumber = new LinearLayout(context);
+        layoutForNumber.setOrientation(LinearLayout.VERTICAL);
+        NumberPicker picker = new NumberPicker(context);
+        picker.setMinValue(0);
+        int maxValue;
+        if (selectedRequest.getQuantityInWarehouse() <= 0) {
+            maxValue = 0;
+        } else {
+            maxValue = selectedRequest.getQuantityInWarehouse();
+        }
+        picker.setMaxValue(maxValue);
+
+        layoutForNumber.addView(picker);
+
+        //Second layout for Remarks(Text)+EditText field
+        TextView remarksLabel = new TextView(context);
+        remarksLabel.setText("Remarks: ");
+
+        EditText remarksField = new EditText(context);
+        remarksField.setSingleLine(false);
+        remarksField.setImeOptions(EditorInfo.IME_FLAG_NO_ENTER_ACTION);
+
+        LinearLayout layoutForText = new LinearLayout(context);
+        layoutForText.setOrientation(LinearLayout.VERTICAL);
+        layoutForText.addView(remarksLabel);
+        layoutForText.addView(remarksField);
+
+        //Setting main parent frame for dialog
+        LinearLayout mainLayout = new LinearLayout(context);
+        mainLayout.setOrientation(LinearLayout.VERTICAL);
+        mainLayout.addView(layoutForNumber);
+        mainLayout.addView(layoutForText);
+
+//        layoutForText.addView(remarks, new FrameLayout.LayoutParams(
+//                FrameLayout.LayoutParams.WRAP_CONTENT,
+//                FrameLayout.LayoutParams.WRAP_CONTENT,
+//                Gravity.BOTTOM));
+//
+//        layout.addView(layoutForText, new FrameLayout.LayoutParams(
+//                FrameLayout.LayoutParams.WRAP_CONTENT,
+//                FrameLayout.LayoutParams.WRAP_CONTENT,
+//                Gravity.CENTER));
+
+        new AlertDialog.Builder(context)
+                .setView(mainLayout)
+                .setPositiveButton(android.R.string.ok, (dialogInterface, i) -> {
+
+
+                    //find the position of the same object in the listToSend
+                    int positionToModify = retrievalsToSend.indexOf(selectedRequest);
+                    retrievalsToSend.get(positionToModify).setNewQuantity(picker.getValue());
+                    retrievalsToSend.get(positionToModify).setRemarks(remarksField.getText().toString());
+
+                    //remove item from list
+                    mAdapter.retrievals.remove(selectedPosition);
+                    mAdapter.notifyItemRemoved(selectedPosition);
+                    mAdapter.notifyItemRangeChanged(selectedPosition, mAdapter.getItemCount());
+                })
+                .setNegativeButton(android.R.string.cancel, null)
+                .show();
     }
 }

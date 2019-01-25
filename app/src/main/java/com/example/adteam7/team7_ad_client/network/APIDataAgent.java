@@ -25,8 +25,17 @@ public interface APIDataAgent {
 
 
 
+    String delegateDepHeadSet(ManageDepRep dep);
+    void assignDepRep();
+
     String delegateActingDepHeadSet(DelegateDepHeadApiModel del);
     DelegateDepHeadApiModel delegateActingDepHeadGet();
 
+    /*method for approve request*//*
+    /* Create by GJX*/
+    StationeryRequestApiModel GetStationeryRequest(String requestId);
     ArrayList<StationeryRetrievalApiModel> RetrievalListGet();
+
+    List<StationeryRequestApiModel> ReadStationeryRequest();
+    String RetrievalListSet(List<StationeryRetrievalApiModel> models);
 }
