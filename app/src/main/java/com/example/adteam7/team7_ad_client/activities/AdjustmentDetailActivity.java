@@ -112,8 +112,11 @@ public class AdjustmentDetailActivity extends AppCompatActivity {
     public void finish() {
         Intent data = new Intent();
         EditText quantityText = findViewById(R.id.quantity);
-        data.putExtra("quantity",Integer.parseInt(quantityText.getText().toString()));
-        data.putExtra("itemId",ItemId);
+        Log.d("quantityString",quantityText.getText().toString());
+        if(!quantityText.getText().toString().isEmpty()){
+            data.putExtra("quantity",Integer.parseInt(quantityText.getText().toString()));
+            data.putExtra("itemId",ItemId);
+        }
         setResult(RESULT_OK,data);
         Log.d("finish","!!!!!!!!!!!!!!!!");
         super.finish();

@@ -223,7 +223,7 @@ String rr=JSONParser.postStream(baseURL+"/managedepartmentEmp",true,jemp.toStrin
 
     //region Cheng Zongpei
     public List<String> adjustmentGetCategories(){
-        String url = String.format("%s/webapi/adjustment/categories",host);
+        String url = String.format("http://%s/webapi/adjustment/categories",host);
         JSONArray array = JSONParser.getJSONArrayFromUrl(url);
         List<String> result = new ArrayList<String>();
         try{
@@ -238,7 +238,7 @@ String rr=JSONParser.postStream(baseURL+"/managedepartmentEmp",true,jemp.toStrin
     }
 
     public List<AdjustmentItem> adjustmentGetItem(String category){
-        String url =String.format("%s/webapi/adjustment/items/%s",host,category);
+        String url =String.format("http://%s/webapi/adjustment/items/%s",host,category);
         JSONArray array = JSONParser.getJSONArrayFromUrl(url);
         List<AdjustmentItem> result = new ArrayList<AdjustmentItem>();
         try{
@@ -253,7 +253,7 @@ String rr=JSONParser.postStream(baseURL+"/managedepartmentEmp",true,jemp.toStrin
     }
 
     public AdjustmentItem adjustmentGetInfo(String itemId){
-        String url = String.format("%s/webapi/adjustment/item/%s",host,itemId);
+        String url = String.format("http://%s/webapi/adjustment/item/%s",host,itemId);
         JSONObject object = JSONParser.getJSONFromUrl(url);
         AdjustmentItem result;
         try {
@@ -279,7 +279,7 @@ String rr=JSONParser.postStream(baseURL+"/managedepartmentEmp",true,jemp.toStrin
             Log.e("error","Json save error");
         }
 
-        String result = JSONParser.postStream(String.format("%s/webapi/adjustment/save",host), true, array.toString());
+        String result = JSONParser.postStream(String.format("http://%s/webapi/adjustment/save",host), true, array.toString());
         return result;
     }
 
