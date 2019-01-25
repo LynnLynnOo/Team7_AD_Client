@@ -11,6 +11,7 @@ import com.example.adteam7.team7_ad_client.data.DisbursementSationeryItem;
 import com.example.adteam7.team7_ad_client.data.Employee;
 import com.example.adteam7.team7_ad_client.data.ManageDepRep;
 import com.example.adteam7.team7_ad_client.data.SessionManager;
+import com.example.adteam7.team7_ad_client.data.SetRetrievalApiModel;
 import com.example.adteam7.team7_ad_client.data.StationeryRequestApiModel;
 import com.example.adteam7.team7_ad_client.data.StationeryRetrievalApiModel;
 import com.google.gson.Gson;
@@ -24,6 +25,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Locale;
 
 import static android.content.ContentValues.TAG;
 
@@ -33,7 +35,7 @@ import static android.content.ContentValues.TAG;
 public class APIDataAgentImpl implements APIDataAgent {
 
   // static String host = "localhost";
-   static String host = "172.17.82.83";
+  static String host = "192.168.1.71";
    // http://localhost/Team7API/Token
     static String baseURL;
     static String imageURL;
@@ -71,8 +73,6 @@ public class APIDataAgentImpl implements APIDataAgent {
             return "fail";
         }
     }
-
-
 
     @Override
     public ManageDepRep delegateDepHeadGet() {
@@ -211,8 +211,7 @@ try {
 
 
     }
-
-        //endregion
+    //endregion
 
     // region Author: Teh Li Heng for Delegate Department Head
     @Override
@@ -312,7 +311,7 @@ try {
             }.getType();
             Gson gson = new Gson();
             ArrayList<StationeryRetrievalApiModel> sortedList = gson.fromJson(result, stationeryType);
-            //sortedList.sort(Comparator.comparing(StationeryRetrievalApiModel::getDescription));
+            sortedList.sort(Comparator.comparing(StationeryRetrievalApiModel::getDescription));
             return sortedList;
         } catch (Exception e) {
             Log.e("Login", e.toString());
@@ -323,7 +322,7 @@ try {
     @Override
     public String RetrievalListSet(List<StationeryRetrievalApiModel> models) {
         String status = "Error at saving.";
-        /*try {
+        try {
             SetRetrievalApiModel apiModel = new SetRetrievalApiModel(session.getUserid(), models);
 
             //http://192.168.1.100/team7ad/api/
@@ -340,7 +339,7 @@ try {
 
         } catch (Exception e) {
             Log.e("JsonPost", e.toString());
-        }*/
+        }
         return status;
     }
 
