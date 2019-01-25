@@ -17,6 +17,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <android.support.v7.widget.AppCompatImageView
+        android:layout_width="match_parent"
+        android:layout_height="243dp"
+        android:layout_marginBottom="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/Footer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
     <TextView
         android:id="@+id/tV_head_actadj"
         android:layout_width="match_parent"
@@ -39,7 +48,7 @@
         android:layout_height="350dp"
         android:background="@drawable/panelbg"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="180dp"
         android:id="@+id/layoutpanel"
         />
 
@@ -118,19 +127,26 @@
 
     <Button
         android:id="@+id/confirmButton"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_weight="1"
-        android:text="Confirm"
-        android:layout_marginLeft="100dp"
-        android:layout_marginRight="100dp"
         android:layout_marginTop="50dp"
-        android:textColor="@color/txtColor"
-        android:background="@drawable/accept_btn"
+        android:layout_marginRight="35dp"
+        android:background="@drawable/acceptbtn"
         app:layout_constraintTop_toBottomOf="@id/layoutpanel"
-        app:layout_constraintLeft_toLeftOf="@id/layoutpanel"
         app:layout_constraintRight_toRightOf="@id/layoutpanel"
          />
+    <Button
+        android:id="@+id/rejectButton"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_weight="1"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="35dp"
+        android:background="@drawable/rejectbtn"
+        app:layout_constraintTop_toBottomOf="@id/layoutpanel"
+        app:layout_constraintLeft_toLeftOf="@id/layoutpanel"
+        />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline"
