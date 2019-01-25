@@ -90,8 +90,8 @@
         android:id="@+id/polistDetails"
         android:layout_width="match_parent"
         android:layout_height="350dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
         android:layout_marginBottom="95dp"
         app:layout_constraintBottom_toBottomOf="@id/layoutpanel"
         app:layout_constraintEnd_toEndOf="@id/layoutpanel"
@@ -129,7 +129,7 @@
         android:layout_marginLeft="10dp"
         android:text="Raised By:"
         android:textSize="22sp"
-        app:layout_constraintStart_toStartOf="@id/layoutpanel"
+        app:layout_constraintStart_toStartOf="@id/polistDetails"
         app:layout_constraintTop_toBottomOf="@id/polistDetails"
         />
 
@@ -142,7 +142,7 @@
         android:layout_marginRight="10dp"
         android:textColor="@color/txtColor"
         android:textSize="22sp"
-        app:layout_constraintEnd_toEndOf="@id/layoutpanel"
+        app:layout_constraintEnd_toEndOf="@id/polistDetails"
         app:layout_constraintTop_toBottomOf="@id/polistDetails" />
 
 </android.support.constraint.ConstraintLayout>
