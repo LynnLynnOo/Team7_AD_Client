@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="horizontal">-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/textView1"-->
+    <!--android:layout_width="103dp"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="No" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/potextViewSerial"-->
+    <!--android:layout_width="308dp"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="New Text" />-->
+
+    <!--</LinearLayout>-->
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/poTextView1"
+            android:layout_width="103dp"
+            android:layout_height="wrap_content"
+            android:text="Item" />
+
+        <TextView
+            android:id="@+id/poTextViewDescription"
+            android:layout_width="308dp"
+            android:layout_height="wrap_content"
+            android:text="New Text" />
+
+    </LinearLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/poTextView2"
+            android:layout_width="103dp"
+            android:layout_height="wrap_content"
+            android:text="Unit Price" />
+
+        <TextView
+            android:id="@+id/poTextViewUnitPrice"
+            android:layout_width="308dp"
+            android:layout_height="wrap_content"
+            android:text="New Text" />
+
+    </LinearLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/poTextView3"
+            android:layout_width="103dp"
+            android:layout_height="wrap_content"
+            android:text="Qty" />
+
+        <TextView
+            android:id="@+id/poTextViewQty"
+            android:layout_width="308dp"
+            android:layout_height="wrap_content"
+            android:text="New Text" />
+
+    </LinearLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/poTextView4"
+            android:layout_width="103dp"
+            android:layout_height="wrap_content"
+            android:text="Total" />
+
+        <TextView
+            android:id="@+id/poTextViewTotalAmount"
+            android:layout_width="308dp"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</LinearLayout>

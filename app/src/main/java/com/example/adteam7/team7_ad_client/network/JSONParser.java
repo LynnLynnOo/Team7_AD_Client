@@ -88,6 +88,30 @@ public class JSONParser {
         return readStream(is);
     }
 
+    public static String postStream1(String url, String data) {
+        InputStream is = null;
+        try {
+            URL u = new URL(url);
+            HttpURLConnection conn = (HttpURLConnection) u.openConnection();
+            conn.setRequestMethod("POST");
+            conn.setDoInput(true);
+            conn.setDoOutput(true);
+            conn.setRequestProperty("Accept", "application/json");
+            conn.setRequestProperty("Content-type", "application/json");
+            conn.setFixedLengthStreamingMode(data.getBytes().length);
+            conn.connect();
+            OutputStream os = new BufferedOutputStream(conn.getOutputStream());
+            os.write(data.getBytes());
+            os.flush();
+            is = conn.getInputStream();
+        } catch (UnsupportedEncodingException e) {
+            Log.e("postStream Exception", e.toString());
+        } catch (Exception e) {
+            Log.e("postStream Exception", e.toString());
+        }
+        return readStream(is);
+    }
+
     public static JSONObject getJSONFromUrl(String url) {
         JSONObject jObj = null;
         try {

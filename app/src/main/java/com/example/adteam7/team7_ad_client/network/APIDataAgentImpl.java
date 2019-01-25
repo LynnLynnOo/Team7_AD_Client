@@ -31,9 +31,9 @@ import static android.content.ContentValues.TAG;
  **/
 public class APIDataAgentImpl implements APIDataAgent {
 
-    // static String host = "localhost";172.17.82.83
-    static String host = "172.17.158.19";
-    // http://localhost/Team7API/Token
+  // static String host = "localhost";
+   static String host = "192.168.1.166";
+   // http://localhost/Team7API/Token
     static String baseURL;
     static String imageURL;
     static String tokenURL;
@@ -82,7 +82,7 @@ public class APIDataAgentImpl implements APIDataAgent {
 
             //String url=String.format("http://192.168.1.166/team7ad/api/managedepartmentRep/19fb3f0d-5859-4c63-979d-632213e67711");
             JSONParser.access_token=session.getToken();
-            //  String res = JSONParser.getStream(url);
+          //  String res = JSONParser.getStream(url);
             JSONObject a=JSONParser.getJSONFromUrl(url);
             ManageDepRep rep=new ManageDepRep();
 
@@ -105,21 +105,23 @@ public class APIDataAgentImpl implements APIDataAgent {
                 Log.e("Employee", "JSONArray error");
             }
 
-            rep.setEmployees(list);
-            // Log.e(TAG, "delegateDepHeadGet: Rep Name"+ deprep);
+          rep.setEmployees(list);
+           // Log.e(TAG, "delegateDepHeadGet: Rep Name"+ deprep);
             return rep;
 
         } catch (Exception e) {
-            JSONParser.access_token = "";
+           JSONParser.access_token = "";
             Log.e("Login", e.toString());
             return null;
         }
 
-        // return null;
+       // return null;
     }
 
+    //endregion
+
     @Override
-    public String assignDepRep(ManageDepRep dep) {
+    public String delegateDepHeadSet(ManageDepRep dep) {
         JSONObject jemp = new JSONObject();
         try {
             jemp.put("DepartmentId", dep.getDepartmentId());
@@ -129,7 +131,7 @@ public class APIDataAgentImpl implements APIDataAgent {
         } catch (Exception e) {
         }
 
-        String rr=JSONParser.postStream(baseURL+"/managedepartmentEmp",true,jemp.toString());
+String rr=JSONParser.postStream(baseURL+"/managedepartmentEmp",true,jemp.toString());
         Log.e(TAG, "delegateDepHeadSet: Show result"+rr );
 
         return rr;
@@ -181,23 +183,19 @@ public class APIDataAgentImpl implements APIDataAgent {
     //endregion
 
 
+    // region Author: Teh Li Heng for Delegate Department Head
     @Override
-    public DelegateDepHeadApiModel delegateActingDepHeadGet() {
+    public ArrayList<StationeryRetrievalApiModel> RetrievalListGet() {
         try {
-            String id = session.getUserid();
-
             //http://192.168.1.100/team7ad/api/
-            String url = String.format("%sdepartmenthead/getdepartmenthead/%s", baseURL, id);
+            String url = String.format("%sclerk/getretrievallist", baseURL);
             String result = JSONParser.getStream(url);
             Log.i("Json", result);
+
+            Type stationeryType = new TypeToken<ArrayList<StationeryRetrievalApiModel>>() {
+            }.getType();
             Gson gson = new Gson();
-            return gson.fromJson(result, DelegateDepHeadApiModel.class);
-
-//            String deprep=depinfo.getString("DepartmentRepName");
-//
-//            Log.e(TAG, "delegateDepHeadGet: Rep Name"+ deprep);
-//            return null;
-
+            return gson.fromJson(result, stationeryType);
         } catch (Exception e) {
             Log.e("Login", e.toString());
         }
@@ -227,7 +225,33 @@ public class APIDataAgentImpl implements APIDataAgent {
         }
         return status;
     }
+    //endregion
 
+    // region Author: Teh Li Heng for Managing retrievals of clerk from warehouse
+    @Override
+    public DelegateDepHeadApiModel delegateActingDepHeadGet() {
+        try {
+            String id = session.getUserid();
+
+            //http://192.168.1.100/team7ad/api/
+            String url = String.format("%sdepartmenthead/getdepartmenthead/%s", baseURL, id);
+            String result = JSONParser.getStream(url);
+            Log.i("Json", result);
+            Gson gson = new Gson();
+            return gson.fromJson(result, DelegateDepHeadApiModel.class);
+
+//            String deprep=depinfo.getString("DepartmentRepName");
+//
+//            Log.e(TAG, "delegateDepHeadGet: Rep Name"+ deprep);
+//            return null;
+
+        } catch (Exception e) {
+            Log.e("Login", e.toString());
+        }
+        return null;
+    }
+
+    //endregion
 
     //region Zan Tun Khine
 
@@ -237,6 +261,71 @@ public class APIDataAgentImpl implements APIDataAgent {
 
     //endregion
 
+
+    //endregion
+
+
+    //region Cheng Zongpei
+    public List<String> adjustmentGetCategories(){
+        String url = String.format("%s/webapi/adjustment/categories",host);
+        JSONArray array = JSONParser.getJSONArrayFromUrl(url);
+        List<String> result = new ArrayList<String>();
+        try{
+            for(int i=0;i<array.length();i++){
+                result.add(array.getString(i));
+            }
+        }
+        catch (Exception e){
+            Log.e("error","Json get category error");
+        }
+        return result;
+    }
+
+    public List<AdjustmentItem> adjustmentGetItem(String category){
+        String url =String.format("%s/webapi/adjustment/items/%s",host,category);
+        JSONArray array = JSONParser.getJSONArrayFromUrl(url);
+        List<AdjustmentItem> result = new ArrayList<AdjustmentItem>();
+        try{
+            for(int i=0;i<array.length();i++){
+                JSONObject object = array.getJSONObject(i);
+                result.add(new AdjustmentItem(object.getString("itemId"),object.getString("category"),object.getString("description"),object.getString("unitOfMeasure"),object.getInt("quantityWareHouse"),object.getDouble("price")));
+            }
+        }catch (Exception e){
+            Log.e("error","Json get item error");
+        }
+        return result;
+    }
+
+    public AdjustmentItem adjustmentGetInfo(String itemId){
+        String url = String.format("%s/webapi/adjustment/item/%s",host,itemId);
+        JSONObject object = JSONParser.getJSONFromUrl(url);
+        AdjustmentItem result;
+        try {
+            result = new AdjustmentItem(object.getString("itemId"),object.getString("category"),object.getString("description"),object.getString("unitOfMeasure"),object.getInt("quantityWareHouse"),object.getDouble("price"));
+        }catch (Exception e){
+            result = new AdjustmentItem(null,null,null,null,0,0);
+            Log.e("error","Json get info error");
+        }
+        return result;
+    }
+
+    public String adjustmentSet(List<AdjustmentInfo> adjustment){
+
+        JSONArray array = new JSONArray();
+        try{
+            for(AdjustmentInfo info : adjustment){
+                JSONObject object = new JSONObject();
+                object.put("itemId",info.itemId);
+                object.put("quantity",info.quantity);
+                array.put(object);
+            }
+        }catch(Exception e){
+            Log.e("error","Json save error");
+        }
+
+        String result = JSONParser.postStream(String.format("%s/webapi/adjustment/save",host), true, array.toString());
+        return result;
+    }
 
     //endregion
 }
