@@ -5,6 +5,7 @@ import com.example.adteam7.team7_ad_client.data.ManageDepRep;
 import com.example.adteam7.team7_ad_client.data.StationeryRetrievalApiModel;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by dodo
@@ -23,4 +24,6 @@ public interface APIDataAgent {
     DelegateDepHeadApiModel delegateActingDepHeadGet();
 
     ArrayList<StationeryRetrievalApiModel> RetrievalListGet();
+
+    String RetrievalListSet(List<StationeryRetrievalApiModel> models);
 }

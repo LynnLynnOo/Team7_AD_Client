@@ -19,7 +19,9 @@ public class StationeryRetrievalApiModel {
 
     public int QuantityInWarehouse;
 
-    public StationeryRetrievalApiModel(String itemId, String description, String departmentId, String departmentName, String location, String category, int neededQuantity, int newQuantity, int quantityInWarehouse) {
+    public String Remarks;
+
+    public StationeryRetrievalApiModel(String itemId, String description, String departmentId, String departmentName, String location, String category, int neededQuantity, int newQuantity, int quantityInWarehouse, String remarks) {
         ItemId = itemId;
         Description = description;
         DepartmentId = departmentId;
@@ -29,6 +31,7 @@ public class StationeryRetrievalApiModel {
         NeededQuantity = neededQuantity;
         NewQuantity = newQuantity;
         QuantityInWarehouse = quantityInWarehouse;
+        Remarks = remarks;
     }
 
     public String getItemId() {
@@ -101,5 +104,13 @@ public class StationeryRetrievalApiModel {
 
     public void setQuantityInWarehouse(int quantityInWarehouse) {
         QuantityInWarehouse = quantityInWarehouse;
+    }
+
+    public String getRemarks() {
+        return Remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        Remarks = remarks;
     }
 }

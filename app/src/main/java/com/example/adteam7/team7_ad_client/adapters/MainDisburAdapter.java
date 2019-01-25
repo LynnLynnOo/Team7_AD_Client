@@ -1,27 +1,32 @@
 package com.example.adteam7.team7_ad_client.adapters;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
-import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.adteam7.team7_ad_client.R;
-import com.example.adteam7.team7_ad_client.data.Employee;
+import com.example.adteam7.team7_ad_client.activities.DisbursementDetail;
+import com.example.adteam7.team7_ad_client.data.Disbursement;
+import com.example.adteam7.team7_ad_client.data.DisbursementSationeryItem;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
- * Created by dodo
+ * Created by Kay Thi Swe Tun
  **/
 public class MainDisburAdapter extends RecyclerView.Adapter<MainDisburAdapter.RvHolder> {
 
-    ArrayList<Employee> lv;
+    List<Disbursement> listitem;
+    Context context;
 
-    public MainDisburAdapter(ArrayList<Employee> lv) {
-        this.lv = lv;
+    public MainDisburAdapter(Context context,List<Disbursement> lv) {
+        this.context=context;
+        this.listitem = lv;
     }
 
     @Override
@@ -35,36 +40,62 @@ public class MainDisburAdapter extends RecyclerView.Adapter<MainDisburAdapter.Rv
     public void onBindViewHolder(RvHolder holder, final int position) {
 
 
-        holder.name.setText(lv.get(position).getName());
-        //  holder.iv.setImageResource(lv.get(position).getImgid());
+        holder.disbno.setText(listitem.get(position).getDisbursementNo());
+        holder.depname.setText(listitem.get(position).getDepartmentName());
 
-        holder.ib.setOnClickListener(new View.OnClickListener() {
+        holder.repname.setText(listitem.get(position).getEmployeeName());
+        holder.cpoint.setText(listitem.get(position).getCollectionDescription());
+
+
+        //to delete the item
+        /*holder.ib.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                lv.remove(position);
+                listitem.remove(position);
                 notifyDataSetChanged();
+            }
+        });*/
+        holder.tapfordetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String disbno=listitem.get(position).getDisbursementNo();
+                Intent i=new Intent(context,DisbursementDetail.class);
+                i.putExtra("disbno",disbno);
+                context.startActivity(i);
             }
         });
     }
 
     @Override
     public int getItemCount() {
-        return lv.size();
+        return listitem.size();
     }
 
 
     class RvHolder extends RecyclerView.ViewHolder {
-        TextView name;
-        ImageView iv;
-        ImageButton ib;
+        TextView disbno ,depname,cpoint,repname;
+        LinearLayout tapfordetail;
 
         public RvHolder(View itemView) {
             super(itemView);
-            name = itemView.findViewById(R.id.name);
-            //  iv = itemView.findViewById(R.id.iv);
-            //ib = itemView.findViewById(R.id.ib);
+            tapfordetail=itemView.findViewById(R.id.godetail);
+            disbno = itemView.findViewById(R.id.disbno);
+
+            depname = itemView.findViewById(R.id.depname);
+
+            cpoint = itemView.findViewById(R.id.cpoint);
+            repname = itemView.findViewById(R.id.repname);
+
 
         }
 
+    }
+
+
+
+
+    public interface DeatailItemClickController {
+        void onTapDetail(List<DisbursementSationeryItem> data);
     }
 }

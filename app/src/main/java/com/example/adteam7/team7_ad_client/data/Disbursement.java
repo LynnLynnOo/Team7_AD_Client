@@ -8,40 +8,17 @@ import java.util.Date;
 public class Disbursement {
 
 
-   private String DisbursementId;
    private String DisbursementNo;
    private String DepartmentId;
    private String DepartmentName;
+   private String EmployeeName;
+   private String CollectionDescription;
    private String AcknowledgedBy;
    private String DisbursedBy;
-   private Date Date;
-   private String RequestId;
    private String Status;
    private String OTP;
 
-
-    public Disbursement(String disbursementId, String disbursementNo, String departmentId, String departmentName, String acknowledgedBy, String disbursedBy, Date date, String requestId, String status, String OTP) {
-        DisbursementId = disbursementId;
-        DisbursementNo = disbursementNo;
-        DepartmentId = departmentId;
-        DepartmentName = departmentName;
-        AcknowledgedBy = acknowledgedBy;
-        DisbursedBy = disbursedBy;
-        Date = date;
-        RequestId = requestId;
-        Status = status;
-        this.OTP = OTP;
-    }
-
     public Disbursement() {
-    }
-
-    public String getDisbursementId() {
-        return DisbursementId;
-    }
-
-    public void setDisbursementId(String disbursementId) {
-        DisbursementId = disbursementId;
     }
 
     public String getDisbursementNo() {
@@ -68,6 +45,22 @@ public class Disbursement {
         DepartmentName = departmentName;
     }
 
+    public String getEmployeeName() {
+        return EmployeeName;
+    }
+
+    public void setEmployeeName(String employeeName) {
+        EmployeeName = employeeName;
+    }
+
+    public String getCollectionDescription() {
+        return CollectionDescription;
+    }
+
+    public void setCollectionDescription(String collectionDescription) {
+        CollectionDescription = collectionDescription;
+    }
+
     public String getAcknowledgedBy() {
         return AcknowledgedBy;
     }
@@ -84,22 +77,6 @@ public class Disbursement {
         DisbursedBy = disbursedBy;
     }
 
-    public Date getDate() {
-        return Date;
-    }
-
-    public void setDate(Date date) {
-        Date = date;
-    }
-
-    public String getRequestId() {
-        return RequestId;
-    }
-
-    public void setRequestId(String requestId) {
-        RequestId = requestId;
-    }
-
     public String getStatus() {
         return Status;
     }
@@ -113,6 +90,18 @@ public class Disbursement {
     }
 
     public void setOTP(String OTP) {
+        this.OTP = OTP;
+    }
+
+    public Disbursement(String disbursementNo, String departmentId, String departmentName, String employeeName, String collectionDescription, String acknowledgedBy, String disbursedBy, String status, String OTP) {
+        DisbursementNo = disbursementNo;
+        DepartmentId = departmentId;
+        DepartmentName = departmentName;
+        EmployeeName = employeeName;
+        CollectionDescription = collectionDescription;
+        AcknowledgedBy = acknowledgedBy;
+        DisbursedBy = disbursedBy;
+        Status = status;
         this.OTP = OTP;
     }
 }

@@ -8,4 +8,6 @@
     <color name="viewBackGround">#FAFAF7</color>
     <color name="accept">#87A98B</color>
     <color name="reject">#6A3F41</color>
+    <color name="colorAccent">#C37300</color>
+    <color name="txtColor">#360264</color>
 </resources>

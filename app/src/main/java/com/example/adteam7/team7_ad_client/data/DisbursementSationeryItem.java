@@ -7,33 +7,47 @@ import java.util.Date;
  **/
 public class DisbursementSationeryItem {
 
-    private String TransactionId;
+    private String DisbursementNo;
+    private String DepartmentId;
     private String ItemId;
-    private String ItemName;
-    private String Category;
+    private String Description;
     private int Quantity;
-      private String TransactionRef;
-      private Date TransactionDate;
+    private int receivedQty;
 
-    public DisbursementSationeryItem(String transactionId, String itemId, String itemName, String category, int quantity, String transactionRef, Date transactionDate) {
-        TransactionId = transactionId;
+    public DisbursementSationeryItem(String disbursementNo, String departmentId, String itemId, String description, int quantity) {
+        DisbursementNo = disbursementNo;
+        DepartmentId = departmentId;
         ItemId = itemId;
-        ItemName = itemName;
-        Category = category;
+        Description = description;
         Quantity = quantity;
-        TransactionRef = transactionRef;
-        TransactionDate = transactionDate;
+    }
+
+    public DisbursementSationeryItem(String disbursementNo, String departmentId, String itemId, String description, int quantity, int receivedQty) {
+        DisbursementNo = disbursementNo;
+        DepartmentId = departmentId;
+        ItemId = itemId;
+        Description = description;
+        Quantity = quantity;
+        this.receivedQty = receivedQty;
     }
 
     public DisbursementSationeryItem() {
     }
 
-    public String getTransactionId() {
-        return TransactionId;
+    public String getDisbursementNo() {
+        return DisbursementNo;
     }
 
-    public void setTransactionId(String transactionId) {
-        TransactionId = transactionId;
+    public void setDisbursementNo(String disbursementNo) {
+        DisbursementNo = disbursementNo;
+    }
+
+    public String getDepartmentId() {
+        return DepartmentId;
+    }
+
+    public void setDepartmentId(String departmentId) {
+        DepartmentId = departmentId;
     }
 
     public String getItemId() {
@@ -44,20 +58,12 @@ public class DisbursementSationeryItem {
         ItemId = itemId;
     }
 
-    public String getItemName() {
-        return ItemName;
+    public String getDescription() {
+        return Description;
     }
 
-    public void setItemName(String itemName) {
-        ItemName = itemName;
-    }
-
-    public String getCategory() {
-        return Category;
-    }
-
-    public void setCategory(String category) {
-        Category = category;
+    public void setDescription(String description) {
+        Description = description;
     }
 
     public int getQuantity() {
@@ -66,21 +72,5 @@ public class DisbursementSationeryItem {
 
     public void setQuantity(int quantity) {
         Quantity = quantity;
-    }
-
-    public String getTransactionRef() {
-        return TransactionRef;
-    }
-
-    public void setTransactionRef(String transactionRef) {
-        TransactionRef = transactionRef;
-    }
-
-    public Date getTransactionDate() {
-        return TransactionDate;
-    }
-
-    public void setTransactionDate(Date transactionDate) {
-        TransactionDate = transactionDate;
     }
 }

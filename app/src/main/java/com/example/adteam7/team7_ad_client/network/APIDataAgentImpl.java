@@ -8,6 +8,7 @@ import com.example.adteam7.team7_ad_client.data.DelegateDepHeadApiModel;
 import com.example.adteam7.team7_ad_client.data.Employee;
 import com.example.adteam7.team7_ad_client.data.ManageDepRep;
 import com.example.adteam7.team7_ad_client.data.SessionManager;
+import com.example.adteam7.team7_ad_client.data.SetRetrievalApiModel;
 import com.example.adteam7.team7_ad_client.data.StationeryRetrievalApiModel;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -18,6 +19,7 @@ import org.json.JSONObject;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 
@@ -68,8 +70,6 @@ public class APIDataAgentImpl implements APIDataAgent {
         }
     }
 
-
-
     @Override
     public ManageDepRep delegateDepHeadGet() {
         try {
@@ -103,7 +103,7 @@ public class APIDataAgentImpl implements APIDataAgent {
             }
 
           rep.setEmployees(list);
-           // Log.e(TAG, "delegateDepHeadGet: Rep Name"+ deprep);
+            // Log.e(TAG, "delegateDepRepGet: Rep Name"+ deprep);
             return rep;
 
         } catch (Exception e) {
@@ -115,7 +115,7 @@ public class APIDataAgentImpl implements APIDataAgent {
        // return null;
     }
 
-    //endregion
+
 
     @Override
     public String delegateDepHeadSet(ManageDepRep dep) {
@@ -138,52 +138,9 @@ String rr=JSONParser.postStream(baseURL+"/managedepartmentEmp",true,jemp.toStrin
     public void assignDepRep() {
 
     }
-
-    // region Author: Teh Li Heng for Delegate Department Head
-    @Override
-    public ArrayList<StationeryRetrievalApiModel> RetrievalListGet() {
-        try {
-            //http://192.168.1.100/team7ad/api/
-            String url = String.format("%sclerk/getretrievallist", baseURL);
-            String result = JSONParser.getStream(url);
-            Log.i("Json", result);
-
-            Type stationeryType = new TypeToken<ArrayList<StationeryRetrievalApiModel>>() {
-            }.getType();
-            Gson gson = new Gson();
-            return gson.fromJson(result, stationeryType);
-        } catch (Exception e) {
-            Log.e("Login", e.toString());
-        }
-        return null;
-    }
-
-    @Override
-    public String delegateActingDepHeadSet(DelegateDepHeadApiModel delHeadPost) {
-        String status = "Error at saving.";
-        try {
-            String id = session.getUserid();
-            delHeadPost.setUserId(id);
-            //http://192.168.1.100/team7ad/api/
-            String url = String.format("%sdepartmenthead/setdepartmenthead/", baseURL);
-            Log.i("Url", url);
-            Gson gson = new Gson();
-            String json = gson.toJson(delHeadPost);
-            Log.i("Json", json);
-            String result = JSONParser.postStream(url, true, json);
-
-            Log.i("PostResult", result);
-            if (result != null || result != "")
-                status = "Successfully saved.";
-
-        } catch (Exception e) {
-            Log.e("JsonPost", e.toString());
-        }
-        return status;
-    }
     //endregion
 
-    // region Author: Teh Li Heng for Managing retrievals of clerk from warehouse
+    // region Author: Teh Li Heng for Delegate Department Head
     @Override
     public DelegateDepHeadApiModel delegateActingDepHeadGet() {
         try {
@@ -205,6 +162,76 @@ String rr=JSONParser.postStream(baseURL+"/managedepartmentEmp",true,jemp.toStrin
             Log.e("Login", e.toString());
         }
         return null;
+    }
+
+    @Override
+    public String delegateActingDepHeadSet(DelegateDepHeadApiModel delHeadPost) {
+        String status = "Error at saving.";
+        try {
+            String id = session.getUserid();
+            delHeadPost.setUserId(id);
+            //http://192.168.1.100/team7ad/api/
+            String url = String.format("%sdepartmenthead/setdepartmenthead/", baseURL);
+            Log.i("Url", url);
+            Gson gson = new Gson();
+            String json = gson.toJson(delHeadPost);
+            Log.i("Json", json);
+            String result = JSONParser.postStream(url, true, json);
+
+            Log.i("PostResult", result);
+            if (result != null && result != "")
+                status = "Successfully saved.";
+
+        } catch (Exception e) {
+            Log.e("JsonPost", e.toString());
+        }
+        return status;
+    }
+    //endregion
+
+    // region Author: Teh Li Heng for Managing retrievals of clerk from warehouse
+    @Override
+    public ArrayList<StationeryRetrievalApiModel> RetrievalListGet() {
+        try {
+            //http://192.168.1.100/team7ad/api/
+            String url = String.format("%sclerk/getretrievallist", baseURL);
+            String result = JSONParser.getStream(url);
+            Log.i("Json", result);
+
+            Type stationeryType = new TypeToken<ArrayList<StationeryRetrievalApiModel>>() {
+            }.getType();
+            Gson gson = new Gson();
+            ArrayList<StationeryRetrievalApiModel> sortedList = gson.fromJson(result, stationeryType);
+            sortedList.sort(Comparator.comparing(StationeryRetrievalApiModel::getDescription));
+            return sortedList;
+        } catch (Exception e) {
+            Log.e("Login", e.toString());
+        }
+        return null;
+    }
+
+    @Override
+    public String RetrievalListSet(List<StationeryRetrievalApiModel> models) {
+        String status = "Error at saving.";
+        try {
+            SetRetrievalApiModel apiModel = new SetRetrievalApiModel(session.getUserid(), models);
+
+            //http://192.168.1.100/team7ad/api/
+            String url = String.format("%sclerk/setretrievallist/", baseURL);
+            Log.i("Url", url);
+            Gson gson = new Gson();
+            String json = gson.toJson(apiModel);
+            Log.i("Json", json);
+            String result = JSONParser.postStream(url, true, json);
+            Log.i("PostResult", result);
+
+            if (result != null && result != "")
+                status = "Successfully saved.";
+
+        } catch (Exception e) {
+            Log.e("JsonPost", e.toString());
+        }
+        return status;
     }
 
     //endregion
