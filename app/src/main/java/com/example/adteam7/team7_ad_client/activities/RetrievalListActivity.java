@@ -83,9 +83,24 @@ public class RetrievalListActivity extends AppCompatActivity {
                 StationeryRetrievalApiModel selectedRequest = mAdapter.retrievals.get(selectedPosition);
                 int positionToModify = retrievalsToSend.indexOf(selectedRequest);
                 retrievalsToSend.get(positionToModify).setNewQuantity(selectedRequest.getNeededQuantity());
+
+                //updating remaining quantity in warehouse, get ID, get chose, reduce for repeating items.
+                selectedRequest.getItemId();
+                for (int i=0;i<mAdapter.retrievals.size();i++) {
+                    if (mAdapter.retrievals.get(i).getItemId().equals(selectedRequest.getItemId())) {
+                        mAdapter.retrievals.get(i).setQuantityInWarehouse(mAdapter.retrievals.get(i).getQuantityInWarehouse() - selectedRequest.getNeededQuantity());
+                    }
+                }
+//                for (StationeryRetrievalApiModel current:mAdapter.retrievals
+//                ) {if(current.getItemId()==selectedRequest.getItemId()){
+//                    current.setQuantityInWarehouse(current.getQuantityInWarehouse()-selectedRequest.getNeededQuantity());
+//                }
+//                }
+
                 mAdapter.retrievals.remove(selectedPosition);
                 mAdapter.notifyItemRemoved(selectedPosition);
                 mAdapter.notifyItemRangeChanged(selectedPosition, mAdapter.getItemCount());
+                mAdapter.notifyDataSetChanged();
             }
         });
 
@@ -107,11 +122,12 @@ public class RetrievalListActivity extends AppCompatActivity {
         layoutForNumber.setOrientation(LinearLayout.VERTICAL);
         NumberPicker picker = new NumberPicker(context);
         picker.setMinValue(0);
-        int maxValue;
+        int maxValue = selectedRequest.getQuantityInWarehouse()<selectedRequest.getNeededQuantity()?selectedRequest.getQuantityInWarehouse():selectedRequest.getNeededQuantity();
+        maxValue = maxValue<0?0:maxValue;
 //        if (selectedRequest.getQuantityInWarehouse() <= 0) {
 //            maxValue = 0;
 //        } else {
-            maxValue = selectedRequest.getNeededQuantity();
+//            maxValue = selectedRequest.getNeededQuantity();
 //        }
         picker.setMaxValue(maxValue);
 
@@ -156,10 +172,19 @@ public class RetrievalListActivity extends AppCompatActivity {
                     retrievalsToSend.get(positionToModify).setNewQuantity(picker.getValue());
                     retrievalsToSend.get(positionToModify).setRemarks(remarksField.getText().toString());
 
+                    //updating remaining quantity in warehouse, get ID, get chose, reduce for repeating items.
+                    selectedRequest.getItemId();
+                    for (StationeryRetrievalApiModel current:mAdapter.retrievals
+                         ) {if(current.getItemId().equals(selectedRequest.getItemId())){
+                             current.setQuantityInWarehouse(current.getQuantityInWarehouse()-picker.getValue());
+                    }
+                    }
+
                     //remove item from list
                     mAdapter.retrievals.remove(selectedPosition);
                     mAdapter.notifyItemRemoved(selectedPosition);
                     mAdapter.notifyItemRangeChanged(selectedPosition, mAdapter.getItemCount());
+                    mAdapter.notifyDataSetChanged();
                 })
                 .setNegativeButton(android.R.string.cancel, null)
                 .show();
