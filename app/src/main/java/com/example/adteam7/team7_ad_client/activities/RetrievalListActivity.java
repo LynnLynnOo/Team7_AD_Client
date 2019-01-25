@@ -1,7 +1,9 @@
 package com.example.adteam7.team7_ad_client.activities;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Canvas;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.AlertDialog;
@@ -41,25 +43,22 @@ public class RetrievalListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_retrieval_list);
 
-
-        setRetrievalDataAdapter();
-        retrievalsToSend = new ArrayList<>(mAdapter.retrievals);
-        setupRecyclerView();
         submit = findViewById(R.id.submit);
+        new AsyncCallerGet().execute();
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                StrictMode.setThreadPolicy(StrictMode.ThreadPolicy.LAX); //this needs to be changed
-                String status = agent.RetrievalListSet(retrievalsToSend);
-                Toast.makeText(RetrievalListActivity.this, status, Toast.LENGTH_SHORT).show();
-                finish();
+//                StrictMode.setThreadPolicy(StrictMode.ThreadPolicy.LAX); //this needs to be changed
+                new AsyncCallerSet().execute();
+
             }
         });
     }
 
+    //Region initializing recyclerview
     private void setRetrievalDataAdapter() {
-        StrictMode.setThreadPolicy(StrictMode.ThreadPolicy.LAX); //this needs to be changed
+//        StrictMode.setThreadPolicy(StrictMode.ThreadPolicy.LAX); //this needs to be changed
         ArrayList<StationeryRetrievalApiModel> retrievals = agent.RetrievalListGet();
 
         mAdapter = new RetrievalAdapter(retrievals);
@@ -164,5 +163,73 @@ public class RetrievalListActivity extends AppCompatActivity {
                 })
                 .setNegativeButton(android.R.string.cancel, null)
                 .show();
+    }
+    //endregion
+
+    private class AsyncCallerGet extends AsyncTask<Void, Void, Void>
+    {
+        ProgressDialog pdLoading = new ProgressDialog(RetrievalListActivity.this);
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+            //this method will be running on UI thread
+            pdLoading.setMessage("\tLoading...");
+            pdLoading.show();
+        }
+        @Override
+        protected Void doInBackground(Void... params) {
+
+            //this method will be running on background thread so don't update UI frome here
+            //do your long running http tasks here,you dont want to pass argument and u can access the parent class' variable url over here
+            setRetrievalDataAdapter();
+            retrievalsToSend = new ArrayList<>(mAdapter.retrievals);
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            super.onPostExecute(result);
+
+            //this method will be running on UI thread
+            setupRecyclerView();
+            pdLoading.dismiss();
+        }
+    }
+
+    private class AsyncCallerSet extends AsyncTask<Void, Void, String>
+    {
+        ProgressDialog pdLoading = new ProgressDialog(RetrievalListActivity.this);
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+            //this method will be running on UI thread
+            pdLoading.setMessage("\tLoading...");
+            pdLoading.show();
+        }
+        @Override
+        protected String doInBackground(Void... params) {
+
+            //this method will be running on background thread so don't update UI frome here
+            //do your long running http tasks here,you dont want to pass argument and u can access the parent class' variable url over here
+            String status = agent.RetrievalListSet(retrievalsToSend);
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+
+            //this method will be running on UI thread
+
+            pdLoading.dismiss();
+            finish();
+            Toast.makeText(RetrievalListActivity.this, result, Toast.LENGTH_SHORT).show();
+
+        }
     }
 }
