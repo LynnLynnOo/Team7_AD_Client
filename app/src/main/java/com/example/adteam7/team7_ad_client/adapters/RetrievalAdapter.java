@@ -31,7 +31,8 @@ public class RetrievalAdapter extends RecyclerView.Adapter<RetrievalAdapter.Play
         StationeryRetrievalApiModel retrieval = retrievals.get(position);
         holder.description.setText(retrieval.getDescription());
         holder.category.setText(retrieval.getCategory());
-        holder.location.setText(retrieval.getLocation());
+        holder.location.setText("Location: " + retrieval.getLocation());
+        holder.department.setText("Department: " + retrieval.getDepartmentName());
         holder.neededQuantity.setText(String.valueOf(retrieval.getNeededQuantity()));
         holder.availableQuantity.setText("Available: " + String.valueOf(retrieval.getQuantityInWarehouse()));
     }
@@ -42,12 +43,13 @@ public class RetrievalAdapter extends RecyclerView.Adapter<RetrievalAdapter.Play
     }
 
     public class PlayerViewHolder extends RecyclerView.ViewHolder {
-        private TextView description, category, location, neededQuantity, availableQuantity;
+        private TextView description, category, location, neededQuantity, availableQuantity, department;
 
         public PlayerViewHolder(View view) {
             super(view);
             description = view.findViewById(R.id.description);
             category = view.findViewById(R.id.category);
+            department = view.findViewById(R.id.department);
             location = view.findViewById(R.id.location);
             neededQuantity = view.findViewById(R.id.neededQuantity);
             availableQuantity = view.findViewById(R.id.availableQuantity);
