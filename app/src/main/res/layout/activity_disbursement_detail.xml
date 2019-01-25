@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.DisbursementDetail">
+<TextView
+    android:layout_margin="@dimen/m_margin"
+    android:textSize="18sp"
+    android:textColor="@color/txtColor"
+    android:id="@+id/depname"
+    android:text="Department of English"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_margin="@dimen/s_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="3">
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3"
+            >
+
+            <TextView
+                android:textColor="@android:color/black"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="No" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.2"
+            >
+
+            <TextView
+                android:textColor="@android:color/black"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="left"
+                android:layout_marginLeft="@dimen/m_margin"
+                android:text="Item Name" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.6">
+
+            <TextView
+                android:textColor="@android:color/black"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Requested" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.9">
+
+            <TextView
+                android:textColor="@android:color/black"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Received" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+<android.support.v7.widget.RecyclerView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/detailrv">
+
+</android.support.v7.widget.RecyclerView>
+
+<LinearLayout
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <Button
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/voiddisb"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:text="@string/voiddisb"
+        android:background="@drawable/loginbtn"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="@dimen/s_margin"
+        android:textColor="#ffffff"/>
+    <Button
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/ackwge"
+        android:layout_marginLeft="@dimen/s_margin"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:text="@string/acknowledge"
+        android:background="@drawable/loginbtn"
+        android:layout_marginTop="12dp"
+
+        android:textColor="#ffffff"/>
+
+</LinearLayout>
+
+</LinearLayout>

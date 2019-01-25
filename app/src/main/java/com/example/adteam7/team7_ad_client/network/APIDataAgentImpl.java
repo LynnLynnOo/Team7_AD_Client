@@ -3,12 +3,15 @@ package com.example.adteam7.team7_ad_client.network;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.adteam7.team7_ad_client.data.AdjustmentInfo;
+import com.example.adteam7.team7_ad_client.data.AdjustmentItem;
 import com.example.adteam7.team7_ad_client.data.DelegateDepHeadApiModel;
 import com.example.adteam7.team7_ad_client.data.Disbursement;
 import com.example.adteam7.team7_ad_client.data.DisbursementSationeryItem;
 import com.example.adteam7.team7_ad_client.data.Employee;
 import com.example.adteam7.team7_ad_client.data.ManageDepRep;
 import com.example.adteam7.team7_ad_client.data.SessionManager;
+import com.example.adteam7.team7_ad_client.data.StationeryRetrievalApiModel;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
@@ -118,10 +121,8 @@ public class APIDataAgentImpl implements APIDataAgent {
        // return null;
     }
 
-    //endregion
-
     @Override
-    public String delegateDepHeadSet(ManageDepRep dep) {
+    public String assignDepRep(ManageDepRep dep) {
         JSONObject jemp = new JSONObject();
         try {
             jemp.put("DepartmentId", dep.getDepartmentId());
@@ -131,11 +132,18 @@ public class APIDataAgentImpl implements APIDataAgent {
         } catch (Exception e) {
         }
 
-String rr=JSONParser.postStream(baseURL+"/managedepartmentEmp",true,jemp.toString());
+        String rr=JSONParser.postStream(baseURL+"/managedepartmentEmp",true,jemp.toString());
         Log.e(TAG, "delegateDepHeadSet: Show result"+rr );
 
         return rr;
     }
+
+    //endregion
+
+   /* @Override
+    public String delegateDepHeadSet(ManageDepRep dep) {
+
+    }*/
 
     @Override
     public List<Disbursement> getDisbbyDept() {
