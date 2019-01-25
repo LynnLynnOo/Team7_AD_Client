@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.adteam7.team7_ad_client.R;
-import com.example.adteam7.team7_ad_client.activities.DisbursementDetail;
+import com.example.adteam7.team7_ad_client.activities.DisbursementDetailActivity;
 import com.example.adteam7.team7_ad_client.data.Disbursement;
 import com.example.adteam7.team7_ad_client.data.DisbursementSationeryItem;
 
@@ -60,7 +60,7 @@ public class MainDisburAdapter extends RecyclerView.Adapter<MainDisburAdapter.Rv
             public void onClick(View v) {
 
                 String disbno=listitem.get(position).getDisbursementNo();
-                Intent i=new Intent(context,DisbursementDetail.class);
+                Intent i=new Intent(context, DisbursementDetailActivity.class);
                 i.putExtra("disbno",disbno);
                 context.startActivity(i);
             }

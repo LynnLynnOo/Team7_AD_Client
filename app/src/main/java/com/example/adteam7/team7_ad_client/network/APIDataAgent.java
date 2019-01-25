@@ -16,13 +16,14 @@ import java.util.List;
 public interface APIDataAgent {
 
     String login(String nam,String pss);
-
-
     ManageDepRep delegateDepHeadGet();
-
     String assignDepRep(ManageDepRep dep);
     List<Disbursement> getDisbbyDept();
     List<DisbursementSationeryItem> getDisbDetail(String disbno);
+    String voidDisbursement(List<DisbursementSationeryItem> list);
+
+
+
 
     String delegateActingDepHeadSet(DelegateDepHeadApiModel del);
     DelegateDepHeadApiModel delegateActingDepHeadGet();

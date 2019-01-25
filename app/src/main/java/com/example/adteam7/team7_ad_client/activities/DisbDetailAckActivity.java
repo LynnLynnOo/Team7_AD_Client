@@ -1,10 +1,11 @@
 package com.example.adteam7.team7_ad_client.activities;
 
-import android.os.AsyncTask;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.adteam7.team7_ad_client.R;
 import com.example.adteam7.team7_ad_client.adapters.ItemListAdapter;
@@ -14,39 +15,37 @@ import com.example.adteam7.team7_ad_client.network.APIDataAgentImpl;
 
 import java.util.List;
 
-public class DisbursementDetail extends AppCompatActivity {
+public class DisbDetailAckActivity extends AppCompatActivity {
 
     RecyclerView itemsrv;
     APIDataAgent agent=new APIDataAgentImpl();
     ItemListAdapter adapter;
+    Button voiddisb,ackwge;
+    List<DisbursementSationeryItem> itemlist;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_disbursement_detail);
         itemsrv=findViewById(R.id.detailrv);
         itemsrv.setLayoutManager(new LinearLayoutManager(this));
-
-        String dno= getIntent().getStringExtra("disbno");
-        if(dno!=null){
-            new AsyncGetDisbursementDetail().execute(dno);
-        }
+        voiddisb=findViewById(R.id.voiddisb);
+        ackwge=findViewById(R.id.ackwge);
 
 
-    }
+        voiddisb.setText("Cancel");
+        ackwge.setText("Confirm");
 
-    private class AsyncGetDisbursementDetail extends AsyncTask<String, Void,List<DisbursementSationeryItem>> {
-        @Override
-        protected List<DisbursementSationeryItem> doInBackground(String... param) {
-            return agent.getDisbDetail(param[0]);
-        }
+        if(getIntent().hasExtra("disblist")){
+            List<DisbursementSationeryItem> myList = (List<DisbursementSationeryItem>) getIntent().getSerializableExtra("disblist");
+            Toast.makeText(this, "receive list "+myList.size(), Toast.LENGTH_SHORT).show();
 
-        @Override
-        protected void onPostExecute(List<DisbursementSationeryItem> disbursementSationeryItems) {
-            super.onPostExecute(disbursementSationeryItems);
-            adapter=new ItemListAdapter(DisbursementDetail.this,disbursementSationeryItems);
+            adapter=new ItemListAdapter(DisbDetailAckActivity.this,myList,false);
 
             itemsrv.setAdapter(adapter);
 
+
         }
+
+
     }
 }

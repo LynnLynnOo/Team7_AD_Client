@@ -19,6 +19,7 @@ import com.google.gson.reflect.TypeToken;
 
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 
@@ -35,7 +36,7 @@ import static android.content.ContentValues.TAG;
 public class APIDataAgentImpl implements APIDataAgent {
 
   // static String host = "localhost";
-   static String host = "192.168.1.166";
+   static String host = "172.17.82.83";
    // http://localhost/Team7API/Token
     static String baseURL;
     static String imageURL;
@@ -138,7 +139,7 @@ public class APIDataAgentImpl implements APIDataAgent {
         return rr;
     }
 
-    //endregion
+
 
    /* @Override
     public String delegateDepHeadSet(ManageDepRep dep) {
@@ -188,7 +189,31 @@ public class APIDataAgentImpl implements APIDataAgent {
         return null;
     }
 
-    //endregion
+    @Override
+    public String voidDisbursement(List<DisbursementSationeryItem> list) {
+
+        Gson gson=new Gson();
+try {
+    String elementlist = gson.toJson(
+            list,
+            new TypeToken<List<DisbursementSationeryItem>>() {
+            }.getType());
+
+    // JSONArray arr = new JSONArray(elementlist);
+
+
+    String rr = JSONParser.postStream(baseURL + "/managedepartmentEmp", true, elementlist);
+}catch (Exception e){
+
+}
+
+        return null;
+
+
+
+    }
+
+        //endregion
 
 
     // region Author: Teh Li Heng for Delegate Department Head

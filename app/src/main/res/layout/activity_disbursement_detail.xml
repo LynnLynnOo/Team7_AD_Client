@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activities.DisbursementDetail">
+    tools:context=".activities.DisbursementDetailActivity">
 <TextView
+    android:layout_alignParentTop="true"
     android:layout_margin="@dimen/m_margin"
     android:textSize="18sp"
     android:textColor="@color/txtColor"
@@ -16,10 +17,12 @@
     android:layout_height="wrap_content" />
 
     <LinearLayout
+        android:layout_below="@id/depname"
         android:layout_margin="@dimen/s_margin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:weightSum="3">
+        android:weightSum="3"
+        android:id="@+id/title">
 
 
         <LinearLayout
@@ -80,6 +83,7 @@
     </LinearLayout>
 
 <android.support.v7.widget.RecyclerView
+    android:layout_below="@+id/title"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/detailrv">
@@ -87,21 +91,24 @@
 </android.support.v7.widget.RecyclerView>
 
 <LinearLayout
+
+    android:layout_alignParentBottom="true"
     android:gravity="center"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <Button
-        android:layout_gravity="center_horizontal"
+android:gravity="center"
         android:id="@+id/voiddisb"
         android:layout_width="150dp"
         android:layout_height="40dp"
         android:text="@string/voiddisb"
+android:layout_gravity="top"
         android:background="@drawable/loginbtn"
         android:layout_marginTop="12dp"
         android:layout_marginRight="@dimen/s_margin"
         android:textColor="#ffffff"/>
     <Button
-        android:layout_gravity="center_horizontal"
+        android:layout_gravity="top"
         android:id="@+id/ackwge"
         android:layout_marginLeft="@dimen/s_margin"
         android:layout_width="150dp"
@@ -109,9 +116,9 @@
         android:text="@string/acknowledge"
         android:background="@drawable/loginbtn"
         android:layout_marginTop="12dp"
-
+android:gravity="center"
         android:textColor="#ffffff"/>
 
 </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>
