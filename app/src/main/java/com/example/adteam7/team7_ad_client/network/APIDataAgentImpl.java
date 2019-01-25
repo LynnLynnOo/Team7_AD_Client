@@ -6,6 +6,7 @@ import com.example.adteam7.team7_ad_client.data.DelegateDepHeadApiModel;
 import com.example.adteam7.team7_ad_client.data.Employee;
 import com.example.adteam7.team7_ad_client.data.ManageDepRep;
 import com.example.adteam7.team7_ad_client.data.SessionManager;
+import com.example.adteam7.team7_ad_client.data.StationeryRequestApiModel;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
@@ -22,7 +23,7 @@ import static android.content.ContentValues.TAG;
 public class APIDataAgentImpl implements APIDataAgent {
 
   // static String host = "localhost";
-  static String host = "192.168.1.100";
+  static String host = "172.17.89.23";
    // http://localhost/Team7API/Token
     static String baseURL;
     static String imageURL;
@@ -164,4 +165,38 @@ public class APIDataAgentImpl implements APIDataAgent {
         }
         return status;
     }
+
+    /* GJX*/
+    @Override
+    public StationeryRequestApiModel GetStationeryRequest(String requestId) {
+        String url = String.format("%s/%s/%s/%s", baseURL, "stationeryrequest", "getselected", requestId); //url to controller
+        String result = JSONParser.getStream(url);
+        Log.i("Json", result);
+        Gson gson = new Gson();
+
+        return gson.fromJson(result, StationeryRequestApiModel.class);
+    }
+
+    @Override
+    public List<StationeryRequestApiModel> ReadStationeryRequest() {
+        String id = session.getUserid();
+        List<StationeryRequestApiModel> list = new ArrayList<StationeryRequestApiModel>();
+        String url = String.format("%s/%s/%s/%s", baseURL, "stationeryrequest", "getall", id);
+        JSONArray a = JSONParser.getJSONArrayFromUrl(url);
+        try {
+            for (int i = 0; i < a.length(); i++) {
+                JSONObject b = a.getJSONObject(i);
+                list.add(new StationeryRequestApiModel(
+                        b.getString("RequestId"),
+                        b.getString("RequestedBy"), "", "",
+                        b.getString("RequestDate"),
+                        b.getString("Status"), null
+                ));
+            }
+        } catch (Exception e) {
+            Log.e("StationeryRequest", "JSONArray error");
+        }
+        return (list);
+    }
+
 }
