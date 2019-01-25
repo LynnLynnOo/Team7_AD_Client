@@ -35,7 +35,7 @@ import static android.content.ContentValues.TAG;
 public class APIDataAgentImpl implements APIDataAgent {
 
   // static String host = "localhost";
-  static String host = "192.168.1.71";
+  static String host = "192.168.1.100";
    // http://localhost/Team7API/Token
     static String baseURL;
     static String imageURL;
