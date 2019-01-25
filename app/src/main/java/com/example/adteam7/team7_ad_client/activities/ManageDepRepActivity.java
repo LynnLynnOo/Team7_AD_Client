@@ -1,7 +1,9 @@
 package com.example.adteam7.team7_ad_client.activities;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -81,7 +83,30 @@ public class ManageDepRepActivity extends AppCompatActivity {
         assign.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (dep.getEmployees() != null) {
+
+
+                final AlertDialog.Builder builder = new AlertDialog.Builder((ManageDepRepActivity.this));
+                builder.setMessage("Are you sure want to log out?");
+
+                builder.setCancelable(true);
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //session.logoutUser(getApplicationContext());
+                        finish();
+                    }
+                });
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+
+
+                /*if (dep.getEmployees() != null) {
                     Toast.makeText(ManageDepRepActivity.this, "Assigned " + spinEmp.getSelectedItem() + " as Department Representative", Toast.LENGTH_SHORT).show();
                     String repid = checkSelectedEmp();
                     rep.setText(spinEmp.getSelectedItem().toString());
@@ -90,7 +115,7 @@ public class ManageDepRepActivity extends AppCompatActivity {
                     new AsyncTask<Void, Void, String>() {
                         @Override
                         protected String doInBackground(Void... voids) {
-                            return agent.delegateDepHeadSet(dep);
+                            return agent.assignDepRep(dep);
 
                         }
 
@@ -103,7 +128,7 @@ public class ManageDepRepActivity extends AppCompatActivity {
                 }
                 else{
                     Toast.makeText(ManageDepRepActivity.this, "No Connection", Toast.LENGTH_SHORT).show();
-                }
+                }*/
             }
         });
 

@@ -30,4 +30,6 @@
     <string name="label2">Request By</string>
     <string name="label3">Status</string>
     <string name="label4">Request Date</string>
+    <string name="acknowledge">Acknowledge</string>
+    <string name="voiddisb">Void</string>
 </resources>

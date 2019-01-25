@@ -1,44 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
+    android:layout_height="wrap_content"
+
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
 
     <android.support.v7.widget.CardView
-        app:cardBackgroundColor="@color/colorPrimaryDark"
-        android:layout_margin="5dp"
-        app:cardElevation="2dp"
-        app:cardCornerRadius="3dp"
+        app:cardBackgroundColor="#E7F6FA"
+        android:layout_marginLeft="@dimen/m_margin"
+        android:layout_marginRight="@dimen/m_margin"
+        android:layout_marginBottom="@dimen/s_margin"
+        android:layout_marginTop="@dimen/s_margin"
+        app:cardElevation="3dp"
+        app:cardCornerRadius="4dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <!--<ImageView
-        android:layout_marginLeft="5dp"
-        android:layout_centerVertical="true"
-        android:src="@drawable/ic_perm_contact_calendar_black_24dp"
-        android:id="@+id/iv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />-->
-    <TextView
-        android:textSize="16sp"
-        android:layout_marginLeft="5dp"
+        <LinearLayout
+            android:id="@+id/godetail"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:layout_margin="@dimen/s_margin"
+                >
 
-        android:id="@+id/name"
-        android:layout_centerVertical="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-   <!-- <ImageButton
-        android:id="@+id/ib"
-        android:layout_centerVertical="true"
-        android:layout_marginRight="16dp"
+                <TextView
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/txtColor"
+                    android:textSize="18sp"
+                    android:id="@+id/depnn"
+                    android:text="Department of "
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:textColor="@color/txtColor"
+                    android:textSize="18sp"
+                    android:id="@+id/depname"
+                    android:text="DECON00156"
 
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />-->
-</RelativeLayout>
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+
+
+            </LinearLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:textSize="16sp"
+                    android:id="@+id/repnn"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/ic_deprep"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+
+                    android:textColor="@color/txtColor"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="5dp"
+                    android:id="@+id/repname"
+                    android:text="Accountancy"
+                    android:layout_toRightOf="@id/repnn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <ImageView
+                    android:layout_alignParentRight="true"
+                    android:textSize="16sp"
+                    android:id="@+id/next"
+                    android:layout_marginRight="@dimen/m_margin"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/next"
+
+                    android:layout_width="20dp"
+                    android:layout_height="20dp" />
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+
+                <ImageView
+                    android:src="@drawable/ic_point"
+                    android:id="@+id/collnn"
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:textColor="@color/txtColor"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="5dp"
+                    android:id="@+id/cpoint"
+                    android:layout_toRightOf="@id/collnn"
+                    android:text="Accountancy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:textSize="16sp"
+                    android:id="@+id/disnn"
+                    android:text="Disb no :"
+                    android:layout_toLeftOf="@id/disbno"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:textColor="@color/txtColor"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="@dimen/s_margin"
+                    android:layout_marginRight="@dimen/m_margin"
+                    android:id="@+id/disbno"
+                    android:text="Accountancy"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+
+        </LinearLayout>
     </android.support.v7.widget.CardView>
 </LinearLayout>
