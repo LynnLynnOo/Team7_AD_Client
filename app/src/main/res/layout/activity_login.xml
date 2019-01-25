@@ -55,8 +55,7 @@
             android:minLines="1"
             android:padding="5dp"
             android:paddingLeft="5dp"
-
-            android:text="@logic.u.edu"
+            android:text="Melania-the-Hedgehog@logic.u.edu"
             android:textColorHint="#67817f"
             tools:ignore="HardcodedText" />
 
