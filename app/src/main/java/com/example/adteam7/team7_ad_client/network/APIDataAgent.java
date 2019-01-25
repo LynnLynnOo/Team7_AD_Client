@@ -5,6 +5,10 @@ import com.example.adteam7.team7_ad_client.data.ManageDepRep;
 import com.example.adteam7.team7_ad_client.data.StationeryRequestApiModel;
 
 import java.util.List;
+import com.example.adteam7.team7_ad_client.data.StationeryRetrievalApiModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by dodo
@@ -13,9 +17,10 @@ public interface APIDataAgent {
 
     String login(String nam,String pss);
 
-    void getEmpList();
+
     ManageDepRep delegateDepHeadGet();
-    void delegateDepHeadSet();
+
+    String delegateDepHeadSet(ManageDepRep dep);
     void assignDepRep();
 
     String delegateActingDepHeadSet(DelegateDepHeadApiModel del);
@@ -24,6 +29,8 @@ public interface APIDataAgent {
     /*method for approve request*/
     /* Create by GJX*/
     StationeryRequestApiModel GetStationeryRequest(String requestId);
+    ArrayList<StationeryRetrievalApiModel> RetrievalListGet();
 
     List<StationeryRequestApiModel> ReadStationeryRequest();
+    String RetrievalListSet(List<StationeryRetrievalApiModel> models);
 }

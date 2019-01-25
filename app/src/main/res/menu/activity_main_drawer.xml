@@ -17,9 +17,21 @@
             android:icon="@drawable/ic_menu_slideshow"
             android:title="Delegate Dep Head" />
         <item
-            android:id="@+id/nav_approve"
+            android:id="@+id/nav_generateRetrieval"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:title="Generate Retrieval List" />
+        <item
+            android:id="@+id/nav_viewRequest"
+            android:icon="@drawable/ic_menu_share"
+            android:title="View Request" />
+        <item
+            android:id="@+id/nav_approveRejectPO"
+            android:icon="@drawable/purchaseorder"
+            android:title="Purchase Order" />
+        <item
+            android:id="@+id/nav_raiseAdjustment"
+            android:icon="@drawable/purchaseorder"
+            android:title="Raise Adjustment" />
     </group>
 
     <item android:title="Communicate">
