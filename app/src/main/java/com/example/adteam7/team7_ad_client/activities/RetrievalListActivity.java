@@ -82,13 +82,17 @@ public class RetrievalListActivity extends AppCompatActivity {
             public void onLeftClicked(int selectedPosition) {
                 StationeryRetrievalApiModel selectedRequest = mAdapter.retrievals.get(selectedPosition);
                 int positionToModify = retrievalsToSend.indexOf(selectedRequest);
-                retrievalsToSend.get(positionToModify).setNewQuantity(selectedRequest.getNeededQuantity());
+
+                //check if quantity is less than warehouse, if yes only take remaining quantity
+                int quantityToDeduct = selectedRequest.NeededQuantity>selectedRequest.QuantityInWarehouse?selectedRequest.QuantityInWarehouse:selectedRequest.getNeededQuantity();
+
+                retrievalsToSend.get(positionToModify).setNewQuantity(quantityToDeduct);
 
                 //updating remaining quantity in warehouse, get ID, get chose, reduce for repeating items.
                 selectedRequest.getItemId();
                 for (int i=0;i<mAdapter.retrievals.size();i++) {
                     if (mAdapter.retrievals.get(i).getItemId().equals(selectedRequest.getItemId())) {
-                        mAdapter.retrievals.get(i).setQuantityInWarehouse(mAdapter.retrievals.get(i).getQuantityInWarehouse() - selectedRequest.getNeededQuantity());
+                        mAdapter.retrievals.get(i).setQuantityInWarehouse(mAdapter.retrievals.get(i).getQuantityInWarehouse() - quantityToDeduct);
                     }
                 }
 //                for (StationeryRetrievalApiModel current:mAdapter.retrievals
