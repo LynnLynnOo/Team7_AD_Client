@@ -33,6 +33,7 @@
         <activity android:name=".activities.ManageDepRepActivity" />
         <activity android:name=".activities.SplashActivity" />
         <activity android:name=".activities.RaiseAdjustmentActivity" />
+        <activity android:name=".activities.AdjustmentDetailActivity"/>
         <activity android:name=".activities.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -29,7 +29,7 @@ import static android.content.ContentValues.TAG;
 public class APIDataAgentImpl implements APIDataAgent {
 
   // static String host = "localhost";
-  static String host = "192.168.1.71";
+  static String host = "172.17.113.199";
    // http://localhost/Team7API/Token
     static String baseURL;
     static String imageURL;
@@ -223,7 +223,7 @@ String rr=JSONParser.postStream(baseURL+"/managedepartmentEmp",true,jemp.toStrin
 
     //region Cheng Zongpei
     public List<String> adjustmentGetCategories(){
-        String url = "http://192.168.1.75/webapi/adjustment/categories";
+        String url = String.format("%s/webapi/adjustment/categories",host);
         JSONArray array = JSONParser.getJSONArrayFromUrl(url);
         List<String> result = new ArrayList<String>();
         try{
@@ -238,7 +238,7 @@ String rr=JSONParser.postStream(baseURL+"/managedepartmentEmp",true,jemp.toStrin
     }
 
     public List<AdjustmentItem> adjustmentGetItem(String category){
-        String url =String.format("http://192.168.1.75/webapi/adjustment/items/%s",category);
+        String url =String.format("%s/webapi/adjustment/items/%s",host,category);
         JSONArray array = JSONParser.getJSONArrayFromUrl(url);
         List<AdjustmentItem> result = new ArrayList<AdjustmentItem>();
         try{
@@ -253,7 +253,7 @@ String rr=JSONParser.postStream(baseURL+"/managedepartmentEmp",true,jemp.toStrin
     }
 
     public AdjustmentItem adjustmentGetInfo(String itemId){
-        String url = String.format("http://192.168.1.75/webapi/adjustment/item/%s",itemId);
+        String url = String.format("%s/webapi/adjustment/item/%s",host,itemId);
         JSONObject object = JSONParser.getJSONFromUrl(url);
         AdjustmentItem result;
         try {
@@ -279,7 +279,7 @@ String rr=JSONParser.postStream(baseURL+"/managedepartmentEmp",true,jemp.toStrin
             Log.e("error","Json save error");
         }
 
-        String result = JSONParser.postStream("http://192.168.1.75/webapi/adjustment/save", true, array.toString());
+        String result = JSONParser.postStream(String.format("%s/webapi/adjustment/save",host), true, array.toString());
         return result;
     }
 
