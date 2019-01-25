@@ -1,0 +1,77 @@
+{
+  "ApiModelList": [
+    {
+      "Category": "Clip",
+      "DepartmentId": "FINC",
+      "DepartmentName": "Finance",
+      "Description": "Clips Double 3/4",
+      "ItemId": "C003",
+      "Location": "A1",
+      "NeededQuantity": 11,
+      "NewQuantity": 11,
+      "QuantityInWarehouse": 98,
+      "Remarks": ""
+    },
+    {
+      "Category": "Clip",
+      "DepartmentId": "HUMA",
+      "DepartmentName": "Humanities",
+      "Description": "Clips Double 3/4",
+      "ItemId": "C003",
+      "Location": "A1",
+      "NeededQuantity": 6,
+      "NewQuantity": 6,
+      "QuantityInWarehouse": 98,
+      "Remarks": ""
+    },
+    {
+      "Category": "Clip",
+      "DepartmentId": "FINC",
+      "DepartmentName": "Finance",
+      "Description": "Clips Paper Large",
+      "ItemId": "C004",
+      "Location": "A1",
+      "NeededQuantity": 127,
+      "NewQuantity": 127,
+      "QuantityInWarehouse": 68,
+      "Remarks": ""
+    },
+    {
+      "Category": "Exercise",
+      "DepartmentId": "HUMA",
+      "DepartmentName": "Humanities",
+      "Description": "Exercise Book A4 Hardcover (120 pg)",
+      "ItemId": "E033",
+      "Location": "A3",
+      "NeededQuantity": 3,
+      "NewQuantity": 2,
+      "QuantityInWarehouse": 113,
+      "Remarks": ""
+    },
+    {
+      "Category": "File",
+      "DepartmentId": "FINC",
+      "DepartmentName": "Finance",
+      "Description": "Folder Plastic Blue",
+      "ItemId": "F031",
+      "Location": "A4",
+      "NeededQuantity": 7,
+      "NewQuantity": 5,
+      "QuantityInWarehouse": 215,
+      "Remarks": ""
+    },
+    {
+      "Category": "Tparency",
+      "DepartmentId": "FINC",
+      "DepartmentName": "Finance",
+      "Description": "Transparency Blue",
+      "ItemId": "T020",
+      "Location": "A12",
+      "NeededQuantity": 15,
+      "NewQuantity": 0,
+      "QuantityInWarehouse": 109,
+      "Remarks": ""
+    }
+  ],
+  "UserId": "55e3b8b7-61e5-4fb3-aa66-33540173bb51"
+}

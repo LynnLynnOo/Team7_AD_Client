@@ -10,38 +10,47 @@ import android.widget.ListView;
 
 import com.example.adteam7.team7_ad_client.R;
 import com.example.adteam7.team7_ad_client.adapters.RequestAdaptor;
-import com.example.adteam7.team7_ad_client.data.StationeryRequest;
+import com.example.adteam7.team7_ad_client.data.StationeryRequestApiModel;
+import com.example.adteam7.team7_ad_client.network.APIDataAgent;
+import com.example.adteam7.team7_ad_client.network.APIDataAgentImpl;
 
 import java.util.List;
 
 public class ViewRequestActivity extends AppCompatActivity {
 
+
+    APIDataAgent agent = new APIDataAgentImpl();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_request);
 
-        new AsyncTask<Void, Void, List<StationeryRequest>>() {
+        new AsyncCallerGet().execute();
+    }
+
+    /*Show request history when entered the page*/
+
+    private class AsyncCallerGet extends AsyncTask<Void, Void, List<StationeryRequestApiModel>> {
             @Override
-            protected List<StationeryRequest> doInBackground(Void... params) {
-                return StationeryRequest.ReadStationeryRequest2();
+            protected List<StationeryRequestApiModel> doInBackground(Void... params) {
+                return agent.ReadStationeryRequest();
             }
 
             @Override
-            protected void onPostExecute(List<StationeryRequest> result) {
+            protected void onPostExecute(List<StationeryRequestApiModel> result) {
                 RequestAdaptor adapter = new RequestAdaptor(getApplicationContext(), result);
                 ListView list = (ListView) findViewById(R.id.RequestlistView);
                 list.setAdapter(adapter);
                 list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        StationeryRequest selected = (StationeryRequest) parent.getAdapter().getItem(position);
+                        StationeryRequestApiModel selected = (StationeryRequestApiModel) parent.getAdapter().getItem(position);
                         Intent intent = new Intent(getApplicationContext(), ApproveRequestActivity.class);
-                        intent.putExtra("rid", selected.get("RequestId"));
+                        intent.putExtra("rid", selected.getRequestId());
                         startActivity(intent);
                     }
                 });
             }
-        }.execute();
     }
 }
+

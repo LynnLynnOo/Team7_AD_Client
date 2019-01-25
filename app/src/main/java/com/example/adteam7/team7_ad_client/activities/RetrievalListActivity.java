@@ -83,7 +83,7 @@ public class RetrievalListActivity extends AppCompatActivity {
             public void onLeftClicked(int selectedPosition) {
                 StationeryRetrievalApiModel selectedRequest = mAdapter.retrievals.get(selectedPosition);
                 int positionToModify = retrievalsToSend.indexOf(selectedRequest);
-                retrievalsToSend.get(selectedPosition).setNewQuantity(selectedRequest.getNeededQuantity());
+                retrievalsToSend.get(positionToModify).setNewQuantity(selectedRequest.getNeededQuantity());
                 mAdapter.retrievals.remove(selectedPosition);
                 mAdapter.notifyItemRemoved(selectedPosition);
                 mAdapter.notifyItemRangeChanged(selectedPosition, mAdapter.getItemCount());
@@ -109,11 +109,11 @@ public class RetrievalListActivity extends AppCompatActivity {
         NumberPicker picker = new NumberPicker(context);
         picker.setMinValue(0);
         int maxValue;
-        if (selectedRequest.getQuantityInWarehouse() <= 0) {
-            maxValue = 0;
-        } else {
-            maxValue = selectedRequest.getQuantityInWarehouse();
-        }
+//        if (selectedRequest.getQuantityInWarehouse() <= 0) {
+//            maxValue = 0;
+//        } else {
+            maxValue = selectedRequest.getNeededQuantity();
+//        }
         picker.setMaxValue(maxValue);
 
         layoutForNumber.addView(picker);

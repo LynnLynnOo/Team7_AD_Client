@@ -85,28 +85,7 @@ public class ManageDepRepActivity extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                final AlertDialog.Builder builder = new AlertDialog.Builder((ManageDepRepActivity.this));
-                builder.setMessage("Are you sure want to log out?");
-
-                builder.setCancelable(true);
-                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
-                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        //session.logoutUser(getApplicationContext());
-                        finish();
-                    }
-                });
-                AlertDialog alertDialog = builder.create();
-                alertDialog.show();
-
-
-                /*if (dep.getEmployees() != null) {
+               if (dep.getEmployees() != null) {
                     Toast.makeText(ManageDepRepActivity.this, "Assigned " + spinEmp.getSelectedItem() + " as Department Representative", Toast.LENGTH_SHORT).show();
                     String repid = checkSelectedEmp();
                     rep.setText(spinEmp.getSelectedItem().toString());
@@ -128,7 +107,7 @@ public class ManageDepRepActivity extends AppCompatActivity {
                 }
                 else{
                     Toast.makeText(ManageDepRepActivity.this, "No Connection", Toast.LENGTH_SHORT).show();
-                }*/
+                }
             }
         });
 

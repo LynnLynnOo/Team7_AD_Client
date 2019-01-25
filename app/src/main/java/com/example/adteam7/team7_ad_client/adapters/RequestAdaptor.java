@@ -9,16 +9,16 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.example.adteam7.team7_ad_client.R;
-import com.example.adteam7.team7_ad_client.data.StationeryRequest;
+import com.example.adteam7.team7_ad_client.data.StationeryRequestApiModel;
 
 import java.util.List;
 
-public class RequestAdaptor extends ArrayAdapter<StationeryRequest> {
+public class RequestAdaptor extends ArrayAdapter<StationeryRequestApiModel> {
 
     int resource;
-    private List<StationeryRequest> items;
+    private List<StationeryRequestApiModel> items;
 
-    public RequestAdaptor(Context context, List<StationeryRequest> items) {
+    public RequestAdaptor(Context context, List<StationeryRequestApiModel> items) {
         super(context, R.layout.request_detail_row, items);
         this.resource = R.layout.request_detail_row;
         this.items = items;
@@ -29,17 +29,16 @@ public class RequestAdaptor extends ArrayAdapter<StationeryRequest> {
         LayoutInflater inflater = (LayoutInflater) getContext()
                 .getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
         View v = inflater.inflate(resource, null);
-        StationeryRequest req = items.get(position);
+        StationeryRequestApiModel req = items.get(position);
         if (req != null) {
             TextView e = (TextView) v.findViewById(R.id.Req_textView1);
-            e.setText(req.get("RequestId"));
+            e.setText(req.getRequestId());
             e = (TextView) v.findViewById(R.id.Req_textView2);
-            e.setText(req.get("RequestedBy"));
+            e.setText(req.getRequestedBy());
             e = (TextView) v.findViewById(R.id.Req_textView3);
-            e.setText(req.get("RequestDate"));
+            e.setText(req.getRequestDate());
             e = (TextView) v.findViewById(R.id.Req_textView4);
-            e.setText(req.get("Status"));
-
+            e.setText(req.getStatus());
         }
         return v;
     }
