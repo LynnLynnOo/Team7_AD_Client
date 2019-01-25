@@ -187,53 +187,8 @@ String rr=JSONParser.postStream(baseURL+"/managedepartmentEmp",true,jemp.toStrin
     }
     //endregion
 
-    // region Author: Teh Li Heng for Managing retrievals of clerk from warehouse
-    @Override
-    public ArrayList<StationeryRetrievalApiModel> RetrievalListGet() {
-        try {
-            //http://192.168.1.100/team7ad/api/
-            String url = String.format("%sclerk/getretrievallist", baseURL);
-            String result = JSONParser.getStream(url);
-            Log.i("Json", result);
 
-            Type stationeryType = new TypeToken<ArrayList<StationeryRetrievalApiModel>>() {
-            }.getType();
-            Gson gson = new Gson();
-            ArrayList<StationeryRetrievalApiModel> sortedList = gson.fromJson(result, stationeryType);
-            sortedList.sort(Comparator.comparing(StationeryRetrievalApiModel::getDescription));
-            return sortedList;
-        } catch (Exception e) {
-            Log.e("Login", e.toString());
-        }
-        return null;
-    }
-
-    @Override
-    public String RetrievalListSet(List<StationeryRetrievalApiModel> models) {
-        String status = "Error at saving.";
-        try {
-            SetRetrievalApiModel apiModel = new SetRetrievalApiModel(session.getUserid(), models);
-
-            //http://192.168.1.100/team7ad/api/
-            String url = String.format("%sclerk/setretrievallist/", baseURL);
-            Log.i("Url", url);
-            Gson gson = new Gson();
-            String json = gson.toJson(apiModel);
-            Log.i("Json", json);
-            String result = JSONParser.postStream(url, true, json);
-            Log.i("PostResult", result);
-
-            if (result != null && result != "")
-                status = "Successfully saved.";
-
-        } catch (Exception e) {
-            Log.e("JsonPost", e.toString());
-        }
-        return status;
-    }
-
-
-    /* GJX*/
+    //region Author:Gao Jiaxue Approve Stationery Request
     @Override
     public StationeryRequestApiModel GetStationeryRequest(String requestId) {
         String url = String.format("%s/%s/%s/%s", baseURL, "stationeryrequest", "getselected", requestId); //url to controller
