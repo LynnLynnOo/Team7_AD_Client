@@ -10,10 +10,10 @@
     <android.support.v7.widget.AppCompatImageView
         android:layout_width="match_parent"
         android:layout_height="243dp"
-        android:layout_marginTop="0dp"
         android:scaleType="centerCrop"
         android:src="@drawable/heading"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
