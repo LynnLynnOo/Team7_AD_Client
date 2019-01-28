@@ -31,12 +31,17 @@
         <activity android:name=".activities.ApproveRequestActivity"></activity>
         <activity android:name=".activities.DelegateDepHeadActivity"></activity>
 
+
+
         <activity android:name=".activities.DisbursementDetailActivity"
             android:parentActivityName=".activities.MainDisbursementListActivity">
         </activity>
 
         <activity android:name=".activities.DisbDetailAckActivity"
             android:parentActivityName=".activities.DisbursementDetailActivity">
+        </activity>
+        <activity android:name=".activities.MainDisbursementListActivity"
+            android:parentActivityName=".activities.MainActivity">
         </activity>
 
         <activity android:name=".activities.LoginActivity">
@@ -54,5 +59,6 @@
         <activity android:name=".activities.RaiseAdjustmentActivity" />
         <activity android:name=".activities.RetrievalListActivity"></activity>
         <activity android:name=".activities.SplashActivity" />
+        <activity android:name=".activities.ViewRequestActivity"></activity>
     </application>
 </manifest>
