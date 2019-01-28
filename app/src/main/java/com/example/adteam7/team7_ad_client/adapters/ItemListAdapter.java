@@ -60,9 +60,6 @@ public class ItemListAdapter extends RecyclerView.Adapter<ItemListAdapter.RvHold
             holder.receive2.setVisibility(View.GONE);
         }
 
-
-
-
     }
 
     @Override
