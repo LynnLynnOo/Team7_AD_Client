@@ -3,6 +3,7 @@ package com.example.adteam7.team7_ad_client.network;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.adteam7.team7_ad_client.data.AckDisbursement;
 import com.example.adteam7.team7_ad_client.data.AdjustmentInfo;
 import com.example.adteam7.team7_ad_client.data.AdjustmentItem;
 import com.example.adteam7.team7_ad_client.data.DelegateDepHeadApiModel;
@@ -204,6 +205,27 @@ public class APIDataAgentImpl implements APIDataAgent {
 
     @Override
     public String ackDisbursement(List<DisbursementSationeryItem> items) {
+
+        try {
+            String id = session.getUserid();
+            AckDisbursement ackDisbursement=new AckDisbursement();
+            ackDisbursement.setDisbursedBy(id);
+
+            String url = String.format("%sclerk/acknowledgement", baseURL);
+
+            Gson gson = new Gson();
+            String json = gson.toJson(ackDisbursement);
+
+            String result = JSONParser.postStream(url, true, json);
+
+
+            return result;
+
+        } catch (Exception e) {
+            Log.e("JsonPost", e.toString());
+        }
+
+
         return null;
     }
 
