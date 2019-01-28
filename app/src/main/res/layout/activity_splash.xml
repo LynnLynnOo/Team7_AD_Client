@@ -14,7 +14,7 @@
         android:layout_height="150dp"
         android:layout_above="@+id/wttv"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/Logo3"/>
+        android:background="@drawable/logo3"/>
 
     <TextView
         android:id="@+id/wttv"

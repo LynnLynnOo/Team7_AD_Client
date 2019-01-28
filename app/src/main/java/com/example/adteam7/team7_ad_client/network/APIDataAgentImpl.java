@@ -35,7 +35,7 @@ import static android.content.ContentValues.TAG;
 public class APIDataAgentImpl implements APIDataAgent {
 
   // static String host = "localhost";
-   static String host = "172.17.82.83";
+   static String host = "172.17.81.182";
    // http://localhost/Team7API/Token
     static String baseURL;
     static String imageURL;
@@ -91,7 +91,6 @@ public class APIDataAgentImpl implements APIDataAgent {
             rep.setDepartmentname(a.getString("DepartmentName"));
             rep.setDepartmentRepName(a.getString("DepartmentRepName"));
             rep.setDepartmentRepId(a.getString("DepartmentRepId"));
-
 
             String url2 = String.format("%s/%s/%s", baseURL,"managedepartmentEmp", id);
             JSONArray arr=JSONParser.getJSONArrayFromUrl(url2);
@@ -192,16 +191,15 @@ public class APIDataAgentImpl implements APIDataAgent {
     public String voidDisbursement(String disbno) {
 
         try {
-            String url = String.format("%sclerk/voiddisb/%s", baseURL,disbno);
+            String url = String.format("%sclerk/voiddisb/%s", baseURL, disbno);
 
             String result = JSONParser.getStream(url);
 
             return result;
         } catch (Exception e) {
 
-            return "fail";
         }
-
+        return null;
     }
 
     @Override
