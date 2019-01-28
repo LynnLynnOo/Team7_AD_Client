@@ -26,63 +26,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
 
-    <View
+    <LinearLayout
         android:layout_marginLeft="45dp"
         android:layout_marginRight="45dp"
         android:layout_width="match_parent"
-        android:layout_height="450dp"
+        android:layout_height="350dp"
         android:background="@drawable/panelbg"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="135dp"
         android:id="@+id/layoutpanel"
-        />
-
-    <TextView
-        android:id="@+id/potextViewSerial"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Raise Adjustment"
-        android:textColor="@color/headingText"
-        android:textSize="45sp"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="50dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp" />
-
-
-        <Button
-            android:id="@+id/AddButton"
-            android:layout_width="110dp"
-            android:layout_height="110dp"
-            android:layout_marginTop="35dp"
-            android:layout_marginLeft="35dp"
-            app:layout_constraintLeft_toLeftOf="@id/layoutpanel"
-            app:layout_constraintTop_toBottomOf="@id/layoutpanel"
-            android:background="@drawable/plusbtn" />
-        <Button
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="35dp"
-            android:layout_marginRight="35dp"
-            app:layout_constraintTop_toBottomOf="@id/layoutpanel"
-            app:layout_constraintRight_toRightOf="@id/layoutpanel"
-            android:id="@+id/confirmButton"
-            android:background="@drawable/acceptbtn"/>
-
-
-    <LinearLayout
-        android:layout_margin="@dimen/s_margin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:weightSum="3">
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_margin="@dimen/s_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="3">
 
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.5"
-            >
+            android:layout_weight="0.5">
 
             <TextView
                 android:textColor="@android:color/black"
@@ -97,14 +61,14 @@
             android:layout_weight="0.9"
             >
 
-    <ListView
-        android:id="@+id/AdjustmentList"
-        android:layout_width="310dp"
-        android:layout_height="432dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintTop_toTopOf="@id/layoutpanel"
-        app:layout_constraintStart_toStartOf="@id/layoutpanel"
-        app:layout_constraintEnd_toEndOf="@id/layoutpanel"/>
+            <!--<ListView-->
+            <!--android:id="@+id/AdjustmentList"-->
+            <!--android:layout_width="310dp"-->
+            <!--android:layout_height="432dp"-->
+            <!--android:layout_marginTop="10dp"-->
+            <!--app:layout_constraintTop_toTopOf="@id/layoutpanel"-->
+            <!--app:layout_constraintStart_toStartOf="@id/layoutpanel"-->
+            <!--app:layout_constraintEnd_toEndOf="@id/layoutpanel"/>-->
             <TextView
                 android:textColor="@android:color/black"
                 android:layout_width="match_parent"
@@ -156,12 +120,49 @@
 
     </LinearLayout>
 
-    <android.support.v7.widget.RecyclerView
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/AdjustmentList">
+
+        </android.support.v7.widget.RecyclerView>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/potextViewSerial"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/AdjustmentList">
+        android:layout_weight="1"
+        android:text="Raise Adjustment"
+        android:textColor="@color/headingText"
+        android:textSize="45sp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp" />
 
-    </android.support.v7.widget.RecyclerView>
+
+        <Button
+            android:id="@+id/AddButton"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:layout_marginTop="35dp"
+            android:layout_marginLeft="35dp"
+            app:layout_constraintLeft_toLeftOf="@id/layoutpanel"
+            app:layout_constraintTop_toBottomOf="@id/layoutpanel"
+            android:background="@drawable/plusbtn" />
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="35dp"
+            android:layout_marginRight="35dp"
+            app:layout_constraintTop_toBottomOf="@id/layoutpanel"
+            app:layout_constraintRight_toRightOf="@id/layoutpanel"
+            android:id="@+id/confirmButton"
+            android:background="@drawable/acceptbtn"/>
+
+
+
 
 
 </android.support.constraint.ConstraintLayout>
