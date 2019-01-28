@@ -48,7 +48,11 @@ public class ItemListAdapter extends RecyclerView.Adapter<ItemListAdapter.RvHold
 
             holder.receive2.setVisibility(View.VISIBLE);
             holder.receiveqty.setVisibility(View.GONE);
-            holder.receive2.setText(list.get(position).getQuantity()+"");
+            if(list.get(position).getReceivedQty()==0){
+                holder.receive2.setText(list.get(position).getQuantity()+"");
+            }
+            else
+            holder.receive2.setText(list.get(position).getReceivedQty()+"");
         }
         else {
             //come from Detail
@@ -85,6 +89,7 @@ public class ItemListAdapter extends RecyclerView.Adapter<ItemListAdapter.RvHold
                     list.get(getAdapterPosition()).setReceivedQty(value);
                 }
             });
+
         }
 
     }
