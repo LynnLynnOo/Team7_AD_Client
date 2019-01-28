@@ -38,6 +38,9 @@
         <activity android:name=".activities.DisbDetailAckActivity"
             android:parentActivityName=".activities.DisbursementDetailActivity">
         </activity>
+        <activity android:name=".activities.MainDisbursementListActivity"
+            android:parentActivityName=".activities.MainActivity">
+        </activity>
 
         <activity android:name=".activities.LoginActivity">
             <intent-filter>
