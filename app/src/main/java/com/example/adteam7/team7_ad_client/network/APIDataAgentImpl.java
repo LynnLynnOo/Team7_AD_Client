@@ -3,6 +3,7 @@ package com.example.adteam7.team7_ad_client.network;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.adteam7.team7_ad_client.data.AckDisbursement;
 import com.example.adteam7.team7_ad_client.data.AdjustmentInfo;
 import com.example.adteam7.team7_ad_client.data.AdjustmentItem;
 import com.example.adteam7.team7_ad_client.data.DelegateDepHeadApiModel;
@@ -35,7 +36,7 @@ import static android.content.ContentValues.TAG;
 public class APIDataAgentImpl implements APIDataAgent {
 
   // static String host = "localhost";
-   static String host = "172.17.81.182";
+   static String host = "172.17.113.199";
    // http://localhost/Team7API/Token
     static String baseURL;
     static String imageURL;
@@ -94,6 +95,7 @@ public class APIDataAgentImpl implements APIDataAgent {
             rep.setDepartmentRepName(a.getString("DepartmentRepName"));
             rep.setDepartmentRepId(a.getString("DepartmentRepId"));
 
+
             String url2 = String.format("%s/%s/%s", baseURL,"managedepartmentEmp", id);
             JSONArray arr=JSONParser.getJSONArrayFromUrl(url2);
             List<Employee> list=new ArrayList<>();
@@ -119,8 +121,6 @@ public class APIDataAgentImpl implements APIDataAgent {
 
        // return null;
     }
-
-
 
     @Override
     public String assignDepRep(ManageDepRep dep) {
@@ -206,6 +206,28 @@ public class APIDataAgentImpl implements APIDataAgent {
 
     @Override
     public String ackDisbursement(List<DisbursementSationeryItem> items) {
+
+        try {
+            String id = session.getUserid();
+            AckDisbursement ackDisbursement=new AckDisbursement();
+            ackDisbursement.setDisbursedBy(id);
+
+            String url = String.format("%sclerk/acknowledgement", baseURL);
+
+            Gson gson = new Gson();
+            String json = gson.toJson(ackDisbursement);
+
+            String result = JSONParser.postStream(url, true, json);
+
+
+            return result;
+
+        } catch (Exception e) {
+            Log.e("JsonPost", e.toString());
+        }
+
+
+        return null;
     }
 
     //endregion
