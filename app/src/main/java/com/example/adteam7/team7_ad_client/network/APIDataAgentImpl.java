@@ -74,6 +74,8 @@ public class APIDataAgentImpl implements APIDataAgent {
         }
     }
 
+
+
     @Override
     public ManageDepRep delegateDepHeadGet() {
         try {
@@ -117,8 +119,6 @@ public class APIDataAgentImpl implements APIDataAgent {
 
        // return null;
     }
-
-
 
     @Override
     public String assignDepRep(ManageDepRep dep) {
@@ -355,44 +355,45 @@ public class APIDataAgentImpl implements APIDataAgent {
 
 
     //region Cheng Zongpei
-    public List<String> adjustmentGetCategories() {
-        String url = "http://192.168.1.75/webapi/adjustment/categories";
+    public List<String> adjustmentGetCategories(){
+        String url = String.format("http://%s/webapi/adjustment/categories",host);
         JSONArray array = JSONParser.getJSONArrayFromUrl(url);
         List<String> result = new ArrayList<String>();
-        try {
-            for (int i = 0; i < array.length(); i++) {
+        try{
+            for(int i=0;i<array.length();i++){
                 result.add(array.getString(i));
             }
-        } catch (Exception e) {
-            Log.e("error", "Json get category error");
+        }
+        catch (Exception e){
+            Log.e("error","Json get category error");
         }
         return result;
     }
 
-    public List<AdjustmentItem> adjustmentGetItem(String category) {
-        String url = String.format("http://192.168.1.75/webapi/adjustment/items/%s", category);
+    public List<AdjustmentItem> adjustmentGetItem(String category){
+        String url =String.format("http://%s/webapi/adjustment/items/%s",host,category);
         JSONArray array = JSONParser.getJSONArrayFromUrl(url);
         List<AdjustmentItem> result = new ArrayList<AdjustmentItem>();
-        try {
-            for (int i = 0; i < array.length(); i++) {
+        try{
+            for(int i=0;i<array.length();i++){
                 JSONObject object = array.getJSONObject(i);
-                result.add(new AdjustmentItem(object.getString("itemId"), object.getString("category"), object.getString("description"), object.getString("unitOfMeasure"), object.getInt("quantityWareHouse"), object.getDouble("price")));
+                result.add(new AdjustmentItem(object.getString("itemId"),object.getString("category"),object.getString("description"),object.getString("unitOfMeasure"),object.getInt("quantityWareHouse"),object.getDouble("price")));
             }
-        } catch (Exception e) {
-            Log.e("error", "Json get item error");
+        }catch (Exception e){
+            Log.e("error","Json get item error");
         }
         return result;
     }
 
-    public AdjustmentItem adjustmentGetInfo(String itemId) {
-        String url = String.format("http://192.168.1.75/webapi/adjustment/item/%s", itemId);
+    public AdjustmentItem adjustmentGetInfo(String itemId){
+        String url = String.format("http://%s/webapi/adjustment/item/%s",host,itemId);
         JSONObject object = JSONParser.getJSONFromUrl(url);
         AdjustmentItem result;
         try {
-            result = new AdjustmentItem(object.getString("itemId"), object.getString("category"), object.getString("description"), object.getString("unitOfMeasure"), object.getInt("quantityWareHouse"), object.getDouble("price"));
-        } catch (Exception e) {
-            result = new AdjustmentItem(null, null, null, null, 0, 0);
-            Log.e("error", "Json get info error");
+            result = new AdjustmentItem(object.getString("itemId"),object.getString("category"),object.getString("description"),object.getString("unitOfMeasure"),object.getInt("quantityWareHouse"),object.getDouble("price"));
+        }catch (Exception e){
+            result = new AdjustmentItem(null,null,null,null,0,0);
+            Log.e("error","Json get info error");
         }
         return result;
     }
@@ -411,7 +412,7 @@ public class APIDataAgentImpl implements APIDataAgent {
             Log.e("error","Json save error");
         }
 
-        String result = JSONParser.postStream(String.format("%s/webapi/adjustment/save",host), true, array.toString());
+        String result = JSONParser.postStream(String.format("http://%s/webapi/adjustment/save",host), true, array.toString());
         return result;
     }
 
