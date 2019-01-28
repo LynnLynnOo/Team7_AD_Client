@@ -124,4 +124,10 @@ public class RaiseAdjustmentActivity extends AppCompatActivity {
         }
         adjustment = newAdjustment;
     }
+
+    @Override
+    public void finish() {
+        keepAdjustment();
+        super.finish();
+    }
 }
