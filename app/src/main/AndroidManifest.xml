@@ -26,16 +26,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.ApproveRejectPODetails"></activity>
-        <activity android:name=".activities.ApproveRejectPO">
-
-        </activity>
+        <activity android:name=".activities.ReturntoWarehouseActivity"></activity>
+        <activity android:name=".activities.ReturntoWarehousedetailActivity" />
+        <activity android:name=".activities.ApproveRejectPODetails" />
+        <activity android:name=".activities.ApproveRejectPO" />
         <activity android:name=".activities.ManageDepRepActivity" />
         <activity android:name=".activities.SplashActivity" />
         <activity android:name=".activities.RaiseAdjustmentActivity" />
         <activity android:name=".activities.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -45,8 +46,6 @@
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
-            android:theme="@style/AppTheme.NoActionBar" /> <!-- <activity android:name=".activities.LoginActivity"></activity> -->
-
     </application>
 
 </manifest>
