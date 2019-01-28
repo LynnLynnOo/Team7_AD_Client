@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -47,7 +48,9 @@ public class ViewRequestActivity extends AppCompatActivity {
                         StationeryRequestApiModel selected = (StationeryRequestApiModel) parent.getAdapter().getItem(position);
                         Intent intent = new Intent(getApplicationContext(), ApproveRequestActivity.class);
                         intent.putExtra("rid", selected.getRequestId());
+                        Log.e("Rid", selected.getRequestId());
                         startActivity(intent);
+
                     }
                 });
             }

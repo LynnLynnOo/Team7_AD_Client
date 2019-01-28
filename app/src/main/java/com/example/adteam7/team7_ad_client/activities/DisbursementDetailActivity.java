@@ -27,7 +27,7 @@ public class DisbursementDetailActivity extends AppCompatActivity  {
     APIDataAgent agent=new APIDataAgentImpl();
     ItemListAdapter adapter;
     Button voiddisb,ackwge;
-    String disbno,disbotp;
+    String disbno, disbotp;
     List<DisbursementSationeryItem> itemlist;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,13 +37,13 @@ public class DisbursementDetailActivity extends AppCompatActivity  {
         itemsrv.setLayoutManager(new LinearLayoutManager(this));
         voiddisb=findViewById(R.id.voiddisb);
         ackwge=findViewById(R.id.ackwge);
-        disbno= getIntent().getStringExtra("disbno");
+        disbno = getIntent().getStringExtra("disbno");
 
-        if(getIntent().hasExtra("disbno")){
+        if (getIntent().hasExtra("disbno")) {
             new AsyncGetDisbursementDetail().execute(disbno);
         }
-        if(getIntent().hasExtra("disbotp")) {
-            disbotp=getIntent().getStringExtra("disbotp");
+        if (getIntent().hasExtra("disbotp")) {
+            disbotp = getIntent().getStringExtra("disbotp");
         }
 
 
@@ -70,7 +70,7 @@ public class DisbursementDetailActivity extends AppCompatActivity  {
         // Toast.makeText(this, "get from adapter "+dlist.get(0).getReceivedQty(), Toast.LENGTH_SHORT).show();
         Intent intent=new Intent(DisbursementDetailActivity.this,DisbDetailAckActivity.class);
 
-        intent.putExtra("disbotp",disbotp);
+        intent.putExtra("disbotp", disbotp);
 
         intent.putExtra("disblist", (Serializable) dlist);
 
@@ -92,9 +92,9 @@ public class DisbursementDetailActivity extends AppCompatActivity  {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
-                if(itemlist!=null){
+                if (itemlist != null) {
 
-                   new AsyncSetDisbVoid().execute(disbno);
+                    new AsyncSetDisbVoid().execute(disbno);
 
                 }
                 finish();
@@ -124,17 +124,18 @@ public class DisbursementDetailActivity extends AppCompatActivity  {
 
         }
     }
-    private class AsyncSetDisbVoid extends AsyncTask<String, Void,String> {
+
+    private class AsyncSetDisbVoid extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... param) {
-            String s= agent.voidDisbursement(param[0]);
+            String s = agent.voidDisbursement(param[0]);
 
-            return  s;
+            return s;
         }
 
         @Override
         protected void onPostExecute(String s) {
-            Toast.makeText(DisbursementDetailActivity.this, "process return "+s, Toast.LENGTH_SHORT).show();
+            Toast.makeText(DisbursementDetailActivity.this, "process return " + s, Toast.LENGTH_SHORT).show();
 
             super.onPostExecute(s);
         }

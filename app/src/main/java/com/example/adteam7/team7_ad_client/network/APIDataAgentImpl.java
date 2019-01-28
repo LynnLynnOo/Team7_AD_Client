@@ -3,6 +3,7 @@ package com.example.adteam7.team7_ad_client.network;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.adteam7.team7_ad_client.data.AckDisbursement;
 import com.example.adteam7.team7_ad_client.data.AdjustmentInfo;
 import com.example.adteam7.team7_ad_client.data.AdjustmentItem;
 import com.example.adteam7.team7_ad_client.data.DelegateDepHeadApiModel;
@@ -205,6 +206,27 @@ public class APIDataAgentImpl implements APIDataAgent {
 
     @Override
     public String ackDisbursement(List<DisbursementSationeryItem> items) {
+
+        try {
+            String id = session.getUserid();
+            AckDisbursement ackDisbursement=new AckDisbursement();
+            ackDisbursement.setDisbursedBy(id);
+
+            String url = String.format("%sclerk/acknowledgement", baseURL);
+
+            Gson gson = new Gson();
+            String json = gson.toJson(ackDisbursement);
+
+            String result = JSONParser.postStream(url, true, json);
+
+
+            return result;
+
+        } catch (Exception e) {
+            Log.e("JsonPost", e.toString());
+        }
+
+
         return null;
     }
 
@@ -292,6 +314,51 @@ public class APIDataAgentImpl implements APIDataAgent {
             Log.e("StationeryRequest", "JSONArray error");
         }
         return (list);
+    }
+
+    /* Approve Request*/
+    @Override
+    public String ApproveStationeryRequest(StationeryRequestApiModel request) {
+        String status = "Error at approve.";
+        try {
+            String url = String.format("%s/%s/%s/", baseURL, "stationeryrequest", "approve"); //url to controller
+            Gson gson = new Gson();
+            String json = gson.toJson(request);
+            Log.i("Json", json);
+            String result = JSONParser.postStream(url, true, json);
+            Log.i("PostResult", result);
+            String re = result.trim();
+            if (re.equals("true")) {
+                status = "Successfully approved.";
+            }
+
+        } catch (Exception e) {
+            Log.e("JsonPost", e.toString());
+        }
+        Log.e("status", status);
+        return status;
+    }
+
+    /* Reject Request*/
+    @Override
+    public String RejectStationeryRequest(StationeryRequestApiModel request) {
+        String status = "Error at reject.";
+        try {
+            String url = String.format("%s/%s/%s/", baseURL, "stationeryrequest", "reject"); //url to controller
+            Gson gson = new Gson();
+            String json = gson.toJson(request);
+            Log.i("Json", json);
+            String result = JSONParser.postStream(url, true, json);
+            Log.i("PostResult", result);
+            String re = result.trim();
+            if (re.equals("true")) {
+                status = "Successfully rejected.";
+            }
+        } catch (Exception e) {
+            Log.e("JsonPost", e.toString());
+        }
+        Log.e("status", status);
+        return status;
     }
 
     //endregion
