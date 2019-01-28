@@ -26,10 +26,15 @@
     </string>
     <string name="assign">Assign</string>
     <!-- PO Details-->
-    <string name="label1">Request ID</string>
-    <string name="label2">Request By</string>
-    <string name="label3">Status</string>
-    <string name="label4">Request Date</string>
+    <string name="requestid">Request ID :</string>
+    <string name="requestby">Request By :</string>
+    <string name="status">Status :</string>
+    <string name="requestdate">Request Date :</string>
     <string name="acknowledge">Acknowledge</string>
     <string name="voiddisb">Void</string>
+    <string name="cancel">Cancel</string>
+    <string name="confirm">Confirm OTP</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

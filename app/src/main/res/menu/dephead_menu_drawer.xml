@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+    <item
+        android:id="@+id/nav_delegateHead"
+        android:icon="@drawable/ic_menu_slideshow"
+        android:title="Delegate Acting Dep Head" />
+
+    <item
+        android:id="@+id/nav_viewRequest"
+        android:icon="@drawable/ic_menu_share"
+        android:title="View Request" />
+
+
+    <item
+        android:id="@+id/nav_manageDepRep"
+        android:icon="@drawable/ic_menu_share"
+        android:title="Manage/Assign Department Dep Rep" />
+
+</menu>
+

@@ -2,9 +2,10 @@ package com.example.adteam7.team7_ad_client.activities;
 
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -16,9 +17,12 @@ import com.example.adteam7.team7_ad_client.R;
 import com.example.adteam7.team7_ad_client.data.AdjustmentItem;
 import com.example.adteam7.team7_ad_client.network.APIDataAgent;
 import com.example.adteam7.team7_ad_client.network.APIDataAgentImpl;
+import com.travijuu.numberpicker.library.NumberPicker;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class AdjustmentDetailActivity extends AppCompatActivity {
     APIDataAgent api = new APIDataAgentImpl();
@@ -29,17 +33,71 @@ public class AdjustmentDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adjustment_detail);
-
         new AsyncGetCategory().execute();
 
         Button confirm = findViewById(R.id.confirmButton);
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                if (((NumberPicker) findViewById(R.id.quantity)).getValue() != 0) {
+                    Intent data = new Intent();
+                    int quantity = ((NumberPicker) findViewById(R.id.quantity)).getValue();
+                    data.putExtra("quantity", quantity);
+                    data.putExtra("itemId", ItemId);
+                    setResult(RESULT_OK, data);
+                    Log.d("finish", "!!!!!!!!!!!!!!!!");
+                    finish();
+                } else {
+
+                }
             }
         });
+        final NumberPicker numberPicker = findViewById(R.id.quantity);
+        numberPicker.setValue(0);
+        final Button increment = findViewById(R.id.increment);
+        increment.setOnTouchListener(new View.OnTouchListener() {
+            Timer timer;
 
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    timer = new Timer();
+                    timer.scheduleAtFixedRate(new TimerTask() {
+                        @Override
+                        public void run() {
+                            numberPicker.increment(5);
+                        }
+                    }, 500, 500);
+                }
+                if (event.getAction() == MotionEvent.ACTION_UP) {
+                    timer.cancel();
+                    Log.d("Action", "button release");
+                }
+                return false;
+            }
+        });
+        final Button decrement = findViewById(R.id.decrement);
+        decrement.setOnTouchListener(new View.OnTouchListener() {
+            Timer timer;
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    timer = new Timer();
+                    timer.scheduleAtFixedRate(new TimerTask() {
+                        @Override
+                        public void run() {
+                            numberPicker.increment(-5);
+                        }
+                    }, 500, 500);
+                }
+                if (event.getAction() == MotionEvent.ACTION_UP) {
+                    timer.cancel();
+                    Log.d("Action", "button release");
+                }
+                return false;
+            }
+        });
     }
 
     private class AsyncGetCategory extends AsyncTask<Void,Void,List<String>>{
@@ -94,10 +152,13 @@ public class AdjustmentDetailActivity extends AppCompatActivity {
                     for(AdjustmentItem item:items){
                         if(item.description == description){
                             uom.setText(item.unitOfMeasure);
+                            NumberPicker numberPicker = findViewById(R.id.quantity);
+                            numberPicker.setMin(-item.quantityWareHouse);
                             ItemId = item.itemId;
                             break;
                         }
                     }
+
                 }
 
                 @Override
@@ -105,20 +166,7 @@ public class AdjustmentDetailActivity extends AppCompatActivity {
 
                 }
             });
-        }
-    }
 
-    @Override
-    public void finish() {
-        Intent data = new Intent();
-        EditText quantityText = findViewById(R.id.quantity);
-        Log.d("quantityString",quantityText.getText().toString());
-        if(!quantityText.getText().toString().isEmpty()){
-            data.putExtra("quantity",Integer.parseInt(quantityText.getText().toString()));
-            data.putExtra("itemId",ItemId);
         }
-        setResult(RESULT_OK,data);
-        Log.d("finish","!!!!!!!!!!!!!!!!");
-        super.finish();
     }
 }

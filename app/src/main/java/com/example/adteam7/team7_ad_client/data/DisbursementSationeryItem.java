@@ -1,18 +1,18 @@
 package com.example.adteam7.team7_ad_client.data;
 
-import java.util.Date;
+import java.io.Serializable;
 
 /**
  * Created by dodo
  **/
-public class DisbursementSationeryItem {
+public class DisbursementSationeryItem implements Serializable {
 
     private String DisbursementNo;
     private String DepartmentId;
     private String ItemId;
     private String Description;
     private int Quantity;
-    private int receivedQty;
+    private int receivedQty = 0;
 
     public DisbursementSationeryItem(String disbursementNo, String departmentId, String itemId, String description, int quantity) {
         DisbursementNo = disbursementNo;
@@ -20,6 +20,14 @@ public class DisbursementSationeryItem {
         ItemId = itemId;
         Description = description;
         Quantity = quantity;
+    }
+
+    public int getReceivedQty() {
+        return receivedQty;
+    }
+
+    public void setReceivedQty(int receivedQty) {
+        this.receivedQty = receivedQty;
     }
 
     public DisbursementSationeryItem(String disbursementNo, String departmentId, String itemId, String description, int quantity, int receivedQty) {

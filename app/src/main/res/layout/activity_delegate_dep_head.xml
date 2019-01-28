@@ -4,18 +4,63 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".activities.DelegateDepHeadActivity">
+
+    <android.support.v7.widget.AppCompatImageView
+        android:layout_width="match_parent"
+        android:layout_height="243dp"
+        android:layout_marginTop="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/heading"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.v7.widget.AppCompatImageView
+        android:layout_width="match_parent"
+        android:layout_height="243dp"
+        android:layout_marginBottom="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/footer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <TextView
+        android:id="@+id/tV_head_delhead"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Delegate Authority"
+        android:textColor="@color/headingText"
+        android:textSize="45sp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"/>
+
+    <View
+        android:layout_marginLeft="45dp"
+        android:layout_marginRight="45dp"
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        android:background="@drawable/panelbg"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="135dp"
+        android:id="@+id/layoutpanel"
+        />
 
     <TextView
         android:id="@+id/potextViewSerial"
         android:layout_width="242dp"
         android:layout_height="18dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="35dp"
+        android:textColor="@color/txtColor"
         android:text="Current Delegated Department Head: "
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="@id/layoutpanel"
+        app:layout_constraintTop_toTopOf="@id/layoutpanel" />
 
     <TextView
         android:id="@+id/depHeadName"
@@ -23,6 +68,7 @@
         android:layout_height="wrap_content"
         android:text="null"
         android:textStyle="bold"
+        android:textColor="@color/txtColor"
         app:layout_constraintStart_toStartOf="@+id/potextViewSerial"
         app:layout_constraintTop_toBottomOf="@+id/potextViewSerial" />
 
@@ -32,6 +78,7 @@
         android:layout_height="28dp"
         android:layout_marginTop="8dp"
         android:spinnerMode="dropdown"
+        android:textColor="@color/txtColor"
         app:layout_constraintStart_toStartOf="@+id/textView4"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
@@ -40,6 +87,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:textColor="@color/txtColor"
         android:text="Delegate new department head"
         app:layout_constraintStart_toStartOf="@+id/depHeadName"
         app:layout_constraintTop_toTopOf="@+id/divider" />
@@ -53,6 +101,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:background="?android:attr/listDivider"
+        android:textColor="@color/txtColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/depHeadName" />
@@ -64,6 +113,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
+        android:textColor="@color/txtColor"
         android:text="Effective start date: "
         app:layout_constraintStart_toStartOf="@+id/textView4"
         app:layout_constraintTop_toBottomOf="@+id/employeeList" />
@@ -74,6 +124,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
+        android:textColor="@color/txtColor"
         android:text="Effective end date:"
         app:layout_constraintStart_toStartOf="@+id/textView5"
         app:layout_constraintTop_toBottomOf="@+id/startDate" />
@@ -83,6 +134,7 @@
         android:layout_width="284dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:textColor="@color/txtColor"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:clickable="true"
@@ -97,6 +149,7 @@
         android:id="@+id/endDate"
         android:layout_width="284dp"
         android:layout_height="wrap_content"
+        android:textColor="@color/txtColor"
         android:layout_marginTop="8dp"
         android:clickable="true"
         android:ems="10"
@@ -108,23 +161,21 @@
 
     <Button
         android:id="@+id/submit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:text="Submit"
-        app:layout_constraintEnd_toEndOf="@+id/employeeList"
-        app:layout_constraintTop_toBottomOf="@+id/endDate" />
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginRight="35dp"
+        android:background="@drawable/acceptbtn"
+        app:layout_constraintRight_toRightOf="@id/layoutpanel"
+        app:layout_constraintTop_toBottomOf="@+id/layoutpanel" />
 
     <Button
         android:id="@+id/cancel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:text="Cancel"
-        app:layout_constraintEnd_toStartOf="@+id/submit"
-        app:layout_constraintTop_toBottomOf="@+id/endDate" />
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginLeft="35dp"
+        android:background="@drawable/rejectbtn"
+        app:layout_constraintLeft_toLeftOf="@id/layoutpanel"
+        app:layout_constraintTop_toBottomOf="@+id/layoutpanel" />
 </android.support.constraint.ConstraintLayout>

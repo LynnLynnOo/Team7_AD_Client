@@ -47,6 +47,13 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        navigationView.inflateMenu(R.menu.activity_main_drawer);
+
+        inflateDrawerMenu();
+    }
+
+    private void inflateDrawerMenu() {
+
     }
 
     @Override

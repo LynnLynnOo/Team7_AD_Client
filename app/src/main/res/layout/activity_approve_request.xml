@@ -1,30 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/approveRequest_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:background="@drawable/background">
+
+    <View
+        android:id="@+id/layoutpanel"
+        android:layout_width="355dp"
+        android:layout_height="366dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="140dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/panelbg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tV_head_appreq"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Approve Request"
+        android:textColor="@color/headingText"
+        android:textSize="45sp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"/>
 
     <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:id="@+id/tableLayout"
+        android:layout_width="319dp"
+        android:layout_height="74dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.262">
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/requestid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/label1" />
+                android:text="@string/requestid"
+                android:textColor="@color/txtColor" />
 
-            <EditText
-                android:id="@+id/editText1"
+            <TextView
+                android:id="@+id/text1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="text"
-                android:textSize="10pt" />
+                android:text=""
+                android:textColor="@color/txtColor" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="298dp"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/requestby"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/requestby"
+                android:textColor="@color/txtColor" />
+
+            <TextView
+                android:id="@+id/text2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="@color/txtColor" />
 
         </TableRow>
 
@@ -33,59 +90,74 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/status"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/label2" />
+                android:layout_height="match_parent"
+                android:text="@string/status"
+                android:textColor="@color/txtColor" />
 
-            <EditText
-                android:id="@+id/editText2"
+            <TextView
+                android:id="@+id/text3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="text"
-                android:textSize="10pt" />
+                android:text=""
+                android:textColor="@color/txtColor" />
 
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="31dp">
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/requestdate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/label3" />
-
-            <EditText
-                android:id="@+id/editText3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="text"
-                android:textSize="10pt" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+                android:text="@string/requestdate"
+                android:textColor="@color/txtColor" />
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/text4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/label4" />
-
-            <EditText
-                android:id="@+id/editText4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="text"
-                android:textSize="10pt" />
-
+                android:text=""
+                android:textColor="@color/txtColor" />
         </TableRow>
+
     </TableLayout>
-</LinearLayout>
+
+
+    <Button
+        android:id="@+id/reqButtonApprove"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginRight="60dp"
+        android:background="@drawable/acceptbtn"
+        android:onClick="ApproveReq"
+        app:layout_constraintRight_toRightOf="@id/layoutpanel"
+        app:layout_constraintTop_toBottomOf="@id/layoutpanel"
+
+        />
+
+    <Button
+        android:id="@+id/reqButtonReject"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="36dp"
+        android:background="@drawable/rejectbtn"
+        android:onClick="RejectReq"
+        app:layout_constraintLeft_toLeftOf="@id/layoutpanel"
+        app:layout_constraintTop_toBottomOf="@id/layoutpanel" />
+
+    <LinearLayout
+        android:id="@+id/items"
+        android:layout_width="325dp"
+        android:layout_height="235dp"
+        android:layout_marginTop="12dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="@+id/layoutpanel"
+        app:layout_constraintStart_toStartOf="@+id/layoutpanel"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout"></LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>
