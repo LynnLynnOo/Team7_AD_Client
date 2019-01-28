@@ -35,12 +35,12 @@ public class OTPFragment extends DialogFragment {
         View rootView = inflater.inflate(R.layout.confirm_item_otp, container, false);
 
         Button cancel = (Button) rootView.findViewById(R.id.cancel);
-        Button confirm=rootView.findViewById(R.id.confirm);
-        VerificationCodeEditText confirmOTP=rootView.findViewById(R.id.vercode_otp);
-        if(getArguments().getString("OTP")!=null){
-            otp=getArguments().getString("OTP");
+        Button confirm = rootView.findViewById(R.id.confirm);
+        VerificationCodeEditText confirmOTP = rootView.findViewById(R.id.vercode_otp);
+        if (getArguments().getString("OTP") != null) {
+            otp = getArguments().getString("OTP");
         }
-        Toast.makeText(this.getContext(), ""+getArguments().getString("OTP"), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this.getContext(), "" + getArguments().getString("OTP"), Toast.LENGTH_SHORT).show();
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,15 +52,15 @@ public class OTPFragment extends DialogFragment {
             @Override
             public void onClick(View v) {
 
-               if(confirmOTP.getText().toString().equals(otp)){
-                   Toast.makeText(OTPFragment.this.getContext(), "Check ! correct", Toast.LENGTH_SHORT).show();
-                   DisbDetailAckActivity p = (DisbDetailAckActivity) getActivity();
-                   Intent i = new Intent()
-                           .putExtra(RESULT, otp);
+                if (confirmOTP.getText().toString().equals(otp)) {
+                    Toast.makeText(OTPFragment.this.getContext(), "Check ! correct", Toast.LENGTH_SHORT).show();
+                    DisbDetailAckActivity p = (DisbDetailAckActivity) getActivity();
+                    Intent i = new Intent()
+                            .putExtra(RESULT, otp);
 
-                   p.onActivityResult(12, Activity.RESULT_OK, i);
-                   dismiss();
-               }
+                    p.onActivityResult(12, Activity.RESULT_OK, i);
+                    dismiss();
+                }
 
 
             }

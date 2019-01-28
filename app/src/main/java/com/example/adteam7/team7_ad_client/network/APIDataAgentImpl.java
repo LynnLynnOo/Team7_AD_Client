@@ -316,6 +316,51 @@ public class APIDataAgentImpl implements APIDataAgent {
         return (list);
     }
 
+    /* Approve Request*/
+    @Override
+    public String ApproveStationeryRequest(StationeryRequestApiModel request) {
+        String status = "Error at approve.";
+        try {
+            String url = String.format("%s/%s/%s/", baseURL, "stationeryrequest", "approve"); //url to controller
+            Gson gson = new Gson();
+            String json = gson.toJson(request);
+            Log.i("Json", json);
+            String result = JSONParser.postStream(url, true, json);
+            Log.i("PostResult", result);
+            String re = result.trim();
+            if (re.equals("true")) {
+                status = "Successfully approved.";
+            }
+
+        } catch (Exception e) {
+            Log.e("JsonPost", e.toString());
+        }
+        Log.e("status", status);
+        return status;
+    }
+
+    /* Reject Request*/
+    @Override
+    public String RejectStationeryRequest(StationeryRequestApiModel request) {
+        String status = "Error at reject.";
+        try {
+            String url = String.format("%s/%s/%s/", baseURL, "stationeryrequest", "reject"); //url to controller
+            Gson gson = new Gson();
+            String json = gson.toJson(request);
+            Log.i("Json", json);
+            String result = JSONParser.postStream(url, true, json);
+            Log.i("PostResult", result);
+            String re = result.trim();
+            if (re.equals("true")) {
+                status = "Successfully rejected.";
+            }
+        } catch (Exception e) {
+            Log.e("JsonPost", e.toString());
+        }
+        Log.e("status", status);
+        return status;
+    }
+
     //endregion
 
     // region Author: Teh Li Heng for Managing retrievals of clerk from warehouse

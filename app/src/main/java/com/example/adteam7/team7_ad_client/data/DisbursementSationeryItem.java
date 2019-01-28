@@ -1,7 +1,6 @@
 package com.example.adteam7.team7_ad_client.data;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * Created by dodo
@@ -13,7 +12,7 @@ public class DisbursementSationeryItem implements Serializable {
     private String ItemId;
     private String Description;
     private int Quantity;
-    private int receivedQty=0;
+    private int receivedQty = 0;
 
     public DisbursementSationeryItem(String disbursementNo, String departmentId, String itemId, String description, int quantity) {
         DisbursementNo = disbursementNo;
