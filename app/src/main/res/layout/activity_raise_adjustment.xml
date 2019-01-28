@@ -33,7 +33,7 @@
         android:layout_height="350dp"
         android:background="@drawable/panelbg"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="135dp"
+        android:layout_marginTop="80dp"
         android:id="@+id/layoutpanel"
         android:orientation="vertical">
 
@@ -134,7 +134,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="15dp"
         android:layout_weight="1"
         android:text="Raise Adjustment"
@@ -145,8 +145,8 @@
 
     <Button
         android:id="@+id/AddButton"
-        android:layout_width="110dp"
-        android:layout_height="110dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:layout_marginLeft="35dp"
         android:layout_marginTop="35dp"
         android:background="@drawable/plusbtn"
@@ -155,8 +155,8 @@
 
     <Button
         android:id="@+id/confirmButton"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:layout_marginTop="35dp"
         android:layout_marginRight="35dp"
         android:background="@drawable/acceptbtn"

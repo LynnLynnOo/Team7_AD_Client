@@ -27,7 +27,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
     <View
-        android:layout_marginTop="135dp"
+        android:layout_marginTop="80dp"
         android:layout_marginBottom="65dp"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
@@ -39,8 +39,8 @@
 
     <Button
         android:id="@+id/poButtonReject"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:onClick="ApproveReject"
         android:background="@drawable/rejectbtn"
         android:layout_marginTop="30dp"
@@ -50,8 +50,8 @@
 
     <Button
         android:id="@+id/poButtonApprove"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:onClick="ApproveReject"
         android:background="@drawable/acceptbtn"
         android:layout_marginRight="35dp"
@@ -69,7 +69,7 @@
         android:textColor="@color/headingText"
         android:textSize="45sp"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         tools:text="PO Number:" />
