@@ -31,7 +31,8 @@
         <activity android:name=".activities.ApproveRejectPODetails"></activity>
         <activity android:name=".activities.ApproveRequestActivity"></activity>
         <activity android:name=".activities.DelegateDepHeadActivity"></activity>
-        <activity android:name=".activities.DisbursementDetail"></activity>
+        <activity android:name=".activities.DisbDetailAckActivity"></activity>
+        <activity android:name=".activities.DisbursementDetailActivity"></activity>
         <activity android:name=".activities.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -48,5 +49,6 @@
         <activity android:name=".activities.RaiseAdjustmentActivity" />
         <activity android:name=".activities.RetrievalListActivity"></activity>
         <activity android:name=".activities.SplashActivity" />
+        <activity android:name=".activities.ViewRequestActivity"></activity>
     </application>
 </manifest>

@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -80,8 +81,8 @@ public class ApproveRequestActivity extends AppCompatActivity {
             //make a table layout
             View newitem = new TableLayout(getApplicationContext());
             newitem.setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
-            ((TableLayout) newitem).setColumnStretchable(0, true);
-            ((TableLayout) newitem).setColumnStretchable(1, true);
+            /*((TableLayout) newitem).setColumnStretchable(0, true);
+            ((TableLayout) newitem).setColumnStretchable(1, true);*/
 
             //Set the Table Row
             View tr1 = new TableRow(getApplicationContext());
@@ -121,7 +122,7 @@ public class ApproveRequestActivity extends AppCompatActivity {
             View tv32 = new TextView(getApplicationContext());
             tv32.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
             ((TextView) tv32).setGravity(Gravity.LEFT);
-            ((TextView) tv32).setText(transactionDetails.get(i).getUnitPrice());
+            ((TextView) tv32).setText("$" + transactionDetails.get(i).getUnitPrice());
             Log.e("ready to add", "add");
 
             //Add the Textview to table row
@@ -143,14 +144,19 @@ public class ApproveRequestActivity extends AppCompatActivity {
             approveReqView.addView(newitem);
             Log.e("add to layout", "new text");
         }
-        View tx_total = new TextView(getApplicationContext());
-        ((TextView) tx_total).setText("Total :");
-        approveReqView.addView(tx_total);
-        View tx_amount = new TextView(getApplicationContext());
         String total = new Double(sum).toString();
-        ((TextView) tx_amount).setText("$" + total);
-        Log.e("total", "new text");
-        approveReqView.addView(tx_amount);
+        TextView tx_total = new TextView(getApplicationContext());
+        ((TextView) tx_total).setText("Total :$" + total);
+        tx_total.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 19);
+        approveReqView.addView(tx_total);
+        if (!"Pending Approval".equals(request.getStatus().trim())) {
+            String x = Boolean.toString("Pending Approval".equals(request.getStatus().trim()));
+            Log.e("equal", x);
+            View app = findViewById(R.id.reqButtonApprove);
+            app.setVisibility(View.GONE);
+            View rej = findViewById(R.id.reqButtonReject);
+            rej.setVisibility(View.GONE);
+        }
     }
 
     private class AsyncCallerApprove extends AsyncTask<String, Void, String> {
@@ -180,7 +186,6 @@ public class ApproveRequestActivity extends AppCompatActivity {
             StationeryRequestApiModel exactReq = agent.GetStationeryRequest(params[0]);
             exactReq.setApprovedBy(name);
             String result = agent.RejectStationeryRequest(exactReq);
-            Log.e("result", result);
             return result;
         }
 

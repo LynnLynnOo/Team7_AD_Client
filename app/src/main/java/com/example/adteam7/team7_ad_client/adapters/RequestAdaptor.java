@@ -2,6 +2,7 @@ package com.example.adteam7.team7_ad_client.adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,15 +31,20 @@ public class RequestAdaptor extends ArrayAdapter<StationeryRequestApiModel> {
                 .getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
         View v = inflater.inflate(resource, null);
         StationeryRequestApiModel req = items.get(position);
+
         if (req != null) {
             TextView e = (TextView) v.findViewById(R.id.Req_textView1);
             e.setText("Request ID :" + req.getRequestId());
+            e.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
             e = (TextView) v.findViewById(R.id.Req_textView2);
             e.setText("Requested By :" + req.getRequestedBy());
+            e.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
             e = (TextView) v.findViewById(R.id.Req_textView3);
             e.setText("Status :" + req.getRequestDate());
+            e.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
             e = (TextView) v.findViewById(R.id.Req_textView4);
             e.setText("Date :" + req.getStatus());
+            e.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
         }
         return v;
     }

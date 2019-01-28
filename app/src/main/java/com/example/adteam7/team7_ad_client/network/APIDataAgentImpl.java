@@ -1,7 +1,6 @@
 package com.example.adteam7.team7_ad_client.network;
 
 import android.util.Log;
-import android.widget.Toast;
 
 import com.example.adteam7.team7_ad_client.data.AckDisbursement;
 import com.example.adteam7.team7_ad_client.data.AdjustmentInfo;
@@ -19,14 +18,12 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Locale;
 
 import static android.content.ContentValues.TAG;
 
@@ -36,7 +33,7 @@ import static android.content.ContentValues.TAG;
 public class APIDataAgentImpl implements APIDataAgent {
 
   // static String host = "localhost";
-   static String host = "172.17.113.199";
+  static String host = "172.17.89.149";
    // http://localhost/Team7API/Token
     static String baseURL;
     static String imageURL;
