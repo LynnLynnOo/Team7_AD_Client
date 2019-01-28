@@ -5,11 +5,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.NumberPicker;
 import android.widget.TextView;
-
 import com.example.adteam7.team7_ad_client.R;
 import com.example.adteam7.team7_ad_client.data.DisbursementSationeryItem;
+import com.travijuu.numberpicker.library.Enums.ActionEnum;
+import com.travijuu.numberpicker.library.Interface.ValueChangedListener;
+import com.travijuu.numberpicker.library.NumberPicker;
 
 import java.util.List;
 
@@ -47,7 +48,11 @@ public class ItemListAdapter extends RecyclerView.Adapter<ItemListAdapter.RvHold
 
             holder.receive2.setVisibility(View.VISIBLE);
             holder.receiveqty.setVisibility(View.GONE);
-            holder.receive2.setText(list.get(position).getQuantity()+"");
+            if(list.get(position).getReceivedQty()==0){
+                holder.receive2.setText(list.get(position).getQuantity()+"");
+            }
+            else
+            holder.receive2.setText(list.get(position).getReceivedQty()+"");
         }
         else {
             //come from Detail
@@ -75,15 +80,16 @@ public class ItemListAdapter extends RecyclerView.Adapter<ItemListAdapter.RvHold
             desc = itemView.findViewById(R.id.desc);
             no = itemView.findViewById(R.id.no);
             receiveqty=itemView.findViewById(R.id.receive);
-            /*       receiveqty.setDisplayFocusable(true);*/
+            receiveqty.setDisplayFocusable(true);
             receive2=itemView.findViewById(R.id.receive2);
 
-           /* receiveqty.setValueChangedListener(new ValueChangedListener() {
+            receiveqty.setValueChangedListener(new ValueChangedListener() {
                 @Override
                 public void valueChanged(int value, ActionEnum action) {
                     list.get(getAdapterPosition()).setReceivedQty(value);
                 }
-            });*/
+            });
+
         }
 
     }

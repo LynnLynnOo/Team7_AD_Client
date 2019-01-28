@@ -1,6 +1,7 @@
 package com.example.adteam7.team7_ad_client.network;
 
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.adteam7.team7_ad_client.data.AdjustmentInfo;
 import com.example.adteam7.team7_ad_client.data.AdjustmentItem;
@@ -17,12 +18,14 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Locale;
 
 import static android.content.ContentValues.TAG;
 
@@ -32,7 +35,7 @@ import static android.content.ContentValues.TAG;
 public class APIDataAgentImpl implements APIDataAgent {
 
   // static String host = "localhost";
-  static String host = "172.17.89.149";
+   static String host = "172.17.81.182";
    // http://localhost/Team7API/Token
     static String baseURL;
     static String imageURL;
@@ -71,6 +74,8 @@ public class APIDataAgentImpl implements APIDataAgent {
         }
     }
 
+
+
     @Override
     public ManageDepRep delegateDepHeadGet() {
         try {
@@ -88,7 +93,6 @@ public class APIDataAgentImpl implements APIDataAgent {
             rep.setDepartmentname(a.getString("DepartmentName"));
             rep.setDepartmentRepName(a.getString("DepartmentRepName"));
             rep.setDepartmentRepId(a.getString("DepartmentRepId"));
-
 
             String url2 = String.format("%s/%s/%s", baseURL,"managedepartmentEmp", id);
             JSONArray arr=JSONParser.getJSONArrayFromUrl(url2);
@@ -186,29 +190,26 @@ public class APIDataAgentImpl implements APIDataAgent {
     }
 
     @Override
-    public String voidDisbursement(List<DisbursementSationeryItem> list) {
+    public String voidDisbursement(String disbno) {
 
-        Gson gson=new Gson();
-try {
-    String elementlist = gson.toJson(
-            list,
-            new TypeToken<List<DisbursementSationeryItem>>() {
-            }.getType());
+        try {
+            String url = String.format("%sclerk/voiddisb/%s", baseURL, disbno);
 
-    // JSONArray arr = new JSONArray(elementlist);
+            String result = JSONParser.getStream(url);
 
+            return result;
+        } catch (Exception e) {
 
-    String rr = JSONParser.postStream(baseURL + "/managedepartmentEmp", true, elementlist);
-}catch (Exception e){
-
-}
-
+        }
         return null;
-
-
-
     }
+
+    @Override
+    public String ackDisbursement(List<DisbursementSationeryItem> items) {
+    }
+
     //endregion
+
 
     // region Author: Teh Li Heng for Delegate Department Head
     @Override
@@ -400,44 +401,45 @@ try {
 
 
     //region Cheng Zongpei
-    public List<String> adjustmentGetCategories() {
-        String url = "http://192.168.1.75/webapi/adjustment/categories";
+    public List<String> adjustmentGetCategories(){
+        String url = String.format("http://%s/webapi/adjustment/categories",host);
         JSONArray array = JSONParser.getJSONArrayFromUrl(url);
         List<String> result = new ArrayList<String>();
-        try {
-            for (int i = 0; i < array.length(); i++) {
+        try{
+            for(int i=0;i<array.length();i++){
                 result.add(array.getString(i));
             }
-        } catch (Exception e) {
-            Log.e("error", "Json get category error");
+        }
+        catch (Exception e){
+            Log.e("error","Json get category error");
         }
         return result;
     }
 
-    public List<AdjustmentItem> adjustmentGetItem(String category) {
-        String url = String.format("http://192.168.1.75/webapi/adjustment/items/%s", category);
+    public List<AdjustmentItem> adjustmentGetItem(String category){
+        String url =String.format("http://%s/webapi/adjustment/items/%s",host,category);
         JSONArray array = JSONParser.getJSONArrayFromUrl(url);
         List<AdjustmentItem> result = new ArrayList<AdjustmentItem>();
-        try {
-            for (int i = 0; i < array.length(); i++) {
+        try{
+            for(int i=0;i<array.length();i++){
                 JSONObject object = array.getJSONObject(i);
-                result.add(new AdjustmentItem(object.getString("itemId"), object.getString("category"), object.getString("description"), object.getString("unitOfMeasure"), object.getInt("quantityWareHouse"), object.getDouble("price")));
+                result.add(new AdjustmentItem(object.getString("itemId"),object.getString("category"),object.getString("description"),object.getString("unitOfMeasure"),object.getInt("quantityWareHouse"),object.getDouble("price")));
             }
-        } catch (Exception e) {
-            Log.e("error", "Json get item error");
+        }catch (Exception e){
+            Log.e("error","Json get item error");
         }
         return result;
     }
 
-    public AdjustmentItem adjustmentGetInfo(String itemId) {
-        String url = String.format("http://192.168.1.75/webapi/adjustment/item/%s", itemId);
+    public AdjustmentItem adjustmentGetInfo(String itemId){
+        String url = String.format("http://%s/webapi/adjustment/item/%s",host,itemId);
         JSONObject object = JSONParser.getJSONFromUrl(url);
         AdjustmentItem result;
         try {
-            result = new AdjustmentItem(object.getString("itemId"), object.getString("category"), object.getString("description"), object.getString("unitOfMeasure"), object.getInt("quantityWareHouse"), object.getDouble("price"));
-        } catch (Exception e) {
-            result = new AdjustmentItem(null, null, null, null, 0, 0);
-            Log.e("error", "Json get info error");
+            result = new AdjustmentItem(object.getString("itemId"),object.getString("category"),object.getString("description"),object.getString("unitOfMeasure"),object.getInt("quantityWareHouse"),object.getDouble("price"));
+        }catch (Exception e){
+            result = new AdjustmentItem(null,null,null,null,0,0);
+            Log.e("error","Json get info error");
         }
         return result;
     }
@@ -456,7 +458,7 @@ try {
             Log.e("error","Json save error");
         }
 
-        String result = JSONParser.postStream(String.format("%s/webapi/adjustment/save",host), true, array.toString());
+        String result = JSONParser.postStream(String.format("http://%s/webapi/adjustment/save",host), true, array.toString());
         return result;
     }
 

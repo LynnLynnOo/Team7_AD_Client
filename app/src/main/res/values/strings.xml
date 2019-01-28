@@ -32,4 +32,9 @@
     <string name="requestdate">Request Date :</string>
     <string name="acknowledge">Acknowledge</string>
     <string name="voiddisb">Void</string>
+    <string name="cancel">Cancel</string>
+    <string name="confirm">Confirm OTP</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
