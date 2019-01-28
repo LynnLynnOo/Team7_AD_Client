@@ -47,12 +47,24 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        navigationView.inflateMenu(R.menu.activity_main_drawer);
-
-        inflateDrawerMenu();
+        inflateDrawerMenu(navigationView);
     }
 
-    private void inflateDrawerMenu() {
+    private void inflateDrawerMenu(NavigationView navigationView) {
+
+        if(session.getUserRole().equals("Store Clerk")){
+            navigationView.inflateMenu(R.menu.storeclerk_menu_drawer);
+
+        }
+        else if(session.getUserRole().equals("Department Head" ) ){
+
+            navigationView.inflateMenu(R.menu.dephead_menu_drawer);
+
+        }
+        else if(session.getUserRole().equals("Store Manager")){
+            navigationView.inflateMenu(R.menu.storemanager_menu_drawer);
+
+        }
 
     }
 
@@ -101,8 +113,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            Intent i=new Intent(MainActivity.this,ManageDepRepActivity.class);
-            startActivity(i);
+
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
 //            Toast.makeText(this, "About", Toast.LENGTH_SHORT).show();
@@ -124,6 +135,10 @@ public class MainActivity extends AppCompatActivity
             startActivity(i);
         } else if (id == R.id.nav_raiseAdjustment) {
             Intent i = new Intent(MainActivity.this, RaiseAdjustmentActivity.class);
+            startActivity(i);
+        }
+        else if (id == R.id.nav_manageDepRep) {
+            Intent i=new Intent(MainActivity.this,ManageDepRepActivity.class);
             startActivity(i);
         }
 

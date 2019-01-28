@@ -36,7 +36,7 @@ import static android.content.ContentValues.TAG;
 public class APIDataAgentImpl implements APIDataAgent {
 
   // static String host = "localhost";
-   static String host = "172.17.81.182";
+   static String host = "192.168.1.166";
    // http://localhost/Team7API/Token
     static String baseURL;
     static String imageURL;
@@ -62,10 +62,15 @@ public class APIDataAgentImpl implements APIDataAgent {
             String credential = String.format("username=%s&password=%s&grant_type=password", id, pw);
             String result = JSONParser.postStream(tokenURL, false, credential);
             JSONObject res = new JSONObject(result);
-            if (res.has("access_token"))
+            String userId="";
+            if (res.has("access_token")) {
                 JSONParser.access_token = res.getString("access_token");
-            String userId = res.getString("userName");
-            Log.e(TAG, "login: "+res.getString("access_token") );
+
+                userId= res.getString("userName");
+                Log.e(TAG, "login: " + res.getString("access_token"));
+                SessionManager sessionManager=SessionManager.getInstance();
+                sessionManager.setUserRole(res.getString("roleName"));
+            }
             return userId;
         } catch (Exception e) {
             JSONParser.access_token = "";
