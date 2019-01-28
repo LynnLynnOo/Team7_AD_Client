@@ -1,7 +1,6 @@
 package com.example.adteam7.team7_ad_client.network;
 
 import android.util.Log;
-import android.widget.Toast;
 
 import com.example.adteam7.team7_ad_client.data.AdjustmentInfo;
 import com.example.adteam7.team7_ad_client.data.AdjustmentItem;
@@ -15,16 +14,11 @@ import com.example.adteam7.team7_ad_client.data.StationeryRequestApiModel;
 import com.example.adteam7.team7_ad_client.data.StationeryRetrievalApiModel;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
-
 import static android.content.ContentValues.TAG;
 
 /**
@@ -32,15 +26,14 @@ import static android.content.ContentValues.TAG;
  **/
 public class APIDataAgentImpl implements APIDataAgent {
 
-  // static String host = "localhost";
-   static String host = "172.17.82.83";
-   // http://localhost/Team7API/Token
+    // static String host = "localhost";
+    static String host = "172.17.81.182";
+    // http://localhost/Team7API/Token
     static String baseURL;
     static String imageURL;
     static String tokenURL;
     //http://172.17.4.197/team7ad/Token
     SessionManager session = SessionManager.getInstance();
-
 
     static {
         //http://172.17.80.219/Team7API/Token
@@ -48,7 +41,6 @@ public class APIDataAgentImpl implements APIDataAgent {
         tokenURL = String.format("http://%s/team7ad/Token", host);
         imageURL = String.format("http://%s/myserviceEmp/photo", host);
     }
-
 
     //region Kay Thi Swe Tun
     @Override
@@ -83,7 +75,7 @@ public class APIDataAgentImpl implements APIDataAgent {
 
             //String url=String.format("http://192.168.1.166/team7ad/api/managedepartmentRep/19fb3f0d-5859-4c63-979d-632213e67711");
             JSONParser.access_token=session.getToken();
-          //  String res = JSONParser.getStream(url);
+            //  String res = JSONParser.getStream(url);
             JSONObject a=JSONParser.getJSONFromUrl(url);
             ManageDepRep rep=new ManageDepRep();
 
@@ -106,17 +98,17 @@ public class APIDataAgentImpl implements APIDataAgent {
                 Log.e("Employee", "JSONArray error");
             }
 
-          rep.setEmployees(list);
-           // Log.e(TAG, "delegateDepHeadGet: Rep Name"+ deprep);
+            rep.setEmployees(list);
+            // Log.e(TAG, "delegateDepHeadGet: Rep Name"+ deprep);
             return rep;
 
         } catch (Exception e) {
-           JSONParser.access_token = "";
+            JSONParser.access_token = "";
             Log.e("Login", e.toString());
             return null;
         }
 
-       // return null;
+        // return null;
     }
 
 
@@ -138,7 +130,6 @@ public class APIDataAgentImpl implements APIDataAgent {
         return rr;
     }
 
-    //endregion
 
    /* @Override
     public String delegateDepHeadSet(ManageDepRep dep) {
@@ -189,30 +180,27 @@ public class APIDataAgentImpl implements APIDataAgent {
     }
 
     @Override
-    public String voidDisbursement(List<DisbursementSationeryItem> list) {
+    public String voidDisbursement(String disbno) {
 
-        Gson gson=new Gson();
-try {
-    String elementlist = gson.toJson(
-            list,
-            new TypeToken<List<DisbursementSationeryItem>>() {
-            }.getType());
+        try {
+            String url = String.format("%sclerk/voiddisb/%s", baseURL,disbno);
 
-    // JSONArray arr = new JSONArray(elementlist);
+            String result = JSONParser.getStream(url);
 
+            return result;
+        } catch (Exception e) {
 
-    String rr = JSONParser.postStream(baseURL + "/managedepartmentEmp", true, elementlist);
-}catch (Exception e){
-
-}
-
-        return null;
-
-
+            return "fail";
+        }
 
     }
 
-        //endregion
+    @Override
+    public String ackDisbursement(List<DisbursementSationeryItem> items) {
+        return null;
+    }
+
+    //endregion
 
     // region Author: Teh Li Heng for Delegate Department Head
     @Override

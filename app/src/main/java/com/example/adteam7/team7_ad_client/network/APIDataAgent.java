@@ -21,8 +21,8 @@ public interface APIDataAgent {
     String assignDepRep(ManageDepRep dep);
     List<Disbursement> getDisbbyDept();
     List<DisbursementSationeryItem> getDisbDetail(String disbno);
-    String voidDisbursement(List<DisbursementSationeryItem> list);
-
+    String voidDisbursement(String list);
+    String ackDisbursement(List<DisbursementSationeryItem> items);
 
 
 
