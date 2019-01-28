@@ -37,20 +37,20 @@
         android:textColor="@color/headingText"
         android:textSize="45sp"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"/>
 
-    <!--<View-->
-        <!--android:layout_marginLeft="45dp"-->
-        <!--android:layout_marginRight="45dp"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="350dp"-->
-        <!--android:background="@drawable/panelbg"-->
-        <!--app:layout_constraintTop_toTopOf="parent"-->
-        <!--android:layout_marginTop="135dp"-->
-        <!--android:id="@+id/layoutpanel"-->
-        <!--/>-->
+    <View
+        android:layout_marginLeft="45dp"
+        android:layout_marginRight="45dp"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:background="@drawable/panelbg"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="80dp"
+        android:id="@+id/layoutpanel"
+        />
 
 
     <Spinner
@@ -61,7 +61,6 @@
         android:layout_marginLeft="60dp"
         android:layout_marginRight="60dp"
         app:layout_constraintTop_toTopOf="@id/layoutpanel"
-        app:layout_constraintBottom_toTopOf="@id/tV_actadj_itemdesc"
         android:layout_marginTop="30dp"/>
 
         <TextView
@@ -134,8 +133,8 @@
 
     <Button
         android:id="@+id/confirmButton"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:layout_weight="1"
         android:layout_marginTop="35dp"
         android:layout_marginRight="35dp"
@@ -145,8 +144,8 @@
          />
     <Button
         android:id="@+id/rejectButton"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:layout_weight="1"
         android:layout_marginTop="35dp"
         android:layout_marginLeft="35dp"

@@ -36,7 +36,7 @@
         android:textColor="@color/headingText"
         android:textSize="36sp"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"/>
 
@@ -47,7 +47,7 @@
         android:layout_height="450dp"
         android:background="@drawable/panelbg"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="135dp"
+        android:layout_marginTop="80dp"
         android:id="@+id/layoutpanel"
         />
 
@@ -158,9 +158,12 @@
     <Button
         android:layout_gravity="center_horizontal"
         android:id="@+id/assign"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="@drawable/acceptbtn"
+        android:layout_width="70dp"
+        android:layout_height="90dp"
+        android:background="@drawable/roundbtn"
+        android:drawableTop="@drawable/accept"
+        android:text="Assign"
+        android:textColor="@color/headingText"
         android:layout_marginTop="@dimen/l_margin"
         android:layout_below="@+id/spinlayout"
         app:layout_constraintLeft_toLeftOf="@id/layoutpanel"
