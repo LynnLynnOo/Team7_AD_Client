@@ -61,6 +61,8 @@ public class ItemListAdapter extends RecyclerView.Adapter<ItemListAdapter.RvHold
         }
 
 
+
+
     }
 
     @Override
@@ -82,6 +84,7 @@ public class ItemListAdapter extends RecyclerView.Adapter<ItemListAdapter.RvHold
             receiveqty=itemView.findViewById(R.id.receive);
             receiveqty.setDisplayFocusable(true);
             receive2=itemView.findViewById(R.id.receive2);
+
 
             receiveqty.setValueChangedListener(new ValueChangedListener() {
                 @Override

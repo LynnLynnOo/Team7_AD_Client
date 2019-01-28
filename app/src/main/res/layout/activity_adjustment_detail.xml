@@ -37,7 +37,7 @@
         android:textColor="@color/headingText"
         android:textSize="45sp"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"/>
 
@@ -48,7 +48,7 @@
         android:layout_height="350dp"
         android:background="@drawable/panelbg"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="135dp"
+        android:layout_marginTop="80dp"
         android:id="@+id/layoutpanel"
         />
 
@@ -133,8 +133,8 @@
 
     <Button
         android:id="@+id/confirmButton"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:layout_weight="1"
         android:layout_marginTop="35dp"
         android:layout_marginRight="35dp"
@@ -144,8 +144,8 @@
          />
     <Button
         android:id="@+id/rejectButton"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:layout_weight="1"
         android:layout_marginTop="35dp"
         android:layout_marginLeft="35dp"
