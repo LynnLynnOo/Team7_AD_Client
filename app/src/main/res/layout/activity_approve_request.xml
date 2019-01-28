@@ -1,30 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/approveRequest_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:background="@drawable/background">
+
+    <android.support.v7.widget.AppCompatImageView
+        android:layout_width="match_parent"
+        android:layout_height="243dp"
+        android:layout_marginTop="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/heading"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.v7.widget.AppCompatImageView
+        android:layout_width="match_parent"
+        android:layout_height="243dp"
+        android:layout_marginBottom="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/footer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <TextView
+        android:id="@+id/tV_head_appreq"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Approve Request"
+        android:textColor="@color/headingText"
+        android:textSize="45sp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"/>
+
+    <View
+        android:layout_marginLeft="45dp"
+        android:layout_marginRight="45dp"
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        android:background="@drawable/panelbg"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="135dp"
+        android:id="@+id/layoutpanel"
+        />
 
     <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_height="420dp"
+        app:layout_constraintTop_toTopOf="@id/layoutpanel"
+        app:layout_constraintBottom_toBottomOf="@id/layoutpanel"
+        >
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/textView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/txtColor"
                 android:text="@string/label1" />
 
-            <EditText
-                android:id="@+id/editText1"
+            <TextView
+                android:id="@+id/textViewr1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="text"
-                android:textSize="10pt" />
+                android:textColor="@color/txtColor"
+                android:text="" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:textColor="@color/txtColor"
+                android:layout_height="wrap_content"
+                android:text="@string/label2" />
+
+            <TextView
+                android:id="@+id/textViewr2"
+                android:layout_width="wrap_content"
+                android:textColor="@color/txtColor"
+                android:layout_height="wrap_content"
+                android:text="" />
 
         </TableRow>
 
@@ -35,16 +108,16 @@
             <TextView
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
+                android:textColor="@color/txtColor"
                 android:layout_height="wrap_content"
-                android:text="@string/label2" />
+                android:text="@string/label3" />
 
-            <EditText
-                android:id="@+id/editText2"
+            <TextView
+                android:id="@+id/textViewr3"
                 android:layout_width="wrap_content"
+                android:textColor="@color/txtColor"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="text"
-                android:textSize="10pt" />
+                android:text="" />
 
         </TableRow>
 
@@ -55,37 +128,19 @@
             <TextView
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/label3" />
-
-            <EditText
-                android:id="@+id/editText3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="text"
-                android:textSize="10pt" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="wrap_content"
+                android:textColor="@color/txtColor"
                 android:layout_height="wrap_content"
                 android:text="@string/label4" />
 
-            <EditText
-                android:id="@+id/editText4"
+            <TextView
+                android:id="@+id/textViewr4"
                 android:layout_width="wrap_content"
+                android:textColor="@color/txtColor"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="text"
-                android:textSize="10pt" />
-
+                android:text="" />
         </TableRow>
+
     </TableLayout>
-</LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>

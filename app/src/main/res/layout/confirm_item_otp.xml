@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content"
+    android:background="@drawable/popup_bg"
+    >
+    <LinearLayout
+        android:id="@+id/headerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:orientation="horizontal"
+        android:layout_alignParentTop="true"
+        android:gravity="left|center_vertical"
+        android:paddingLeft="10dp">
+
+        <TextView
+            android:textColor="#000000"
+            android:id="@+id/popup_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Acknowledge with your OTP code"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_margin="5dp"/>
+
+    </LinearLayout>
+    <FrameLayout
+        android:layout_below="@id/headerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:id="@+id/otplayout">
+
+        <LinearLayout
+
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+           android:layout_margin="@dimen/m_margin"
+            android:gravity="center_vertical"
+            android:weightSum="4">
+
+            <EditText
+                android:id="@+id/et1"
+                android:layout_width="0dp"
+                android:layout_height="52dp"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/layout_bg"
+                android:editable="false"
+                android:focusable="false"
+                android:gravity="center_vertical|center_horizontal"
+                android:inputType="number"
+                android:maxLength="1"/>
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="52dp"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/layout_bg"
+                android:editable="false"
+                android:focusable="false"
+
+                android:gravity="center_vertical|center_horizontal"
+                android:inputType="number"
+                android:maxLength="1"/>
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="52dp"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/layout_bg"
+                android:editable="false"
+                android:focusable="false"
+                android:gravity="center_vertical|center_horizontal"
+                android:inputType="number"
+                android:maxLength="1"/>
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="52dp"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/layout_bg"
+                android:editable="false"
+                android:focusable="false"
+                android:gravity="center_vertical|center_horizontal"
+                android:inputType="number"
+                android:maxLength="1"/>
+
+
+
+        </LinearLayout>
+
+
+        <com.jkb.vcedittext.VerificationCodeEditText
+            android:id="@+id/vercode_otp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/m_margin"
+            android:layout_marginRight="@dimen/m_margin"
+            android:cursorVisible="false"
+            android:inputType="text"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp"
+            app:bottomLineHeight="0dp"
+            app:bottomLineNormalColor="@color/colorPrimaryDark"
+            app:bottomLineSelectedColor="@color/colorAccent"
+            app:figures="4"
+            android:gravity="center_vertical"
+            app:selectedBackgroundColor="@color/transparent"
+            app:verCodeMargin="10dp"/>
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_margin="@dimen/m_margin"
+        android:layout_below="@id/otplayout"
+        android:gravity="center_horizontal|center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/s_margin">
+        <Button
+            android:gravity="center"
+
+            android:id="@+id/cancel"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:text="@string/cancel"
+            android:layout_gravity="top"
+            android:background="@drawable/loginbtn"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="@dimen/s_margin"
+            android:textColor="#ffffff"/>
+
+        <Button
+            android:layout_gravity="top"
+            android:id="@+id/confirm"
+            android:layout_marginLeft="@dimen/s_margin"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:text="@string/confirm"
+            android:background="@drawable/loginbtn"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:textColor="#ffffff"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

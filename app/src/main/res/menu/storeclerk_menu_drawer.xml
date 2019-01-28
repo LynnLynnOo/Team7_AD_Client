@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item
+        android:id="@+id/nav_camera"
+        android:icon="@drawable/ic_menu_camera"
+        android:title="Import" />
+
+    <item
+        android:id="@+id/nav_generateRetrieval"
+        android:icon="@drawable/ic_menu_manage"
+        android:title="Generate Retrieval List" />
+
+    <item
+        android:id="@+id/nav_approveRejectPO"
+        android:icon="@drawable/purchaseorder"
+        android:title="Purchase Order" />
+    <item
+        android:id="@+id/nav_raiseAdjustment"
+        android:icon="@drawable/purchaseorder"
+        android:title="Raise Adjustment" />
+
+</menu>
+
+

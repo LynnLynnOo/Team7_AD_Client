@@ -5,14 +5,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.example.adteam7.team7_ad_client.R;
 import com.example.adteam7.team7_ad_client.data.DisbursementSationeryItem;
+import com.travijuu.numberpicker.library.Enums.ActionEnum;
+import com.travijuu.numberpicker.library.Interface.ValueChangedListener;
+import com.travijuu.numberpicker.library.NumberPicker;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,9 +20,11 @@ import java.util.List;
 public class ItemListAdapter extends RecyclerView.Adapter<ItemListAdapter.RvHolder> {
 
     List<DisbursementSationeryItem> list;
+    Boolean check;
 
-    public ItemListAdapter(Context c,List<DisbursementSationeryItem> lv) {
+    public ItemListAdapter(Context c,List<DisbursementSationeryItem> lv,Boolean check) {
         this.list = lv;
+        this.check=check;
     }
 
     @Override
@@ -37,18 +38,29 @@ public class ItemListAdapter extends RecyclerView.Adapter<ItemListAdapter.RvHold
     public void onBindViewHolder(RvHolder holder, final int position) {
 
 
-       holder.desc.setText(list.get(position).getDescription()+"");
-    // holder.receive.setText(list.get(position).getQuantity()+"");
-     holder.reqqty.setText(list.get(position).getQuantity()+"");
-     holder.no.setText(position+"");
+        holder.desc.setText(list.get(position).getDescription()+"");
 
-         /*holder.ib.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                lv.remove(position);
-                notifyDataSetChanged();
+        holder.reqqty.setText(list.get(position).getQuantity()+"");
+        int pos=position+1;
+        holder.no.setText(pos+"");
+        if (!check){
+            //come from Acknowledge
+
+            holder.receive2.setVisibility(View.VISIBLE);
+            holder.receiveqty.setVisibility(View.GONE);
+            if(list.get(position).getReceivedQty()==0){
+                holder.receive2.setText(list.get(position).getQuantity()+"");
             }
-        });*/
+            else
+            holder.receive2.setText(list.get(position).getReceivedQty()+"");
+        }
+        else {
+            //come from Detail
+            holder.receiveqty.setValue(list.get(position).getQuantity());
+            holder.receive2.setVisibility(View.GONE);
+        }
+
+
     }
 
     @Override
@@ -58,17 +70,35 @@ public class ItemListAdapter extends RecyclerView.Adapter<ItemListAdapter.RvHold
 
 
     class RvHolder extends RecyclerView.ViewHolder {
-        TextView receive,reqqty,desc,no;
-
+        TextView reqqty,desc,no,receive2;
+        NumberPicker receiveqty;
 
         public RvHolder(View itemView) {
             super(itemView);
-          //  receive = itemView.findViewById(R.id.receive);
+            //  receive = itemView.findViewById(R.id.receive);
             reqqty = itemView.findViewById(R.id.reqqty);
             desc = itemView.findViewById(R.id.desc);
             no = itemView.findViewById(R.id.no);
+            receiveqty=itemView.findViewById(R.id.receive);
+            receiveqty.setDisplayFocusable(true);
+            receive2=itemView.findViewById(R.id.receive2);
+
+            receiveqty.setValueChangedListener(new ValueChangedListener() {
+                @Override
+                public void valueChanged(int value, ActionEnum action) {
+                    list.get(getAdapterPosition()).setReceivedQty(value);
+                }
+            });
+
         }
 
     }
+    public List<DisbursementSationeryItem> getList(){
+        return list;
+    }
+
+   /* public interface DisbDetailDataController{
+        void onTapPromotion(List<DisbursementSationeryItem> detaillist);
+    }*/
 
 }

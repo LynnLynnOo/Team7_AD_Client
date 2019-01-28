@@ -23,7 +23,7 @@
             android:layout_marginBottom="0dp"
             android:gravity="center"
             android:text="@string/sys_name"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="@color/txtColor"
             android:textSize="30sp" />
 
     <android.support.v7.widget.LinearLayoutCompat

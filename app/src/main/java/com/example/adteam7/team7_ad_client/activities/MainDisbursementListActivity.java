@@ -38,32 +38,32 @@ public class MainDisbursementListActivity extends AppCompatActivity  {
         rv.setLayoutManager(new LinearLayoutManager(this));
 
         ///get data from api
-        new AsyncGetDisbursement().execute();
+//        new AsyncGetDisbursement().execute();
 
 
     }
 
 
 
-    private class AsyncGetDisbursement extends AsyncTask<Void, Void,List<Disbursement>> {
-
-
-        @Override
-        protected List<Disbursement> doInBackground(Void... voids) {
-
-            return agent.getDisbbyDept();
-        }
-
-        @Override
-        protected void onPostExecute(List<Disbursement> disbursement) {
-
-            if(disbursement != null){
-                rvAdapter=new MainDisburAdapter(MainDisbursementListActivity.this,disbursement);
-
-                rv.setAdapter(rvAdapter);
-
-            }
-
-        }
-    }
+//    private class AsyncGetDisbursement extends AsyncTask<Void, Void,List<Disbursement>> {
+//
+//
+//        @Override
+//        protected List<Disbursement> doInBackground(Void... voids) {
+//
+//            return agent.getDisbbyDept();
+//        }
+//
+//        @Override
+//        protected void onPostExecute(List<Disbursement> disbursement) {
+//
+//            if(disbursement != null){
+//                rvAdapter=new MainDisburAdapter(MainDisbursementListActivity.this,disbursement);
+//
+//                rv.setAdapter(rvAdapter);
+//
+//            }
+//
+//        }
+//    }
 }
