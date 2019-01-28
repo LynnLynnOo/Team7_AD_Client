@@ -424,7 +424,7 @@ public class APIDataAgentImpl implements APIDataAgent {
 
     //region Cheng Zongpei
     public List<String> adjustmentGetCategories(){
-        String url = String.format("http://%s/webapi/adjustment/categories",host);
+        String url = String.format("http://%s/team7ad/adjustment/categories",host);
         JSONArray array = JSONParser.getJSONArrayFromUrl(url);
         List<String> result = new ArrayList<String>();
         try{
@@ -439,7 +439,7 @@ public class APIDataAgentImpl implements APIDataAgent {
     }
 
     public List<AdjustmentItem> adjustmentGetItem(String category){
-        String url =String.format("http://%s/webapi/adjustment/items/%s",host,category);
+        String url =String.format("http://%s/team7ad/adjustment/items/%s",host,category);
         JSONArray array = JSONParser.getJSONArrayFromUrl(url);
         List<AdjustmentItem> result = new ArrayList<AdjustmentItem>();
         try{
@@ -454,7 +454,7 @@ public class APIDataAgentImpl implements APIDataAgent {
     }
 
     public AdjustmentItem adjustmentGetInfo(String itemId){
-        String url = String.format("http://%s/webapi/adjustment/item/%s",host,itemId);
+        String url = String.format("http://%s/team7ad/adjustment/item/%s",host,itemId);
         JSONObject object = JSONParser.getJSONFromUrl(url);
         AdjustmentItem result;
         try {
@@ -480,7 +480,7 @@ public class APIDataAgentImpl implements APIDataAgent {
             Log.e("error","Json save error");
         }
 
-        String result = JSONParser.postStream(String.format("http://%s/webapi/adjustment/save",host), true, array.toString());
+        String result = JSONParser.postStream(String.format("http://%s/team7ad/adjustment/save",host), true, array.toString());
         return result;
     }
 
