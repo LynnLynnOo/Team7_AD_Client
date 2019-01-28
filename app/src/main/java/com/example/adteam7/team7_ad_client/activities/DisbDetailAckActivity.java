@@ -59,10 +59,10 @@ public class DisbDetailAckActivity extends AppCompatActivity {
         confirm.setText("Confirm");
 
         if(getIntent().hasExtra("disblist")){
-            List<DisbursementSationeryItem> myList = (List<DisbursementSationeryItem>) getIntent().getSerializableExtra("disblist");
-            Toast.makeText(this, "receive list "+myList.size(), Toast.LENGTH_SHORT).show();
+            itemlist = (List<DisbursementSationeryItem>) getIntent().getSerializableExtra("disblist");
+            Toast.makeText(this, "receive list "+itemlist.size(), Toast.LENGTH_SHORT).show();
 
-            adapter=new ItemListAdapter(DisbDetailAckActivity.this,myList,false);
+            adapter=new ItemListAdapter(DisbDetailAckActivity.this,itemlist,false);
 
             itemsrv.setAdapter(adapter);
 
@@ -119,6 +119,7 @@ public class DisbDetailAckActivity extends AppCompatActivity {
             new AsyncAcknowledgeDisbursement().execute(itemlist);
             }
 
+
         }
 
 
@@ -129,7 +130,7 @@ public class DisbDetailAckActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(List<DisbursementSationeryItem>... param) {
 
-            Toast.makeText(DisbDetailAckActivity.this, "actual receive "+param[0].get(0).getReceivedQty(), Toast.LENGTH_SHORT).show();
+            //Toast.makeText(DisbDetailAckActivity.this, "actual receive "+param[0].get(0).getReceivedQty(), Toast.LENGTH_SHORT).show();
 
             return agent.ackDisbursement(param[0]);
         }
@@ -137,8 +138,8 @@ public class DisbDetailAckActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
 
-            Toast.makeText(DisbDetailAckActivity.this, "result : "+s, Toast.LENGTH_SHORT).show();
-
+            Toast.makeText(DisbDetailAckActivity.this, "Acknowledged "+s, Toast.LENGTH_SHORT).show();
+            finish();
         }
     }
 }

@@ -36,7 +36,7 @@ import static android.content.ContentValues.TAG;
 public class APIDataAgentImpl implements APIDataAgent {
 
   // static String host = "localhost";
-   static String host = "172.17.113.199";
+   static String host = "172.17.81.182";
    // http://localhost/Team7API/Token
     static String baseURL;
     static String imageURL;
@@ -51,7 +51,6 @@ public class APIDataAgentImpl implements APIDataAgent {
         tokenURL = String.format("http://%s/team7ad/Token", host);
         imageURL = String.format("http://%s/myserviceEmp/photo", host);
     }
-
 
     //region Kay Thi Swe Tun
     @Override
@@ -213,13 +212,13 @@ public class APIDataAgentImpl implements APIDataAgent {
             ackDisbursement.setDisbursedBy(id);
 
             String url = String.format("%sclerk/acknowledgement", baseURL);
-
+            ackDisbursement.setAckList(items);
             Gson gson = new Gson();
             String json = gson.toJson(ackDisbursement);
 
             String result = JSONParser.postStream(url, true, json);
 
-
+            Log.e(TAG, "ackDisbursement: from API "+result );
             return result;
 
         } catch (Exception e) {
