@@ -1,7 +1,6 @@
 package com.example.adteam7.team7_ad_client.network;
 
 import android.util.Log;
-import android.widget.Toast;
 
 import com.example.adteam7.team7_ad_client.data.AdjustmentInfo;
 import com.example.adteam7.team7_ad_client.data.AdjustmentItem;
@@ -18,14 +17,12 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Locale;
 
 import static android.content.ContentValues.TAG;
 
@@ -35,7 +32,7 @@ import static android.content.ContentValues.TAG;
 public class APIDataAgentImpl implements APIDataAgent {
 
   // static String host = "localhost";
-  static String host = "192.168.1.100";
+  static String host = "172.17.89.149";
    // http://localhost/Team7API/Token
     static String baseURL;
     static String imageURL;
@@ -294,6 +291,51 @@ try {
             Log.e("StationeryRequest", "JSONArray error");
         }
         return (list);
+    }
+
+    /* Approve Request*/
+    @Override
+    public String ApproveStationeryRequest(StationeryRequestApiModel request) {
+        String status = "Error at approve.";
+        try {
+            String url = String.format("%s/%s/%s/", baseURL, "stationeryrequest", "approve"); //url to controller
+            Gson gson = new Gson();
+            String json = gson.toJson(request);
+            Log.i("Json", json);
+            String result = JSONParser.postStream(url, true, json);
+            Log.i("PostResult", result);
+            String re = result.trim();
+            if (re.equals("true")) {
+                status = "Successfully approved.";
+            }
+
+        } catch (Exception e) {
+            Log.e("JsonPost", e.toString());
+        }
+        Log.e("status", status);
+        return status;
+    }
+
+    /* Reject Request*/
+    @Override
+    public String RejectStationeryRequest(StationeryRequestApiModel request) {
+        String status = "Error at reject.";
+        try {
+            String url = String.format("%s/%s/%s/", baseURL, "stationeryrequest", "reject"); //url to controller
+            Gson gson = new Gson();
+            String json = gson.toJson(request);
+            Log.i("Json", json);
+            String result = JSONParser.postStream(url, true, json);
+            Log.i("PostResult", result);
+            String re = result.trim();
+            if (re.equals("true")) {
+                status = "Successfully rejected.";
+            }
+        } catch (Exception e) {
+            Log.e("JsonPost", e.toString());
+        }
+        Log.e("status", status);
+        return status;
     }
 
     //endregion

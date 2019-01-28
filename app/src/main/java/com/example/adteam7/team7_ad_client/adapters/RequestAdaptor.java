@@ -32,13 +32,13 @@ public class RequestAdaptor extends ArrayAdapter<StationeryRequestApiModel> {
         StationeryRequestApiModel req = items.get(position);
         if (req != null) {
             TextView e = (TextView) v.findViewById(R.id.Req_textView1);
-            e.setText(req.getRequestId());
+            e.setText("Request ID :" + req.getRequestId());
             e = (TextView) v.findViewById(R.id.Req_textView2);
-            e.setText(req.getRequestedBy());
+            e.setText("Requested By :" + req.getRequestedBy());
             e = (TextView) v.findViewById(R.id.Req_textView3);
-            e.setText(req.getRequestDate());
+            e.setText("Status :" + req.getRequestDate());
             e = (TextView) v.findViewById(R.id.Req_textView4);
-            e.setText(req.getStatus());
+            e.setText("Date :" + req.getStatus());
         }
         return v;
     }

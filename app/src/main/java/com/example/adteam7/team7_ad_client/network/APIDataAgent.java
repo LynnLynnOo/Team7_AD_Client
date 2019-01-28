@@ -8,7 +8,6 @@ import com.example.adteam7.team7_ad_client.data.StationeryRequestApiModel;
 import com.example.adteam7.team7_ad_client.data.StationeryRetrievalApiModel;
 
 import java.util.ArrayList;
-
 import java.util.List;
 
 /**
@@ -33,6 +32,10 @@ public interface APIDataAgent {
     /* Create by GJX*/
     StationeryRequestApiModel GetStationeryRequest(String requestId);
     ArrayList<StationeryRetrievalApiModel> RetrievalListGet();
+
+    String ApproveStationeryRequest(StationeryRequestApiModel request);
+
+    String RejectStationeryRequest(StationeryRequestApiModel request);
 
     List<StationeryRequestApiModel> ReadStationeryRequest();
     String RetrievalListSet(List<StationeryRetrievalApiModel> models);
