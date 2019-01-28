@@ -51,17 +51,17 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void inflateDrawerMenu(NavigationView navigationView) {
-
-        if(session.getUserRole().equals("Store Clerk")){
+        String role=session.getUserRole();
+        if(role.equals("Store Clerk")){
             navigationView.inflateMenu(R.menu.storeclerk_menu_drawer);
 
         }
-        else if(session.getUserRole().equals("Department Head" ) ){
+        else if(role.equals("Department Head" ) ){
 
             navigationView.inflateMenu(R.menu.dephead_menu_drawer);
 
         }
-        else if(session.getUserRole().equals("Store Manager")){
+        else if(role.equals("Store Manager")){
             navigationView.inflateMenu(R.menu.storemanager_menu_drawer);
 
         }
