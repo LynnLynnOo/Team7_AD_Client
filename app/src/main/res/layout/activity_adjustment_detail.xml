@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    xmlns:numberpicker="http://schemas.android.com/tools">
 
 
     <TextView
@@ -49,6 +50,7 @@
         <EditText
             android:layout_width="106dp"
             android:layout_height="wrap_content"
+            android:enabled="false"
             android:id="@+id/unitOfMeasure"/>
     </LinearLayout>
 
@@ -59,12 +61,17 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:text="Quantity" />
 
-        <EditText
-            android:layout_width="106dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/quantity" />
+        <com.travijuu.numberpicker.library.NumberPicker
+            android:id="@+id/quantity"
+            android:layout_width="130dp"
+            android:layout_height="40dp"
+            numberpicker:min="-10"
+            numberpicker:max="10"
+            numberpicker:unit="1"
+            numberpicker:focusable="true" />
     </LinearLayout>
 
     <Button
