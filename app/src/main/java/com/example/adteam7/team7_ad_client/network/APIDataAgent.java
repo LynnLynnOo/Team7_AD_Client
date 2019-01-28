@@ -24,8 +24,6 @@ public interface APIDataAgent {
     String voidDisbursement(String list);
     String ackDisbursement(List<DisbursementSationeryItem> items);
 
-
-
     String delegateActingDepHeadSet(DelegateDepHeadApiModel del);
     DelegateDepHeadApiModel delegateActingDepHeadGet();
 

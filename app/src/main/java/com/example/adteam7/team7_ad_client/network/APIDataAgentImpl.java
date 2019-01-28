@@ -192,16 +192,15 @@ public class APIDataAgentImpl implements APIDataAgent {
     public String voidDisbursement(String disbno) {
 
         try {
-            String url = String.format("%sclerk/voiddisb/%s", baseURL,disbno);
+            String url = String.format("%sclerk/voiddisb/%s", baseURL, disbno);
 
             String result = JSONParser.getStream(url);
 
             return result;
         } catch (Exception e) {
 
-            return "fail";
         }
-
+        return null;
     }
 
     @Override
