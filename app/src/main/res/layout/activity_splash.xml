@@ -5,7 +5,7 @@
     android:id="@+id/welcome"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@drawable/background"
     tools:context=".activities.SplashActivity">
 
     <ImageView
@@ -14,7 +14,7 @@
         android:layout_height="150dp"
         android:layout_above="@+id/wttv"
         android:layout_centerHorizontal="true"
-        android:background="@mipmap/ic_launcher"/>
+        android:background="@drawable/Logo3"/>
 
     <TextView
         android:id="@+id/wttv"
@@ -23,7 +23,7 @@
         android:layout_centerInParent="true"
         android:layout_marginBottom="5dp"
         android:text="Stationery Request Management"
-        android:textColor="#fff"
+        android:textColor="@color/headingText"
         android:textSize="25sp"
         android:textStyle="bold"/>
 
@@ -46,13 +46,14 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="5dp"
         android:visibility="visible"
-        app:indicatorColor="#fff"
+        app:indicatorColor="@color/headingText"
         app:indicatorName="LineSpinFadeLoaderIndicator"/>
 
     <TextView
         android:id="@+id/please_wait"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/headingText"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
         android:layout_marginBottom="50dp"

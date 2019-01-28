@@ -1,7 +1,9 @@
 package com.example.adteam7.team7_ad_client.activities;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Canvas;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.AlertDialog;
@@ -41,25 +43,22 @@ public class RetrievalListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_retrieval_list);
 
-
-        setRetrievalDataAdapter();
-        retrievalsToSend = new ArrayList<>(mAdapter.retrievals);
-        setupRecyclerView();
         submit = findViewById(R.id.submit);
+        new AsyncCallerGet().execute();
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                StrictMode.setThreadPolicy(StrictMode.ThreadPolicy.LAX); //this needs to be changed
-                String status = agent.RetrievalListSet(retrievalsToSend);
-                Toast.makeText(RetrievalListActivity.this, status, Toast.LENGTH_SHORT).show();
-                finish();
+//                StrictMode.setThreadPolicy(StrictMode.ThreadPolicy.LAX); //this needs to be changed
+                new AsyncCallerSet().execute();
+
             }
         });
     }
 
+    //Region initializing recyclerview
     private void setRetrievalDataAdapter() {
-        StrictMode.setThreadPolicy(StrictMode.ThreadPolicy.LAX); //this needs to be changed
+//        StrictMode.setThreadPolicy(StrictMode.ThreadPolicy.LAX); //this needs to be changed
         ArrayList<StationeryRetrievalApiModel> retrievals = agent.RetrievalListGet();
 
         mAdapter = new RetrievalAdapter(retrievals);
@@ -83,10 +82,29 @@ public class RetrievalListActivity extends AppCompatActivity {
             public void onLeftClicked(int selectedPosition) {
                 StationeryRetrievalApiModel selectedRequest = mAdapter.retrievals.get(selectedPosition);
                 int positionToModify = retrievalsToSend.indexOf(selectedRequest);
-                retrievalsToSend.get(selectedPosition).setNewQuantity(selectedRequest.getNeededQuantity());
+
+                //check if quantity is less than warehouse, if yes only take remaining quantity
+                int quantityToDeduct = selectedRequest.NeededQuantity>selectedRequest.QuantityInWarehouse?selectedRequest.QuantityInWarehouse:selectedRequest.getNeededQuantity();
+
+                retrievalsToSend.get(positionToModify).setNewQuantity(quantityToDeduct);
+
+                //updating remaining quantity in warehouse, get ID, get chose, reduce for repeating items.
+                selectedRequest.getItemId();
+                for (int i=0;i<mAdapter.retrievals.size();i++) {
+                    if (mAdapter.retrievals.get(i).getItemId().equals(selectedRequest.getItemId())) {
+                        mAdapter.retrievals.get(i).setQuantityInWarehouse(mAdapter.retrievals.get(i).getQuantityInWarehouse() - quantityToDeduct);
+                    }
+                }
+//                for (StationeryRetrievalApiModel current:mAdapter.retrievals
+//                ) {if(current.getItemId()==selectedRequest.getItemId()){
+//                    current.setQuantityInWarehouse(current.getQuantityInWarehouse()-selectedRequest.getNeededQuantity());
+//                }
+//                }
+
                 mAdapter.retrievals.remove(selectedPosition);
                 mAdapter.notifyItemRemoved(selectedPosition);
                 mAdapter.notifyItemRangeChanged(selectedPosition, mAdapter.getItemCount());
+                mAdapter.notifyDataSetChanged();
             }
         });
 
@@ -108,12 +126,13 @@ public class RetrievalListActivity extends AppCompatActivity {
         layoutForNumber.setOrientation(LinearLayout.VERTICAL);
         NumberPicker picker = new NumberPicker(context);
         picker.setMinValue(0);
-        int maxValue;
-        if (selectedRequest.getQuantityInWarehouse() <= 0) {
-            maxValue = 0;
-        } else {
-            maxValue = selectedRequest.getQuantityInWarehouse();
-        }
+        int maxValue = selectedRequest.getQuantityInWarehouse()<selectedRequest.getNeededQuantity()?selectedRequest.getQuantityInWarehouse():selectedRequest.getNeededQuantity();
+        maxValue = maxValue<0?0:maxValue;
+//        if (selectedRequest.getQuantityInWarehouse() <= 0) {
+//            maxValue = 0;
+//        } else {
+//            maxValue = selectedRequest.getNeededQuantity();
+//        }
         picker.setMaxValue(maxValue);
 
         layoutForNumber.addView(picker);
@@ -157,12 +176,89 @@ public class RetrievalListActivity extends AppCompatActivity {
                     retrievalsToSend.get(positionToModify).setNewQuantity(picker.getValue());
                     retrievalsToSend.get(positionToModify).setRemarks(remarksField.getText().toString());
 
+                    //updating remaining quantity in warehouse, get ID, get chose, reduce for repeating items.
+                    selectedRequest.getItemId();
+                    for (StationeryRetrievalApiModel current:mAdapter.retrievals
+                         ) {if(current.getItemId().equals(selectedRequest.getItemId())){
+                             current.setQuantityInWarehouse(current.getQuantityInWarehouse()-picker.getValue());
+                    }
+                    }
+
                     //remove item from list
                     mAdapter.retrievals.remove(selectedPosition);
                     mAdapter.notifyItemRemoved(selectedPosition);
                     mAdapter.notifyItemRangeChanged(selectedPosition, mAdapter.getItemCount());
+                    mAdapter.notifyDataSetChanged();
                 })
                 .setNegativeButton(android.R.string.cancel, null)
                 .show();
+    }
+    //endregion
+
+    private class AsyncCallerGet extends AsyncTask<Void, Void, Void>
+    {
+        ProgressDialog pdLoading = new ProgressDialog(RetrievalListActivity.this);
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+            //this method will be running on UI thread
+            pdLoading.setMessage("\tLoading...");
+            pdLoading.show();
+        }
+        @Override
+        protected Void doInBackground(Void... params) {
+
+            //this method will be running on background thread so don't update UI frome here
+            //do your long running http tasks here,you dont want to pass argument and u can access the parent class' variable url over here
+            setRetrievalDataAdapter();
+            retrievalsToSend = new ArrayList<>(mAdapter.retrievals);
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            super.onPostExecute(result);
+
+            //this method will be running on UI thread
+            setupRecyclerView();
+            pdLoading.dismiss();
+        }
+    }
+
+    private class AsyncCallerSet extends AsyncTask<Void, Void, String>
+    {
+        ProgressDialog pdLoading = new ProgressDialog(RetrievalListActivity.this);
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+            //this method will be running on UI thread
+            pdLoading.setMessage("\tLoading...");
+            pdLoading.show();
+        }
+        @Override
+        protected String doInBackground(Void... params) {
+
+            //this method will be running on background thread so don't update UI frome here
+            //do your long running http tasks here,you dont want to pass argument and u can access the parent class' variable url over here
+            String status = agent.RetrievalListSet(retrievalsToSend);
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+
+            //this method will be running on UI thread
+
+            pdLoading.dismiss();
+            finish();
+            Toast.makeText(RetrievalListActivity.this, result, Toast.LENGTH_SHORT).show();
+
+        }
     }
 }
