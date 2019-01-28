@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import com.example.adteam7.team7_ad_client.R;
 import com.example.adteam7.team7_ad_client.data.DisbursementSationeryItem;
 import com.travijuu.numberpicker.library.Enums.ActionEnum;
@@ -48,11 +49,10 @@ public class ItemListAdapter extends RecyclerView.Adapter<ItemListAdapter.RvHold
 
             holder.receive2.setVisibility(View.VISIBLE);
             holder.receiveqty.setVisibility(View.GONE);
-            if(list.get(position).getReceivedQty()==0){
-                holder.receive2.setText(list.get(position).getQuantity()+"");
-            }
-            else
-            holder.receive2.setText(list.get(position).getReceivedQty()+"");
+            if (list.get(position).getReceivedQty() == 0) {
+                holder.receive2.setText(list.get(position).getQuantity() + "");
+            } else
+                holder.receive2.setText(list.get(position).getReceivedQty() + "");
         }
         else {
             //come from Detail

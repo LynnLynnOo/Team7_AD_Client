@@ -62,11 +62,11 @@ public class MainDisburAdapter extends RecyclerView.Adapter<MainDisburAdapter.Rv
                 String disbno=listitem.get(position).getDisbursementNo();
                 Intent i=new Intent(context, DisbursementDetailActivity.class);
 
-                String disotp=listitem.get(position).getOTP();
+                String disotp = listitem.get(position).getOTP();
 
                 i.putExtra("disbno",disbno);
 
-                i.putExtra("disbotp",disotp);
+                i.putExtra("disbotp", disotp);
 
                 context.startActivity(i);
             }

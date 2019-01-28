@@ -1,44 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/popup_bg"
-    >
+    android:background="@drawable/popup_bg">
+
     <LinearLayout
         android:id="@+id/headerLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="?attr/actionBarSize"
-        android:orientation="horizontal"
         android:layout_alignParentTop="true"
         android:gravity="left|center_vertical"
+        android:minHeight="?attr/actionBarSize"
+        android:orientation="horizontal"
         android:paddingLeft="10dp">
 
         <TextView
-            android:textColor="#000000"
             android:id="@+id/popup_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:text="Acknowledge with your OTP code"
+            android:textColor="#000000"
             android:textSize="20dp"
-            android:textStyle="bold"
-            android:layout_margin="5dp"/>
+            android:textStyle="bold" />
 
     </LinearLayout>
+
     <FrameLayout
-        android:layout_below="@id/headerLayout"
+        android:id="@+id/otplayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:id="@+id/otplayout">
+        android:layout_below="@id/headerLayout"
+        android:layout_weight="1">
 
         <LinearLayout
 
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-           android:layout_margin="@dimen/m_margin"
+            android:layout_margin="@dimen/m_margin"
             android:gravity="center_vertical"
             android:weightSum="4">
 
@@ -53,7 +54,7 @@
                 android:focusable="false"
                 android:gravity="center_vertical|center_horizontal"
                 android:inputType="number"
-                android:maxLength="1"/>
+                android:maxLength="1" />
 
             <EditText
                 android:layout_width="0dp"
@@ -66,7 +67,7 @@
 
                 android:gravity="center_vertical|center_horizontal"
                 android:inputType="number"
-                android:maxLength="1"/>
+                android:maxLength="1" />
 
             <EditText
                 android:layout_width="0dp"
@@ -78,7 +79,7 @@
                 android:focusable="false"
                 android:gravity="center_vertical|center_horizontal"
                 android:inputType="number"
-                android:maxLength="1"/>
+                android:maxLength="1" />
 
             <EditText
                 android:layout_width="0dp"
@@ -90,8 +91,7 @@
                 android:focusable="false"
                 android:gravity="center_vertical|center_horizontal"
                 android:inputType="number"
-                android:maxLength="1"/>
-
+                android:maxLength="1" />
 
 
         </LinearLayout>
@@ -104,6 +104,7 @@
             android:layout_marginLeft="@dimen/m_margin"
             android:layout_marginRight="@dimen/m_margin"
             android:cursorVisible="false"
+            android:gravity="center_vertical"
             android:inputType="text"
             android:textColor="@color/colorPrimary"
             android:textSize="20sp"
@@ -111,43 +112,43 @@
             app:bottomLineNormalColor="@color/colorPrimaryDark"
             app:bottomLineSelectedColor="@color/colorAccent"
             app:figures="4"
-            android:gravity="center_vertical"
             app:selectedBackgroundColor="@color/transparent"
-            app:verCodeMargin="10dp"/>
+            app:verCodeMargin="10dp" />
 
     </FrameLayout>
 
     <LinearLayout
-        android:layout_margin="@dimen/m_margin"
-        android:layout_below="@id/otplayout"
-        android:gravity="center_horizontal|center_vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/otplayout"
+        android:layout_margin="@dimen/m_margin"
+        android:gravity="center_horizontal|center_vertical"
         android:paddingBottom="@dimen/s_margin">
-        <Button
-            android:gravity="center"
 
+        <Button
             android:id="@+id/cancel"
+
             android:layout_width="100dp"
             android:layout_height="40dp"
-            android:text="@string/cancel"
             android:layout_gravity="top"
-            android:background="@drawable/loginbtn"
             android:layout_marginTop="12dp"
             android:layout_marginRight="@dimen/s_margin"
-            android:textColor="#ffffff"/>
+            android:background="@drawable/loginbtn"
+            android:gravity="center"
+            android:text="@string/cancel"
+            android:textColor="#ffffff" />
 
         <Button
-            android:layout_gravity="top"
             android:id="@+id/confirm"
-            android:layout_marginLeft="@dimen/s_margin"
             android:layout_width="120dp"
             android:layout_height="40dp"
-            android:text="@string/confirm"
-            android:background="@drawable/loginbtn"
+            android:layout_gravity="top"
+            android:layout_marginLeft="@dimen/s_margin"
             android:layout_marginTop="12dp"
+            android:background="@drawable/loginbtn"
             android:gravity="center"
-            android:textColor="#ffffff"/>
+            android:text="@string/confirm"
+            android:textColor="#ffffff" />
 
     </LinearLayout>
 

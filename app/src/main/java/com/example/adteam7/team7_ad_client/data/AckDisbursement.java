@@ -8,8 +8,8 @@ import java.util.List;
 public class AckDisbursement {
 
 
-        public String DisbursedBy;
-        public List<DisbursementSationeryItem> AckList;
+    public String DisbursedBy;
+    public List<DisbursementSationeryItem> AckList;
 
     public AckDisbursement() {
     }

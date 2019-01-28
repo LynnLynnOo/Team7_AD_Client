@@ -36,10 +36,11 @@
         android:layout_marginTop="135dp"
         android:id="@+id/layoutpanel"
         android:orientation="vertical">
+
         <LinearLayout
-            android:layout_margin="@dimen/s_margin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/s_margin"
             android:weightSum="3">
 
 
@@ -121,9 +122,9 @@
     </LinearLayout>
 
         <android.support.v7.widget.RecyclerView
+            android:id="@+id/AdjustmentList"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/AdjustmentList">
+            android:layout_height="wrap_content">
 
         </android.support.v7.widget.RecyclerView>
     </LinearLayout>
@@ -132,37 +133,35 @@
         android:id="@+id/potextViewSerial"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="15dp"
         android:layout_weight="1"
         android:text="Raise Adjustment"
         android:textColor="@color/headingText"
         android:textSize="45sp"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="50dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
-        <Button
-            android:id="@+id/AddButton"
-            android:layout_width="110dp"
-            android:layout_height="110dp"
-            android:layout_marginTop="35dp"
-            android:layout_marginLeft="35dp"
-            app:layout_constraintLeft_toLeftOf="@id/layoutpanel"
-            app:layout_constraintTop_toBottomOf="@id/layoutpanel"
-            android:background="@drawable/plusbtn" />
-        <Button
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="35dp"
-            android:layout_marginRight="35dp"
-            app:layout_constraintTop_toBottomOf="@id/layoutpanel"
-            app:layout_constraintRight_toRightOf="@id/layoutpanel"
-            android:id="@+id/confirmButton"
-            android:background="@drawable/acceptbtn"/>
+    <Button
+        android:id="@+id/AddButton"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="35dp"
+        android:background="@drawable/plusbtn"
+        app:layout_constraintLeft_toLeftOf="@id/layoutpanel"
+        app:layout_constraintTop_toBottomOf="@id/layoutpanel" />
 
-
-
+    <Button
+        android:id="@+id/confirmButton"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginRight="35dp"
+        android:background="@drawable/acceptbtn"
+        app:layout_constraintRight_toRightOf="@id/layoutpanel"
+        app:layout_constraintTop_toBottomOf="@id/layoutpanel" />
 
 
 </android.support.constraint.ConstraintLayout>

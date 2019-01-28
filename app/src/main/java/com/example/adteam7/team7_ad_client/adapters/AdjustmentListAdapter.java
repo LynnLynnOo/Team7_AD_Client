@@ -17,10 +17,10 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdjustmentListAdapter extends RecyclerView.Adapter<adjustmentHolder>{
+public class AdjustmentListAdapter extends RecyclerView.Adapter<adjustmentHolder> {
     public static List<AdjustmentItem> list = new ArrayList<AdjustmentItem>();
 
-    public AdjustmentListAdapter(Context context,List<AdjustmentItem> l){
+    public AdjustmentListAdapter(Context context, List<AdjustmentItem> l) {
         this.list = l;
     }
 
@@ -35,9 +35,9 @@ public class AdjustmentListAdapter extends RecyclerView.Adapter<adjustmentHolder
     public void onBindViewHolder(@NonNull adjustmentHolder adjustmentHolder, int i) {
         adjustmentHolder.category.setText(list.get(i).category);
         adjustmentHolder.decription.setText(list.get(i).description);
-        adjustmentHolder.quantity.setText(String.format("%d",list.get(i).quantity));
+        adjustmentHolder.quantity.setText(String.format("%d", list.get(i).quantity));
         NumberFormat nf = new DecimalFormat("$#.##");
-        double amount =list.get(i).quantity*list.get(i).price;
+        double amount = list.get(i).quantity * list.get(i).price;
         adjustmentHolder.amount.setText(nf.format(amount));
         adjustmentHolder.delete.setTag(i);
         adjustmentHolder.delete.setOnClickListener(new View.OnClickListener() {
@@ -55,10 +55,11 @@ public class AdjustmentListAdapter extends RecyclerView.Adapter<adjustmentHolder
     }
 }
 
- class adjustmentHolder extends RecyclerView.ViewHolder{
-    TextView category,decription,quantity,amount;
+class adjustmentHolder extends RecyclerView.ViewHolder {
+    TextView category, decription, quantity, amount;
     Button delete;
-    public adjustmentHolder(View itemView){
+
+    public adjustmentHolder(View itemView) {
         super(itemView);
         category = itemView.findViewById(R.id.category);
         decription = itemView.findViewById(R.id.description);
