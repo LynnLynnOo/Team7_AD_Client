@@ -73,7 +73,11 @@ public class APIDataAgentImpl implements APIDataAgent {
                 userId= res.getString("userName");
                 Log.e(TAG, "login: " + res.getString("access_token"));
                 SessionManager sessionManager=SessionManager.getInstance();
-                sessionManager.setUserRole(res.getString("roleName"));
+                if(res.has("roleName1")) {
+                    sessionManager.setUserRole(res.getString("roleName0"), res.getString("roleName1"));
+                }else{
+                    sessionManager.setUserRole(res.getString("roleName0"), "");
+                }
             }
             return userId;
         } catch (Exception e) {
