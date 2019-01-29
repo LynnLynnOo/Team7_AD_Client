@@ -3,6 +3,7 @@ package com.example.adteam7.team7_ad_client.activities;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.se.omapi.Session;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,13 +12,15 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
+import com.example.adteam7.team7_ad_client.data.SessionManager;
 import com.example.adteam7.team7_ad_client.R;
 import com.example.adteam7.team7_ad_client.adapters.AdjustmentListAdapter;
 import com.example.adteam7.team7_ad_client.data.AdjustmentInfo;
 import com.example.adteam7.team7_ad_client.data.AdjustmentItem;
+
 import com.example.adteam7.team7_ad_client.network.APIDataAgent;
 import com.example.adteam7.team7_ad_client.network.APIDataAgentImpl;
+import com.example.adteam7.team7_ad_client.network.SendMailTask;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,6 +53,7 @@ public class RaiseAdjustmentActivity extends AppCompatActivity {
                 keepAdjustment();
                 if (!adjustment.isEmpty() && !((EditText) findViewById(R.id.remark)).getText().toString().equals("")) {
                     new AsyncSetAdjustment().execute();
+                    sendEmail();
                 }
            }
         });
@@ -132,7 +136,29 @@ public class RaiseAdjustmentActivity extends AppCompatActivity {
             list.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
             list.setAdapter(adapter);
         }
+    }
 
+    public void sendEmail(){
+        double amount = 0;
+        for(AdjustmentItem item: AdjustmentListAdapter.list){
+            amount+=(item.price*item.quantity);
+        }
+        new AsyncGetEmail().execute(new Double[]{amount});
+    }
 
+    public class AsyncGetEmail extends AsyncTask<Double,Void,String>{
+        @Override
+        protected String doInBackground(Double... doubles) {
+            return ((APIDataAgentImpl) api).adjustmentGetEmail(doubles[0]);
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            String emailAddress = s;
+            SessionManager session = SessionManager.getInstance();
+            String subject = "New Adjustment Raised";
+            String content ="Kindly remind: \n You got a new adjustment raised.\n Raised by " + session.getUsername() + ".";
+            new SendMailTask(getParent()).execute(new String[]{"1015440098@qq.com",subject,content});
+        }
     }
 }

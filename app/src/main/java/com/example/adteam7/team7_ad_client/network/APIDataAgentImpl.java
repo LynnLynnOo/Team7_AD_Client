@@ -586,6 +586,11 @@ public class APIDataAgentImpl implements APIDataAgent {
         return result;
     }
 
+    public String adjustmentGetEmail(double amount){
+        String url = String.format("http://%s/team7ad/adjustment/email/%f",host,amount);
+        return JSONParser.getStream(url);
+    }
+
     public String adjustmentSet(List<AdjustmentInfo> adjustment){
 
         JSONArray array = new JSONArray();
