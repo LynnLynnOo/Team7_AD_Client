@@ -48,6 +48,7 @@ public class APIDataAgentImpl implements APIDataAgent {
     //http://172.17.4.197/team7ad/Token
     SessionManager session = SessionManager.getInstance();
 
+
     static {
         //http://172.17.80.219/Team7API/Token
         baseURL = String.format("http://%s/team7ad/api/", host);
@@ -81,6 +82,8 @@ public class APIDataAgentImpl implements APIDataAgent {
             return "fail";
         }
     }
+
+
 
     @Override
     public ManageDepRep delegateDepHeadGet() {
@@ -144,7 +147,7 @@ public class APIDataAgentImpl implements APIDataAgent {
         return rr;
     }
 
-    //endregion
+
 
    /* @Override
     public String delegateDepHeadSet(ManageDepRep dep) {

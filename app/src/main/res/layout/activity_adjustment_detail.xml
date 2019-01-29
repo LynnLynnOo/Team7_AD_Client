@@ -42,8 +42,7 @@
         android:layout_marginRight="15dp"/>
 
     <View
-        android:layout_marginLeft="45dp"
-        android:layout_marginRight="45dp"
+
         android:layout_width="match_parent"
         android:layout_height="350dp"
         android:background="@drawable/panelbg"
@@ -58,8 +57,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:layout_marginLeft="60dp"
-        android:layout_marginRight="60dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         app:layout_constraintTop_toTopOf="@id/layoutpanel"
         android:layout_marginTop="30dp"/>
 
@@ -68,8 +67,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_marginLeft="60dp"
-            android:layout_marginRight="60dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:layout_marginTop="30dp"
             android:text="Item Description"
             android:textColor="@color/txtColor"
@@ -80,8 +79,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_marginLeft="60dp"
-            android:layout_marginRight="60dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:layout_marginTop="55dp"
             app:layout_constraintTop_toTopOf="@id/categorySpinner"/>
 
@@ -91,8 +90,8 @@
             android:layout_height="wrap_content"
             android:text="Unit of measure"
             android:textColor="@color/txtColor"
-            android:layout_marginLeft="60dp"
-            android:layout_marginRight="60dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:layout_marginTop="80dp"
             app:layout_constraintTop_toTopOf="@id/categorySpinner"/>
 
@@ -100,8 +99,8 @@
             android:id="@+id/unitOfMeasure"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="60dp"
-            android:layout_marginRight="60dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:layout_marginTop="105dp"
             android:enabled="false"
             app:layout_constraintTop_toTopOf="@id/categorySpinner" />
