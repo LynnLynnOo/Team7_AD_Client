@@ -2,8 +2,8 @@ package com.example.adteam7.team7_ad_client.activities;
 
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -14,19 +14,12 @@ import android.widget.Toast;
 
 import com.example.adteam7.team7_ad_client.R;
 import com.example.adteam7.team7_ad_client.data.AckDeliveryDetails;
-import com.example.adteam7.team7_ad_client.data.PendingPO;
 import com.example.adteam7.team7_ad_client.data.PendingPODetails;
 import com.example.adteam7.team7_ad_client.data.SessionManager;
 import com.example.adteam7.team7_ad_client.network.APIDataAgent;
 import com.example.adteam7.team7_ad_client.network.APIDataAgentImpl;
 
-import org.w3c.dom.Text;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 public class AcknowledgeDeliveryDetails extends AppCompatActivity {
@@ -70,8 +63,8 @@ public class AcknowledgeDeliveryDetails extends AppCompatActivity {
                     ListView list = (ListView) findViewById(R.id.ackDelilistDetails);
                     SimpleAdapter adapter = new SimpleAdapter(AcknowledgeDeliveryDetails.this, polist,
                             R.layout.ackrowdetails,
-                            new String[]{"ItemId", "Description", "Quantity","Quantity"},
-                            new int[]{R.id.ackDeliTextViewItemId, R.id.ackDeliTextViewDescription, R.id.ackDeliTextViewQty,R.id.ackDelieditTextQty});
+                            new String[]{"ItemId", "Description", "Quantity", "Quantity"},
+                            new int[]{R.id.ackDeliTextViewItemId, R.id.ackDeliTextViewDescription, R.id.ackDeliTextViewQty, R.id.ackDelieditTextQty});
                     list.setAdapter(adapter);
                     Log.i("userID", SessionManager.getInstance().getUserid());
                 }
@@ -97,8 +90,8 @@ public class AcknowledgeDeliveryDetails extends AppCompatActivity {
             isNew = false;
             String selectedpo = intent.getStringExtra("selectedpo");
 
-            AckDeliveryDetails delDetails = new AckDeliveryDetails(itemID.getText().toString(),actualQty.getText().toString(), "", "",
-                    orderNo.getText().toString(),"", SessionManager.getInstance().getUserid(),selectedpo);
+            AckDeliveryDetails delDetails = new AckDeliveryDetails(itemID.getText().toString(), actualQty.getText().toString(), "", "",
+                    orderNo.getText().toString(), "", SessionManager.getInstance().getUserid(), selectedpo);
 
             new AsyncTask<AckDeliveryDetails, Void, Void>() {
                 @Override

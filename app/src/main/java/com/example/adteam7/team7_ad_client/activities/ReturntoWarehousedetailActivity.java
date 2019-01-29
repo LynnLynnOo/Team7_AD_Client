@@ -1,7 +1,7 @@
 package com.example.adteam7.team7_ad_client.activities;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import com.example.adteam7.team7_ad_client.R;
 

@@ -23,14 +23,12 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Locale;
 
 import static android.content.ContentValues.TAG;
 
@@ -73,7 +71,11 @@ public class APIDataAgentImpl implements APIDataAgent {
                 userId= res.getString("userName");
                 Log.e(TAG, "login: " + res.getString("access_token"));
                 SessionManager sessionManager=SessionManager.getInstance();
-                sessionManager.setUserRole(res.getString("roleName"));
+                if(res.has("roleName1")) {
+                    sessionManager.setUserRole(res.getString("roleName0"), res.getString("roleName1"));
+                }else{
+                    sessionManager.setUserRole(res.getString("roleName0"), "");
+                }
             }
             return userId;
         } catch (Exception e) {
