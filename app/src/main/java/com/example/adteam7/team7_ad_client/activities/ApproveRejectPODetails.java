@@ -15,11 +15,15 @@ import com.example.adteam7.team7_ad_client.R;
 import com.example.adteam7.team7_ad_client.data.PendingPO;
 import com.example.adteam7.team7_ad_client.data.PendingPODetails;
 import com.example.adteam7.team7_ad_client.data.SessionManager;
-import com.example.adteam7.team7_ad_client.network.JSONParser;
+import com.example.adteam7.team7_ad_client.network.APIDataAgent;
+import com.example.adteam7.team7_ad_client.network.APIDataAgentImpl;
+
 
 import java.util.List;
 
 public class ApproveRejectPODetails extends AppCompatActivity {
+
+    //region Author Zan Tun Khine
 
     boolean isNew = true;
 
@@ -40,9 +44,11 @@ public class ApproveRejectPODetails extends AppCompatActivity {
 
             new AsyncTask<String, Void, List<PendingPODetails>>() {
 
+                APIDataAgent dataAgent = new APIDataAgentImpl();
+
                 @Override
                 protected List<PendingPODetails> doInBackground(String... params) {
-                    List<PendingPODetails> polist = PendingPODetails.GetPendingPODetails(params[0]);
+                    List<PendingPODetails> polist = dataAgent.GetPendingPODetails(params[0]);
                     //Log.i("list",polist.get(0).get("Description"));
                     return polist;
                 }
@@ -73,6 +79,8 @@ public class ApproveRejectPODetails extends AppCompatActivity {
 
     public void ApproveReject(final View v) {
 
+        final APIDataAgent dataAgent = new APIDataAgentImpl();
+
         Intent intent = getIntent();
         if (intent.hasExtra("id")) {
             isNew = false;
@@ -83,7 +91,7 @@ public class ApproveRejectPODetails extends AppCompatActivity {
 
                 @Override
                 protected Void doInBackground(PendingPO... params) {
-                    PendingPO.ApproveRejectPO(params[0], v.getId());
+                    dataAgent.ApproveRejectPO(params[0], v.getId());
                     Log.i("Btn", Integer.toString(v.getId()));
                     Log.i("userID", SessionManager.getInstance().getUserid());
 
@@ -95,7 +103,7 @@ public class ApproveRejectPODetails extends AppCompatActivity {
             Toast.makeText(ApproveRejectPODetails.this, "Successful!", Toast.LENGTH_SHORT).show();
         }
     }
-
+    //endregion
 }
 
 

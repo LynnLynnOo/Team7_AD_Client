@@ -23,39 +23,39 @@
         android:layout_marginBottom="0dp"
         android:scaleType="centerCrop"
         android:src="@drawable/footer"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
     <TextView
         android:id="@+id/tV_head_actadj"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="15dp"
         android:layout_weight="1"
         android:text="Disbursement List"
         android:textColor="@color/headingText"
         android:textSize="45sp"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:visibility="gone"/>
 
     <View
-        android:id="@+id/layoutpanel"
         android:layout_width="match_parent"
-        android:layout_height="550dp"
-        android:layout_marginLeft="45dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginRight="45dp"
+        android:layout_height="match_parent"
         android:background="@drawable/panelbg"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="5dp"
+        android:id="@+id/layoutpanel"
+        />
 
     <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:id="@+id/disbursementrv"
-        android:layout_width="310dp"
-        android:layout_height="530dp"
-        android:layout_margin="10dp"
         app:layout_constraintLeft_toLeftOf="@id/layoutpanel"
-        app:layout_constraintTop_toTopOf="@id/layoutpanel" />
+        app:layout_constraintTop_toTopOf="@id/layoutpanel"
+        android:layout_margin="10dp"/>
 
 </android.support.constraint.ConstraintLayout>

@@ -19,6 +19,8 @@ public class SessionManager {
     private static final String KEY_PASSWORD = "pwd";
     private static final String KEY_TOKEN = "token";
     private static final String IS_LOGIN = "IsLoggedIn";
+
+    private static final String KEY_ROLE = "role";
     // Sharedpref file name
     private static final String PREF_NAME = "Team7ADPref";
 
@@ -83,7 +85,19 @@ public class SessionManager {
         return pref.getBoolean(IS_LOGIN, false);
 
     }
+    public void setUserRole(String role){
 
+
+        editor.putString(KEY_ROLE, role);
+        editor.commit();
+
+
+    }
+    public String getUserRole(){
+        String s = pref.getString(KEY_ROLE, null);
+        return s;
+
+    }
 
     public String getUsername() {
         String s = pref.getString(KEY_NAME, null);

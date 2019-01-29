@@ -8,7 +8,7 @@
 
     <View
         android:id="@+id/layoutpanel"
-        android:layout_width="355dp"
+        android:layout_width="match_parent"
         android:layout_height="366dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="108dp"
@@ -33,7 +33,9 @@
 
     <TableLayout
         android:id="@+id/tableLayout"
-        android:layout_width="319dp"
+        android:layout_width="match_parent"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
         android:layout_height="92dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -138,10 +140,14 @@
 
     <Button
         android:id="@+id/reqButtonApprove"
-        android:layout_width="100dp"
+        android:layout_width="70dp"
         android:layout_height="100dp"
         android:layout_marginRight="60dp"
-        android:background="@drawable/acceptbtn"
+        android:background="@drawable/roundbtn"
+        android:drawableTop="@drawable/accept"
+        android:text="Accept"
+        android:textColor="@color/headingText"
+        android:paddingTop="10dp"
         app:layout_constraintRight_toRightOf="@id/layoutpanel"
         app:layout_constraintTop_toBottomOf="@id/layoutpanel"
 
@@ -149,16 +155,22 @@
 
     <Button
         android:id="@+id/reqButtonReject"
-        android:layout_width="100dp"
+        android:layout_width="70dp"
         android:layout_height="100dp"
         android:layout_marginLeft="36dp"
-        android:background="@drawable/rejectbtn"
+        android:paddingTop="10dp"
+        android:background="@drawable/roundbtn"
+        android:drawableTop="@drawable/reject"
+        android:text="Reject"
+        android:textColor="@color/headingText"
         app:layout_constraintLeft_toLeftOf="@id/layoutpanel"
         app:layout_constraintTop_toBottomOf="@id/layoutpanel" />
 
     <LinearLayout
         android:id="@+id/items"
-        android:layout_width="325dp"
+        android:layout_width="match_parent"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:layout_height="186dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
