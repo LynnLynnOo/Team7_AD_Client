@@ -22,7 +22,10 @@ public class ApproveRejectPO extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_approve_reject_po);
-
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle("Purchase Order");
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
         // Get the list of Pending POs
 
