@@ -65,6 +65,7 @@ public class MainActivity extends AppCompatActivity
             }
 
         }else{
+
             role1=session.getUserRole1();
             if(role0.equals("Department Head" ) && role1.equals("Store Manager") ){
                 navigationView.inflateMenu(R.menu.storemanager_menu_drawer);
