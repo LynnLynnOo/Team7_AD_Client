@@ -38,7 +38,7 @@ import static android.content.ContentValues.TAG;
 public class APIDataAgentImpl implements APIDataAgent {
 
   // static String host = "localhost";
-   static String host = "172.17.81.182";
+   static String host = "192.168.1.75";
    // http://localhost/Team7API/Token
     static String baseURL;
     static String imageURL;
@@ -587,8 +587,8 @@ public class APIDataAgentImpl implements APIDataAgent {
         return result;
     }
 
-    public String adjustmentGetEmail(double amount){
-        String url = String.format("http://%s/team7ad/adjustment/email/%f",host,amount);
+    public String adjustmentGetEmail(int amount){
+        String url = String.format("http://%s/team7ad/adjustment/email/%d",host,amount);
         return JSONParser.getStream(url);
     }
 
