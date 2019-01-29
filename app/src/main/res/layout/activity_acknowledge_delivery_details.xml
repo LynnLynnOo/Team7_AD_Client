@@ -6,17 +6,43 @@
     android:layout_height="match_parent"
     tools:context=".activities.ApproveRejectPODetails">
 
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/appCompatImageView2"
+        android:layout_width="match_parent"
+        android:layout_height="267dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/heading"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/appCompatImageView3"
+        android:layout_width="match_parent"
+        android:layout_height="321dp"
+        android:layout_marginBottom="24dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/footer"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <Button
         android:id="@+id/ackDeliButtonConfirm"
         android:layout_width="389dp"
-        android:layout_height="66dp"
-        android:onClick="ConfirmDelivery"
+        android:layout_height="94dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/roundbtn"
+        android:drawableTop="@drawable/accept"
+        android:onClick="ApproveReject"
         android:text="Confirm"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.636"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.99" />
+        app:layout_constraintTop_toBottomOf="@+id/ackDelilistDetails" />
+    />
 
     <TextView
         android:id="@+id/ackDeliTextViewPono"
@@ -30,11 +56,19 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:text="PO Number:" />
 
+    <View
+        android:id="@+id/layoutpanel"
+        android:layout_width="match_parent"
+        android:layout_height="382dp"
+        android:layout_marginTop="104dp"
+        android:background="@drawable/panelbg"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="8dp" />
+
     <ListView
         android:id="@+id/ackDelilistDetails"
         android:layout_width="395dp"
-        android:layout_height="425dp"
-        android:layout_marginTop="92dp"
+        android:layout_height="346dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider4" />

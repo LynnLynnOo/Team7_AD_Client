@@ -30,6 +30,12 @@ public class AcknowledgeDeliveryDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_acknowledge_delivery_details);
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle("Acknowledge Delivery");
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
         final TextView pono = findViewById(R.id.ackDeliTextViewPono);
         final TextView itemID = findViewById(R.id.ackDeliTextViewItemId);
         final TextView itemDesc = findViewById(R.id.ackDeliTextViewDescription);
