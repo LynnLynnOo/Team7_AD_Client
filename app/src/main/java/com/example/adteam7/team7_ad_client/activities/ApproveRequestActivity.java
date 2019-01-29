@@ -21,6 +21,7 @@ import com.example.adteam7.team7_ad_client.data.SessionManager;
 import com.example.adteam7.team7_ad_client.data.StationeryRequestApiModel;
 import com.example.adteam7.team7_ad_client.network.APIDataAgent;
 import com.example.adteam7.team7_ad_client.network.APIDataAgentImpl;
+import com.example.adteam7.team7_ad_client.network.SendMailTask;
 
 import java.util.List;
 
@@ -33,7 +34,7 @@ public class ApproveRequestActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_approve_request);
-
+        /* get requestid*/
         Intent i = getIntent();
         String rid = i.getStringExtra("rid");
         Log.e("Rid", rid);
@@ -67,7 +68,6 @@ public class ApproveRequestActivity extends AppCompatActivity {
 
         // ConstraintLayout approveReqView = findViewById(R.id.approveRequest_layout);
         LinearLayout approveReqView = findViewById(R.id.items);
-
 
         double sum = 0;
         for (int i = 0; i < transactionDetails.size(); i++) {
@@ -144,11 +144,13 @@ public class ApproveRequestActivity extends AppCompatActivity {
             approveReqView.addView(newitem);
             Log.e("add to layout", "new text");
         }
+        /*show total*/
         String total = new Double(sum).toString();
         TextView tx_total = new TextView(getApplicationContext());
         ((TextView) tx_total).setText("Total :$" + total);
         tx_total.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 19);
         approveReqView.addView(tx_total);
+        /*if the request is not pending approve , it can not be approved or rejected again(can't see these 2 button)*/
         if (!"Pending Approval".equals(request.getStatus().trim())) {
             String x = Boolean.toString("Pending Approval".equals(request.getStatus().trim()));
             Log.e("equal", x);
@@ -167,6 +169,9 @@ public class ApproveRequestActivity extends AppCompatActivity {
             exactReq.setApprovedBy(name);
             String result = agent.ApproveStationeryRequest(exactReq);
             Log.e("result", result);
+            String title = "Request Approved!";
+            String body = "Your request was approved!";
+            new SendMailTask(ApproveRequestActivity.this).execute("team7logicdb@gmail.com", title, body);
             return result;
         }
 
@@ -186,6 +191,9 @@ public class ApproveRequestActivity extends AppCompatActivity {
             StationeryRequestApiModel exactReq = agent.GetStationeryRequest(params[0]);
             exactReq.setApprovedBy(name);
             String result = agent.RejectStationeryRequest(exactReq);
+            String title = "Request Rejected!";
+            String body = "Your request was rejected!";
+            new SendMailTask(ApproveRequestActivity.this).execute("team7logicdb@gmail.com", title, body);
             return result;
         }
 

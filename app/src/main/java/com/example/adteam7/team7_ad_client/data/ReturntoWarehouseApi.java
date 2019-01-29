@@ -2,17 +2,15 @@ package com.example.adteam7.team7_ad_client.data;
 
 import android.util.Log;
 
-import com.example.adteam7.team7_ad_client.R;
 import com.example.adteam7.team7_ad_client.network.JSONParser;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
+import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
-    public class ReturntoWarehouseApi extends HashMap<String, String> {
+    public class ReturntoWarehouseApi {
 
 
         static String host = "172.17.81.182";
@@ -22,43 +20,100 @@ import java.util.List;
             baseURL = String.format("http://%s/team7ad/api", host);
         }
 
-        public ReturntoWarehouseApi(String RequestId, String ItemId, String Description, int Quantity, String DepartmentName, String Location)
-        {
+        String RequestId,  ItemId,  Description;
+        int Quantity;
+        String Department,Location;
 
-            put("RequestId", RequestId);
-            put("ItemId", ItemId);
-            put("Description", Description);
-            put("Quantity", String.valueOf(Quantity));
-            put("DepartmentName", DepartmentName);
-            put("Location", Location);
 
+        public ReturntoWarehouseApi(String requestId, String itemId, String description, int quantity, String department, String location)
+         {
+            RequestId = requestId;
+            ItemId = itemId;
+            Description = description;
+            Quantity = quantity;
+            Department = department;
+            Location = location;
         }
 
-       public String getRequestId()
-       {
-           return get("RequestId");
-       }
+        public static String getHost() {
+            return host;
+        }
 
+        public static void setHost(String host) {
+            ReturntoWarehouseApi.host = host;
+        }
 
-       public String getDepartmentName(){
-            return get("DepartmentName");
-       }
+        public static String getBaseURL() {
+            return baseURL;
+        }
+
+        public static void setBaseURL(String baseURL) {
+            ReturntoWarehouseApi.baseURL = baseURL;
+        }
+
+        public String getRequestId() {
+            return RequestId;
+        }
+
+        public void setRequestId(String requestId) {
+            RequestId = requestId;
+        }
+
+        public String getItemId() {
+            return ItemId;
+        }
+
+        public void setItemId(String itemId) {
+            ItemId = itemId;
+        }
+
+        public String getDescription() {
+            return Description;
+        }
+
+        public void setDescription(String description) {
+            Description = description;
+        }
+
+        public int getQuantity() {
+            return Quantity;
+        }
+
+        public void setQuantity(int quantity) {
+            Quantity = quantity;
+        }
+
+        public String getDepartment() {
+            return Department;
+        }
+
+        public void setDepartment(String department) {
+            Department = department;
+        }
+
+        public String getLocation() {
+            return Location;
+        }
+
+        public void setLocation(String location) {
+            Location = location;
+        }
 
         public static List<ReturntoWarehouseApi> GetItemList() {
             String url = String.format("%s/returntowarehouse/getitemlist", baseURL);
             List<ReturntoWarehouseApi> listreturn = new ArrayList<>();
             try {
-                JSONArray a = JSONParser.getJSONArrayFromUrl(url);
-                for (int i = 0; i < a.length(); i++) {
-                    JSONObject b = a.getJSONObject(i);
-                    listreturn.add(new ReturntoWarehouseApi(
-                            b.getString("RequestId"),
-                            b.getString("ItemId"),
-                            b.getString("Description"),
-                            b.getInt("Quantity"),
-                            b.getString("DepartmentName"),
-                            b.getString("location")));
-                }
+                String a = JSONParser.getStream(url);
+
+                Gson gson=new Gson();
+
+
+                Type type=new TypeToken<ArrayList<ReturntoWarehouseApi>>(){}.getType();
+                List<ReturntoWarehouseApi> list=gson.fromJson(a,type);
+
+                return list;
+
+
             } catch (Exception e) {
                 Log.e("ReturntoWarehouse", "JSONArray error");
             }
@@ -66,7 +121,7 @@ import java.util.List;
         }
 
 
-        public static void ReturnedFunction(ReturntoWarehouseApi rtw, int btn) {
+       /* public static void ReturnedFunction(ReturntoWarehouseApi rtw, int btn) {
             JSONObject jpo = new JSONObject();
 
             try {
@@ -74,7 +129,7 @@ import java.util.List;
                 jpo.put("ItemId",rtw.get("ItemId"));
                 jpo.put("Description",rtw.get("Description"));
                 jpo.put("Quantity",rtw.get("Quantity"));
-                jpo.put("DepartmentName",rtw);
+                jpo.put("Department",rtw);
                 jpo.put("Location", rtw.get("Location"));
 
             } catch (Exception e) {
@@ -87,7 +142,7 @@ import java.util.List;
                 //JSONParser.postStream(baseURL + "/returntowarehouse/return", jpo.toString());
 
 
-        }
+        }*/
         //endregion
     }
 

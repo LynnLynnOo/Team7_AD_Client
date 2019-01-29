@@ -29,7 +29,7 @@ public class DisbDetailAckActivity extends AppCompatActivity {
     RecyclerView itemsrv;
     APIDataAgent agent=new APIDataAgentImpl();
     ItemListAdapter adapter;
-    Button cancel,confirm;
+    Button cancel, confirm;
     String disbOTP;
     List<DisbursementSationeryItem> itemlist;
     PopupWindow popWindow;
@@ -39,8 +39,8 @@ public class DisbDetailAckActivity extends AppCompatActivity {
         setContentView(R.layout.activity_disbursement_detail);
         itemsrv=findViewById(R.id.detailrv);
         itemsrv.setLayoutManager(new LinearLayoutManager(this));
-        cancel=findViewById(R.id.voiddisb);
-        confirm=findViewById(R.id.ackwge);
+        cancel = findViewById(R.id.voiddisb);
+        confirm = findViewById(R.id.ackwge);
 
 
         cancel.setText("Cancel");
@@ -48,24 +48,24 @@ public class DisbDetailAckActivity extends AppCompatActivity {
 
         if(getIntent().hasExtra("disblist")){
             itemlist = (List<DisbursementSationeryItem>) getIntent().getSerializableExtra("disblist");
-            Toast.makeText(this, "receive list "+itemlist.size(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "receive list " + itemlist.size(), Toast.LENGTH_SHORT).show();
 
-            adapter=new ItemListAdapter(DisbDetailAckActivity.this,itemlist,false);
+            adapter = new ItemListAdapter(DisbDetailAckActivity.this, itemlist, false);
 
             itemsrv.setAdapter(adapter);
 
 
         }
-        if(getIntent().hasExtra("disbotp")){
+        if (getIntent().hasExtra("disbotp")) {
 
-            disbOTP=getIntent().getStringExtra("disbotp");
+            disbOTP = getIntent().getStringExtra("disbotp");
         }
 
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
-             }
+            }
         });
 
 
@@ -100,8 +100,8 @@ public class DisbDetailAckActivity extends AppCompatActivity {
         dialogFragment.show(getSupportFragmentManager(), "Sample Fragment");
 
 
-        Bundle b=new Bundle();
-        b.putString("OTP",disbOTP);
+        Bundle b = new Bundle();
+        b.putString("OTP", disbOTP);
         dialogFragment.setArguments(b);
 
     }
@@ -113,17 +113,16 @@ public class DisbDetailAckActivity extends AppCompatActivity {
             String resultMessage = bundle.getString(OTPFragment.RESULT);
 
 
-            Toast.makeText(this, "from frag "+resultMessage, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "from frag " + resultMessage, Toast.LENGTH_SHORT).show();
             //call API to ack
             new AsyncAcknowledgeDisbursement().execute(itemlist);
-            }
-
-
         }
 
 
+    }
 
-    private class AsyncAcknowledgeDisbursement extends AsyncTask<List<DisbursementSationeryItem>, Void,String> {
+
+    private class AsyncAcknowledgeDisbursement extends AsyncTask<List<DisbursementSationeryItem>, Void, String> {
 
 
         @Override
@@ -137,7 +136,7 @@ public class DisbDetailAckActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
 
-            Toast.makeText(DisbDetailAckActivity.this, "Acknowledged "+s, Toast.LENGTH_SHORT).show();
+            Toast.makeText(DisbDetailAckActivity.this, "Acknowledged " + s, Toast.LENGTH_SHORT).show();
             finish();
         }
     }

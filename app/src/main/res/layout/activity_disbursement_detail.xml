@@ -34,18 +34,18 @@
         android:background="@drawable/panelbg"
         app:layout_constraintTop_toTopOf="parent"
         android:id="@+id/layoutpanel"/>
-<!--
-    <TextView
-        android:id="@+id/depname"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:text="Department of English"
-        android:textColor="@color/headingText"
-        android:textSize="35sp" />-->
+    <!--
+        <TextView
+            android:id="@+id/depname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:text="Department of English"
+            android:textColor="@color/headingText"
+            android:textSize="35sp" />-->
 
     <LinearLayout
         android:id="@+id/title"
@@ -53,8 +53,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/depname"
         android:layout_marginLeft="@dimen/s_margin"
-        android:layout_marginRight="@dimen/s_margin"
         android:layout_marginTop="@dimen/s_margin"
+        android:layout_marginRight="@dimen/s_margin"
         android:weightSum="3"
         app:layout_constraintTop_toTopOf="@id/layoutpanel"
         app:layout_constraintLeft_toLeftOf="@id/layoutpanel">
@@ -119,8 +119,8 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/detailrv"
         android:layout_marginLeft="@dimen/s_margin"
-        android:layout_marginRight="@dimen/s_margin"
         android:layout_marginTop="@dimen/s_margin"
+        android:layout_marginRight="@dimen/s_margin"
         android:layout_width="match_parent"
         android:layout_height="395dp"
         android:layout_below="@+id/title"

@@ -27,7 +27,7 @@ public class DisbursementDetailActivity extends AppCompatActivity  {
     APIDataAgent agent=new APIDataAgentImpl();
     ItemListAdapter adapter;
     Button voiddisb,ackwge;
-    String disbno, disbotp,depname;
+    String disbno, disbotp, depname;
     List<DisbursementSationeryItem> itemlist;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +46,7 @@ public class DisbursementDetailActivity extends AppCompatActivity  {
             disbotp = getIntent().getStringExtra("disbotp");
         }
         if (getIntent().hasExtra("depname")) {
-           depname= getIntent().getStringExtra("depname");
+            depname = getIntent().getStringExtra("depname");
             if (getSupportActionBar() != null) {
                 getSupportActionBar().setTitle(depname);
                 getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -126,9 +126,9 @@ public class DisbursementDetailActivity extends AppCompatActivity  {
             super.onPostExecute(disbursementSationeryItems);
             itemlist=disbursementSationeryItems;
 
-           for(int i=0;i<itemlist.size();i++){
-               itemlist.get(i).setReceivedQty(itemlist.get(i).getQuantity());
-           }
+            for (int i = 0; i < itemlist.size(); i++) {
+                itemlist.get(i).setReceivedQty(itemlist.get(i).getQuantity());
+            }
 
             adapter=new ItemListAdapter(DisbursementDetailActivity.this,disbursementSationeryItems,true);
 

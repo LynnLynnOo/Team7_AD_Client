@@ -23,14 +23,12 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Locale;
 
 import static android.content.ContentValues.TAG;
 
@@ -587,6 +585,11 @@ public class APIDataAgentImpl implements APIDataAgent {
             Log.e("error","Json get info error");
         }
         return result;
+    }
+
+    public String adjustmentGetEmail(double amount){
+        String url = String.format("http://%s/team7ad/adjustment/email/%f",host,amount);
+        return JSONParser.getStream(url);
     }
 
     public String adjustmentSet(List<AdjustmentInfo> adjustment){
