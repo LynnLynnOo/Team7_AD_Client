@@ -1,7 +1,6 @@
 package com.example.adteam7.team7_ad_client.network;
 
 import android.util.Log;
-import android.widget.Toast;
 
 import com.example.adteam7.team7_ad_client.data.AckDisbursement;
 import com.example.adteam7.team7_ad_client.data.AdjustmentInfo;
@@ -19,14 +18,12 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Locale;
 
 import static android.content.ContentValues.TAG;
 
@@ -36,7 +33,7 @@ import static android.content.ContentValues.TAG;
 public class APIDataAgentImpl implements APIDataAgent {
 
   // static String host = "localhost";
-   static String host = "172.17.81.182";
+  static String host = "172.17.81.182";
    // http://localhost/Team7API/Token
     static String baseURL;
     static String imageURL;
@@ -218,7 +215,7 @@ public class APIDataAgentImpl implements APIDataAgent {
 
             String result = JSONParser.postStream(url, true, json);
 
-            Log.e(TAG, "ackDisbursement: from API "+result );
+            Log.e(TAG, "ackDisbursement: from API " + result);
             return result;
 
         } catch (Exception e) {
@@ -423,7 +420,7 @@ public class APIDataAgentImpl implements APIDataAgent {
 
     //region Cheng Zongpei
     public List<String> adjustmentGetCategories(){
-        String url = String.format("http://%s/team7ad/adjustment/categories",host);
+        String url = String.format("http://%s/team7ad/adjustment/categories", host);
         JSONArray array = JSONParser.getJSONArrayFromUrl(url);
         List<String> result = new ArrayList<String>();
         try{
@@ -438,7 +435,7 @@ public class APIDataAgentImpl implements APIDataAgent {
     }
 
     public List<AdjustmentItem> adjustmentGetItem(String category){
-        String url =String.format("http://%s/team7ad/adjustment/items/%s",host,category);
+        String url = String.format("http://%s/team7ad/adjustment/items/%s", host, category);
         JSONArray array = JSONParser.getJSONArrayFromUrl(url);
         List<AdjustmentItem> result = new ArrayList<AdjustmentItem>();
         try{
@@ -453,7 +450,7 @@ public class APIDataAgentImpl implements APIDataAgent {
     }
 
     public AdjustmentItem adjustmentGetInfo(String itemId){
-        String url = String.format("http://%s/team7ad/adjustment/item/%s",host,itemId);
+        String url = String.format("http://%s/team7ad/adjustment/item/%s", host, itemId);
         JSONObject object = JSONParser.getJSONFromUrl(url);
         AdjustmentItem result;
         try {
@@ -479,7 +476,7 @@ public class APIDataAgentImpl implements APIDataAgent {
             Log.e("error","Json save error");
         }
 
-        String result = JSONParser.postStream(String.format("http://%s/team7ad/adjustment/save",host), true, array.toString());
+        String result = JSONParser.postStream(String.format("http://%s/team7ad/adjustment/save", host), true, array.toString());
         return result;
     }
 

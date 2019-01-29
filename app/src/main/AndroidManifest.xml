@@ -32,14 +32,13 @@
         <activity android:name=".activities.DelegateDepHeadActivity"></activity>
 
 
+        <activity
+            android:name=".activities.DisbursementDetailActivity"
+            android:parentActivityName=".activities.MainDisbursementListActivity"></activity>
 
-        <activity android:name=".activities.DisbursementDetailActivity"
-            android:parentActivityName=".activities.MainDisbursementListActivity">
-        </activity>
-
-        <activity android:name=".activities.DisbDetailAckActivity"
-            android:parentActivityName=".activities.DisbursementDetailActivity">
-        </activity>
+        <activity
+            android:name=".activities.DisbDetailAckActivity"
+            android:parentActivityName=".activities.DisbursementDetailActivity"></activity>
 
         <activity android:name=".activities.LoginActivity">
             <intent-filter>

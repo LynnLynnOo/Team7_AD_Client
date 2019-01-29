@@ -119,9 +119,9 @@ public class DisbursementDetailActivity extends AppCompatActivity  {
             super.onPostExecute(disbursementSationeryItems);
             itemlist=disbursementSationeryItems;
 
-           for(int i=0;i<itemlist.size();i++){
-               itemlist.get(i).setReceivedQty(itemlist.get(i).getQuantity());
-           }
+            for (int i = 0; i < itemlist.size(); i++) {
+                itemlist.get(i).setReceivedQty(itemlist.get(i).getQuantity());
+            }
 
             adapter=new ItemListAdapter(DisbursementDetailActivity.this,disbursementSationeryItems,true);
 
