@@ -82,7 +82,6 @@ public class APIDataAgentImpl implements APIDataAgent {
         }
     }
 
-
     @Override
     public ManageDepRep delegateDepHeadGet() {
         try {
