@@ -20,7 +20,8 @@ public class SessionManager {
     private static final String KEY_TOKEN = "token";
     private static final String IS_LOGIN = "IsLoggedIn";
 
-    private static final String KEY_ROLE = "role";
+    private static final String KEY_ROLE0 = "role0";
+    private static final String KEY_ROLE1= "role1";
     // Sharedpref file name
     private static final String PREF_NAME = "Team7ADPref";
 
@@ -85,18 +86,28 @@ public class SessionManager {
         return pref.getBoolean(IS_LOGIN, false);
 
     }
+    public void setUserRole(String role0,String role1){
 
-    public String getUserRole() {
-        String s = pref.getString(KEY_ROLE, null);
+        editor.putString(KEY_ROLE0, role0);
+
+        if(!role1.equals(""))
+        editor.putString(KEY_ROLE1, role1);
+
+        editor.commit();
+
+    }
+    public String getUserRole0(){
+        String s = pref.getString(KEY_ROLE0, null);
         return s;
 
     }
+    public String getUserRole1(){
 
-    public void setUserRole(String role) {
-
-
-        editor.putString(KEY_ROLE, role);
-        editor.commit();
+        String s = pref.getString(KEY_ROLE1, null);
+        if(s!=null){
+            return s;
+        }
+        else return "";
 
 
     }
