@@ -13,12 +13,13 @@ import java.util.List;
 
 public class PendingPODetails extends HashMap<String, String> {
 
-    static String host = "192.168.1.71";
-    static String baseURL;
-
-    static {
-        baseURL = String.format("http://%s/team7ad/api", host);
-    }
+//
+//    static String host = "192.168.1.71";
+//    static String baseURL;
+//
+//    static {
+//        baseURL = String.format("http://%s/team7ad/api", host);
+//    }
 
     //region From TransactionDetail
 
@@ -167,33 +168,33 @@ public class PendingPODetails extends HashMap<String, String> {
 //        UnitAmount = unitAmount;
 //    }
 
-    public static List<PendingPODetails> GetPendingPODetails(String pono) {
-        String url = String.format("%s/pendingpo/%s", baseURL, pono);
-        List<PendingPODetails> listPendingPO = new ArrayList<>();
-        try {
-            JSONArray a = JSONParser.getJSONArrayFromUrl(url);
-            for (int i = 0; i < a.length(); i++) {
-                JSONObject b = a.getJSONObject(i);
-                listPendingPO.add(new PendingPODetails(
-                        b.getString("Description"),
-                        b.getString("ItemId"),
-                        b.getString("Quantity"),
-                        b.getString("Remarks"),
-                        b.getString("TransactionRef"),
-                        String.format("%,.2f", b.getDouble("UnitPrice")),
-                        b.getString("PONo"),
-                        b.getString("SupplierId"),
-                        b.getString("Status"),
-                        b.getString("OrderedBy"),
-                        b.getString("Date"),
-                        String.format("%,.2f", b.getDouble("Amount")),
-                        String.format("%,.2f", b.getDouble("UnitAmount"))));
-            }
-        } catch (Exception e) {
-            Log.e("PendingPODetails", "JSONArray error");
-        }
-        return (listPendingPO);
-    }
+//    public static List<PendingPODetails> GetPendingPODetails(String pono) {
+//        String url = String.format("%s/pendingpo/%s", baseURL, pono);
+//        List<PendingPODetails> listPendingPO = new ArrayList<>();
+//        try {
+//            JSONArray a = JSONParser.getJSONArrayFromUrl(url);
+//            for (int i = 0; i < a.length(); i++) {
+//                JSONObject b = a.getJSONObject(i);
+//                listPendingPO.add(new PendingPODetails(
+//                        b.getString("Description"),
+//                        b.getString("ItemId"),
+//                        b.getString("Quantity"),
+//                        b.getString("Remarks"),
+//                        b.getString("TransactionRef"),
+//                        String.format("%,.2f", b.getDouble("UnitPrice")),
+//                        b.getString("PONo"),
+//                        b.getString("SupplierId"),
+//                        b.getString("Status"),
+//                        b.getString("OrderedBy"),
+//                        b.getString("Date"),
+//                        String.format("%,.2f", b.getDouble("Amount")),
+//                        String.format("%,.2f", b.getDouble("UnitAmount"))));
+//            }
+//        } catch (Exception e) {
+//            Log.e("PendingPODetails", "JSONArray error");
+//        }
+//        return (listPendingPO);
+//    }
 
 }
 
