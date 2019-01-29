@@ -34,6 +34,11 @@ public class MainDisbursementListActivity extends AppCompatActivity  {
         rv=findViewById(R.id.disbursementrv);
         rv.setLayoutManager(new LinearLayoutManager(this));
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle("Disbursement List");
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
         ///get data from api
         new AsyncGetDisbursement().execute();
 

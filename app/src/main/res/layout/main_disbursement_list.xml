@@ -38,22 +38,21 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"/>
+        android:layout_marginRight="15dp"
+        android:visibility="gone"/>
 
     <View
-        android:layout_marginLeft="45dp"
-        android:layout_marginRight="45dp"
         android:layout_width="match_parent"
-        android:layout_height="550dp"
+        android:layout_height="match_parent"
         android:background="@drawable/panelbg"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="5dp"
         android:id="@+id/layoutpanel"
         />
 
     <android.support.v7.widget.RecyclerView
-        android:layout_width="310dp"
-        android:layout_height="530dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:id="@+id/disbursementrv"
         app:layout_constraintLeft_toLeftOf="@id/layoutpanel"
         app:layout_constraintTop_toTopOf="@id/layoutpanel"

@@ -3,6 +3,8 @@ package com.example.adteam7.team7_ad_client.network;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.adteam7.team7_ad_client.R;
+import com.example.adteam7.team7_ad_client.data.AckDeliveryDetails;
 import com.example.adteam7.team7_ad_client.data.AckDisbursement;
 import com.example.adteam7.team7_ad_client.data.AdjustmentInfo;
 import com.example.adteam7.team7_ad_client.data.AdjustmentItem;
@@ -11,6 +13,8 @@ import com.example.adteam7.team7_ad_client.data.Disbursement;
 import com.example.adteam7.team7_ad_client.data.DisbursementSationeryItem;
 import com.example.adteam7.team7_ad_client.data.Employee;
 import com.example.adteam7.team7_ad_client.data.ManageDepRep;
+import com.example.adteam7.team7_ad_client.data.PendingPO;
+import com.example.adteam7.team7_ad_client.data.PendingPODetails;
 import com.example.adteam7.team7_ad_client.data.SessionManager;
 import com.example.adteam7.team7_ad_client.data.SetRetrievalApiModel;
 import com.example.adteam7.team7_ad_client.data.StationeryRequestApiModel;
@@ -36,7 +40,7 @@ import static android.content.ContentValues.TAG;
 public class APIDataAgentImpl implements APIDataAgent {
 
   // static String host = "localhost";
-   static String host = "172.17.113.173";
+   static String host = "172.17.81.182";
    // http://localhost/Team7API/Token
     static String baseURL;
     static String imageURL;
@@ -143,7 +147,7 @@ public class APIDataAgentImpl implements APIDataAgent {
         return rr;
     }
 
-    //endregion
+
 
    /* @Override
     public String delegateDepHeadSet(ManageDepRep dep) {
@@ -414,14 +418,125 @@ public class APIDataAgentImpl implements APIDataAgent {
 
     //endregion
 
-    //region Zan Tun Khine
+    //region Author: Zan Tun Khine (Approve/Reject PO & Acknowledge Delivery)
 
+    @Override
+    public List<PendingPO> GetPendingPO() {
+        String url = String.format("%s/pendingpo", baseURL);
+        List<PendingPO> listPO = new ArrayList<>();
+        try {
+            JSONArray a = JSONParser.getJSONArrayFromUrl(url);
+            for (int i = 0; i < a.length(); i++) {
+                JSONObject b = a.getJSONObject(i);
+                listPO.add(new PendingPO(
+                        b.getString("PONo"),
+                        b.getString("SupplierId"),
+                        b.getString("Status"),
+                        b.getString("OrderedBy"),
+                        b.getString("Date"),
+                        b.getString("Amount"),
+                        b.getString("ApprovedBy")));
+            }
+        } catch (Exception e) {
+            Log.e("PendingPO", "JSONArray error");
+        }
+        return (listPO);
+    }
 
-    //region Approve Reject PO
+    @Override
+    public void ApproveRejectPO(PendingPO po, int btn) {
+        JSONObject jpo = new JSONObject();
 
+        try {
+            jpo.put("PONo", po.get("PONo"));
+            //jpo.put("SupplierId",po.get("SupplierId"));
+            //jpo.put("Status",po.get("Status"));
+            //jpo.put("OrderedBy",po.get("OrderedBy"));
+            //jpo.put("Date",po.get("Date"));
+            //jpo.put("Amount",po.get("Amount"));
+            jpo.put("ApprovedBy", po.get("ApprovedBy"));
 
-    //endregion
+        } catch (Exception e) {
+            Log.e("PendingPO", "Error");
+        }
 
+        if (btn == R.id.poButtonApprove)
+            JSONParser.postStream(baseURL + "/pendingpo/approve",true, jpo.toString());
+
+        else if (btn == R.id.poButtonReject)
+            JSONParser.postStream(baseURL + "/pendingpo/reject", true,jpo.toString());
+    }
+
+    @Override
+    public List<PendingPODetails> GetPendingPODetails(String pono) {
+        String url = String.format("%s/pendingpo/%s", baseURL, pono);
+        List<PendingPODetails> listPendingPO = new ArrayList<>();
+        try {
+            JSONArray a = JSONParser.getJSONArrayFromUrl(url);
+            for (int i = 0; i < a.length(); i++) {
+                JSONObject b = a.getJSONObject(i);
+                listPendingPO.add(new PendingPODetails(
+                        b.getString("Description"),
+                        b.getString("ItemId"),
+                        b.getString("Quantity"),
+                        b.getString("Remarks"),
+                        b.getString("TransactionRef"),
+                        String.format("%,.2f", b.getDouble("UnitPrice")),
+                        b.getString("PONo"),
+                        b.getString("SupplierId"),
+                        b.getString("Status"),
+                        b.getString("OrderedBy"),
+                        b.getString("Date"),
+                        String.format("%,.2f", b.getDouble("Amount")),
+                        String.format("%,.2f", b.getDouble("UnitAmount"))));
+            }
+        } catch (Exception e) {
+            Log.e("PendingPODetails", "JSONArray error");
+        }
+        return (listPendingPO);
+    }
+
+    @Override
+    public List<String> GetPendingPOList() {
+        String url = String.format("%s/ackdelivery/pendingdelivery", baseURL);
+        List<String> listPO = new ArrayList<>();
+        try {
+            JSONArray a = JSONParser.getJSONArrayFromUrl(url);
+            for (int i = 0; i < a.length(); i++) {
+                String po = a.getString(i);
+                listPO.add(po);
+            }
+        } catch (Exception e) {
+            Log.e("PendingDelivery", "JSONArray error");
+        }
+        return (listPO);
+    }
+
+    @Override
+    public void ConfirmDO(List<AckDeliveryDetails> ackDOList) {
+
+        JSONArray jpoArr = new JSONArray();
+        try {
+
+            for (AckDeliveryDetails ackDO : ackDOList) {
+                JSONObject jpo = new JSONObject();
+                jpo.put("ItemId", ackDO.get("ItemId"));
+                jpo.put("Quantity", ackDO.get("Quantity"));
+//                jpo.put("Remarks", ackDO.get("Remarks"));
+//                jpo.put("UnitPrice", ackDO.get("UnitPrice"));
+                jpo.put("DelOrderNo", ackDO.get("DelOrderNo"));
+                jpo.put("SupplierId", ackDO.get("SupplierId"));
+                jpo.put("AcceptedBy", ackDO.get("AcceptedBy"));
+                jpo.put("PONo", ackDO.get("PONo"));
+                jpoArr.put(jpo);
+                Log.d("Json",jpoArr.toString());
+            }
+
+        } catch (Exception e) {
+            Log.e("AckDeliveryDetails", "Error");
+        }
+        JSONParser.postStream(baseURL + "ackdelivery/addmm",true, jpoArr.toString());
+    }
 
     //endregion
 

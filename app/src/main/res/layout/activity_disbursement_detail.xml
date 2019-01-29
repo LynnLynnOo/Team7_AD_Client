@@ -27,16 +27,14 @@
         app:layout_constraintBottom_toBottomOf="parent" />
 
     <View
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="3dp"
         android:layout_marginBottom="65dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
         android:layout_width="match_parent"
         android:layout_height="450dp"
         android:background="@drawable/panelbg"
         app:layout_constraintTop_toTopOf="parent"
         android:id="@+id/layoutpanel"/>
-
+<!--
     <TextView
         android:id="@+id/depname"
         android:layout_width="match_parent"
@@ -47,16 +45,16 @@
         android:layout_marginRight="15dp"
         android:text="Department of English"
         android:textColor="@color/headingText"
-        android:textSize="35sp" />
+        android:textSize="35sp" />-->
 
     <LinearLayout
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/depname"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginLeft="@dimen/s_margin"
+        android:layout_marginRight="@dimen/s_margin"
+        android:layout_marginTop="@dimen/s_margin"
         android:weightSum="3"
         app:layout_constraintTop_toTopOf="@id/layoutpanel"
         app:layout_constraintLeft_toLeftOf="@id/layoutpanel">
@@ -120,9 +118,9 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/detailrv"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginLeft="@dimen/s_margin"
+        android:layout_marginRight="@dimen/s_margin"
+        android:layout_marginTop="@dimen/s_margin"
         android:layout_width="match_parent"
         android:layout_height="395dp"
         android:layout_below="@+id/title"
@@ -131,8 +129,6 @@
         >
 
     </android.support.v7.widget.RecyclerView>
-
-
 
         <Button
             android:id="@+id/voiddisb"

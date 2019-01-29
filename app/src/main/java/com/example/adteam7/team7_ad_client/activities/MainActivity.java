@@ -57,14 +57,15 @@ public class MainActivity extends AppCompatActivity
 
         }
         else if(role.equals("Department Head" ) ){
+            if(role.equals("Store Manager")){
+                navigationView.inflateMenu(R.menu.storemanager_menu_drawer);
 
+            }
+            else
             navigationView.inflateMenu(R.menu.dephead_menu_drawer);
 
         }
-        else if(role.equals("Store Manager")){
-            navigationView.inflateMenu(R.menu.storemanager_menu_drawer);
 
-        }
 
     }
 
@@ -140,7 +141,15 @@ public class MainActivity extends AppCompatActivity
         else if (id == R.id.nav_manageDepRep) {
             Intent i=new Intent(MainActivity.this,ManageDepRepActivity.class);
             startActivity(i);
+        }else if (id == R.id.nav_viewdisb) {
+            Intent i=new Intent(MainActivity.this,MainDisbursementListActivity.class);
+            startActivity(i);
         }
+        else if (id == R.id.nav_ackdelivery) {
+            Intent i=new Intent(MainActivity.this,AcknowledgeDelivery.class);
+            startActivity(i);
+        }
+
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

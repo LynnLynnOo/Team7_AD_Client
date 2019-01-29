@@ -27,8 +27,6 @@
         app:layout_constraintBottom_toBottomOf="parent" />
 
     <LinearLayout
-        android:layout_marginLeft="45dp"
-        android:layout_marginRight="45dp"
         android:layout_width="match_parent"
         android:layout_height="350dp"
         android:background="@drawable/panelbg"
