@@ -42,7 +42,7 @@
         android:onClick="ApproveReject"
         android:background="@drawable/roundbtn"
         android:drawableTop="@drawable/reject"
-        android:text="Cancel"
+        android:text="Reject"
         android:textColor="@color/headingText"
         android:layout_marginTop="30dp"
         android:layout_marginLeft="35dp"
@@ -56,7 +56,7 @@
         android:onClick="ApproveReject"
         android:drawableTop="@drawable/accept"
         android:background="@drawable/roundbtn"
-        android:text="Accept"
+        android:text="Confirm"
         android:textColor="@color/headingText"
         android:layout_marginRight="35dp"
         android:layout_marginTop="30dp"
@@ -85,11 +85,11 @@
         android:textColor="@color/headingText"
         android:layout_marginRight="10dp"
         android:layout_marginTop="15dp"
-        android:text="Date"
+        android:text=""
         android:textSize="22sp"
         app:layout_constraintTop_toTopOf="@id/poTextViewPono"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:text="Date:" />
+        tools:text="" />
 
     <ListView
         android:id="@+id/polistDetails"

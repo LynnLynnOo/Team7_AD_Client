@@ -515,7 +515,6 @@ public class APIDataAgentImpl implements APIDataAgent {
     @Override
     public void ConfirmDO(List<AckDeliveryDetails> ackDOList) {
 
-
         JSONArray jpoArr = new JSONArray();
         try {
 
