@@ -47,14 +47,6 @@ public class MainDisburAdapter extends RecyclerView.Adapter<MainDisburAdapter.Rv
         holder.cpoint.setText(listitem.get(position).getCollectionDescription());
 
 
-        //to delete the item
-        /*holder.ib.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                listitem.remove(position);
-                notifyDataSetChanged();
-            }
-        });*/
         holder.tapfordetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,7 +59,7 @@ public class MainDisburAdapter extends RecyclerView.Adapter<MainDisburAdapter.Rv
                 i.putExtra("disbno",disbno);
 
                 i.putExtra("disbotp", disotp);
-
+i.putExtra("depname",listitem.get(position).getDepartmentName());
                 context.startActivity(i);
             }
         });

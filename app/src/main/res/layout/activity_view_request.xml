@@ -38,8 +38,6 @@
         android:layout_marginRight="15dp"/>
 
     <View
-        android:layout_marginLeft="45dp"
-        android:layout_marginRight="45dp"
         android:layout_width="match_parent"
         android:layout_height="450dp"
         android:background="@drawable/panelbg"
@@ -49,7 +47,7 @@
         />
     <ListView
         android:id="@+id/RequestlistView"
-        android:layout_width="320dp"
+        android:layout_width="match_parent"
         android:layout_height="430dp"
         app:layout_constraintTop_toTopOf="@id/layoutpanel"
         app:layout_constraintLeft_toLeftOf="@id/layoutpanel"

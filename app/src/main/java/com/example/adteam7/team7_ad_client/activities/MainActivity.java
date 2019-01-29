@@ -47,12 +47,25 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        navigationView.inflateMenu(R.menu.activity_main_drawer);
-
-        inflateDrawerMenu();
+        inflateDrawerMenu(navigationView);
     }
 
-    private void inflateDrawerMenu() {
+    private void inflateDrawerMenu(NavigationView navigationView) {
+        String role=session.getUserRole();
+        if(role.equals("Store Clerk")){
+            navigationView.inflateMenu(R.menu.storeclerk_menu_drawer);
+
+        }
+        else if(role.equals("Department Head" ) ){
+            if(role.equals("Store Manager")){
+                navigationView.inflateMenu(R.menu.storemanager_menu_drawer);
+
+            }
+            else
+            navigationView.inflateMenu(R.menu.dephead_menu_drawer);
+
+        }
+
 
     }
 
@@ -101,8 +114,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            Intent i=new Intent(MainActivity.this,ManageDepRepActivity.class);
-            startActivity(i);
+
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
 //            Toast.makeText(this, "About", Toast.LENGTH_SHORT).show();
@@ -126,6 +138,18 @@ public class MainActivity extends AppCompatActivity
             Intent i = new Intent(MainActivity.this, RaiseAdjustmentActivity.class);
             startActivity(i);
         }
+        else if (id == R.id.nav_manageDepRep) {
+            Intent i=new Intent(MainActivity.this,ManageDepRepActivity.class);
+            startActivity(i);
+        }else if (id == R.id.nav_viewdisb) {
+            Intent i=new Intent(MainActivity.this,MainDisbursementListActivity.class);
+            startActivity(i);
+        }
+        else if (id == R.id.nav_ackdelivery) {
+            Intent i=new Intent(MainActivity.this,AcknowledgeDelivery.class);
+            startActivity(i);
+        }
+
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

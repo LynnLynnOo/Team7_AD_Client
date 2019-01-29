@@ -3,6 +3,7 @@
     package="com.example.adteam7.team7_ad_client">
 
     <uses-feature android:name="android.hardware.camera" />
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.READ_SMS" />
@@ -25,28 +26,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.AdjustmentDetailActivity"></activity>
-        <activity android:name=".activities.ApproveRejectPO"></activity>
-        <activity android:name=".activities.ApproveRejectPODetails"></activity>
-        <activity android:name=".activities.ApproveRequestActivity"></activity>
-        <activity android:name=".activities.DelegateDepHeadActivity"></activity>
-
-
-
-        <activity android:name=".activities.DisbursementDetailActivity"
-            android:parentActivityName=".activities.MainDisbursementListActivity">
-        </activity>
-
-        <activity android:name=".activities.DisbDetailAckActivity"
-            android:parentActivityName=".activities.DisbursementDetailActivity">
-        </activity>
-        <activity android:name=".activities.MainDisbursementListActivity"
-            android:parentActivityName=".activities.MainActivity">
-        </activity>
-
+        <activity android:name=".activities.AcknowledgeDelivery"></activity>
+        <activity android:name=".activities.AcknowledgeDeliveryDetails" />
+        <activity android:name=".activities.AdjustmentDetailActivity" />
+        <activity android:name=".activities.ApproveRejectPO" />
+        <activity android:name=".activities.ApproveRejectPODetails" />
+        <activity android:name=".activities.ApproveRequestActivity" />
+        <activity android:name=".activities.DelegateDepHeadActivity" />
+        <activity
+            android:name=".activities.DisbursementDetailActivity"
+            android:parentActivityName=".activities.MainDisbursementListActivity" />
+        <activity
+            android:name=".activities.DisbDetailAckActivity"
+            android:parentActivityName=".activities.DisbursementDetailActivity" />
+        <activity
+            android:name=".activities.MainDisbursementListActivity"
+            android:parentActivityName=".activities.MainActivity" />
         <activity android:name=".activities.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -57,8 +56,9 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activities.ManageDepRepActivity" />
         <activity android:name=".activities.RaiseAdjustmentActivity" />
-        <activity android:name=".activities.RetrievalListActivity"></activity>
+        <activity android:name=".activities.RetrievalListActivity" />
         <activity android:name=".activities.SplashActivity" />
-        <activity android:name=".activities.ViewRequestActivity"></activity>
+        <activity android:name=".activities.ViewRequestActivity" />
     </application>
+
 </manifest>

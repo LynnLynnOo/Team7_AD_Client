@@ -26,7 +26,6 @@ APIDataAgent agent=new APIDataAgentImpl();
     private SessionManager session;
 
     Button login;
-    boolean tes=false;
     String mail, pw;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +35,7 @@ APIDataAgent agent=new APIDataAgentImpl();
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
         session = SessionManager.getInstance();
-//        email.setText("Google is your friend.");
+//      email.setText("Google is your friend.");
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
