@@ -41,8 +41,6 @@
         android:layout_marginRight="15dp"/>
 
     <View
-        android:layout_marginLeft="45dp"
-        android:layout_marginRight="45dp"
         android:layout_width="match_parent"
         android:layout_height="450dp"
         android:background="@drawable/panelbg"
@@ -53,9 +51,10 @@
 
     <TextView
         android:id="@+id/potextViewSerial"
-        android:layout_width="242dp"
+        android:layout_width="match_parent"
         android:layout_height="18dp"
-        android:layout_marginStart="15dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         android:layout_marginTop="35dp"
         android:textColor="@color/txtColor"
         android:text="Current Delegated Department Head: "
@@ -74,7 +73,9 @@
 
     <Spinner
         android:id="@+id/employeeList"
-        android:layout_width="314dp"
+        android:layout_width="match_parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         android:layout_height="28dp"
         android:layout_marginTop="8dp"
         android:spinnerMode="dropdown"

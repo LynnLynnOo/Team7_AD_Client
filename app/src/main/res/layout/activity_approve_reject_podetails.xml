@@ -29,8 +29,6 @@
     <View
         android:layout_marginTop="80dp"
         android:layout_marginBottom="65dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
         android:layout_width="match_parent"
         android:layout_height="450dp"
         android:background="@drawable/panelbg"
@@ -85,10 +83,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/headingText"
-        android:layout_marginRight="90dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="15dp"
         android:text="Date"
         android:textSize="22sp"
-        app:layout_constraintTop_toBottomOf="@id/poTextViewPono"
+        app:layout_constraintTop_toTopOf="@id/poTextViewPono"
         app:layout_constraintEnd_toEndOf="parent"
         tools:text="Date:" />
 
@@ -96,8 +95,8 @@
         android:id="@+id/polistDetails"
         android:layout_width="match_parent"
         android:layout_height="350dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:layout_marginBottom="95dp"
         app:layout_constraintBottom_toBottomOf="@id/layoutpanel"
         app:layout_constraintEnd_toEndOf="@id/layoutpanel"

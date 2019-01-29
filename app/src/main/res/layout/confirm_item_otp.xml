@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/popup_bg">
+    android:background="@color/headingText">
 
     <LinearLayout
         android:id="@+id/headerLayout"
@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:text="Acknowledge with your OTP code"
-            android:textColor="#000000"
+            android:textColor="@color/txtColor"
             android:textSize="20dp"
             android:textStyle="bold" />
 
@@ -51,6 +51,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/layout_bg"
                 android:editable="false"
+                android:textColor="@color/txtColor"
                 android:focusable="false"
                 android:gravity="center_vertical|center_horizontal"
                 android:inputType="number"
@@ -127,28 +128,29 @@
 
         <Button
             android:id="@+id/cancel"
-
-            android:layout_width="100dp"
-            android:layout_height="40dp"
+            android:layout_width="70dp"
+            android:layout_height="90dp"
             android:layout_gravity="top"
             android:layout_marginTop="12dp"
             android:layout_marginRight="@dimen/s_margin"
-            android:background="@drawable/loginbtn"
+            android:drawableTop="@drawable/reject"
+            android:background="@drawable/roundbtn"
             android:gravity="center"
             android:text="@string/cancel"
-            android:textColor="#ffffff" />
+            android:textColor="@color/txtColor" />
 
         <Button
             android:id="@+id/confirm"
-            android:layout_width="120dp"
-            android:layout_height="40dp"
+            android:layout_width="100dp"
+            android:layout_height="90dp"
             android:layout_gravity="top"
             android:layout_marginLeft="@dimen/s_margin"
             android:layout_marginTop="12dp"
-            android:background="@drawable/loginbtn"
+            android:drawableTop="@drawable/accept"
+            android:background="@drawable/roundbtn"
             android:gravity="center"
             android:text="@string/confirm"
-            android:textColor="#ffffff" />
+            android:textColor="@color/txtColor" />
 
     </LinearLayout>
 
