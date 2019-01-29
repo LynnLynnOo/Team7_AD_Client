@@ -63,13 +63,13 @@ public class APIDataAgentImpl implements APIDataAgent {
             String credential = String.format("username=%s&password=%s&grant_type=password", id, pw);
             String result = JSONParser.postStream(tokenURL, false, credential);
             JSONObject res = new JSONObject(result);
-            String userId="";
+            String userId = "";
             if (res.has("access_token")) {
                 JSONParser.access_token = res.getString("access_token");
 
-                userId= res.getString("userName");
+                userId = res.getString("userName");
                 Log.e(TAG, "login: " + res.getString("access_token"));
-                SessionManager sessionManager=SessionManager.getInstance();
+                SessionManager sessionManager = SessionManager.getInstance();
                 sessionManager.setUserRole(res.getString("roleName"));
             }
             return userId;
@@ -458,10 +458,10 @@ public class APIDataAgentImpl implements APIDataAgent {
         }
 
         if (btn == R.id.poButtonApprove)
-            JSONParser.postStream(baseURL + "/pendingpo/approve",true, jpo.toString());
+            JSONParser.postStream(baseURL + "/pendingpo/approve", true, jpo.toString());
 
         else if (btn == R.id.poButtonReject)
-            JSONParser.postStream(baseURL + "/pendingpo/reject", true,jpo.toString());
+            JSONParser.postStream(baseURL + "/pendingpo/reject", true, jpo.toString());
     }
 
     @Override
@@ -526,13 +526,13 @@ public class APIDataAgentImpl implements APIDataAgent {
                 jpo.put("AcceptedBy", ackDO.get("AcceptedBy"));
                 jpo.put("PONo", ackDO.get("PONo"));
                 jpoArr.put(jpo);
-                Log.d("Json",jpoArr.toString());
+                Log.d("Json", jpoArr.toString());
             }
 
         } catch (Exception e) {
             Log.e("AckDeliveryDetails", "Error");
         }
-        JSONParser.postStream(baseURL + "ackdelivery/addmm",true, jpoArr.toString());
+        JSONParser.postStream(baseURL + "ackdelivery/addmm", true, jpoArr.toString());
     }
 
     //endregion
@@ -590,7 +590,7 @@ public class APIDataAgentImpl implements APIDataAgent {
                 JSONObject object = new JSONObject();
                 object.put("itemId",info.itemId);
                 object.put("quantity",info.quantity);
-                object.put("remark",info.remark);
+                object.put("remark", info.remark);
                 array.put(object);
             }
         }catch(Exception e){

@@ -48,7 +48,7 @@ public class RaiseAdjustmentActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 keepAdjustment();
-                if(!adjustment.isEmpty()&&!((EditText)findViewById(R.id.remark)).getText().toString().equals("")){
+                if (!adjustment.isEmpty() && !((EditText) findViewById(R.id.remark)).getText().toString().equals("")) {
                     new AsyncSetAdjustment().execute();
                 }
            }
@@ -87,11 +87,17 @@ public class RaiseAdjustmentActivity extends AppCompatActivity {
         adjustment = newAdjustment;
     }
 
+    @Override
+    public void finish() {
+        keepAdjustment();
+        super.finish();
+    }
+
     public class AsyncSetAdjustment extends AsyncTask<Void, Void, String> {
         @Override
         protected String doInBackground(Void... voids) {
-            for(AdjustmentInfo info:adjustment){
-                info.remark = ((EditText)findViewById(R.id.remark)).getText().toString();
+            for (AdjustmentInfo info : adjustment) {
+                info.remark = ((EditText) findViewById(R.id.remark)).getText().toString();
             }
             return ((APIDataAgentImpl) api).adjustmentSet(adjustment);
         }
@@ -100,12 +106,6 @@ public class RaiseAdjustmentActivity extends AppCompatActivity {
         protected void onPostExecute(String s) {
             finish();
         }
-    }
-
-    @Override
-    public void finish() {
-        keepAdjustment();
-        super.finish();
     }
 
     public class AsyncGetInfo extends AsyncTask<String,Void,List<AdjustmentItem>>{

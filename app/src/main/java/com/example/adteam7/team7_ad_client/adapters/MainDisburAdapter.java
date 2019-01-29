@@ -59,7 +59,7 @@ public class MainDisburAdapter extends RecyclerView.Adapter<MainDisburAdapter.Rv
                 i.putExtra("disbno",disbno);
 
                 i.putExtra("disbotp", disotp);
-i.putExtra("depname",listitem.get(position).getDepartmentName());
+                i.putExtra("depname", listitem.get(position).getDepartmentName());
                 context.startActivity(i);
             }
         });

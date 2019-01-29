@@ -1,15 +1,6 @@
 package com.example.adteam7.team7_ad_client.data;
 
-import android.util.Log;
-
-import com.example.adteam7.team7_ad_client.network.JSONParser;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class PendingPODetails extends HashMap<String, String> {
 

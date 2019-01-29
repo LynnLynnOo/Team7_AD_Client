@@ -85,17 +85,19 @@ public class SessionManager {
         return pref.getBoolean(IS_LOGIN, false);
 
     }
-    public void setUserRole(String role){
+
+    public String getUserRole() {
+        String s = pref.getString(KEY_ROLE, null);
+        return s;
+
+    }
+
+    public void setUserRole(String role) {
 
 
         editor.putString(KEY_ROLE, role);
         editor.commit();
 
-
-    }
-    public String getUserRole(){
-        String s = pref.getString(KEY_ROLE, null);
-        return s;
 
     }
 

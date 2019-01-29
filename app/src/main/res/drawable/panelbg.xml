@@ -5,6 +5,8 @@
         android:color="@color/viewBackGround"/>
     <corners
         android:radius="25dp"/>
-    <stroke android:width="2px" android:color="#ef414657"/>
+    <stroke
+        android:width="2px"
+        android:color="#ef414657" />
 
 </shape>
