@@ -144,6 +144,10 @@ public class MainActivity extends AppCompatActivity
             Intent i=new Intent(MainActivity.this,MainDisbursementListActivity.class);
             startActivity(i);
         }
+        else if (id == R.id.nav_ackdelivery) {
+            Intent i=new Intent(MainActivity.this,AcknowledgeDelivery.class);
+            startActivity(i);
+        }
 
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
