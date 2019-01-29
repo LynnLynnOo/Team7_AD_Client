@@ -597,6 +597,7 @@ public class APIDataAgentImpl implements APIDataAgent {
                 JSONObject object = new JSONObject();
                 object.put("itemId",info.itemId);
                 object.put("quantity",info.quantity);
+                object.put("remark",info.remark);
                 array.put(object);
             }
         }catch(Exception e){
