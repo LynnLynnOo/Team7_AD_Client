@@ -57,14 +57,15 @@ public class MainActivity extends AppCompatActivity
 
         }
         else if(role.equals("Department Head" ) ){
+            if(role.equals("Store Manager")){
+                navigationView.inflateMenu(R.menu.storemanager_menu_drawer);
 
+            }
+            else
             navigationView.inflateMenu(R.menu.dephead_menu_drawer);
 
         }
-        else if(role.equals("Store Manager")){
-            navigationView.inflateMenu(R.menu.storemanager_menu_drawer);
 
-        }
 
     }
 

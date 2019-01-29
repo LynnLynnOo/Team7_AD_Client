@@ -52,9 +52,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/depname"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginLeft="@dimen/s_margin"
+        android:layout_marginRight="@dimen/s_margin"
+        android:layout_marginTop="@dimen/s_margin"
         android:weightSum="3"
         app:layout_constraintTop_toTopOf="@id/layoutpanel"
         app:layout_constraintLeft_toLeftOf="@id/layoutpanel">
