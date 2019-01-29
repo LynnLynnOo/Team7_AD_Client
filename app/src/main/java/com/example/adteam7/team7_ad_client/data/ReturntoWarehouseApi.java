@@ -15,7 +15,7 @@ import java.util.List;
     public class ReturntoWarehouseApi extends HashMap<String, String> {
 
 
-        static String host = "172.17.101.59";
+        static String host = "172.17.81.182";
         static String baseURL;
 
         static {
@@ -81,8 +81,10 @@ import java.util.List;
                 Log.e("ReturntoWarehouse", "Error");
             }
 
-            if (btn == R.id.button)
-                JSONParser.postStream1(baseURL + "/returntowarehouse/return", jpo.toString());
+            if (btn == R.id.button){
+
+            }
+                //JSONParser.postStream1(baseURL + "/returntowarehouse/return", jpo.toString());
 
 
         }

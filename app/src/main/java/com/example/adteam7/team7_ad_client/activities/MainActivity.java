@@ -138,6 +138,11 @@ public class MainActivity extends AppCompatActivity
             Intent i = new Intent(MainActivity.this, RaiseAdjustmentActivity.class);
             startActivity(i);
         }
+        else if (id == R.id.nav_returnwarehouse) {
+            Intent i = new Intent(MainActivity.this, ReturntoWarehouseActivity.class);
+            startActivity(i);
+        }
+
         else if (id == R.id.nav_manageDepRep) {
             Intent i=new Intent(MainActivity.this,ManageDepRepActivity.class);
             startActivity(i);

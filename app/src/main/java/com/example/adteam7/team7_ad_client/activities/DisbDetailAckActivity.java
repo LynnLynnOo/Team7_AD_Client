@@ -1,38 +1,25 @@
 package com.example.adteam7.team7_ad_client.activities;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Point;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.Display;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.PopupWindow;
 import android.widget.Toast;
 
 import com.example.adteam7.team7_ad_client.Fragments.OTPFragment;
 import com.example.adteam7.team7_ad_client.R;
 import com.example.adteam7.team7_ad_client.adapters.ItemListAdapter;
-import com.example.adteam7.team7_ad_client.adapters.MainDisburAdapter;
-import com.example.adteam7.team7_ad_client.data.Disbursement;
 import com.example.adteam7.team7_ad_client.data.DisbursementSationeryItem;
 import com.example.adteam7.team7_ad_client.network.APIDataAgent;
 import com.example.adteam7.team7_ad_client.network.APIDataAgentImpl;
-import com.jkb.vcedittext.VerificationCodeEditText;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class DisbDetailAckActivity extends AppCompatActivity {

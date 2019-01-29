@@ -59,6 +59,8 @@
         <activity android:name=".activities.RetrievalListActivity" />
         <activity android:name=".activities.SplashActivity" />
         <activity android:name=".activities.ViewRequestActivity" />
+
+        <activity android:name=".activities.ReturntoWarehouseActivity" />
     </application>
 
 </manifest>
