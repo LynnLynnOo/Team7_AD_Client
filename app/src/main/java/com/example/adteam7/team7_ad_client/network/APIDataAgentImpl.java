@@ -1,7 +1,6 @@
 package com.example.adteam7.team7_ad_client.network;
 
 import android.util.Log;
-import android.widget.Toast;
 
 import com.example.adteam7.team7_ad_client.R;
 import com.example.adteam7.team7_ad_client.data.AckDeliveryDetails;
@@ -38,14 +37,13 @@ import static android.content.ContentValues.TAG;
 public class APIDataAgentImpl implements APIDataAgent {
 
   // static String host = "localhost";
-   static String host = "172.17.81.182";
+   static String host = "192.168.1.71";
    // http://localhost/Team7API/Token
     static String baseURL;
     static String imageURL;
     static String tokenURL;
     //http://172.17.4.197/team7ad/Token
     SessionManager session = SessionManager.getInstance();
-
 
     static {
         //http://172.17.80.219/Team7API/Token
@@ -84,8 +82,6 @@ public class APIDataAgentImpl implements APIDataAgent {
             return "fail";
         }
     }
-
-
 
     @Override
     public ManageDepRep delegateDepHeadGet() {
@@ -148,8 +144,6 @@ public class APIDataAgentImpl implements APIDataAgent {
 
         return rr;
     }
-
-
 
    /* @Override
     public String delegateDepHeadSet(ManageDepRep dep) {
@@ -291,7 +285,6 @@ public class APIDataAgentImpl implements APIDataAgent {
         return status;
     }
     //endregion
-
 
     //region Author:Gao Jiaxue Approve Stationery Request
     @Override
