@@ -140,7 +140,11 @@ public class MainActivity extends AppCompatActivity
         else if (id == R.id.nav_manageDepRep) {
             Intent i=new Intent(MainActivity.this,ManageDepRepActivity.class);
             startActivity(i);
+        }else if (id == R.id.nav_viewdisb) {
+            Intent i=new Intent(MainActivity.this,MainDisbursementListActivity.class);
+            startActivity(i);
         }
+
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
