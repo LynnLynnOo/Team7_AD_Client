@@ -6,11 +6,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.adteam7.team7_ad_client.R;
 import com.example.adteam7.team7_ad_client.data.AdjustmentItem;
+
+import org.w3c.dom.Text;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -45,6 +48,7 @@ public class AdjustmentListAdapter extends RecyclerView.Adapter<adjustmentHolder
             public void onClick(View v) {
                 list.remove(Integer.parseInt(v.getTag().toString()));
                 notifyDataSetChanged();
+
             }
         });
     }
