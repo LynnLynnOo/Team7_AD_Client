@@ -1,21 +1,16 @@
 package com.example.adteam7.team7_ad_client.activities;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.example.adteam7.team7_ad_client.R;
-import com.example.adteam7.team7_ad_client.data.PendingPO;
-import com.example.adteam7.team7_ad_client.data.PendingPODetails;
-import com.example.adteam7.team7_ad_client.data.SessionManager;
 import com.example.adteam7.team7_ad_client.network.APIDataAgent;
 import com.example.adteam7.team7_ad_client.network.APIDataAgentImpl;
 

@@ -13,20 +13,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
-public class ReturntoWarehouseActivity extends AppCompatActivity  {
+public class ReturntoWarehouseActivity extends AppCompatActivity {
 
 
     ListView lw;
     ReturntoWarehouseAdapter lwAdapter;
-    List<ReturntoWarehouseApi> items=new ArrayList<>();
+    List<ReturntoWarehouseApi> items = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_returnto_warehouse);
 
-        lw=findViewById(R.id.ReturntoWarehouseView);
+        lw = findViewById(R.id.ReturntoWarehouseView);
 
 
         ///get data from api

@@ -133,8 +133,8 @@
             android:layout_gravity="top"
             android:layout_marginTop="12dp"
             android:layout_marginRight="@dimen/s_margin"
-            android:drawableTop="@drawable/reject"
             android:background="@drawable/roundbtn"
+            android:drawableTop="@drawable/reject"
             android:gravity="center"
             android:text="@string/cancel"
             android:textColor="@color/txtColor" />
@@ -146,8 +146,8 @@
             android:layout_gravity="top"
             android:layout_marginLeft="@dimen/s_margin"
             android:layout_marginTop="12dp"
-            android:drawableTop="@drawable/accept"
             android:background="@drawable/roundbtn"
+            android:drawableTop="@drawable/accept"
             android:gravity="center"
             android:text="@string/confirm"
             android:textColor="@color/txtColor" />

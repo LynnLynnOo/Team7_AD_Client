@@ -128,24 +128,26 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/remarkLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="@id/layoutpanel"
         android:layout_marginTop="80dp"
-        android:id="@+id/remarkLayout">
+        app:layout_constraintRight_toRightOf="@id/layoutpanel"
+        app:layout_constraintTop_toTopOf="parent">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:layout_gravity="center"
             android:text="Remark"
             android:textColor="@color/headingText"
-            android:layout_gravity="center"/>
+            android:textSize="20sp" />
+
         <EditText
+            android:id="@+id/remark"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:id="@+id/remark"/>
+            android:textSize="20sp" />
     </LinearLayout>
 
     <TextView

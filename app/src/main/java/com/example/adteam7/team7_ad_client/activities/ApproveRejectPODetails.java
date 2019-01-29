@@ -2,8 +2,8 @@ package com.example.adteam7.team7_ad_client.activities;
 
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
@@ -17,7 +17,6 @@ import com.example.adteam7.team7_ad_client.data.PendingPODetails;
 import com.example.adteam7.team7_ad_client.data.SessionManager;
 import com.example.adteam7.team7_ad_client.network.APIDataAgent;
 import com.example.adteam7.team7_ad_client.network.APIDataAgentImpl;
-
 
 import java.util.List;
 
