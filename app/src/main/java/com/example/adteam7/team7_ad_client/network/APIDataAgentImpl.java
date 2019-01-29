@@ -36,7 +36,7 @@ import static android.content.ContentValues.TAG;
 public class APIDataAgentImpl implements APIDataAgent {
 
   // static String host = "localhost";
-   static String host = "192.168.1.166";
+   static String host = "172.17.113.173";
    // http://localhost/Team7API/Token
     static String baseURL;
     static String imageURL;
@@ -478,6 +478,7 @@ public class APIDataAgentImpl implements APIDataAgent {
                 JSONObject object = new JSONObject();
                 object.put("itemId",info.itemId);
                 object.put("quantity",info.quantity);
+                object.put("remark",info.remark);
                 array.put(object);
             }
         }catch(Exception e){

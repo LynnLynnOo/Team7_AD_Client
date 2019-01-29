@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.example.adteam7.team7_ad_client.R;
 import com.example.adteam7.team7_ad_client.adapters.AdjustmentListAdapter;
@@ -47,7 +48,9 @@ public class RaiseAdjustmentActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 keepAdjustment();
-                new AsyncSetAdjustment().execute();
+                if(!adjustment.isEmpty()&&!((EditText)findViewById(R.id.remark)).getText().toString().equals("")){
+                    new AsyncSetAdjustment().execute();
+                }
            }
         });
         String[] ids = new String[adjustment.size()];
@@ -87,6 +90,9 @@ public class RaiseAdjustmentActivity extends AppCompatActivity {
     public class AsyncSetAdjustment extends AsyncTask<Void, Void, String> {
         @Override
         protected String doInBackground(Void... voids) {
+            for(AdjustmentInfo info:adjustment){
+                info.remark = ((EditText)findViewById(R.id.remark)).getText().toString();
+            }
             return ((APIDataAgentImpl) api).adjustmentSet(adjustment);
         }
 
@@ -94,6 +100,12 @@ public class RaiseAdjustmentActivity extends AppCompatActivity {
         protected void onPostExecute(String s) {
             finish();
         }
+    }
+
+    @Override
+    public void finish() {
+        keepAdjustment();
+        super.finish();
     }
 
     public class AsyncGetInfo extends AsyncTask<String,Void,List<AdjustmentItem>>{
@@ -120,5 +132,7 @@ public class RaiseAdjustmentActivity extends AppCompatActivity {
             list.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
             list.setAdapter(adapter);
         }
+
+
     }
 }

@@ -52,6 +52,14 @@ public class AdjustmentDetailActivity extends AppCompatActivity {
                 }
             }
         });
+
+        Button cancel = findViewById(R.id.rejectButton);
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         final NumberPicker numberPicker = findViewById(R.id.quantity);
         numberPicker.setValue(0);
         final Button increment = findViewById(R.id.increment);
