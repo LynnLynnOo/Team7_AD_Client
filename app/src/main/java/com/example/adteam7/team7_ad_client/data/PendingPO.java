@@ -1,30 +1,17 @@
 package com.example.adteam7.team7_ad_client.data;
 
-import android.util.Log;
-
-import com.example.adteam7.team7_ad_client.R;
-import com.example.adteam7.team7_ad_client.network.JSONParser;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.text.Format;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class PendingPO extends HashMap<String, String> {
 
     //region Zan Tun Khine
 
-    static String host = "192.168.1.71";
-    static String baseURL;
-
-    static {
-        baseURL = String.format("http://%s/team7ad/api", host);
-    }
+//    static String host = "192.168.1.71";
+//    static String baseURL;
+//
+//    static {
+//        baseURL = String.format("http://%s/team7ad/api", host);
+//    }
 
 
 //    private String PONo;
@@ -107,51 +94,51 @@ public class PendingPO extends HashMap<String, String> {
 //    public void setApprovedBy(String approvedBy) {
 //        ApprovedBy = approvedBy;
 //    }
-
-    public static List<PendingPO> GetPendingPO() {
-        String url = String.format("%s/pendingpo", baseURL);
-        List<PendingPO> listPO = new ArrayList<>();
-        try {
-            JSONArray a = JSONParser.getJSONArrayFromUrl(url);
-            for (int i = 0; i < a.length(); i++) {
-                JSONObject b = a.getJSONObject(i);
-                listPO.add(new PendingPO(
-                        b.getString("PONo"),
-                        b.getString("SupplierId"),
-                        b.getString("Status"),
-                        b.getString("OrderedBy"),
-                        b.getString("Date"),
-                        b.getString("Amount"),
-                        b.getString("ApprovedBy")));
-            }
-        } catch (Exception e) {
-            Log.e("PendingPO", "JSONArray error");
-        }
-        return (listPO);
-    }
-
-
-    public static void ApproveRejectPO(PendingPO po, int btn) {
-        JSONObject jpo = new JSONObject();
-
-        try {
-            jpo.put("PONo", po.get("PONo"));
-            //jpo.put("SupplierId",po.get("SupplierId"));
-            //jpo.put("Status",po.get("Status"));
-            //jpo.put("OrderedBy",po.get("OrderedBy"));
-            //jpo.put("Date",po.get("Date"));
-            //jpo.put("Amount",po.get("Amount"));
-            jpo.put("ApprovedBy", po.get("ApprovedBy"));
-
-        } catch (Exception e) {
-            Log.e("PendingPO", "Error");
-        }
-
-        if (btn == R.id.poButtonApprove)
-            JSONParser.postStream1(baseURL + "/pendingpo/approve", jpo.toString());
-
-        else if (btn == R.id.poButtonReject)
-            JSONParser.postStream1(baseURL + "/pendingpo/reject", jpo.toString());
-    }
+//
+//    public static List<PendingPO> GetPendingPO() {
+//        String url = String.format("%s/pendingpo", baseURL);
+//        List<PendingPO> listPO = new ArrayList<>();
+//        try {
+//            JSONArray a = JSONParser.getJSONArrayFromUrl(url);
+//            for (int i = 0; i < a.length(); i++) {
+//                JSONObject b = a.getJSONObject(i);
+//                listPO.add(new PendingPO(
+//                        b.getString("PONo"),
+//                        b.getString("SupplierId"),
+//                        b.getString("Status"),
+//                        b.getString("OrderedBy"),
+//                        b.getString("Date"),
+//                        b.getString("Amount"),
+//                        b.getString("ApprovedBy")));
+//            }
+//        } catch (Exception e) {
+//            Log.e("PendingPO", "JSONArray error");
+//        }
+//        return (listPO);
+//    }
+//
+//
+//    public static void ApproveRejectPO(PendingPO po, int btn) {
+//        JSONObject jpo = new JSONObject();
+//
+//        try {
+//            jpo.put("PONo", po.get("PONo"));
+//            //jpo.put("SupplierId",po.get("SupplierId"));
+//            //jpo.put("Status",po.get("Status"));
+//            //jpo.put("OrderedBy",po.get("OrderedBy"));
+//            //jpo.put("Date",po.get("Date"));
+//            //jpo.put("Amount",po.get("Amount"));
+//            jpo.put("ApprovedBy", po.get("ApprovedBy"));
+//
+//        } catch (Exception e) {
+//            Log.e("PendingPO", "Error");
+//        }
+//
+//        if (btn == R.id.poButtonApprove)
+//            JSONParser.postStream1(baseURL + "/pendingpo/approve", jpo.toString());
+//
+//        else if (btn == R.id.poButtonReject)
+//            JSONParser.postStream1(baseURL + "/pendingpo/reject", jpo.toString());
+//    }
     //endregion
 }

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/ackpoTextView1"
+            android:layout_width="103dp"
+            android:layout_height="wrap_content"
+            android:text="Item ID" />
+
+        <TextView
+            android:id="@+id/ackDeliTextViewItemId"
+            android:layout_width="308dp"
+            android:layout_height="49dp"
+            android:text="New Text" />
+
+    </LinearLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/ackDeliTextView4"
+            android:layout_width="103dp"
+            android:layout_height="wrap_content"
+            android:text="Description" />
+
+        <TextView
+            android:id="@+id/ackDeliTextViewDescription"
+            android:layout_width="308dp"
+            android:layout_height="49dp"
+            android:text="New Text" />
+
+    </LinearLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/ackDeliTextView3"
+            android:layout_width="103dp"
+            android:layout_height="wrap_content"
+            android:text="Requested Qty" />
+
+        <TextView
+            android:id="@+id/ackDeliTextViewQty"
+            android:layout_width="308dp"
+            android:layout_height="34dp"
+            android:text="New Text" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/ackDeliTextViewActualQty"
+            android:layout_width="101dp"
+            android:layout_height="34dp"
+            android:text="Received Qty" />
+
+        <EditText
+            android:id="@+id/ackDelieditTextQty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:inputType="number"
+            android:singleLine="true"
+            android:textSize="16sp"
+            android:visibility="visible" />
+
+    </LinearLayout>
+
+
+</LinearLayout>
+

@@ -6,7 +6,7 @@
     xmlns:numberpicker="http://schemas.android.com/tools">
     <RelativeLayout
         android:gravity="center_vertical"
-        android:background="#E7F6FA"
+        android:background="#80E7F6FA"
         android:layout_marginLeft="@dimen/s_margin"
         android:textAlignment="center"
         android:layout_width="match_parent"
