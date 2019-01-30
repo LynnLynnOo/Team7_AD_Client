@@ -14,6 +14,7 @@ import com.example.adteam7.team7_ad_client.data.Employee;
 import com.example.adteam7.team7_ad_client.data.ManageDepRep;
 import com.example.adteam7.team7_ad_client.data.PendingPO;
 import com.example.adteam7.team7_ad_client.data.PendingPODetails;
+import com.example.adteam7.team7_ad_client.data.ReturnItem;
 import com.example.adteam7.team7_ad_client.data.SessionManager;
 import com.example.adteam7.team7_ad_client.data.SetRetrievalApiModel;
 import com.example.adteam7.team7_ad_client.data.StationeryRequestApiModel;
@@ -84,9 +85,7 @@ public class APIDataAgentImpl implements APIDataAgent {
         }
     }
 
-
-
-    @Override
+      @Override
     public ManageDepRep delegateDepHeadGet() {
         try {
             String id = session.getUserid();
@@ -236,6 +235,14 @@ public class APIDataAgentImpl implements APIDataAgent {
         }
 
 
+        return null;
+    }
+
+    @Override
+    public String returnSingleItem(ReturnItem item) {
+
+
+       // api/returntowarehouse/return
         return null;
     }
 
