@@ -37,7 +37,7 @@ import static android.content.ContentValues.TAG;
 public class APIDataAgentImpl implements APIDataAgent {
 
   // static String host = "localhost";
-  static String host = "172.17.81.182";
+  static String host = "172.17.150.148";
    // http://localhost/Team7API/Token
     static String baseURL;
     static String imageURL;
@@ -306,9 +306,12 @@ public class APIDataAgentImpl implements APIDataAgent {
     @Override
     public List<StationeryRequestApiModel> ReadStationeryRequest() {
         String id = session.getUserid();
+        Log.i("id", "userid");
         List<StationeryRequestApiModel> list = new ArrayList<StationeryRequestApiModel>();
         String url = String.format("%s/%s/%s/%s", baseURL, "stationeryrequest", "getall", id);
+        Log.i("id", url);
         JSONArray a = JSONParser.getJSONArrayFromUrl(url);
+        Log.i("json", a.toString());
         try {
             for (int i = 0; i < a.length(); i++) {
                 JSONObject b = a.getJSONObject(i);
