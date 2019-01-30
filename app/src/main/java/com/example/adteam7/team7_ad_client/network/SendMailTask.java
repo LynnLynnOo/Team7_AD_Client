@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.example.adteam7.team7_ad_client.activities.RaiseAdjustmentActivity;
 import com.example.adteam7.team7_ad_client.data.GMail;
 
 public class SendMailTask extends AsyncTask {
@@ -53,6 +54,10 @@ public class SendMailTask extends AsyncTask {
     @Override
     public void onPostExecute(Object result) {
         statusDialog.dismiss();
+        if (sendMailActivity instanceof RaiseAdjustmentActivity) {
+            sendMailActivity.finish();
+        }
+
     }
 
 }

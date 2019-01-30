@@ -45,6 +45,7 @@ public class AdjustmentListAdapter extends RecyclerView.Adapter<adjustmentHolder
             public void onClick(View v) {
                 list.remove(Integer.parseInt(v.getTag().toString()));
                 notifyDataSetChanged();
+
             }
         });
     }
