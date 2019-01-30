@@ -65,7 +65,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activities.ManageDepRepActivity" />
         <activity android:name=".activities.RaiseAdjustmentActivity" />
-        <activity android:name=".activities.RetrievalListActivity" />
+        <activity android:name=".activities.RetrievalListActivity"
+            android:parentActivityName=".activities.MainDisbursementListActivity"/>
         <activity android:name=".activities.SplashActivity" />
         <activity android:name=".activities.ViewRequestActivity" />
 
