@@ -289,7 +289,7 @@ public class APIDataAgentImpl implements APIDataAgent {
 
             Log.i("PostResult", result);
             if (result != null && result != "")
-                status = "Successfully saved.";
+                status = result;
 
         } catch (Exception e) {
             Log.e("JsonPost", e.toString());
