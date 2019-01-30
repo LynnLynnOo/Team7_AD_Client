@@ -13,7 +13,7 @@ import java.util.List;
 public class ReturntoWarehouseApi {
 
 
-        //Region: Lynn Lynn Oo
+        //Region Author:Lynn Lynn Oo
 
         static String host = "172.17.81.182";
         static String baseURL;
@@ -24,15 +24,15 @@ public class ReturntoWarehouseApi {
 
     String RequestId, ItemId, Description;
     int Quantity;
-    String Department, Location;
+    String DepartmentName, Location;
 
 
-    public ReturntoWarehouseApi(String requestId, String itemId, String description, int quantity, String department, String location) {
+    public ReturntoWarehouseApi(String requestId, String itemId, String description, int quantity, String departmentname, String location) {
         RequestId = requestId;
         ItemId = itemId;
         Description = description;
         Quantity = quantity;
-        Department = department;
+        DepartmentName = departmentname;
         Location = location;
     }
 
@@ -106,12 +106,12 @@ public class ReturntoWarehouseApi {
         Quantity = quantity;
     }
 
-    public String getDepartment() {
-        return Department;
+    public String getDepartmentName() {
+        return DepartmentName;
     }
 
-    public void setDepartment(String department) {
-        Department = department;
+    public void setDepartmentName(String departmentname) {
+        DepartmentName= departmentname;
     }
 
     public String getLocation() {
