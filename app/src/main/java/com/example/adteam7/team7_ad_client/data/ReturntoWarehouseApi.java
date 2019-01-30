@@ -13,6 +13,8 @@ import java.util.List;
     public class ReturntoWarehouseApi {
 
 
+        //Region: Lynn Lynn Oo
+
         static String host = "172.17.81.182";
         static String baseURL;
 
@@ -121,28 +123,7 @@ import java.util.List;
         }
 
 
-       /* public static void ReturnedFunction(ReturntoWarehouseApi rtw, int btn) {
-            JSONObject jpo = new JSONObject();
 
-            try {
-                jpo.put("RequestId", rtw.get("RequestId"));
-                jpo.put("ItemId",rtw.get("ItemId"));
-                jpo.put("Description",rtw.get("Description"));
-                jpo.put("Quantity",rtw.get("Quantity"));
-                jpo.put("Department",rtw);
-                jpo.put("Location", rtw.get("Location"));
-
-            } catch (Exception e) {
-                Log.e("ReturntoWarehouse", "Error");
-            }
-
-            if (btn == R.id.button){
-
-            }
-                //JSONParser.postStream(baseURL + "/returntowarehouse/return", jpo.toString());
-
-
-        }*/
         //endregion
     }
 
