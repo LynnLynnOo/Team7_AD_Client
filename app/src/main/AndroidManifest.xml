@@ -27,15 +27,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.AcknowledgeDelivery"
+        <activity
+            android:name=".activities.AcknowledgeDelivery"
             android:parentActivityName=".activities.MainDisbursementListActivity"></activity>
-        <activity android:name=".activities.AcknowledgeDeliveryDetails"
-            android:parentActivityName=".activities.AcknowledgeDelivery"/>
+        <activity
+            android:name=".activities.AcknowledgeDeliveryDetails"
+            android:parentActivityName=".activities.AcknowledgeDelivery" />
         <activity android:name=".activities.AdjustmentDetailActivity" />
-        <activity android:name=".activities.ApproveRejectPO"
-            android:parentActivityName=".activities.MainDisbursementListActivity"/>
-        <activity android:name=".activities.ApproveRejectPODetails"
-            android:parentActivityName=".activities.ApproveRejectPO"/>
+        <activity
+            android:name=".activities.ApproveRejectPO"
+            android:parentActivityName=".activities.MainDisbursementListActivity" />
+        <activity
+            android:name=".activities.ApproveRejectPODetails"
+            android:parentActivityName=".activities.ApproveRejectPO" />
         <activity android:name=".activities.ApproveRequestActivity" />
         <activity android:name=".activities.DelegateDepHeadActivity" />
         <activity

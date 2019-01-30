@@ -41,6 +41,7 @@ public class ViewRequestActivity extends AppCompatActivity {
             @Override
             protected void onPostExecute(List<StationeryRequestApiModel> result) {
                 RequestAdaptor adapter = new RequestAdaptor(getApplicationContext(), result);
+                Log.i("already", "view");
                 ListView list = (ListView) findViewById(R.id.RequestlistView);
                 list.setAdapter(adapter);
                 list.setOnItemClickListener(new AdapterView.OnItemClickListener() {

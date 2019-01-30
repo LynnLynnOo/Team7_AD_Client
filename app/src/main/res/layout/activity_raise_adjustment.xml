@@ -136,18 +136,18 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <!--<TextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="Total: "-->
-            <!--android:textColor="@color/headingText"-->
-            <!--android:textSize="20sp"/>-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Total: "-->
+        <!--android:textColor="@color/headingText"-->
+        <!--android:textSize="20sp"/>-->
         <!--<TextView-->
-            <!--android:layout_width="140dp"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:textSize="20sp"-->
-            <!--android:textColor="@color/headingText"-->
-            <!--android:text="$0.00"-->
-            <!--android:id="@+id/total"/>-->
+        <!--android:layout_width="140dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:textSize="20sp"-->
+        <!--android:textColor="@color/headingText"-->
+        <!--android:text="$0.00"-->
+        <!--android:id="@+id/total"/>-->
 
         <TextView
             android:layout_width="wrap_content"

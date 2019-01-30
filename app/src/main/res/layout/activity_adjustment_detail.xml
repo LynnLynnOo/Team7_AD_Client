@@ -62,7 +62,7 @@
             android:text="Item Description"
             android:textColor="@color/txtColor"
             android:textSize="20sp"
-            app:layout_constraintTop_toBottomOf="@id/categorySpinner"/>
+            app:layout_constraintTop_toBottomOf="@id/categorySpinner" />
 
         <Spinner
             android:id="@+id/itemSpinner"
@@ -72,7 +72,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginTop="20dp"
-            app:layout_constraintTop_toBottomOf="@id/tV_actadj_itemdesc"/>
+            app:layout_constraintTop_toBottomOf="@id/tV_actadj_itemdesc" />
 
         <TextView
             android:id="@+id/tV_actadj_unit"
@@ -80,11 +80,11 @@
             android:layout_height="wrap_content"
             android:text="Unit of measure"
             android:textColor="@color/txtColor"
-            android:textSize="20sp"
+            android:layout_marginTop="20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_marginTop="20dp"
-            app:layout_constraintTop_toBottomOf="@id/itemSpinner"/>
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@id/itemSpinner" />
 
         <EditText
             android:id="@+id/unitOfMeasure"

@@ -2,12 +2,9 @@ package com.example.adteam7.team7_ad_client.network;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.Toast;
 
-import com.example.adteam7.team7_ad_client.activities.MainActivity;
 import com.example.adteam7.team7_ad_client.activities.RaiseAdjustmentActivity;
 import com.example.adteam7.team7_ad_client.data.GMail;
 
@@ -57,7 +54,7 @@ public class SendMailTask extends AsyncTask {
     @Override
     public void onPostExecute(Object result) {
         statusDialog.dismiss();
-        if(sendMailActivity instanceof  RaiseAdjustmentActivity ){
+        if (sendMailActivity instanceof RaiseAdjustmentActivity) {
             sendMailActivity.finish();
         }
 
