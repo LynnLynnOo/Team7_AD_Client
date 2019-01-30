@@ -23,6 +23,9 @@ import com.example.adteam7.team7_ad_client.network.APIDataAgentImpl;
 
 import java.util.List;
 
+/**
+ * Created by Kay Thi Swe Tun
+ **/
 public class DisbDetailAckActivity extends AppCompatActivity {
 
     private static final int REQUEST_CODE = 12;
@@ -76,7 +79,6 @@ public class DisbDetailAckActivity extends AppCompatActivity {
             }
         });
 
-
     }
 
     @Override
@@ -87,7 +89,7 @@ public class DisbDetailAckActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         this.onBackPressed();
-        return super.onOptionsItemSelected(item);
+        return true;
     }
 
 

@@ -26,7 +26,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.AcknowledgeDelivery"></activity>
+        <activity android:name=".activities.ReturnItemListActivity"></activity>
+        <activity android:name=".activities.AcknowledgeDelivery" />
         <activity android:name=".activities.AcknowledgeDeliveryDetails" />
         <activity android:name=".activities.AdjustmentDetailActivity" />
         <activity android:name=".activities.ApproveRejectPO" />
@@ -59,7 +60,6 @@
         <activity android:name=".activities.RetrievalListActivity" />
         <activity android:name=".activities.SplashActivity" />
         <activity android:name=".activities.ViewRequestActivity" />
-
         <activity android:name=".activities.ReturntoWarehouseActivity" />
     </application>
 
