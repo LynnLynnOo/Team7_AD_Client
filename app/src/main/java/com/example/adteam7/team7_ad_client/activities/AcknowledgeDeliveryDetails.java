@@ -80,7 +80,7 @@ public class AcknowledgeDeliveryDetails extends AppCompatActivity {
     }
 
 
-    public void ConfirmDelivery(final View v) {
+    public void ConfirmDelivery(View v) {
 
         final TextView pono = findViewById(R.id.ackDeliTextViewPono);
         final TextView itemID = findViewById(R.id.ackDeliTextViewItemId);
