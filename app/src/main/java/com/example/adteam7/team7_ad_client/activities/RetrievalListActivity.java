@@ -43,6 +43,12 @@ public class RetrievalListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_retrieval_list);
 
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle("Retrieval List");
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
         submit = findViewById(R.id.submit);
         new AsyncCallerGet().execute();
 

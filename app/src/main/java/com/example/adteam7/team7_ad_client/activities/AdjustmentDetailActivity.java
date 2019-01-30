@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.adteam7.team7_ad_client.R;
 import com.example.adteam7.team7_ad_client.data.AdjustmentItem;
@@ -33,6 +34,10 @@ public class AdjustmentDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adjustment_detail);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle("Adjustment Detail");
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
         new AsyncGetCategory().execute();
 
         Button confirm = findViewById(R.id.confirmButton);
@@ -48,7 +53,7 @@ public class AdjustmentDetailActivity extends AppCompatActivity {
                     Log.d("finish", "!!!!!!!!!!!!!!!!");
                     finish();
                 } else {
-
+                    Toast.makeText(getApplicationContext(), "You need to choose the quantity", Toast.LENGTH_LONG).show();
                 }
             }
         });
