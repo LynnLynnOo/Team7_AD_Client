@@ -25,6 +25,11 @@ public class AcknowledgeDelivery extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_acknowledge_delivery);
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle("Acknowledge Delivery");
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
         new AsyncTask<Void, Void, List<String>>() {
 
             APIDataAgent dataAgent = new APIDataAgentImpl();
