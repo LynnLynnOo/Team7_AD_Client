@@ -17,7 +17,6 @@
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
-
     <application
         android:name=".Team7_AD_App"
         android:allowBackup="true"
@@ -27,9 +26,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".activities.AcknowledgeDelivery"
-            android:parentActivityName=".activities.MainDisbursementListActivity"></activity>
+        <activity android:name=".activities.ReturnItemListActivity"></activity>
+        <activity android:name=".activities.AcknowledgeDelivery" />
         <activity
             android:name=".activities.AcknowledgeDeliveryDetails"
             android:parentActivityName=".activities.AcknowledgeDelivery" />
@@ -69,7 +67,6 @@
             android:parentActivityName=".activities.MainDisbursementListActivity"/>
         <activity android:name=".activities.SplashActivity" />
         <activity android:name=".activities.ViewRequestActivity" />
-
         <activity android:name=".activities.ReturntoWarehouseActivity" />
     </application>
 

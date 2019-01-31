@@ -14,11 +14,14 @@ import com.example.adteam7.team7_ad_client.data.Employee;
 import com.example.adteam7.team7_ad_client.data.ManageDepRep;
 import com.example.adteam7.team7_ad_client.data.PendingPO;
 import com.example.adteam7.team7_ad_client.data.PendingPODetails;
+import com.example.adteam7.team7_ad_client.data.ReturnItem;
+import com.example.adteam7.team7_ad_client.data.ReturnItemPostBack;
 import com.example.adteam7.team7_ad_client.data.SessionManager;
 import com.example.adteam7.team7_ad_client.data.SetRetrievalApiModel;
 import com.example.adteam7.team7_ad_client.data.StationeryRequestApiModel;
 import com.example.adteam7.team7_ad_client.data.StationeryRetrievalApiModel;
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
@@ -37,7 +40,7 @@ import static android.content.ContentValues.TAG;
 public class APIDataAgentImpl implements APIDataAgent {
 
   // static String host = "localhost";
-  static String host = "172.17.89.46";
+  static String host = "172.17.81.182";
    // http://localhost/Team7API/Token
     static String baseURL;
     static String imageURL;
@@ -84,9 +87,7 @@ public class APIDataAgentImpl implements APIDataAgent {
         }
     }
 
-
-
-    @Override
+      @Override
     public ManageDepRep delegateDepHeadGet() {
         try {
             String id = session.getUserid();
@@ -239,6 +240,47 @@ public class APIDataAgentImpl implements APIDataAgent {
         return null;
     }
 
+    @Override
+    public String returnSingleItem(ReturnItemPostBack item) {
+        String url = String.format("%sreturntowarehouse/return", baseURL);
+String status="";
+        Gson gson = new Gson();
+        String json = gson.toJson(item);
+        Log.i("Json", json);
+        String result = JSONParser.postStream(url, true, json);
+
+        Log.i("PostResult", result);
+        if (result != null && result != "")
+            status = result;
+       // api/returntowarehouse/return
+        return status;
+    }
+
+    @Override
+    public String returnAllItem(List<ReturnItemPostBack> item) {
+
+        String url = String.format("%sreturntowarehouse/returnall", baseURL);
+        String status="";
+
+try{
+        Gson gson = new Gson();
+
+       // List<MyModel> myModelList = gson.fromJson(jsonArray.toString(), listType);
+       Type type=new TypeToken<List<ReturnItemPostBack>>(){}.getType();
+       String jsonall=gson.toJson(item,type);
+
+    String result = JSONParser.postStream(url, true, jsonall);
+
+
+} catch (Exception e){
+    e.toString();
+}
+
+
+        return status;
+
+    }
+
     //endregion
 
 
@@ -282,7 +324,26 @@ public class APIDataAgentImpl implements APIDataAgent {
 
             Log.i("PostResult", result);
             if (result != null && result != "")
-                status = "Successfully saved.";
+                status = result;
+
+        } catch (Exception e) {
+            Log.e("JsonPost", e.toString());
+        }
+        return status;
+    }
+
+    @Override
+    public String delegateActingDepHeadRevoke() {
+        String status = "Error at saving.";
+        try {
+            //http://192.168.1.100/team7ad/api/
+            String url = String.format("%sdepartmenthead/revoke/", baseURL);
+            Log.i("Url", url);
+            String result = JSONParser.postStream(url, true, "dummy");
+
+            Log.i("PostResult", result);
+            if (result != null && result != "")
+                status = result;
 
         } catch (Exception e) {
             Log.e("JsonPost", e.toString());
@@ -464,10 +525,10 @@ public class APIDataAgentImpl implements APIDataAgent {
         }
 
         if (btn == R.id.poButtonApprove)
-            JSONParser.postStream(baseURL + "/pendingpo/approve", true, jpo.toString());
+            JSONParser.postStream(baseURL + "/pendingpo/approve",true, jpo.toString());
 
         else if (btn == R.id.poButtonReject)
-            JSONParser.postStream(baseURL + "/pendingpo/reject", true, jpo.toString());
+            JSONParser.postStream(baseURL + "/pendingpo/reject", true,jpo.toString());
     }
 
     @Override
@@ -532,13 +593,13 @@ public class APIDataAgentImpl implements APIDataAgent {
                 jpo.put("AcceptedBy", ackDO.get("AcceptedBy"));
                 jpo.put("PONo", ackDO.get("PONo"));
                 jpoArr.put(jpo);
-                Log.d("Json", jpoArr.toString());
+                Log.d("Json",jpoArr.toString());
             }
 
         } catch (Exception e) {
             Log.e("AckDeliveryDetails", "Error");
         }
-        JSONParser.postStream(baseURL + "ackdelivery/addmm", true, jpoArr.toString());
+        JSONParser.postStream(baseURL + "ackdelivery/addmm",true, jpoArr.toString());
     }
 
     //endregion

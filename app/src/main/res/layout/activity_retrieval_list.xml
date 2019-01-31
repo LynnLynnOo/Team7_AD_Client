@@ -7,7 +7,19 @@
     android:layout_height="match_parent"
     android:background="@drawable/background"
     tools:context=".activities.RetrievalListActivity">
+    <android.support.constraint.Guideline
+        android:id="@+id/guide75"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.75"/>
 
+    <android.support.constraint.Guideline
+        android:id="@+id/guide25"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.33"/>
     <android.support.v7.widget.AppCompatImageView
         android:layout_width="match_parent"
         android:layout_height="243dp"
@@ -16,7 +28,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <android.support.v7.widget.AppCompatImageView
         android:layout_width="match_parent"
@@ -30,13 +42,14 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="450dp"
+        android:layout_height="0dp"
         android:background="@drawable/panelbg"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toBottomOf="@id/guide75"
         android:id="@+id/layoutpanel"
         />
-    <TextView
+<!--    <TextView
         android:id="@+id/tV_head_retrieve"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -47,7 +60,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"/>
+        android:layout_marginRight="15dp"/>-->
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
@@ -55,12 +68,14 @@
         android:layout_width="match_parent"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_height="400dp"
+        android:layout_marginBottom="30dp"
+        android:layout_height="0dp"
         android:clipToPadding="false"
         android:orientation="horizontal"
         android:overScrollMode="never"
         app:layout_constraintTop_toTopOf="@id/layoutpanel"
         app:layout_constraintLeft_toLeftOf="@id/layoutpanel"
+        app:layout_constraintBottom_toBottomOf="@id/layoutpanel"
         app:layout_constraintRight_toRightOf="@id/layoutpanel">
 
     </android.support.v7.widget.RecyclerView>
@@ -80,8 +95,8 @@
 
         <Button
             android:id="@+id/submit"
-            android:layout_width="70dp"
-            android:layout_height="90dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginTop="35dp"
             android:background="@drawable/roundbtn"

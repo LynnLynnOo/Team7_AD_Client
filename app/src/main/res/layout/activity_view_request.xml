@@ -23,7 +23,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
-
+<!--
     <TextView
         android:id="@+id/tV_head_reqview"
         android:layout_width="match_parent"
@@ -35,20 +35,33 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"/>
+        android:layout_marginRight="15dp"/>-->
+    <android.support.constraint.Guideline
+        android:id="@+id/guide75"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.75"/>
 
+    <android.support.constraint.Guideline
+        android:id="@+id/guide25"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.33"/>
     <View
         android:layout_width="match_parent"
-        android:layout_height="450dp"
+        android:layout_height="0dp"
         android:background="@drawable/panelbg"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toBottomOf="@id/guide75"
         android:id="@+id/layoutpanel"
         />
     <ListView
         android:id="@+id/RequestlistView"
         android:layout_width="match_parent"
-        android:layout_height="430dp"
+        android:layout_height="0dp"
         app:layout_constraintTop_toTopOf="@id/layoutpanel"
         app:layout_constraintLeft_toLeftOf="@id/layoutpanel"
         app:layout_constraintRight_toRightOf="@id/layoutpanel"

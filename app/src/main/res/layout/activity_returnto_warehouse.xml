@@ -7,7 +7,19 @@
     android:orientation="vertical"
     android:background="@drawable/background"
     tools:context=".activities.ReturntoWarehouseActivity">
+    <android.support.constraint.Guideline
+        android:id="@+id/guide75"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.75"/>
 
+    <android.support.constraint.Guideline
+        android:id="@+id/guide25"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.33"/>
     <android.support.v7.widget.AppCompatImageView
         android:layout_width="match_parent"
         android:layout_height="243dp"
@@ -27,6 +39,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+<!--
 
     <TextView
         android:id="@+id/tV_head_"
@@ -36,16 +49,17 @@
         android:layout_marginTop="20dp"
         android:layout_marginRight="15dp"
         android:layout_weight="1"
-        android:text="Warehouse Return"
+       &lt;!&ndash; android:text="Warehouse Return"&ndash;&gt;
         android:textColor="@color/headingText"
         android:textSize="45sp"
         app:layout_constraintTop_toTopOf="parent" />
+-->
 
     <View
         android:id="@+id/layoutpanel"
         android:layout_width="match_parent"
         android:layout_height="450dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/panelbg"
         app:layout_constraintTop_toTopOf="parent" />
     <ListView
