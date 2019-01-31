@@ -40,7 +40,7 @@ import static android.content.ContentValues.TAG;
 public class APIDataAgentImpl implements APIDataAgent {
 
   // static String host = "localhost";
-  static String host = "172.17.81.182";
+  static String host = "192.168.1.166";
    // http://localhost/Team7API/Token
     static String baseURL;
     static String imageURL;
@@ -506,10 +506,10 @@ try{
         }
 
         if (btn == R.id.poButtonApprove)
-            JSONParser.postStream(baseURL + "/pendingpo/approve", true, jpo.toString());
+            JSONParser.postStream(baseURL + "/pendingpo/approve",true, jpo.toString());
 
         else if (btn == R.id.poButtonReject)
-            JSONParser.postStream(baseURL + "/pendingpo/reject", true, jpo.toString());
+            JSONParser.postStream(baseURL + "/pendingpo/reject", true,jpo.toString());
     }
 
     @Override
@@ -574,13 +574,13 @@ try{
                 jpo.put("AcceptedBy", ackDO.get("AcceptedBy"));
                 jpo.put("PONo", ackDO.get("PONo"));
                 jpoArr.put(jpo);
-                Log.d("Json", jpoArr.toString());
+                Log.d("Json",jpoArr.toString());
             }
 
         } catch (Exception e) {
             Log.e("AckDeliveryDetails", "Error");
         }
-        JSONParser.postStream(baseURL + "ackdelivery/addmm", true, jpoArr.toString());
+        JSONParser.postStream(baseURL + "ackdelivery/addmm",true, jpoArr.toString());
     }
 
     //endregion

@@ -33,10 +33,12 @@
     <View
         android:id="@+id/layoutpanel"
         android:layout_width="match_parent"
-        android:layout_height="414dp"
+        android:layout_height="match_parent"
         android:layout_marginTop="80dp"
+        android:layout_marginBottom="240dp"
         android:background="@drawable/panelbg"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_editor_absoluteX="0dp" />
 
     <Button
