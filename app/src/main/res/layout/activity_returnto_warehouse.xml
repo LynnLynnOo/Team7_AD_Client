@@ -47,7 +47,7 @@
         android:id="@+id/layoutpanel"
         android:layout_width="match_parent"
         android:layout_height="450dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/panelbg"
         app:layout_constraintTop_toTopOf="parent" />
     <ListView

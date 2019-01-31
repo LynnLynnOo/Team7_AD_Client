@@ -27,7 +27,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
 
-    <TextView
+    <!--<TextView
         android:id="@+id/tV_head_PO"
         android:layout_width="376dp"
         android:layout_height="wrap_content"
@@ -39,16 +39,18 @@
         android:textSize="45sp"
         app:layout_constraintEnd_toEndOf="@+id/appCompatImageView"
         app:layout_constraintStart_toStartOf="@+id/appCompatImageView"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />-->
     <View
-        android:layout_marginTop="80dp"
-        android:layout_marginBottom="65dp"
-        android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:background="@drawable/panelbg"
-        app:layout_constraintTop_toTopOf="parent"
         android:id="@+id/layoutpanel"
-        />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="200dp"
+        android:background="@drawable/panelbg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="0dp" />
     <ListView
         android:id="@+id/polist"
         android:layout_width="match_parent"

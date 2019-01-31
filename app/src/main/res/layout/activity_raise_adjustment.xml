@@ -166,8 +166,8 @@
 
     <Button
         android:id="@+id/AddButton"
-        android:layout_width="70dp"
-        android:layout_height="90dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="35dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/roundbtn"
@@ -179,8 +179,8 @@
 
     <Button
         android:id="@+id/confirmButton"
-        android:layout_width="70dp"
-        android:layout_height="90dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginRight="35dp"
         android:background="@drawable/roundbtn"
