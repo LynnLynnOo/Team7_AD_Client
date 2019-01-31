@@ -1,7 +1,6 @@
 package com.example.adteam7.team7_ad_client.network;
 
 import android.util.Log;
-import android.widget.Toast;
 
 import com.example.adteam7.team7_ad_client.R;
 import com.example.adteam7.team7_ad_client.data.AckDeliveryDetails;
@@ -16,11 +15,13 @@ import com.example.adteam7.team7_ad_client.data.ManageDepRep;
 import com.example.adteam7.team7_ad_client.data.PendingPO;
 import com.example.adteam7.team7_ad_client.data.PendingPODetails;
 import com.example.adteam7.team7_ad_client.data.ReturnItem;
+import com.example.adteam7.team7_ad_client.data.ReturnItemPostBack;
 import com.example.adteam7.team7_ad_client.data.SessionManager;
 import com.example.adteam7.team7_ad_client.data.SetRetrievalApiModel;
 import com.example.adteam7.team7_ad_client.data.StationeryRequestApiModel;
 import com.example.adteam7.team7_ad_client.data.StationeryRetrievalApiModel;
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
@@ -39,7 +40,7 @@ import static android.content.ContentValues.TAG;
 public class APIDataAgentImpl implements APIDataAgent {
 
   // static String host = "localhost";
-   static String host = "192.168.1.71";
+  static String host = "192.168.1.166";
    // http://localhost/Team7API/Token
     static String baseURL;
     static String imageURL;
@@ -65,16 +66,16 @@ public class APIDataAgentImpl implements APIDataAgent {
             String credential = String.format("username=%s&password=%s&grant_type=password", id, pw);
             String result = JSONParser.postStream(tokenURL, false, credential);
             JSONObject res = new JSONObject(result);
-            String userId="";
+            String userId = "";
             if (res.has("access_token")) {
                 JSONParser.access_token = res.getString("access_token");
 
-                userId= res.getString("userName");
+                userId = res.getString("userName");
                 Log.e(TAG, "login: " + res.getString("access_token"));
-                SessionManager sessionManager=SessionManager.getInstance();
-                if(res.has("roleName1")) {
+                SessionManager sessionManager = SessionManager.getInstance();
+                if (res.has("roleName1")) {
                     sessionManager.setUserRole(res.getString("roleName0"), res.getString("roleName1"));
-                }else{
+                } else {
                     sessionManager.setUserRole(res.getString("roleName0"), "");
                 }
             }
@@ -86,9 +87,7 @@ public class APIDataAgentImpl implements APIDataAgent {
         }
     }
 
-
-
-    @Override
+      @Override
     public ManageDepRep delegateDepHeadGet() {
         try {
             String id = session.getUserid();
@@ -230,7 +229,7 @@ public class APIDataAgentImpl implements APIDataAgent {
 
             String result = JSONParser.postStream(url, true, json);
 
-            Log.e(TAG, "ackDisbursement: from API "+result );
+            Log.e(TAG, "ackDisbursement: from API " + result);
             return result;
 
         } catch (Exception e) {
@@ -242,11 +241,46 @@ public class APIDataAgentImpl implements APIDataAgent {
     }
 
     @Override
-    public String returnSingleItem(ReturnItem item) {
+    public String returnSingleItem(ReturnItemPostBack item) {
+        String url = String.format("%sreturntowarehouse/return", baseURL);
+String status="";
+        Gson gson = new Gson();
+        String json = gson.toJson(item);
+        Log.i("Json", json);
+        String result = JSONParser.postStream(url, true, json);
 
-
+        Log.i("PostResult", result);
+        if (result != null && result != "")
+            status = result;
        // api/returntowarehouse/return
-        return null;
+        return status;
+    }
+
+    @Override
+    public String returnAllItem(List<ReturnItemPostBack> item) {
+
+        String url = String.format("%sreturntowarehouse/returnall", baseURL);
+        String status="";
+
+try{
+        Gson gson = new Gson();
+
+       // List<MyModel> myModelList = gson.fromJson(jsonArray.toString(), listType);
+       Type type=new TypeToken<List<ReturnItemPostBack>>(){}.getType();
+       String jsonall=gson.toJson(item,type);
+
+    String result = JSONParser.postStream(url, true, jsonall);
+
+
+} catch (Exception e){
+    e.toString();
+}
+
+
+
+
+        return status;
+
     }
 
     //endregion

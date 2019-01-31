@@ -1,6 +1,7 @@
 package com.example.adteam7.team7_ad_client.adapters;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,8 +10,12 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.adteam7.team7_ad_client.R;
+import com.example.adteam7.team7_ad_client.activities.DisbursementDetailActivity;
 import com.example.adteam7.team7_ad_client.data.DisbursementSationeryItem;
 import com.example.adteam7.team7_ad_client.data.ReturnItem;
+import com.example.adteam7.team7_ad_client.data.ReturnItemPostBack;
+import com.example.adteam7.team7_ad_client.network.APIDataAgent;
+import com.example.adteam7.team7_ad_client.network.APIDataAgentImpl;
 import com.travijuu.numberpicker.library.Enums.ActionEnum;
 import com.travijuu.numberpicker.library.Interface.ValueChangedListener;
 import com.travijuu.numberpicker.library.NumberPicker;
@@ -24,10 +29,20 @@ public class ReturnItemAdapter extends RecyclerView.Adapter<ReturnItemAdapter.Rv
 
     List<ReturnItem> list;
     Boolean check;
+    String reqId;
+    APIDataAgent agent=new APIDataAgentImpl();
 
     public ReturnItemAdapter(Context c, List<ReturnItem> lv, Boolean check) {
         this.list = lv;
         this.check=check;
+    }
+
+    public String getReqId() {
+        return reqId;
+    }
+
+    public void setReqId(String reqId) {
+        this.reqId = reqId;
     }
 
     @Override
@@ -55,11 +70,14 @@ public class ReturnItemAdapter extends RecyclerView.Adapter<ReturnItemAdapter.Rv
             @Override
             public void onClick(View v) {
                 //call single return item
+                ReturnItemPostBack item=new ReturnItemPostBack(getReqId(),list.get(position).getItemId(),list.get(position).getQuantity());
+               new AsyncSetReturnByItem().execute(item);
+               list.remove(position);
+                notifyItemRemoved(position);
             }
         });
 
     }
-
     @Override
     public int getItemCount() {
         return list.size();
@@ -82,6 +100,21 @@ public class ReturnItemAdapter extends RecyclerView.Adapter<ReturnItemAdapter.Rv
 
         }
 
+    }
+    private class AsyncSetReturnByItem extends AsyncTask<ReturnItemPostBack, Void,String> {
+        @Override
+        protected String doInBackground(ReturnItemPostBack... param) {
+            return agent.returnSingleItem(param[0]);
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+
+notifyDataSetChanged();
+
+            //refresh the adapter
+
+        }
     }
 
 }
