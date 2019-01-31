@@ -43,7 +43,6 @@ public class ReturntoWarehouseAdapter extends ArrayAdapter<ReturntoWarehouseApi>
                 e = (TextView) v.findViewById(R.id.textView3);
                 e.setText(returntoware.getDepartmentName());
                 e.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
-
             }
             return v;
         }

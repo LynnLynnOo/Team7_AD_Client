@@ -1,9 +1,11 @@
 package com.example.adteam7.team7_ad_client.data;
 
+import java.io.Serializable;
+
 /**
  * Created by dodo
  **/
-public class ReturnItem {
+public class ReturnItem implements Serializable {
 
     private String ItemId;
     private String Description;
