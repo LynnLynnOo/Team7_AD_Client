@@ -309,6 +309,7 @@ public class APIDataAgentImpl implements APIDataAgent {
         List<StationeryRequestApiModel> list = new ArrayList<StationeryRequestApiModel>();
         String url = String.format("%s%s/%s/%s", baseURL, "stationeryrequest", "getall", id);
         JSONArray a = JSONParser.getJSONArrayFromUrl(url);
+        Log.e("StationeryRequest", "url");
         try {
             for (int i = 0; i < a.length(); i++) {
                 JSONObject b = a.getJSONObject(i);
@@ -316,7 +317,7 @@ public class APIDataAgentImpl implements APIDataAgent {
                         b.getString("RequestId"),
                         b.getString("RequestedBy"), "", "",
                         b.getString("RequestDate"),
-                        b.getString("Status"), null
+                        b.getString("Status"), b.getString("Userid"), null
                 ));
             }
         } catch (Exception e) {
@@ -329,8 +330,9 @@ public class APIDataAgentImpl implements APIDataAgent {
     @Override
     public String ApproveStationeryRequest(StationeryRequestApiModel request) {
         String status = "Error at approve.";
+
         try {
-            String url = String.format("%s/%s/%s/", baseURL, "stationeryrequest", "approve"); //url to controller
+            String url = String.format("%s%s/%s/", baseURL, "stationeryrequest", "approve"); //url to controller
             Gson gson = new Gson();
             String json = gson.toJson(request);
             Log.i("Json", json);
@@ -353,7 +355,7 @@ public class APIDataAgentImpl implements APIDataAgent {
     public String RejectStationeryRequest(StationeryRequestApiModel request) {
         String status = "Error at reject.";
         try {
-            String url = String.format("%s/%s/%s/", baseURL, "stationeryrequest", "reject"); //url to controller
+            String url = String.format("%s%s/%s/", baseURL, "stationeryrequest", "reject"); //url to controller
             Gson gson = new Gson();
             String json = gson.toJson(request);
             Log.i("Json", json);
