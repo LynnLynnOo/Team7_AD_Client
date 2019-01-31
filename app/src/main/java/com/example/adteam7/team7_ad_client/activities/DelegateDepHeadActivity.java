@@ -33,6 +33,12 @@ public class DelegateDepHeadActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delegate_dep_head);
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle("Manage Department Head");
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
         new AsyncCallerGet().execute();
 
         Button cancel = this.findViewById(R.id.cancel);
@@ -80,6 +86,7 @@ public class DelegateDepHeadActivity extends AppCompatActivity {
             //Converting StartDate text view to date spinner
 
             final Calendar myCalendar = Calendar.getInstance();
+            final Calendar myCalendarEnd = Calendar.getInstance();
             final EditText startDate = findViewById(R.id.startDate);
             final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
 
@@ -120,9 +127,9 @@ public class DelegateDepHeadActivity extends AppCompatActivity {
                 public void onDateSet(DatePicker view, int year, int monthOfYear,
                                       int dayOfMonth) {
                     // TODO Auto-generated method stub
-                    myCalendar.set(Calendar.YEAR, year);
-                    myCalendar.set(Calendar.MONTH, monthOfYear);
-                    myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                    myCalendarEnd.set(Calendar.YEAR, year);
+                    myCalendarEnd.set(Calendar.MONTH, monthOfYear);
+                    myCalendarEnd.set(Calendar.DAY_OF_MONTH, dayOfMonth);
                     updateLabel();
                 }
 
@@ -130,7 +137,7 @@ public class DelegateDepHeadActivity extends AppCompatActivity {
                     String myFormat = "dd/MMMM/yyyy"; //In which you need put here
                     SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
-                    endDate.setText(sdf.format(myCalendar.getTime()));
+                    endDate.setText(sdf.format(myCalendarEnd.getTime()));
                 }
             };
 
@@ -139,9 +146,9 @@ public class DelegateDepHeadActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     // TODO Auto-generated method stub
-                    new DatePickerDialog(DelegateDepHeadActivity.this, date2, myCalendar
-                            .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                            myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+                    new DatePickerDialog(DelegateDepHeadActivity.this, date2, myCalendarEnd
+                            .get(Calendar.YEAR), myCalendarEnd.get(Calendar.MONTH),
+                            myCalendarEnd.get(Calendar.DAY_OF_MONTH)).show();
                 }
             });
         }

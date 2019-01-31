@@ -53,14 +53,16 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.33" />
     <View
+        android:id="@+id/layoutpanel"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@drawable/panelbg"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="20dp"
-        app:layout_constraintBottom_toBottomOf="@id/guide75"
-        android:id="@+id/layoutpanel"
         />
+        <!--app:layout_constraintBottom_toBottomOf="@id/guide75"-->
+
+
 
     <TextView
         android:id="@+id/potextViewSerial"
