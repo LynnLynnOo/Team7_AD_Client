@@ -75,6 +75,7 @@ public class ReturntoWarehouseActivity extends AppCompatActivity {
                         Toast.makeText(ReturntoWarehouseActivity.this, " list "+detailitemlist.getItemViewModels().size(), Toast.LENGTH_SHORT).show();
 
                         intent.putExtra("LIST", (Serializable) detailitemlist.getItemViewModels());
+                        intent.putExtra("reqId",detailitemlist.getRequestId());
                         //intent.putExtra("id", detailitemlist.);
                         startActivity(intent);
                     }

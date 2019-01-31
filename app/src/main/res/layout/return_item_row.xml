@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_marginTop="@dimen/s_margin"
         android:layout_marginBottom="@dimen/s_margin"
-        android:layout_height="70dp"
+        android:layout_height="80dp"
         >
 
         <TextView
@@ -80,11 +80,10 @@
             />
 
         <LinearLayout
-            android:layout_width="70dp"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-
             android:layout_below="@+id/itemid"
             android:layout_marginRight="5dp"
             android:id="@+id/buttonLayout">

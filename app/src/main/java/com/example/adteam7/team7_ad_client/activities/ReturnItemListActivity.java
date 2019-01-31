@@ -15,9 +15,11 @@ import com.example.adteam7.team7_ad_client.adapters.ItemListAdapter;
 import com.example.adteam7.team7_ad_client.adapters.ReturnItemAdapter;
 import com.example.adteam7.team7_ad_client.data.DisbursementSationeryItem;
 import com.example.adteam7.team7_ad_client.data.ReturnItem;
+import com.example.adteam7.team7_ad_client.data.ReturnItemPostBack;
 import com.example.adteam7.team7_ad_client.network.APIDataAgent;
 import com.example.adteam7.team7_ad_client.network.APIDataAgentImpl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ReturnItemListActivity extends AppCompatActivity {
@@ -26,7 +28,7 @@ public class ReturnItemListActivity extends AppCompatActivity {
     ReturnItemAdapter adapter;
     Button cancel,returnall;
     String disbno, disbotp, depname;
-
+    APIDataAgent agent=new APIDataAgentImpl();
     List<ReturnItem> itemlist;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,21 +47,44 @@ public class ReturnItemListActivity extends AppCompatActivity {
         adapter=new ReturnItemAdapter(ReturnItemListActivity.this,itemlist,true);
 
         itemsrv.setAdapter(adapter);
+        adapter.setReqId(i.getStringExtra("reqId"));
 
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                finish();
             }
         });
 
         returnall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //return all
+                List<ReturnItemPostBack> returnalllist=new ArrayList<>();
+                for (ReturnItem c:itemlist
+                ) {
+                    ReturnItemPostBack item=new ReturnItemPostBack(i.getStringExtra("reqId"),c.getItemId(),c.getQuantity());
+                    returnalllist.add(item);
+                }
 
+                new AsyncSetReturnLLItem().execute(returnalllist);
             }
         });
     }
+    private class AsyncSetReturnLLItem extends AsyncTask<List<ReturnItemPostBack>, Void,String> {
+        @Override
+        protected String doInBackground(List<ReturnItemPostBack>... param) {
+            return agent.returnAllItem(param[0]);
+        }
 
+        @Override
+        protected void onPostExecute(String result) {
+
+            finish();
+            //refresh the adapter
+
+        }
+
+    }
 
 }
