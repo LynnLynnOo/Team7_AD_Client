@@ -21,12 +21,16 @@ import com.example.adteam7.team7_ad_client.network.APIDataAgentImpl;
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ * Created by Kay Thi Swe Tun
+ **/
 public class DisbursementDetailActivity extends AppCompatActivity  {
 
     RecyclerView itemsrv;
     APIDataAgent agent=new APIDataAgentImpl();
     ItemListAdapter adapter;
     Button voiddisb,ackwge;
+    String disbno, disbotp, depname;
     List<DisbursementSationeryItem> itemlist;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,10 +40,24 @@ public class DisbursementDetailActivity extends AppCompatActivity  {
         itemsrv.setLayoutManager(new LinearLayoutManager(this));
         voiddisb=findViewById(R.id.voiddisb);
         ackwge=findViewById(R.id.ackwge);
-        String dno= getIntent().getStringExtra("disbno");
-        if(dno!=null){
-            new AsyncGetDisbursementDetail().execute(dno);
+        disbno = getIntent().getStringExtra("disbno");
+
+        if (getIntent().hasExtra("disbno")) {
+            new AsyncGetDisbursementDetail().execute(disbno);
         }
+        if (getIntent().hasExtra("disbotp")) {
+            disbotp = getIntent().getStringExtra("disbotp");
+        }
+        if (getIntent().hasExtra("depname")) {
+            depname = getIntent().getStringExtra("depname");
+            if (getSupportActionBar() != null) {
+                getSupportActionBar().setTitle(depname);
+                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            }
+        }
+
+
+
         voiddisb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,11 +80,12 @@ public class DisbursementDetailActivity extends AppCompatActivity  {
         // Toast.makeText(this, "get from adapter "+dlist.get(0).getReceivedQty(), Toast.LENGTH_SHORT).show();
         Intent intent=new Intent(DisbursementDetailActivity.this,DisbDetailAckActivity.class);
 
+        intent.putExtra("disbotp", disbotp);
 
         intent.putExtra("disblist", (Serializable) dlist);
 
-startActivity(intent);
-         }
+        startActivity(intent);
+    }
 
     private void onTapVoid() {
         final AlertDialog.Builder builder = new AlertDialog.Builder((DisbursementDetailActivity.this));
@@ -83,15 +102,21 @@ startActivity(intent);
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
-                agent.voidDisbursement(itemlist);
+                if (itemlist != null) {
+
+                    new AsyncSetDisbVoid().execute(disbno);
+
+                }
                 finish();
+
             }
         });
         AlertDialog alertDialog = builder.create();
+
         alertDialog.show();
 
 
-       }
+    }
 
     private class AsyncGetDisbursementDetail extends AsyncTask<String, Void,List<DisbursementSationeryItem>> {
         @Override
@@ -103,10 +128,31 @@ startActivity(intent);
         protected void onPostExecute(List<DisbursementSationeryItem> disbursementSationeryItems) {
             super.onPostExecute(disbursementSationeryItems);
             itemlist=disbursementSationeryItems;
+
+            for (int i = 0; i < itemlist.size(); i++) {
+                itemlist.get(i).setReceivedQty(itemlist.get(i).getQuantity());
+            }
+
             adapter=new ItemListAdapter(DisbursementDetailActivity.this,disbursementSationeryItems,true);
 
             itemsrv.setAdapter(adapter);
 
+        }
+    }
+
+    private class AsyncSetDisbVoid extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... param) {
+            String s = agent.voidDisbursement(param[0]);
+
+            return s;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            Toast.makeText(DisbursementDetailActivity.this, "process return " + s, Toast.LENGTH_SHORT).show();
+
+            super.onPostExecute(s);
         }
     }
 }

@@ -1,40 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="1">
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toTopOf="@id/layoutpanel"
+    app:layout_constraintStart_toStartOf="@id/layoutpanel"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:gravity="center_vertical"
+        android:background="#E7F6FA"
+        android:layout_width="match_parent"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_height="wrap_content"
+        >
+
+
 
     <TextView
+        android:textSize="16sp"
+        android:layout_alignParentLeft="true"
         android:id="@+id/category"
-        android:layout_width="wrap_content"
+        android:layout_width="67dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:text="Category" />
+        android:text="Clip"
+        android:textAlignment="center"
+        android:layout_centerVertical="true"
+        />
+
+
 
     <TextView
+        android:layout_toRightOf="@id/category"
         android:id="@+id/description"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:text="Item Description" />
+        android:textSize="16sp"
+        android:gravity="center"
+        android:text="Clip Double 1"
+        android:textAlignment="center"
+        android:layout_centerVertical="true"/>
+
+
 
     <TextView
         android:id="@+id/quantity"
-        android:layout_width="wrap_content"
+        android:layout_width="47dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:text="Quantity" />
+        android:textSize="16sp"
+        android:text="10"
+        android:gravity="center_horizontal"
+        android:textAlignment="center"
+        android:layout_toLeftOf="@id/amount"
+        android:layout_centerVertical="true"/>
 
-    <TextView
-        android:id="@+id/stock"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:text="Current Stock" />
+        <TextView
+                android:id="@+id/amount"
+            android:layout_width="73dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="$1.00"
+                android:layout_toLeftOf="@+id/buttonLayout"
+            android:textAlignment="center"
+            android:layout_centerVertical="true"/>
 
-    <TextView
-        android:id="@+id/amount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:text="Amount" />
+        <RelativeLayout
+            android:layout_width="95dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp"
+            android:gravity="center_horizontal"
+            android:id="@+id/buttonLayout">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="0dp"
+                android:minWidth="0dp"
+                android:id="@+id/delete"
+                android:text="Delete"/>
+        </RelativeLayout>
+
+    </RelativeLayout>
 </LinearLayout>
+</android.support.constraint.ConstraintLayout>

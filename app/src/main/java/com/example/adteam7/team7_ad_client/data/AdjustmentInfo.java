@@ -6,6 +6,8 @@ public class AdjustmentInfo {
 
     public int quantity;
 
+    public String remark;
+
     public AdjustmentInfo(String itemId, int quantity) {
         this.itemId = itemId;
         this.quantity = quantity;

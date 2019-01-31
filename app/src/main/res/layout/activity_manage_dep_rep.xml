@@ -1,11 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10dp"
+    android:background="@drawable/background"
     tools:context=".activities.ManageDepRepActivity">
+    <android.support.v7.widget.AppCompatImageView
+        android:layout_width="match_parent"
+        android:layout_height="243dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/heading"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.v7.widget.AppCompatImageView
+        android:layout_width="match_parent"
+        android:layout_height="243dp"
+        android:layout_marginBottom="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/footer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+<!--
+    <TextView
+        android:id="@+id/tV_head_asrep"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Assign Representative"
+        android:textColor="@color/headingText"
+        android:textSize="36sp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"/>-->
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/panelbg"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="480dp"
+        android:id="@+id/layoutpanel"
+        />
 
     <TextView
         android:layout_margin="@dimen/m_margin"
@@ -14,10 +58,11 @@
         android:textColor="@color/txtColor"
         android:text="Department name :"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/layoutpanel"
+        app:layout_constraintLeft_toLeftOf="@id/layoutpanel"/>
 
     <TextView
-        android:layout_toRightOf="@+id/depconst"
         android:id="@+id/depname"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -28,14 +73,18 @@
         android:layout_marginTop="@dimen/m_margin"
         android:layout_marginBottom="@dimen/m_margin"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/depconst"
+        app:layout_constraintRight_toRightOf="@id/layoutpanel"
+        app:layout_constraintTop_toTopOf="@id/layoutpanel"/>
 
 
 <TextView
     android:layout_margin="@dimen/m_margin"
     android:id="@+id/currepconst"
     android:textSize="16sp"
-    android:layout_below="@+id/depconst"
+    app:layout_constraintTop_toBottomOf="@id/depconst"
+    app:layout_constraintLeft_toLeftOf="@id/layoutpanel"
     android:textColor="@color/txtColor"
     android:text="Current Representative :"
     android:layout_width="wrap_content"
@@ -43,7 +92,9 @@
 
     <TextView
         android:layout_below="@id/depconst"
-        android:layout_toRightOf="@+id/currepconst"
+        app:layout_constraintLeft_toRightOf="@id/currepconst"
+        app:layout_constraintRight_toRightOf="@id/layoutpanel"
+        app:layout_constraintTop_toTopOf="@id/currepconst"
         android:id="@+id/currep"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -59,9 +110,11 @@
     <TextView
         android:layout_margin="@dimen/m_margin"
         android:id="@+id/consttxt"
-        android:layout_below="@+id/currepconst"
+        app:layout_constraintTop_toBottomOf="@id/currepconst"
+        app:layout_constraintLeft_toLeftOf="@id/layoutpanel"
+        app:layout_constraintRight_toRightOf="@id/layoutpanel"
+        android:width="370dp"
         android:textSize="16sp"
-
         android:textColor="@color/txtColor"
         android:text="Select the Employee to assign Department representative : "
         android:layout_width="wrap_content"
@@ -70,8 +123,10 @@
     <RelativeLayout
 
         android:id="@+id/spinlayout"
-        android:layout_below="@+id/consttxt"
-        android:layout_width="match_parent"
+        app:layout_constraintTop_toBottomOf="@id/consttxt"
+        app:layout_constraintLeft_toLeftOf="@id/layoutpanel"
+        app:layout_constraintRight_toRightOf="@id/layoutpanel"
+        android:layout_width="370dp"
         android:layout_height="40dp"
         android:layout_weight=".28"
         android:layout_marginLeft="@dimen/m_margin"
@@ -103,13 +158,17 @@
     <Button
         android:layout_gravity="center_horizontal"
         android:id="@+id/assign"
-        android:layout_width="150dp"
-        android:layout_height="40dp"
-        android:text="@string/assign"
-        android:background="@drawable/loginbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/roundbtn"
+        android:drawableTop="@drawable/accept"
+        android:text="Assign"
+        android:textColor="@color/headingText"
         android:layout_marginTop="@dimen/l_margin"
         android:layout_below="@+id/spinlayout"
-        android:layout_centerHorizontal="true"
-        android:textColor="#ffffff"/>
+        app:layout_constraintLeft_toLeftOf="@id/layoutpanel"
+        app:layout_constraintRight_toRightOf="@id/layoutpanel"
+        app:layout_constraintTop_toBottomOf="@id/layoutpanel"
+        />
 
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>

@@ -1,41 +1,194 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:background="@drawable/background">
 
+    <android.support.v7.widget.AppCompatImageView
+        android:layout_width="match_parent"
+        android:layout_height="243dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/heading"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/potextViewSerial"
-        android:layout_width="242dp"
-        android:layout_height="44dp"
-        android:layout_marginStart="84dp"
-        android:layout_marginLeft="84dp"
-        android:layout_marginTop="39dp"
-        android:text="Raise Adjustment"
-        android:textSize="30dp" />
+    <android.support.v7.widget.AppCompatImageView
+        android:layout_width="match_parent"
+        android:layout_height="243dp"
+        android:layout_marginBottom="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/footer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="380dp"
+        android:background="@drawable/panelbg"
+        app:layout_constraintTop_toBottomOf="@+id/remarkLayout"
+        android:id="@+id/layoutpanel"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/s_margin"
+            android:weightSum="3">
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5">
+
+            <TextView
+                android:textColor="@android:color/black"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Cat." />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.9"
+            >
+
+            <!--<ListView-->
+            <!--android:id="@+id/AdjustmentList"-->
+            <!--android:layout_width="310dp"-->
+            <!--android:layout_height="432dp"-->
+            <!--android:layout_marginTop="10dp"-->
+            <!--app:layout_constraintTop_toTopOf="@id/layoutpanel"-->
+            <!--app:layout_constraintStart_toStartOf="@id/layoutpanel"-->
+            <!--app:layout_constraintEnd_toEndOf="@id/layoutpanel"/>-->
+            <TextView
+                android:textColor="@android:color/black"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_marginLeft="@dimen/m_margin"
+                android:text="Item Name" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.35">
+
+            <TextView
+                android:textColor="@android:color/black"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Qty." />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.55">
+
+            <TextView
+                android:textColor="@android:color/black"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Amount" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.75">
+
+            <TextView
+                android:textColor="@android:color/black"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Action" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/AdjustmentList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="1dp">
+
+        </android.support.v7.widget.RecyclerView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/remarkLayout"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <Button
-            android:id="@+id/AddButton"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        app:layout_constraintRight_toRightOf="@id/layoutpanel"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Total: "-->
+        <!--android:textColor="@color/headingText"-->
+        <!--android:textSize="20sp"/>-->
+        <!--<TextView-->
+        <!--android:layout_width="140dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:textSize="20sp"-->
+        <!--android:textColor="@color/headingText"-->
+        <!--android:text="$0.00"-->
+        <!--android:id="@+id/total"/>-->
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add" />
-        <Button
-            android:layout_width="wrap_content"
+            android:text="Remark"
+            android:textColor="@color/headingText"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/remark"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:id="@+id/confirmButton"
-            android:text="Confirm"/>
+            android:textSize="20sp" />
     </LinearLayout>
 
 
-    <ListView
-        android:id="@+id/AdjustmentList"
-        android:layout_width="395dp"
-        android:layout_height="632dp"
-        android:layout_marginTop="10dp" />
+    <Button
+        android:id="@+id/AddButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/roundbtn"
+        android:drawableTop="@drawable/addnew"
+        android:text="Add New"
+        android:textColor="@color/headingText"
+        app:layout_constraintLeft_toLeftOf="@id/layoutpanel"
+        app:layout_constraintTop_toBottomOf="@id/layoutpanel" />
+
+    <Button
+        android:id="@+id/confirmButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="35dp"
+        android:background="@drawable/roundbtn"
+        android:drawableTop="@drawable/accept"
+        android:text="Raise"
+        android:textColor="@color/headingText"
+        app:layout_constraintRight_toRightOf="@id/layoutpanel"
+        app:layout_constraintTop_toBottomOf="@id/layoutpanel" />
 
 
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>

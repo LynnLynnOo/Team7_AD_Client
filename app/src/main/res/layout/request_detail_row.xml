@@ -15,7 +15,7 @@
         android:id="@+id/Req_textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="18sp" />
+        android:textSize="22sp" />
 
     <TextView
         android:id="@+id/Req_textView3"
@@ -27,6 +27,6 @@
         android:id="@+id/Req_textView4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="18sp" />
+        android:textSize="22sp" />
 
 </LinearLayout>

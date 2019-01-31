@@ -1,56 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="@drawable/background1"
     tools:context=".activities.DisbursementDetailActivity">
-<TextView
-    android:layout_alignParentTop="true"
-    android:layout_margin="@dimen/m_margin"
-    android:textSize="18sp"
-    android:textColor="@color/txtColor"
-    android:id="@+id/depname"
-    android:text="Department of English"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content" />
+    <android.support.v7.widget.AppCompatImageView
+        android:layout_width="match_parent"
+        android:layout_height="243dp"
+        android:layout_marginTop="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/heading"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.v7.widget.AppCompatImageView
+        android:layout_width="match_parent"
+        android:layout_height="243dp"
+        android:layout_marginBottom="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/footer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <View
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="480dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/panelbg"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/layoutpanel"/>
+    <!--
+        <TextView
+            android:id="@+id/depname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:text="Department of English"
+            android:textColor="@color/headingText"
+            android:textSize="35sp" />-->
 
     <LinearLayout
-        android:layout_below="@id/depname"
-        android:layout_margin="@dimen/s_margin"
+        android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/depname"
+        android:layout_marginLeft="@dimen/s_margin"
+        android:layout_marginTop="@dimen/s_margin"
+        android:layout_marginRight="@dimen/s_margin"
         android:weightSum="3"
-        android:id="@+id/title">
+        app:layout_constraintTop_toTopOf="@id/layoutpanel"
+        app:layout_constraintLeft_toLeftOf="@id/layoutpanel">
 
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.3"
-            >
+            android:layout_weight="0.3">
 
             <TextView
-                android:textColor="@android:color/black"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="No" />
+                android:text="No"
+                android:textColor="@color/txtColor" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1.2"
-            >
+            android:layout_weight="1.2">
 
             <TextView
-                android:textColor="@android:color/black"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="left"
                 android:layout_marginLeft="@dimen/m_margin"
-                android:text="Item Name" />
+                android:gravity="left"
+                android:text="Item Name"
+                android:textColor="@color/txtColor" />
         </LinearLayout>
 
         <LinearLayout
@@ -59,11 +94,11 @@
             android:layout_weight="0.6">
 
             <TextView
-                android:textColor="@android:color/black"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="Requested" />
+                android:text="Requested"
+                android:textColor="@color/txtColor" />
         </LinearLayout>
 
 
@@ -73,52 +108,55 @@
             android:layout_weight="0.9">
 
             <TextView
-                android:textColor="@android:color/black"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="Received" />
+                android:text="Received"
+                android:textColor="@color/txtColor" />
         </LinearLayout>
 
     </LinearLayout>
 
-<android.support.v7.widget.RecyclerView
-    android:layout_below="@+id/title"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/detailrv">
-
-</android.support.v7.widget.RecyclerView>
-
-<LinearLayout
-
-    android:layout_alignParentBottom="true"
-    android:gravity="center"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <Button
-android:gravity="center"
-        android:id="@+id/voiddisb"
-        android:layout_width="150dp"
-        android:layout_height="40dp"
-        android:text="@string/voiddisb"
-android:layout_gravity="top"
-        android:background="@drawable/loginbtn"
-        android:layout_marginTop="12dp"
-        android:layout_marginRight="@dimen/s_margin"
-        android:textColor="#ffffff"/>
-    <Button
-        android:layout_gravity="top"
-        android:id="@+id/ackwge"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/detailrv"
         android:layout_marginLeft="@dimen/s_margin"
-        android:layout_width="150dp"
-        android:layout_height="40dp"
-        android:text="@string/acknowledge"
-        android:background="@drawable/loginbtn"
-        android:layout_marginTop="12dp"
-android:gravity="center"
-        android:textColor="#ffffff"/>
+        android:layout_marginTop="@dimen/s_margin"
+        android:layout_marginRight="@dimen/s_margin"
+        android:layout_width="match_parent"
+        android:layout_height="395dp"
+        android:layout_below="@+id/title"
+        app:layout_constraintLeft_toLeftOf="@id/layoutpanel"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        >
 
-</LinearLayout>
+    </android.support.v7.widget.RecyclerView>
 
-</RelativeLayout>
+        <Button
+            android:id="@+id/voiddisb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/roundbtn"
+            android:drawableTop="@drawable/reject"
+            android:text="Void"
+            android:textColor="@color/headingText"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="35dp"
+
+            app:layout_constraintTop_toBottomOf="@id/layoutpanel"
+            app:layout_constraintLeft_toLeftOf="@id/layoutpanel"/> />
+
+        <Button
+            android:id="@+id/ackwge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/roundbtn"
+            android:drawableTop="@drawable/accept"
+            android:layout_marginRight="35dp"
+            android:layout_marginTop="30dp"
+            android:text="Acknowledge"
+            android:textColor="@color/headingText"
+            app:layout_constraintTop_toBottomOf="@id/layoutpanel"
+            app:layout_constraintRight_toRightOf="@id/layoutpanel" />
+
+
+</android.support.constraint.ConstraintLayout>

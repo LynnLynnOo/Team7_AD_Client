@@ -3,6 +3,9 @@ package com.example.adteam7.team7_ad_client.network;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.adteam7.team7_ad_client.R;
+import com.example.adteam7.team7_ad_client.data.AckDeliveryDetails;
+import com.example.adteam7.team7_ad_client.data.AckDisbursement;
 import com.example.adteam7.team7_ad_client.data.AdjustmentInfo;
 import com.example.adteam7.team7_ad_client.data.AdjustmentItem;
 import com.example.adteam7.team7_ad_client.data.DelegateDepHeadApiModel;
@@ -10,6 +13,9 @@ import com.example.adteam7.team7_ad_client.data.Disbursement;
 import com.example.adteam7.team7_ad_client.data.DisbursementSationeryItem;
 import com.example.adteam7.team7_ad_client.data.Employee;
 import com.example.adteam7.team7_ad_client.data.ManageDepRep;
+import com.example.adteam7.team7_ad_client.data.PendingPO;
+import com.example.adteam7.team7_ad_client.data.PendingPODetails;
+import com.example.adteam7.team7_ad_client.data.ReturnItem;
 import com.example.adteam7.team7_ad_client.data.SessionManager;
 import com.example.adteam7.team7_ad_client.data.SetRetrievalApiModel;
 import com.example.adteam7.team7_ad_client.data.StationeryRequestApiModel;
@@ -18,14 +24,12 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Locale;
 
 import static android.content.ContentValues.TAG;
 
@@ -35,7 +39,7 @@ import static android.content.ContentValues.TAG;
 public class APIDataAgentImpl implements APIDataAgent {
 
   // static String host = "localhost";
-  static String host = "192.168.1.71";
+   static String host = "192.168.1.71";
    // http://localhost/Team7API/Token
     static String baseURL;
     static String imageURL;
@@ -51,7 +55,6 @@ public class APIDataAgentImpl implements APIDataAgent {
         imageURL = String.format("http://%s/myserviceEmp/photo", host);
     }
 
-
     //region Kay Thi Swe Tun
     @Override
     public String login(String usname,String pass) {
@@ -62,10 +65,19 @@ public class APIDataAgentImpl implements APIDataAgent {
             String credential = String.format("username=%s&password=%s&grant_type=password", id, pw);
             String result = JSONParser.postStream(tokenURL, false, credential);
             JSONObject res = new JSONObject(result);
-            if (res.has("access_token"))
+            String userId="";
+            if (res.has("access_token")) {
                 JSONParser.access_token = res.getString("access_token");
-            String userId = res.getString("userName");
-            Log.e(TAG, "login: "+res.getString("access_token") );
+
+                userId= res.getString("userName");
+                Log.e(TAG, "login: " + res.getString("access_token"));
+                SessionManager sessionManager=SessionManager.getInstance();
+                if(res.has("roleName1")) {
+                    sessionManager.setUserRole(res.getString("roleName0"), res.getString("roleName1"));
+                }else{
+                    sessionManager.setUserRole(res.getString("roleName0"), "");
+                }
+            }
             return userId;
         } catch (Exception e) {
             JSONParser.access_token = "";
@@ -73,6 +85,8 @@ public class APIDataAgentImpl implements APIDataAgent {
             return "fail";
         }
     }
+
+
 
     @Override
     public ManageDepRep delegateDepHeadGet() {
@@ -119,8 +133,6 @@ public class APIDataAgentImpl implements APIDataAgent {
        // return null;
     }
 
-
-
     @Override
     public String assignDepRep(ManageDepRep dep) {
         JSONObject jemp = new JSONObject();
@@ -138,7 +150,7 @@ public class APIDataAgentImpl implements APIDataAgent {
         return rr;
     }
 
-    //endregion
+
 
    /* @Override
     public String delegateDepHeadSet(ManageDepRep dep) {
@@ -189,29 +201,56 @@ public class APIDataAgentImpl implements APIDataAgent {
     }
 
     @Override
-    public String voidDisbursement(List<DisbursementSationeryItem> list) {
+    public String voidDisbursement(String disbno) {
 
-        Gson gson=new Gson();
-try {
-    String elementlist = gson.toJson(
-            list,
-            new TypeToken<List<DisbursementSationeryItem>>() {
-            }.getType());
+        try {
+            String url = String.format("%sclerk/voiddisb/%s", baseURL, disbno);
 
-    // JSONArray arr = new JSONArray(elementlist);
+            String result = JSONParser.getStream(url);
 
+            return result;
+        } catch (Exception e) {
 
-    String rr = JSONParser.postStream(baseURL + "/managedepartmentEmp", true, elementlist);
-}catch (Exception e){
+        }
+        return null;
+    }
 
-}
+    @Override
+    public String ackDisbursement(List<DisbursementSationeryItem> items) {
+
+        try {
+            String id = session.getUserid();
+            AckDisbursement ackDisbursement=new AckDisbursement();
+            ackDisbursement.setDisbursedBy(id);
+
+            String url = String.format("%sclerk/acknowledgement", baseURL);
+            ackDisbursement.setAckList(items);
+            Gson gson = new Gson();
+            String json = gson.toJson(ackDisbursement);
+
+            String result = JSONParser.postStream(url, true, json);
+
+            Log.e(TAG, "ackDisbursement: from API "+result );
+            return result;
+
+        } catch (Exception e) {
+            Log.e("JsonPost", e.toString());
+        }
+
 
         return null;
-
-
-
     }
+
+    @Override
+    public String returnSingleItem(ReturnItem item) {
+
+
+       // api/returntowarehouse/return
+        return null;
+    }
+
     //endregion
+
 
     // region Author: Teh Li Heng for Delegate Department Head
     @Override
@@ -253,7 +292,7 @@ try {
 
             Log.i("PostResult", result);
             if (result != null && result != "")
-                status = "Successfully saved.";
+                status = result;
 
         } catch (Exception e) {
             Log.e("JsonPost", e.toString());
@@ -278,7 +317,7 @@ try {
     public List<StationeryRequestApiModel> ReadStationeryRequest() {
         String id = session.getUserid();
         List<StationeryRequestApiModel> list = new ArrayList<StationeryRequestApiModel>();
-        String url = String.format("%s/%s/%s/%s", baseURL, "stationeryrequest", "getall", id);
+        String url = String.format("%s%s/%s/%s", baseURL, "stationeryrequest", "getall", id);
         JSONArray a = JSONParser.getJSONArrayFromUrl(url);
         try {
             for (int i = 0; i < a.length(); i++) {
@@ -294,6 +333,51 @@ try {
             Log.e("StationeryRequest", "JSONArray error");
         }
         return (list);
+    }
+
+    /* Approve Request*/
+    @Override
+    public String ApproveStationeryRequest(StationeryRequestApiModel request) {
+        String status = "Error at approve.";
+        try {
+            String url = String.format("%s/%s/%s/", baseURL, "stationeryrequest", "approve"); //url to controller
+            Gson gson = new Gson();
+            String json = gson.toJson(request);
+            Log.i("Json", json);
+            String result = JSONParser.postStream(url, true, json);
+            Log.i("PostResult", result);
+            String re = result.trim();
+            if (re.equals("true")) {
+                status = "Successfully approved.";
+            }
+
+        } catch (Exception e) {
+            Log.e("JsonPost", e.toString());
+        }
+        Log.e("status", status);
+        return status;
+    }
+
+    /* Reject Request*/
+    @Override
+    public String RejectStationeryRequest(StationeryRequestApiModel request) {
+        String status = "Error at reject.";
+        try {
+            String url = String.format("%s/%s/%s/", baseURL, "stationeryrequest", "reject"); //url to controller
+            Gson gson = new Gson();
+            String json = gson.toJson(request);
+            Log.i("Json", json);
+            String result = JSONParser.postStream(url, true, json);
+            Log.i("PostResult", result);
+            String re = result.trim();
+            if (re.equals("true")) {
+                status = "Successfully rejected.";
+            }
+        } catch (Exception e) {
+            Log.e("JsonPost", e.toString());
+        }
+        Log.e("status", status);
+        return status;
     }
 
     //endregion
@@ -345,59 +429,176 @@ try {
 
     //endregion
 
-    //region Zan Tun Khine
+    //region Author: Zan Tun Khine (Approve/Reject PO & Acknowledge Delivery)
 
+    @Override
+    public List<PendingPO> GetPendingPO() {
+        String url = String.format("%s/pendingpo", baseURL);
+        List<PendingPO> listPO = new ArrayList<>();
+        try {
+            JSONArray a = JSONParser.getJSONArrayFromUrl(url);
+            for (int i = 0; i < a.length(); i++) {
+                JSONObject b = a.getJSONObject(i);
+                listPO.add(new PendingPO(
+                        b.getString("PONo"),
+                        b.getString("SupplierId"),
+                        b.getString("Status"),
+                        b.getString("OrderedBy"),
+                        b.getString("Date"),
+                        b.getString("Amount"),
+                        b.getString("ApprovedBy")));
+            }
+        } catch (Exception e) {
+            Log.e("PendingPO", "JSONArray error");
+        }
+        return (listPO);
+    }
 
-    //region Approve Reject PO
+    @Override
+    public void ApproveRejectPO(PendingPO po, int btn) {
+        JSONObject jpo = new JSONObject();
 
+        try {
+            jpo.put("PONo", po.get("PONo"));
+            //jpo.put("SupplierId",po.get("SupplierId"));
+            //jpo.put("Status",po.get("Status"));
+            //jpo.put("OrderedBy",po.get("OrderedBy"));
+            //jpo.put("Date",po.get("Date"));
+            //jpo.put("Amount",po.get("Amount"));
+            jpo.put("ApprovedBy", po.get("ApprovedBy"));
 
-    //endregion
+        } catch (Exception e) {
+            Log.e("PendingPO", "Error");
+        }
 
+        if (btn == R.id.poButtonApprove)
+            JSONParser.postStream(baseURL + "/pendingpo/approve",true, jpo.toString());
+
+        else if (btn == R.id.poButtonReject)
+            JSONParser.postStream(baseURL + "/pendingpo/reject", true,jpo.toString());
+    }
+
+    @Override
+    public List<PendingPODetails> GetPendingPODetails(String pono) {
+        String url = String.format("%s/pendingpo/%s", baseURL, pono);
+        List<PendingPODetails> listPendingPO = new ArrayList<>();
+        try {
+            JSONArray a = JSONParser.getJSONArrayFromUrl(url);
+            for (int i = 0; i < a.length(); i++) {
+                JSONObject b = a.getJSONObject(i);
+                listPendingPO.add(new PendingPODetails(
+                        b.getString("Description"),
+                        b.getString("ItemId"),
+                        b.getString("Quantity"),
+                        b.getString("Remarks"),
+                        b.getString("TransactionRef"),
+                        String.format("%,.2f", b.getDouble("UnitPrice")),
+                        b.getString("PONo"),
+                        b.getString("SupplierId"),
+                        b.getString("Status"),
+                        b.getString("OrderedBy"),
+                        b.getString("Date"),
+                        String.format("%,.2f", b.getDouble("Amount")),
+                        String.format("%,.2f", b.getDouble("UnitAmount"))));
+            }
+        } catch (Exception e) {
+            Log.e("PendingPODetails", "JSONArray error");
+        }
+        return (listPendingPO);
+    }
+
+    @Override
+    public List<String> GetPendingPOList() {
+        String url = String.format("%s/ackdelivery/pendingdelivery", baseURL);
+        List<String> listPO = new ArrayList<>();
+        try {
+            JSONArray a = JSONParser.getJSONArrayFromUrl(url);
+            for (int i = 0; i < a.length(); i++) {
+                String po = a.getString(i);
+                listPO.add(po);
+            }
+        } catch (Exception e) {
+            Log.e("PendingDelivery", "JSONArray error");
+        }
+        return (listPO);
+    }
+
+    @Override
+    public void ConfirmDO(List<AckDeliveryDetails> ackDOList) {
+
+        JSONArray jpoArr = new JSONArray();
+        try {
+
+            for (AckDeliveryDetails ackDO : ackDOList) {
+                JSONObject jpo = new JSONObject();
+                jpo.put("ItemId", ackDO.get("ItemId"));
+                jpo.put("Quantity", ackDO.get("Quantity"));
+//                jpo.put("Remarks", ackDO.get("Remarks"));
+//                jpo.put("UnitPrice", ackDO.get("UnitPrice"));
+                jpo.put("DelOrderNo", ackDO.get("DelOrderNo"));
+                jpo.put("SupplierId", ackDO.get("SupplierId"));
+                jpo.put("AcceptedBy", ackDO.get("AcceptedBy"));
+                jpo.put("PONo", ackDO.get("PONo"));
+                jpoArr.put(jpo);
+                Log.d("Json",jpoArr.toString());
+            }
+
+        } catch (Exception e) {
+            Log.e("AckDeliveryDetails", "Error");
+        }
+        JSONParser.postStream(baseURL + "ackdelivery/addmm",true, jpoArr.toString());
+    }
 
     //endregion
 
 
     //region Cheng Zongpei
-    public List<String> adjustmentGetCategories() {
-        String url = "http://192.168.1.75/webapi/adjustment/categories";
+    public List<String> adjustmentGetCategories(){
+        String url = String.format("http://%s/team7ad/adjustment/categories", host);
         JSONArray array = JSONParser.getJSONArrayFromUrl(url);
         List<String> result = new ArrayList<String>();
-        try {
-            for (int i = 0; i < array.length(); i++) {
+        try{
+            for(int i=0;i<array.length();i++){
                 result.add(array.getString(i));
             }
-        } catch (Exception e) {
-            Log.e("error", "Json get category error");
+        }
+        catch (Exception e){
+            Log.e("error","Json get category error");
         }
         return result;
     }
 
-    public List<AdjustmentItem> adjustmentGetItem(String category) {
-        String url = String.format("http://192.168.1.75/webapi/adjustment/items/%s", category);
+    public List<AdjustmentItem> adjustmentGetItem(String category){
+        String url = String.format("http://%s/team7ad/adjustment/items/%s", host, category);
         JSONArray array = JSONParser.getJSONArrayFromUrl(url);
         List<AdjustmentItem> result = new ArrayList<AdjustmentItem>();
-        try {
-            for (int i = 0; i < array.length(); i++) {
+        try{
+            for(int i=0;i<array.length();i++){
                 JSONObject object = array.getJSONObject(i);
-                result.add(new AdjustmentItem(object.getString("itemId"), object.getString("category"), object.getString("description"), object.getString("unitOfMeasure"), object.getInt("quantityWareHouse"), object.getDouble("price")));
+                result.add(new AdjustmentItem(object.getString("itemId"),object.getString("category"),object.getString("description"),object.getString("unitOfMeasure"),object.getInt("quantityWareHouse"),object.getDouble("price")));
             }
-        } catch (Exception e) {
-            Log.e("error", "Json get item error");
+        }catch (Exception e){
+            Log.e("error","Json get item error");
         }
         return result;
     }
 
-    public AdjustmentItem adjustmentGetInfo(String itemId) {
-        String url = String.format("http://192.168.1.75/webapi/adjustment/item/%s", itemId);
+    public AdjustmentItem adjustmentGetInfo(String itemId){
+        String url = String.format("http://%s/team7ad/adjustment/item/%s", host, itemId);
         JSONObject object = JSONParser.getJSONFromUrl(url);
         AdjustmentItem result;
         try {
-            result = new AdjustmentItem(object.getString("itemId"), object.getString("category"), object.getString("description"), object.getString("unitOfMeasure"), object.getInt("quantityWareHouse"), object.getDouble("price"));
-        } catch (Exception e) {
-            result = new AdjustmentItem(null, null, null, null, 0, 0);
-            Log.e("error", "Json get info error");
+            result = new AdjustmentItem(object.getString("itemId"),object.getString("category"),object.getString("description"),object.getString("unitOfMeasure"),object.getInt("quantityWareHouse"),object.getDouble("price"));
+        }catch (Exception e){
+            result = new AdjustmentItem(null,null,null,null,0,0);
+            Log.e("error","Json get info error");
         }
         return result;
+    }
+
+    public String adjustmentGetEmail(double amount){
+        String url = String.format("http://%s/team7ad/adjustment/email/%f",host,amount);
+        return JSONParser.getStream(url);
     }
 
     public String adjustmentSet(List<AdjustmentInfo> adjustment){
@@ -408,13 +609,14 @@ try {
                 JSONObject object = new JSONObject();
                 object.put("itemId",info.itemId);
                 object.put("quantity",info.quantity);
+                object.put("remark", info.remark);
                 array.put(object);
             }
         }catch(Exception e){
             Log.e("error","Json save error");
         }
 
-        String result = JSONParser.postStream(String.format("%s/webapi/adjustment/save",host), true, array.toString());
+        String result = JSONParser.postStream(String.format("http://%s/team7ad/adjustment/save", host), true, array.toString());
         return result;
     }
 
