@@ -28,6 +28,11 @@ public class ApproveRejectPO extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_approve_reject_po);
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle("Purchase Orders");
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
         // Get the list of Pending POs
 
         new AsyncTask<Void, Void, List<PendingPO>>() {

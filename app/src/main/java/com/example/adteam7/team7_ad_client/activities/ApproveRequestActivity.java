@@ -5,22 +5,20 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.util.TypedValue;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.TableLayout;
-import android.widget.TableRow;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.adteam7.team7_ad_client.R;
+import com.example.adteam7.team7_ad_client.adapters.RequestDetailAdaptor;
 import com.example.adteam7.team7_ad_client.data.RequestTransactionDetailApiModel;
 import com.example.adteam7.team7_ad_client.data.SessionManager;
 import com.example.adteam7.team7_ad_client.data.StationeryRequestApiModel;
 import com.example.adteam7.team7_ad_client.network.APIDataAgent;
 import com.example.adteam7.team7_ad_client.network.APIDataAgentImpl;
+import com.example.adteam7.team7_ad_client.network.SendMailTask;
 
 import java.util.List;
 
@@ -33,7 +31,7 @@ public class ApproveRequestActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_approve_request);
-
+        /* get requestid*/
         Intent i = getIntent();
         String rid = i.getStringExtra("rid");
         Log.e("Rid", rid);
@@ -66,8 +64,7 @@ public class ApproveRequestActivity extends AppCompatActivity {
         List<RequestTransactionDetailApiModel> transactionDetails = request.getRequestTransactionDetailApiModels();
 
         // ConstraintLayout approveReqView = findViewById(R.id.approveRequest_layout);
-        LinearLayout approveReqView = findViewById(R.id.items);
-
+        /* LinearLayout approveReqView = findViewById(R.id.items);*/
 
         double sum = 0;
         for (int i = 0; i < transactionDetails.size(); i++) {
@@ -76,79 +73,10 @@ public class ApproveRequestActivity extends AppCompatActivity {
             String s = Double.toString(unitPrice);
             Log.e("i", s);
             sum = sum + quantity * unitPrice;
-            String m = Double.toString(sum);
-            Log.e("sum", m);
-            //make a table layout
-            View newitem = new TableLayout(getApplicationContext());
-            newitem.setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
-            /*((TableLayout) newitem).setColumnStretchable(0, true);
-            ((TableLayout) newitem).setColumnStretchable(1, true);*/
-
-            //Set the Table Row
-            View tr1 = new TableRow(getApplicationContext());
-            tr1.setLayoutParams(new TableLayout.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
-
-            View tr2 = new TableRow(getApplicationContext());
-            tr2.setLayoutParams(new TableLayout.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
-
-            View tr3 = new TableRow(getApplicationContext());
-            tr3.setLayoutParams(new TableLayout.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
-            //Set the 2 TextViews each row
-            View tv11 = new TextView(getApplicationContext());
-            tv11.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
-            ((TextView) tv11).setGravity(Gravity.LEFT);
-            ((TextView) tv11).setText("Item ID:");//set the gravity of this TextView to left
-
-            View tv12 = new TextView(getApplicationContext());
-            tv12.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
-            ((TextView) tv12).setGravity(Gravity.LEFT);
-            ((TextView) tv12).setText(transactionDetails.get(i).getItemId());
-
-            View tv21 = new TextView(getApplicationContext());
-            tv21.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
-            ((TextView) tv21).setGravity(Gravity.LEFT);
-            ((TextView) tv21).setText("Quantity :");
-
-            View tv22 = new TextView(getApplicationContext());
-            tv22.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
-            ((TextView) tv22).setGravity(Gravity.LEFT);
-            ((TextView) tv22).setText(transactionDetails.get(i).getQuantity());
-
-            View tv31 = new TextView(getApplicationContext());
-            tv31.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
-            ((TextView) tv31).setGravity(Gravity.LEFT);
-            ((TextView) tv31).setText("Unit Price :");
-
-            View tv32 = new TextView(getApplicationContext());
-            tv32.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
-            ((TextView) tv32).setGravity(Gravity.LEFT);
-            ((TextView) tv32).setText("$" + transactionDetails.get(i).getUnitPrice());
-            Log.e("ready to add", "add");
-
-            //Add the Textview to table row
-            ((TableRow) tr1).addView(tv11);
-            ((TableRow) tr1).addView(tv12);
-            Log.e("add to row", "new text");
-            ((TableRow) tr2).addView(tv21);
-            ((TableRow) tr2).addView(tv22);
-
-            ((TableRow) tr3).addView(tv31);
-            ((TableRow) tr3).addView(tv32);
-            //Add the TableRow to the Table Layout
-
-            ((TableLayout) newitem).addView(tr1);
-            ((TableLayout) newitem).addView(tr2);
-            ((TableLayout) newitem).addView(tr3);
-            Log.e("add to table", "new text");
-            //Add the TableLayout to the LinearLayout
-            approveReqView.addView(newitem);
-            Log.e("add to layout", "new text");
         }
         String total = new Double(sum).toString();
-        TextView tx_total = new TextView(getApplicationContext());
-        ((TextView) tx_total).setText("Total :$" + total);
-        tx_total.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 19);
-        approveReqView.addView(tx_total);
+        TextView reqtotal = findViewById(R.id.text5);
+        reqtotal.setText(total);
         if (!"Pending Approval".equals(request.getStatus().trim())) {
             String x = Boolean.toString("Pending Approval".equals(request.getStatus().trim()));
             Log.e("equal", x);
@@ -167,6 +95,9 @@ public class ApproveRequestActivity extends AppCompatActivity {
             exactReq.setApprovedBy(name);
             String result = agent.ApproveStationeryRequest(exactReq);
             Log.e("result", result);
+            String title = "Request Approved!";
+            String body = "Your request was approved!";
+            new SendMailTask(ApproveRequestActivity.this).execute("team7logicdb@gmail.com", title, body);
             return result;
         }
 
@@ -186,6 +117,9 @@ public class ApproveRequestActivity extends AppCompatActivity {
             StationeryRequestApiModel exactReq = agent.GetStationeryRequest(params[0]);
             exactReq.setApprovedBy(name);
             String result = agent.RejectStationeryRequest(exactReq);
+            String title = "Request Rejected!";
+            String body = "Your request was rejected!";
+            new SendMailTask(ApproveRequestActivity.this).execute("team7logicdb@gmail.com", title, body);
             return result;
         }
 
@@ -206,6 +140,11 @@ public class ApproveRequestActivity extends AppCompatActivity {
 
             @Override
             protected void onPostExecute(StationeryRequestApiModel req) {
+                List<RequestTransactionDetailApiModel> result = req.getRequestTransactionDetailApiModels();
+                RequestDetailAdaptor adapter = new RequestDetailAdaptor(getApplicationContext(), result);
+                Log.i("already", "view");
+                ListView list = (ListView) findViewById(R.id.req_item_listview);
+                list.setAdapter(adapter);
                 Log.e("PostExecute", "no wrong till here");
                 show(req);
             }

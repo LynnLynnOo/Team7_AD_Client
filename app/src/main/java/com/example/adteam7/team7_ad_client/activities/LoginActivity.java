@@ -1,10 +1,10 @@
 package com.example.adteam7.team7_ad_client.activities;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -38,9 +38,20 @@ APIDataAgent agent=new APIDataAgentImpl();
 //      email.setText("Google is your friend.");
 
         login.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 new AsyncTask<Void, Void, String>() {
+                    ProgressDialog pdLoading = new ProgressDialog(LoginActivity.this);
+
+                    @Override
+                    protected void onPreExecute() {
+                        super.onPreExecute();
+                        pdLoading.setMessage("\tLoading...");
+                        pdLoading.show();
+
+                    }
+
                     @Override
                     protected String doInBackground(Void... params) {
                         mail = email.getText().toString().trim();
@@ -54,6 +65,7 @@ APIDataAgent agent=new APIDataAgentImpl();
                     protected void onPostExecute(String result) {
                         //show(emp);
                         if (result != "fail") {
+                            pdLoading.dismiss();
                             String c= JSONParser.access_token;
                             session.createLoginSession(mail, pw, result,c);
 

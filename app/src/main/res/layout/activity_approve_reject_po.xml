@@ -8,9 +8,9 @@
     android:background="@drawable/background">
 
     <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/appCompatImageView"
         android:layout_width="match_parent"
         android:layout_height="243dp"
-        android:layout_marginTop="0dp"
         android:scaleType="centerCrop"
         android:src="@drawable/heading"
         app:layout_constraintEnd_toEndOf="parent"
@@ -26,20 +26,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
+
     <TextView
         android:id="@+id/tV_head_PO"
-        android:layout_width="match_parent"
+        android:layout_width="376dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
         android:layout_weight="1"
         android:text="Purchase Orders"
         android:textColor="@color/headingText"
         android:textSize="45sp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="71dp"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"/>
+        app:layout_constraintEnd_toEndOf="@+id/appCompatImageView"
+        app:layout_constraintStart_toStartOf="@+id/appCompatImageView"
+        app:layout_constraintTop_toTopOf="parent" />
     <View
         android:layout_marginTop="80dp"
         android:layout_marginBottom="65dp"

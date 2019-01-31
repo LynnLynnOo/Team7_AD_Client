@@ -1,7 +1,6 @@
 package com.example.adteam7.team7_ad_client.network;
 
 import android.util.Log;
-import android.widget.Toast;
 
 import com.example.adteam7.team7_ad_client.R;
 import com.example.adteam7.team7_ad_client.data.AckDeliveryDetails;
@@ -15,6 +14,7 @@ import com.example.adteam7.team7_ad_client.data.Employee;
 import com.example.adteam7.team7_ad_client.data.ManageDepRep;
 import com.example.adteam7.team7_ad_client.data.PendingPO;
 import com.example.adteam7.team7_ad_client.data.PendingPODetails;
+import com.example.adteam7.team7_ad_client.data.ReturnItem;
 import com.example.adteam7.team7_ad_client.data.SessionManager;
 import com.example.adteam7.team7_ad_client.data.SetRetrievalApiModel;
 import com.example.adteam7.team7_ad_client.data.StationeryRequestApiModel;
@@ -23,14 +23,12 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Locale;
 
 import static android.content.ContentValues.TAG;
 
@@ -40,7 +38,7 @@ import static android.content.ContentValues.TAG;
 public class APIDataAgentImpl implements APIDataAgent {
 
   // static String host = "localhost";
-   static String host = "172.17.150.148";
+  static String host = "192.168.1.166";
    // http://localhost/Team7API/Token
     static String baseURL;
     static String imageURL;
@@ -66,14 +64,18 @@ public class APIDataAgentImpl implements APIDataAgent {
             String credential = String.format("username=%s&password=%s&grant_type=password", id, pw);
             String result = JSONParser.postStream(tokenURL, false, credential);
             JSONObject res = new JSONObject(result);
-            String userId="";
+            String userId = "";
             if (res.has("access_token")) {
                 JSONParser.access_token = res.getString("access_token");
 
-                userId= res.getString("userName");
+                userId = res.getString("userName");
                 Log.e(TAG, "login: " + res.getString("access_token"));
-                SessionManager sessionManager=SessionManager.getInstance();
-                sessionManager.setUserRole(res.getString("roleName"));
+                SessionManager sessionManager = SessionManager.getInstance();
+                if (res.has("roleName1")) {
+                    sessionManager.setUserRole(res.getString("roleName0"), res.getString("roleName1"));
+                } else {
+                    sessionManager.setUserRole(res.getString("roleName0"), "");
+                }
             }
             return userId;
         } catch (Exception e) {
@@ -83,9 +85,7 @@ public class APIDataAgentImpl implements APIDataAgent {
         }
     }
 
-
-
-    @Override
+      @Override
     public ManageDepRep delegateDepHeadGet() {
         try {
             String id = session.getUserid();
@@ -227,7 +227,7 @@ public class APIDataAgentImpl implements APIDataAgent {
 
             String result = JSONParser.postStream(url, true, json);
 
-            Log.e(TAG, "ackDisbursement: from API "+result );
+            Log.e(TAG, "ackDisbursement: from API " + result);
             return result;
 
         } catch (Exception e) {
@@ -235,6 +235,14 @@ public class APIDataAgentImpl implements APIDataAgent {
         }
 
 
+        return null;
+    }
+
+    @Override
+    public String returnSingleItem(ReturnItem item) {
+
+
+       // api/returntowarehouse/return
         return null;
     }
 
@@ -281,7 +289,7 @@ public class APIDataAgentImpl implements APIDataAgent {
 
             Log.i("PostResult", result);
             if (result != null && result != "")
-                status = "Successfully saved.";
+                status = result;
 
         } catch (Exception e) {
             Log.e("JsonPost", e.toString());
@@ -306,7 +314,7 @@ public class APIDataAgentImpl implements APIDataAgent {
     public List<StationeryRequestApiModel> ReadStationeryRequest() {
         String id = session.getUserid();
         List<StationeryRequestApiModel> list = new ArrayList<StationeryRequestApiModel>();
-        String url = String.format("%s/%s/%s/%s", baseURL, "stationeryrequest", "getall", id);
+        String url = String.format("%s%s/%s/%s", baseURL, "stationeryrequest", "getall", id);
         JSONArray a = JSONParser.getJSONArrayFromUrl(url);
         try {
             for (int i = 0; i < a.length(); i++) {
@@ -461,10 +469,10 @@ public class APIDataAgentImpl implements APIDataAgent {
         }
 
         if (btn == R.id.poButtonApprove)
-            JSONParser.postStream(baseURL + "/pendingpo/approve",true, jpo.toString());
+            JSONParser.postStream(baseURL + "/pendingpo/approve", true, jpo.toString());
 
         else if (btn == R.id.poButtonReject)
-            JSONParser.postStream(baseURL + "/pendingpo/reject", true,jpo.toString());
+            JSONParser.postStream(baseURL + "/pendingpo/reject", true, jpo.toString());
     }
 
     @Override
@@ -515,7 +523,6 @@ public class APIDataAgentImpl implements APIDataAgent {
     @Override
     public void ConfirmDO(List<AckDeliveryDetails> ackDOList) {
 
-
         JSONArray jpoArr = new JSONArray();
         try {
 
@@ -530,13 +537,13 @@ public class APIDataAgentImpl implements APIDataAgent {
                 jpo.put("AcceptedBy", ackDO.get("AcceptedBy"));
                 jpo.put("PONo", ackDO.get("PONo"));
                 jpoArr.put(jpo);
-                Log.d("Json",jpoArr.toString());
+                Log.d("Json", jpoArr.toString());
             }
 
         } catch (Exception e) {
             Log.e("AckDeliveryDetails", "Error");
         }
-        JSONParser.postStream(baseURL + "ackdelivery/addmm",true, jpoArr.toString());
+        JSONParser.postStream(baseURL + "ackdelivery/addmm", true, jpoArr.toString());
     }
 
     //endregion
@@ -544,7 +551,7 @@ public class APIDataAgentImpl implements APIDataAgent {
 
     //region Cheng Zongpei
     public List<String> adjustmentGetCategories(){
-        String url = String.format("http://%s/team7ad/adjustment/categories",host);
+        String url = String.format("http://%s/team7ad/adjustment/categories", host);
         JSONArray array = JSONParser.getJSONArrayFromUrl(url);
         List<String> result = new ArrayList<String>();
         try{
@@ -559,7 +566,7 @@ public class APIDataAgentImpl implements APIDataAgent {
     }
 
     public List<AdjustmentItem> adjustmentGetItem(String category){
-        String url =String.format("http://%s/team7ad/adjustment/items/%s",host,category);
+        String url = String.format("http://%s/team7ad/adjustment/items/%s", host, category);
         JSONArray array = JSONParser.getJSONArrayFromUrl(url);
         List<AdjustmentItem> result = new ArrayList<AdjustmentItem>();
         try{
@@ -574,7 +581,7 @@ public class APIDataAgentImpl implements APIDataAgent {
     }
 
     public AdjustmentItem adjustmentGetInfo(String itemId){
-        String url = String.format("http://%s/team7ad/adjustment/item/%s",host,itemId);
+        String url = String.format("http://%s/team7ad/adjustment/item/%s", host, itemId);
         JSONObject object = JSONParser.getJSONFromUrl(url);
         AdjustmentItem result;
         try {
@@ -586,6 +593,11 @@ public class APIDataAgentImpl implements APIDataAgent {
         return result;
     }
 
+    public String adjustmentGetEmail(double amount){
+        String url = String.format("http://%s/team7ad/adjustment/email/%f",host,amount);
+        return JSONParser.getStream(url);
+    }
+
     public String adjustmentSet(List<AdjustmentInfo> adjustment){
 
         JSONArray array = new JSONArray();
@@ -594,13 +606,14 @@ public class APIDataAgentImpl implements APIDataAgent {
                 JSONObject object = new JSONObject();
                 object.put("itemId",info.itemId);
                 object.put("quantity",info.quantity);
+                object.put("remark", info.remark);
                 array.put(object);
             }
         }catch(Exception e){
             Log.e("error","Json save error");
         }
 
-        String result = JSONParser.postStream(String.format("http://%s/team7ad/adjustment/save",host), true, array.toString());
+        String result = JSONParser.postStream(String.format("http://%s/team7ad/adjustment/save", host), true, array.toString());
         return result;
     }
 

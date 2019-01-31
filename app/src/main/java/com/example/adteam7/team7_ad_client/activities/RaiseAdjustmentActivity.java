@@ -10,13 +10,17 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.adteam7.team7_ad_client.R;
 import com.example.adteam7.team7_ad_client.adapters.AdjustmentListAdapter;
 import com.example.adteam7.team7_ad_client.data.AdjustmentInfo;
 import com.example.adteam7.team7_ad_client.data.AdjustmentItem;
+import com.example.adteam7.team7_ad_client.data.SessionManager;
 import com.example.adteam7.team7_ad_client.network.APIDataAgent;
 import com.example.adteam7.team7_ad_client.network.APIDataAgentImpl;
+import com.example.adteam7.team7_ad_client.network.SendMailTask;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +35,10 @@ public class RaiseAdjustmentActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_raise_adjustment);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle("Raise Adjustment");
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
         Button add = findViewById(R.id.AddButton);
         add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,7 +55,16 @@ public class RaiseAdjustmentActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 keepAdjustment();
-                new AsyncSetAdjustment().execute();
+                if (!adjustment.isEmpty() && !((EditText) findViewById(R.id.remark)).getText().toString().equals("")) {
+                    new AsyncSetAdjustment().execute();
+                    Log.d("adjustmnet", "database affected");
+                    AdjustmentListAdapter.list = new ArrayList<>();
+                    sendEmail();
+                } else if (adjustment.isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "You need at least one item for adjustment", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "You need to fill in the remark", Toast.LENGTH_LONG).show();
+                }
            }
         });
         String[] ids = new String[adjustment.size()];
@@ -84,15 +101,23 @@ public class RaiseAdjustmentActivity extends AppCompatActivity {
         adjustment = newAdjustment;
     }
 
+    @Override
+    public void finish() {
+        keepAdjustment();
+        super.finish();
+    }
+
     public class AsyncSetAdjustment extends AsyncTask<Void, Void, String> {
         @Override
         protected String doInBackground(Void... voids) {
+            for (AdjustmentInfo info : adjustment) {
+                info.remark = ((EditText) findViewById(R.id.remark)).getText().toString();
+            }
             return ((APIDataAgentImpl) api).adjustmentSet(adjustment);
         }
 
         @Override
         protected void onPostExecute(String s) {
-            finish();
         }
     }
 
@@ -119,6 +144,32 @@ public class RaiseAdjustmentActivity extends AppCompatActivity {
             RecyclerView list = findViewById(R.id.AdjustmentList);
             list.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
             list.setAdapter(adapter);
+        }
+    }
+
+    public void sendEmail(){
+        double amount = 0;
+        for(AdjustmentItem item: AdjustmentListAdapter.list){
+            amount+=(item.price*item.quantity);
+        }
+        Log.d("amount", String.format("%d", (int) amount));
+        new AsyncGetEmail().execute(new Integer[]{(int) amount});
+    }
+
+    public class AsyncGetEmail extends AsyncTask<Integer, Void, String> {
+        @Override
+        protected String doInBackground(Integer... integers) {
+            return ((APIDataAgentImpl) api).adjustmentGetEmail(integers[0]);
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            String emailAddress = s;
+            SessionManager session = SessionManager.getInstance();
+            Log.d("email", s);
+            String subject = "New Adjustment Raised";
+            String content ="Kindly remind: \n You got a new adjustment raised.\n Raised by " + session.getUsername() + ".";
+            new SendMailTask(RaiseAdjustmentActivity.this).execute(new String[]{"1015440098@qq.com", subject, content});
         }
     }
 }

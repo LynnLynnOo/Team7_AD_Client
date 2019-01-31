@@ -25,7 +25,7 @@ public class ViewRequestActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_request);
-
+        Log.e("vv", "view request");
         new AsyncCallerGet().execute();
     }
 
@@ -34,12 +34,14 @@ public class ViewRequestActivity extends AppCompatActivity {
     private class AsyncCallerGet extends AsyncTask<Void, Void, List<StationeryRequestApiModel>> {
             @Override
             protected List<StationeryRequestApiModel> doInBackground(Void... params) {
+                Log.i("already", "view");
                 return agent.ReadStationeryRequest();
             }
 
             @Override
             protected void onPostExecute(List<StationeryRequestApiModel> result) {
                 RequestAdaptor adapter = new RequestAdaptor(getApplicationContext(), result);
+                Log.i("already", "view");
                 ListView list = (ListView) findViewById(R.id.RequestlistView);
                 list.setAdapter(adapter);
                 list.setOnItemClickListener(new AdapterView.OnItemClickListener() {

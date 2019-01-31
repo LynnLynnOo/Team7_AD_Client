@@ -166,10 +166,10 @@
         android:layout_height="90dp"
         android:layout_marginTop="35dp"
         android:layout_marginRight="35dp"
-        android:drawableTop="@drawable/accept"
-        android:textColor="@color/headingText"
-        android:text="Accept"
         android:background="@drawable/roundbtn"
+        android:drawableTop="@drawable/accept"
+        android:text="Accept"
+        android:textColor="@color/headingText"
         app:layout_constraintRight_toRightOf="@id/layoutpanel"
         app:layout_constraintTop_toBottomOf="@+id/layoutpanel" />
 

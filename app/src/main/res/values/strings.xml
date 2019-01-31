@@ -30,6 +30,7 @@
     <string name="requestby">Request By :</string>
     <string name="status">Status :</string>
     <string name="requestdate">Request Date :</string>
+    <string name="requesttotal">Total :</string>
     <string name="acknowledge">Acknowledge</string>
     <string name="voiddisb">Void</string>
     <string name="cancel">Cancel</string>

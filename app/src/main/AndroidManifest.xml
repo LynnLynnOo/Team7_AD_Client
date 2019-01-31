@@ -26,11 +26,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.AcknowledgeDelivery"></activity>
-        <activity android:name=".activities.AcknowledgeDeliveryDetails" />
+        <activity android:name=".activities.ReturnItemListActivity"></activity>
+        <activity android:name=".activities.AcknowledgeDelivery" />
+        <activity
+            android:name=".activities.AcknowledgeDeliveryDetails"
+            android:parentActivityName=".activities.AcknowledgeDelivery" />
         <activity android:name=".activities.AdjustmentDetailActivity" />
-        <activity android:name=".activities.ApproveRejectPO" />
-        <activity android:name=".activities.ApproveRejectPODetails" />
+        <activity
+            android:name=".activities.ApproveRejectPO"
+            android:parentActivityName=".activities.MainDisbursementListActivity" />
+        <activity
+            android:name=".activities.ApproveRejectPODetails"
+            android:parentActivityName=".activities.ApproveRejectPO" />
         <activity android:name=".activities.ApproveRequestActivity" />
         <activity android:name=".activities.DelegateDepHeadActivity" />
         <activity
@@ -56,9 +63,11 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activities.ManageDepRepActivity" />
         <activity android:name=".activities.RaiseAdjustmentActivity" />
-        <activity android:name=".activities.RetrievalListActivity" />
+        <activity android:name=".activities.RetrievalListActivity"
+            android:parentActivityName=".activities.MainDisbursementListActivity"/>
         <activity android:name=".activities.SplashActivity" />
         <activity android:name=".activities.ViewRequestActivity" />
+        <activity android:name=".activities.ReturntoWarehouseActivity" />
     </application>
 
 </manifest>

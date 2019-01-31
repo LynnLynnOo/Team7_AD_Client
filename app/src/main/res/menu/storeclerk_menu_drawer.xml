@@ -22,9 +22,9 @@
         android:icon="@drawable/ic_menu_manage"
         android:title="Disbursement List" />
     <item
-        android:id="@+id/nav_approveRejectPO"
+        android:id="@+id/nav_ackdelivery"
         android:icon="@drawable/ic_menu_manage"
-        android:title="Purchase Order" />
+        android:title="Acknowledge Delivery" />
     <item
         android:id="@+id/nav_raiseAdjustment"
         android:icon="@drawable/ic_menu_manage"
