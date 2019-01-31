@@ -32,6 +32,7 @@ public class DisbursementDetailActivity extends AppCompatActivity  {
     Button voiddisb,ackwge;
     String disbno, disbotp, depname;
     List<DisbursementSationeryItem> itemlist;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +56,6 @@ public class DisbursementDetailActivity extends AppCompatActivity  {
                 getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             }
         }
-
 
 
         voiddisb.setOnClickListener(new View.OnClickListener() {

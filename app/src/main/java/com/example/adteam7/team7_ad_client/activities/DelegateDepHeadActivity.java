@@ -158,7 +158,7 @@ public class DelegateDepHeadActivity extends AppCompatActivity {
         protected void onPostExecute(DelegateDepHeadApiModel depHeadApiModel) {
             super.onPostExecute(depHeadApiModel);
             final Button revoke = findViewById(R.id.revoke);
-            if (depHeadApiModel.getDelegatedDepartmentHeadName()==null) {
+            if (depHeadApiModel.getDelegatedDepartmentHeadName() == null) {
                 //this method will be running on UI thread
                 revoke.setVisibility(View.INVISIBLE);
                 final Spinner employeeListddl = findViewById(R.id.employeeList);
@@ -170,14 +170,14 @@ public class DelegateDepHeadActivity extends AppCompatActivity {
                 myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 employeeListddl.setAdapter(myAdapter);
 
-            }else{
+            } else {
                 //hide all controls except depheadname labal and revoke button
                 final TextView depHeadNamelbl = findViewById(R.id.depHeadName);
                 depHeadNamelbl.setText(depHeadApiModel.getDelegatedDepartmentHeadName());
                 final Button submit = findViewById(R.id.submit);
                 final Button cancel = findViewById(R.id.cancel);
                 final TextView textView4 = findViewById(R.id.textView4);
-                final TextView textView5=findViewById(R.id.textView5);
+                final TextView textView5 = findViewById(R.id.textView5);
                 final Spinner employeeList = findViewById(R.id.employeeList);
                 final EditText startDate = findViewById(R.id.startDate);
                 final EditText endDate = findViewById(R.id.endDate);

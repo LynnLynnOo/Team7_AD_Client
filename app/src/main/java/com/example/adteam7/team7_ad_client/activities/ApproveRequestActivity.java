@@ -18,6 +18,7 @@ import com.example.adteam7.team7_ad_client.data.SessionManager;
 import com.example.adteam7.team7_ad_client.data.StationeryRequestApiModel;
 import com.example.adteam7.team7_ad_client.network.APIDataAgent;
 import com.example.adteam7.team7_ad_client.network.APIDataAgentImpl;
+import com.example.adteam7.team7_ad_client.network.SendMailTask;
 
 import java.util.List;
 
@@ -76,14 +77,14 @@ public class ApproveRequestActivity extends AppCompatActivity {
         String total = new Double(sum).toString();
         TextView reqtotal = findViewById(R.id.text5);
         reqtotal.setText(total);
-     /*   if (!"Pending Approval".equals(request.getStatus().trim())) {
+        if (!"Pending Approval".equals(request.getStatus().trim())) {
             String x = Boolean.toString("Pending Approval".equals(request.getStatus().trim()));
             Log.e("equal", x);
             View app = findViewById(R.id.reqButtonApprove);
             app.setVisibility(View.GONE);
             View rej = findViewById(R.id.reqButtonReject);
             rej.setVisibility(View.GONE);
-        }*/
+        }
     }
 
     private class AsyncCallerApprove extends AsyncTask<String, Void, String> {
@@ -96,9 +97,9 @@ public class ApproveRequestActivity extends AppCompatActivity {
             exactReq.setUserid(userid);
             String result = agent.ApproveStationeryRequest(exactReq);
             Log.e("result", result);
-         /*   String title = "Request Approved!";
+            String title = "Request Approved!";
             String body = "Your request was approved!";
-            new SendMailTask(ApproveRequestActivity.this).execute("team7logicdb@gmail.com", title, body);*/
+            new SendMailTask(ApproveRequestActivity.this).execute("team7logicdb@gmail.com", title, body);
             return result;
         }
 
@@ -120,9 +121,9 @@ public class ApproveRequestActivity extends AppCompatActivity {
             String userid = session.getUserid();
             exactReq.setUserid(userid);
             String result = agent.RejectStationeryRequest(exactReq);
-           /* String title = "Request Rejected!";
-            String body = "Your request was rejected!";*/
-            /* new SendMailTask(ApproveRequestActivity.this).execute("team7logicdb@gmail.com", title, body);*/
+            String title = "Request Rejected!";
+            String body = "Your request was rejected!";
+            new SendMailTask(ApproveRequestActivity.this).execute("team7logicdb@gmail.com", title, body);
             return result;
         }
 

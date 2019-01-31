@@ -7,7 +7,6 @@ import com.example.adteam7.team7_ad_client.data.DisbursementSationeryItem;
 import com.example.adteam7.team7_ad_client.data.ManageDepRep;
 import com.example.adteam7.team7_ad_client.data.PendingPO;
 import com.example.adteam7.team7_ad_client.data.PendingPODetails;
-import com.example.adteam7.team7_ad_client.data.ReturnItem;
 import com.example.adteam7.team7_ad_client.data.ReturnItemPostBack;
 import com.example.adteam7.team7_ad_client.data.StationeryRequestApiModel;
 import com.example.adteam7.team7_ad_client.data.StationeryRetrievalApiModel;
@@ -29,14 +28,18 @@ public interface APIDataAgent {
     String voidDisbursement(String list);
 
     String ackDisbursement(List<DisbursementSationeryItem> items);
+
     String returnSingleItem(ReturnItemPostBack item);
+
     String returnAllItem(List<ReturnItemPostBack> item);
 
     //region Author Teh Li Heng
     String delegateActingDepHeadSet(DelegateDepHeadApiModel del);
     DelegateDepHeadApiModel delegateActingDepHeadGet();
+
     String delegateActingDepHeadRevoke();
     ArrayList<StationeryRetrievalApiModel> RetrievalListGet();
+
     String RetrievalListSet(List<StationeryRetrievalApiModel> models);
     //endregion
 
