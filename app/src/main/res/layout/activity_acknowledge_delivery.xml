@@ -1,19 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".activities.ApproveRejectPO">
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".activities.ApproveRejectPO"
+android:background="@drawable/background">
 
-    <ListView
-        android:id="@+id/ackpolist"
-        android:layout_width="match_parent"
-        android:layout_height="748dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+<android.support.constraint.Guideline
+    android:id="@+id/guide75"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_percent="0.95" />
+
+<android.support.constraint.Guideline
+    android:id="@+id/guide25"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_percent="0.33"/>
+
+<android.support.v7.widget.AppCompatImageView
+    android:id="@+id/appCompatImageView"
+    android:layout_width="match_parent"
+    android:layout_height="243dp"
+    android:scaleType="centerCrop"
+    android:src="@drawable/heading"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+<android.support.v7.widget.AppCompatImageView
+    android:layout_width="match_parent"
+    android:layout_height="243dp"
+    android:layout_marginBottom="0dp"
+    android:scaleType="centerCrop"
+    android:src="@drawable/footer"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintBottom_toBottomOf="parent" />
+
+
+<!--<TextView
+    android:id="@+id/tV_head_PO"
+    android:layout_width="376dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
+    android:layout_marginEnd="8dp"
+    android:layout_weight="1"
+    android:text="Purchase Orders"
+    android:textColor="@color/headingText"
+    android:textSize="45sp"
+    app:layout_constraintEnd_toEndOf="@+id/appCompatImageView"
+    app:layout_constraintStart_toStartOf="@+id/appCompatImageView"
+    app:layout_constraintTop_toTopOf="parent" />-->
+<View
+    android:id="@+id/layoutpanel"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_marginTop="20dp"
+    android:background="@drawable/panelbg"
+    app:layout_constraintBottom_toBottomOf="@id/guide75"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.0"
+    tools:layout_editor_absoluteX="0dp" />
+
+    <!--<TextView-->
+        <!--android:id="@+id/empty"-->
+        <!--android:layout_width="278dp"-->
+        <!--android:layout_height="92dp"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:gravity="center"-->
+        <!--android:textColor="#050404"-->
+        <!--android:textSize="30dp"-->
+        <!--android:text="No Pending Requests!"-->
+        <!--android:textAppearance="@drawable/ic_menu_send"-->
+        <!--app:layout_constraintBottom_toBottomOf="@+id/ackpolist"-->
+        <!--app:layout_constraintEnd_toEndOf="@+id/ackpolist"-->
+        <!--app:layout_constraintStart_toStartOf="@+id/ackpolist"-->
+        <!--app:layout_constraintTop_toTopOf="@+id/ackpolist" />-->
+
+<ListView
+    android:id="@+id/ackpolist"
+    android:layout_width="match_parent"
+    android:layout_height="618dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    app:layout_constraintBottom_toBottomOf="@id/layoutpanel"
+    app:layout_constraintEnd_toEndOf="@id/layoutpanel"
+    app:layout_constraintStart_toStartOf="@id/layoutpanel"
+    app:layout_constraintTop_toTopOf="@id/layoutpanel" />
 </android.support.constraint.ConstraintLayout>

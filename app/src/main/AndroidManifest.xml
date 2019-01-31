@@ -27,7 +27,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activities.ReturnItemListActivity"></activity>
-        <activity android:name=".activities.AcknowledgeDelivery" />
+        <activity
+            android:name=".activities.AcknowledgeDelivery"
+            android:parentActivityName=".activities.MainDisbursementListActivity"/>
         <activity
             android:name=".activities.AcknowledgeDeliveryDetails"
             android:parentActivityName=".activities.AcknowledgeDelivery" />
