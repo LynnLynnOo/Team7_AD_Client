@@ -86,8 +86,6 @@ public class APIDataAgentImpl implements APIDataAgent {
         }
     }
 
-
-
     @Override
     public ManageDepRep delegateDepHeadGet() {
         try {
@@ -248,7 +246,6 @@ public class APIDataAgentImpl implements APIDataAgent {
        // api/returntowarehouse/return
         return null;
     }
-
     //endregion
 
 
