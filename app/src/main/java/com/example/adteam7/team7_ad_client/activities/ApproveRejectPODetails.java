@@ -23,7 +23,6 @@ import com.example.adteam7.team7_ad_client.network.APIDataAgent;
 import com.example.adteam7.team7_ad_client.network.APIDataAgentImpl;
 
 import java.text.ParseException;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 
@@ -75,7 +74,7 @@ public class ApproveRejectPODetails extends AppCompatActivity {
                     DateFormat formatter = new SimpleDateFormat("yyyy-MM-DD");
                     Date actualdate = null;
                     try {
-                        actualdate = (Date)formatter.parse(poDate);
+                        actualdate = (Date) formatter.parse(poDate);
                     } catch (ParseException e) {
                         e.printStackTrace();
                     }

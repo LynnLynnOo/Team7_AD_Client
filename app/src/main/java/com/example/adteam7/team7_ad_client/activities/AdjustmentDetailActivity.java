@@ -34,7 +34,7 @@ public class AdjustmentDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adjustment_detail);
-        if(getSupportActionBar()!=null){
+        if (getSupportActionBar() != null) {
             getSupportActionBar().setTitle("Adjustment Detail");
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
@@ -53,7 +53,7 @@ public class AdjustmentDetailActivity extends AppCompatActivity {
                     Log.d("finish", "!!!!!!!!!!!!!!!!");
                     finish();
                 } else {
-                    Toast.makeText(getApplicationContext(),"You need to choose the quantity",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "You need to choose the quantity", Toast.LENGTH_LONG).show();
                 }
             }
         });

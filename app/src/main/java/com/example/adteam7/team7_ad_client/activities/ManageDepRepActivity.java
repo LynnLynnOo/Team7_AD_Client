@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -16,8 +17,11 @@ import android.widget.Toast;
 import com.example.adteam7.team7_ad_client.R;
 import com.example.adteam7.team7_ad_client.data.Employee;
 import com.example.adteam7.team7_ad_client.data.ManageDepRep;
+import com.example.adteam7.team7_ad_client.data.SessionManager;
+import com.example.adteam7.team7_ad_client.data.StationeryRequestApiModel;
 import com.example.adteam7.team7_ad_client.network.APIDataAgent;
 import com.example.adteam7.team7_ad_client.network.APIDataAgentImpl;
+import com.example.adteam7.team7_ad_client.network.SendMailTask;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +38,7 @@ public class ManageDepRepActivity extends AppCompatActivity {
     final ManageDepRep dep = new ManageDepRep();
 
     APIDataAgent agent = new APIDataAgentImpl();
-
+SessionManager sessionManager=SessionManager.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,7 +90,6 @@ public class ManageDepRepActivity extends AppCompatActivity {
 
 
                if (dep.getEmployees() != null) {
-                    Toast.makeText(ManageDepRepActivity.this, "Assigned " + spinEmp.getSelectedItem() + " as Department Representative", Toast.LENGTH_SHORT).show();
                     String repid = checkSelectedEmp();
                     rep.setText(spinEmp.getSelectedItem().toString());
                     dep.setDepartmentRepName(spinEmp.getSelectedItem().toString());
@@ -100,7 +103,15 @@ public class ManageDepRepActivity extends AppCompatActivity {
 
                         @Override
                         protected void onPostExecute(String aVoid) {
-                            super.onPostExecute(aVoid);
+                            if(aVoid.equals("1\n")){
+                                String subject = "Deligation of authority";
+                                String content ="Kindly remind: \n You have been assigned as an department representative.\n Assigned by " + sessionManager.getUsername() + ".";
+                                new SendMailTask(ManageDepRepActivity.this).execute(new String[]{"kaythiswetun@u.nus.edu",subject,content});
+
+                                Toast.makeText(ManageDepRepActivity.this, "Assigned " + spinEmp.getSelectedItem() + " as Department Representative", Toast.LENGTH_SHORT).show();
+                                finish();
+                            }
+
                         }
                     }.execute();
 
@@ -112,7 +123,6 @@ public class ManageDepRepActivity extends AppCompatActivity {
         });
 
     }
-
 
     @Override
     public void onBackPressed() {
@@ -128,9 +138,7 @@ public class ManageDepRepActivity extends AppCompatActivity {
                 newRepId = e.getEmpid();
                 return newRepId;
             }
-
         }
-
         return newRepId;
     }
 }

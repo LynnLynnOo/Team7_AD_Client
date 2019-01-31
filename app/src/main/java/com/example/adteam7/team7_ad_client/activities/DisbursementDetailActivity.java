@@ -21,6 +21,9 @@ import com.example.adteam7.team7_ad_client.network.APIDataAgentImpl;
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ * Created by Kay Thi Swe Tun
+ **/
 public class DisbursementDetailActivity extends AppCompatActivity  {
 
     RecyclerView itemsrv;

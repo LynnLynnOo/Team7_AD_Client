@@ -17,6 +17,8 @@ import java.util.List;
 
 public class ReturntoWarehouseAdapter extends ArrayAdapter<ReturntoWarehouseApi> {
 
+    // Region Author:Lynn Lynn Oo
+
         int resource;
         private List<ReturntoWarehouseApi> items;
 
@@ -36,15 +38,15 @@ public class ReturntoWarehouseAdapter extends ArrayAdapter<ReturntoWarehouseApi>
 
             if (returntoware != null) {
                 TextView e = (TextView) v.findViewById(R.id.textView1);
-                e.setText("Request ID :" + returntoware.getRequestId());
+                e.setText("Request ID - " + returntoware.getRequestId());
                 e.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
-                e = (TextView) v.findViewById(R.id.textView2);
-                e.setText("Department Name:" + returntoware.getDepartment());
+                e = (TextView) v.findViewById(R.id.textView3);
+                e.setText(returntoware.getDepartmentName());
                 e.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
-
             }
             return v;
         }
+        //endregion
     }
 
 

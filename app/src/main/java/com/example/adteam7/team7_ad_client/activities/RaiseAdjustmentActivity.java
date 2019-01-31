@@ -3,7 +3,6 @@ package com.example.adteam7.team7_ad_client.activities;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.se.omapi.Session;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,17 +13,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.adteam7.team7_ad_client.data.SessionManager;
 import com.example.adteam7.team7_ad_client.R;
 import com.example.adteam7.team7_ad_client.adapters.AdjustmentListAdapter;
 import com.example.adteam7.team7_ad_client.data.AdjustmentInfo;
 import com.example.adteam7.team7_ad_client.data.AdjustmentItem;
-
+import com.example.adteam7.team7_ad_client.data.SessionManager;
 import com.example.adteam7.team7_ad_client.network.APIDataAgent;
 import com.example.adteam7.team7_ad_client.network.APIDataAgentImpl;
 import com.example.adteam7.team7_ad_client.network.SendMailTask;
 
-import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,7 +35,7 @@ public class RaiseAdjustmentActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_raise_adjustment);
-        if(getSupportActionBar()!=null){
+        if (getSupportActionBar() != null) {
             getSupportActionBar().setTitle("Raise Adjustment");
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
@@ -60,15 +57,13 @@ public class RaiseAdjustmentActivity extends AppCompatActivity {
                 keepAdjustment();
                 if (!adjustment.isEmpty() && !((EditText) findViewById(R.id.remark)).getText().toString().equals("")) {
                     new AsyncSetAdjustment().execute();
-                    Log.d("adjustmnet","database affected");
+                    Log.d("adjustmnet", "database affected");
                     AdjustmentListAdapter.list = new ArrayList<>();
                     sendEmail();
-                }
-                else if(adjustment.isEmpty()){
-                    Toast.makeText(getApplicationContext(),"You need at least one item for adjustment",Toast.LENGTH_LONG).show();
-                }
-                else{
-                    Toast.makeText(getApplicationContext(),"You need to fill in the remark",Toast.LENGTH_LONG).show();
+                } else if (adjustment.isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "You need at least one item for adjustment", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "You need to fill in the remark", Toast.LENGTH_LONG).show();
                 }
            }
         });
@@ -157,11 +152,11 @@ public class RaiseAdjustmentActivity extends AppCompatActivity {
         for(AdjustmentItem item: AdjustmentListAdapter.list){
             amount+=(item.price*item.quantity);
         }
-        Log.d("amount",String.format("%d",(int)amount));
-        new AsyncGetEmail().execute(new Integer[]{(int)amount});
+        Log.d("amount", String.format("%d", (int) amount));
+        new AsyncGetEmail().execute(new Integer[]{(int) amount});
     }
 
-    public class AsyncGetEmail extends AsyncTask<Integer,Void,String>{
+    public class AsyncGetEmail extends AsyncTask<Integer, Void, String> {
         @Override
         protected String doInBackground(Integer... integers) {
             return ((APIDataAgentImpl) api).adjustmentGetEmail(integers[0]);
@@ -171,10 +166,10 @@ public class RaiseAdjustmentActivity extends AppCompatActivity {
         protected void onPostExecute(String s) {
             String emailAddress = s;
             SessionManager session = SessionManager.getInstance();
-            Log.d("email",s);
+            Log.d("email", s);
             String subject = "New Adjustment Raised";
             String content ="Kindly remind: \n You got a new adjustment raised.\n Raised by " + session.getUsername() + ".";
-            new SendMailTask(RaiseAdjustmentActivity.this).execute(new String[]{"1015440098@qq.com",subject,content});
+            new SendMailTask(RaiseAdjustmentActivity.this).execute(new String[]{"1015440098@qq.com", subject, content});
         }
     }
 }

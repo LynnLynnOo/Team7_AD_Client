@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".activities.ApproveRejectPODetails">
 
     <android.support.v7.widget.AppCompatImageView
@@ -32,25 +33,27 @@
     <View
         android:id="@+id/layoutpanel"
         android:layout_width="match_parent"
-        android:layout_height="359dp"
+        android:layout_height="match_parent"
         android:layout_marginTop="8dp"
+        android:layout_marginBottom="300dp"
         android:background="@drawable/panelbg"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ackDeliTextViewPono"
         tools:layout_editor_absoluteX="0dp" />
 
     <!--<Button-->
-        <!--android:id="@+id/ackDeliButtonConfirm"-->
-        <!--android:layout_width="389dp"-->
-        <!--android:layout_height="66dp"-->
-        <!--android:layout_marginTop="8dp"-->
-        <!--android:onClick="ConfirmDelivery"-->
-        <!--android:text="Confirm"-->
-        <!--app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--app:layout_constraintEnd_toEndOf="parent"-->
-        <!--app:layout_constraintHorizontal_bias="0.727"-->
-        <!--app:layout_constraintStart_toStartOf="parent"-->
-        <!--app:layout_constraintTop_toBottomOf="@+id/layoutpanel"-->
-        <!--app:layout_constraintVertical_bias="0.237" />-->
+    <!--android:id="@+id/ackDeliButtonConfirm"-->
+    <!--android:layout_width="389dp"-->
+    <!--android:layout_height="66dp"-->
+    <!--android:layout_marginTop="8dp"-->
+    <!--android:onClick="ConfirmDelivery"-->
+    <!--android:text="Confirm"-->
+    <!--app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--app:layout_constraintEnd_toEndOf="parent"-->
+    <!--app:layout_constraintHorizontal_bias="0.727"-->
+    <!--app:layout_constraintStart_toStartOf="parent"-->
+    <!--app:layout_constraintTop_toBottomOf="@+id/layoutpanel"-->
+    <!--app:layout_constraintVertical_bias="0.237" />-->
 
     <Button
         android:id="@+id/ackDeliButtonConfirm"
