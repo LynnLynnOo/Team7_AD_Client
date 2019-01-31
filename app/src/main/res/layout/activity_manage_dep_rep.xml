@@ -7,6 +7,19 @@
     android:padding="10dp"
     android:background="@drawable/background"
     tools:context=".activities.ManageDepRepActivity">
+    <android.support.constraint.Guideline
+        android:id="@+id/guide75"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.75"/>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guide25"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.33"/>
     <android.support.v7.widget.AppCompatImageView
         android:layout_width="match_parent"
         android:layout_height="243dp"
@@ -42,12 +55,11 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:background="@drawable/panelbg"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="480dp"
+        app:layout_constraintBottom_toBottomOf="@id/guide75"
         android:id="@+id/layoutpanel"
         />
 
