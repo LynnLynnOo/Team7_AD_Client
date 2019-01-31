@@ -21,7 +21,7 @@ import java.util.List;
 
 public class ReturntoWarehouseActivity extends AppCompatActivity {
 
-
+/*for list*/
     ListView lw;
     ReturntoWarehouseAdapter lwAdapter;
     List<ReturntoWarehouseApi> items = new ArrayList<>();
@@ -30,6 +30,10 @@ public class ReturntoWarehouseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_returnto_warehouse);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle("Return to Warehouse");
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
         lw = findViewById(R.id.ReturntoWarehouseView);
 
