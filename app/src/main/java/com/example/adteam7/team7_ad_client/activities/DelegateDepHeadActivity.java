@@ -53,6 +53,16 @@ public class DelegateDepHeadActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 new AsyncCallerSet().execute();
+                finish();
+            }
+        });
+
+        Button revoke = this.findViewById(R.id.revoke);
+        revoke.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AsyncCallerRevokeDep().execute();
+                finish();
             }
         });
     }
@@ -147,18 +157,44 @@ public class DelegateDepHeadActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(DelegateDepHeadApiModel depHeadApiModel) {
             super.onPostExecute(depHeadApiModel);
+            final Button revoke = findViewById(R.id.revoke);
+            if (depHeadApiModel.getDelegatedDepartmentHeadName()==null) {
+                //this method will be running on UI thread
+                revoke.setVisibility(View.INVISIBLE);
+                final Spinner employeeListddl = findViewById(R.id.employeeList);
+                List<String> selection = new ArrayList<>();
+                for (EmployeeDto current : depHeadApiModel.getEmployees()) {
+                    selection.add(current.getName());
+                }
+                ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(DelegateDepHeadActivity.this, android.R.layout.simple_list_item_1, selection);
+                myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                employeeListddl.setAdapter(myAdapter);
 
-            //this method will be running on UI thread
-            final TextView depHeadNamelbl = findViewById(R.id.depHeadName);
-            final Spinner employeeListddl = findViewById(R.id.employeeList);
-            List<String> selection = new ArrayList<>();
-            for (EmployeeDto current : depHeadApiModel.getEmployees()) {
-                selection.add(current.getName());
+            }else{
+                //hide all controls except depheadname labal and revoke button
+                final TextView depHeadNamelbl = findViewById(R.id.depHeadName);
+                depHeadNamelbl.setText(depHeadApiModel.getDelegatedDepartmentHeadName());
+                final Button submit = findViewById(R.id.submit);
+                final Button cancel = findViewById(R.id.cancel);
+                final TextView textView4 = findViewById(R.id.textView4);
+                final TextView textView5=findViewById(R.id.textView5);
+                final Spinner employeeList = findViewById(R.id.employeeList);
+                final EditText startDate = findViewById(R.id.startDate);
+                final EditText endDate = findViewById(R.id.endDate);
+                final TextView textView6 = findViewById(R.id.textView6);
+                employeeList.setVisibility(View.INVISIBLE);
+                startDate.setVisibility(View.INVISIBLE);
+                endDate.setVisibility(View.INVISIBLE);
+                textView4.setVisibility(View.INVISIBLE);
+                textView5.setVisibility(View.INVISIBLE);
+                textView6.setVisibility(View.INVISIBLE);
+                cancel.setVisibility(View.INVISIBLE);
+                submit.setVisibility(View.INVISIBLE);
+                revoke.setVisibility(View.VISIBLE);
+
             }
-            ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(DelegateDepHeadActivity.this, android.R.layout.simple_list_item_1, selection);
-            myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            employeeListddl.setAdapter(myAdapter);
-            depHeadNamelbl.setText(depHeadApiModel.getDelegatedDepartmentHeadName());
+
+
         }
     }
 
@@ -205,6 +241,38 @@ public class DelegateDepHeadActivity extends AppCompatActivity {
             finish();
             pdLoading.dismiss();
         }
+    }
 
+    //For posting details to server
+    //For displaying items when entered
+    private class AsyncCallerRevokeDep extends AsyncTask<Void, Void, Void> {
+        ProgressDialog pdLoading = new ProgressDialog(DelegateDepHeadActivity.this);
+        String status = "";
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+            //this method will be running on UI thread
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+
+            //this method will be running on background thread so don't update UI frome here
+            //do your long running http tasks here,you dont want to pass argument and u can access the parent class' variable url over here
+            status = agent.delegateActingDepHeadRevoke();
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            super.onPostExecute(result);
+
+            //this method will be running on UI thread
+            Toast.makeText(DelegateDepHeadActivity.this, status, Toast.LENGTH_SHORT).show();
+            finish();
+            pdLoading.dismiss();
+        }
     }
 }

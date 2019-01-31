@@ -162,14 +162,14 @@
     <EditText
         android:id="@+id/endDate"
         android:layout_width="284dp"
-        android:layout_height="wrap_content"
-        android:textColor="@color/txtColor"
+        android:layout_height="47dp"
         android:layout_marginTop="8dp"
         android:clickable="true"
         android:ems="10"
         android:focusable="false"
         android:hint="Choose End Date"
         android:inputType="none"
+        android:textColor="@color/txtColor"
         app:layout_constraintStart_toStartOf="@+id/textView6"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
@@ -182,6 +182,19 @@
         android:background="@drawable/roundbtn"
         android:drawableTop="@drawable/accept"
         android:text="Accept"
+        android:textColor="@color/headingText"
+        app:layout_constraintRight_toRightOf="@id/layoutpanel"
+        app:layout_constraintTop_toBottomOf="@+id/layoutpanel" />
+
+    <Button
+        android:id="@+id/revoke"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:layout_marginRight="35dp"
+        android:background="@drawable/roundbtn"
+        android:drawableTop="@drawable/accept"
+        android:text="Revoke"
         android:textColor="@color/headingText"
         app:layout_constraintRight_toRightOf="@id/layoutpanel"
         app:layout_constraintTop_toBottomOf="@+id/layoutpanel" />

@@ -331,6 +331,25 @@ try{
         }
         return status;
     }
+
+    @Override
+    public String delegateActingDepHeadRevoke() {
+        String status = "Error at saving.";
+        try {
+            //http://192.168.1.100/team7ad/api/
+            String url = String.format("%sdepartmenthead/revoke/", baseURL);
+            Log.i("Url", url);
+            String result = JSONParser.postStream(url, true, "dummy");
+
+            Log.i("PostResult", result);
+            if (result != null && result != "")
+                status = result;
+
+        } catch (Exception e) {
+            Log.e("JsonPost", e.toString());
+        }
+        return status;
+    }
     //endregion
 
 
