@@ -35,10 +35,9 @@ public class DelegateDepHeadActivity extends AppCompatActivity {
         setContentView(R.layout.activity_delegate_dep_head);
 
         if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle("Manage Department Head");
+            getSupportActionBar().setTitle("Delegate Department Head");
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
-
         new AsyncCallerGet().execute();
 
         Button cancel = this.findViewById(R.id.cancel);
