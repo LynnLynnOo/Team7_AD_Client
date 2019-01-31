@@ -1,5 +1,6 @@
 package com.example.adteam7.team7_ad_client.activities;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.adteam7.team7_ad_client.R;
 import com.example.adteam7.team7_ad_client.adapters.ItemListAdapter;
@@ -36,8 +38,10 @@ public class ReturnItemListActivity extends AppCompatActivity {
         cancel=findViewById(R.id.cancel);
         returnall=findViewById(R.id.returnall);
 
+        Intent i = getIntent();
+        itemlist = (List<ReturnItem>) i.getSerializableExtra("LIST");
 
-
+        Toast.makeText(this, "list size "+itemlist.size(), Toast.LENGTH_SHORT).show();
         adapter=new ReturnItemAdapter(ReturnItemListActivity.this,itemlist,true);
 
         itemsrv.setAdapter(adapter);

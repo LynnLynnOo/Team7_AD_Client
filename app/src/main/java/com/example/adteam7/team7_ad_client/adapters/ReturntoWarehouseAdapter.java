@@ -39,9 +39,8 @@ public class ReturntoWarehouseAdapter extends ArrayAdapter<ReturntoWarehouseApi>
                 e.setText("Request ID   " + returntoware.getRequestId());
                 e.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
                 e = (TextView) v.findViewById(R.id.textView3);
-                e.setText(returntoware.getDepartment());
+                e.setText(returntoware.getDepartmentName());
                 e.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
-
             }
             return v;
         }

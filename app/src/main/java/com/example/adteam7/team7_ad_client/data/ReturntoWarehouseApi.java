@@ -6,35 +6,58 @@ import com.example.adteam7.team7_ad_client.network.JSONParser;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.io.Serializable;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReturntoWarehouseApi {
+public class ReturntoWarehouseApi implements Serializable {
 
 
         //Region: Lynn Lynn Oo
 
-        static String host = "172.17.81.182";
+        static String host = "192.168.1.166";
         static String baseURL;
 
         static {
             baseURL = String.format("http://%s/team7ad/api", host);
         }
 
-    String RequestId, ItemId, Description;
-    int Quantity;
-    String Department, Location;
+    private String RequestId;
+    private String DepartmentName;
+    private List<ReturnItem> itemViewModels;
 
-
-    public ReturntoWarehouseApi(String requestId, String itemId, String description, int quantity, String department, String location) {
+    public ReturntoWarehouseApi(String requestId, String departmentName, List<ReturnItem> detaillist) {
         RequestId = requestId;
-        ItemId = itemId;
-        Description = description;
-        Quantity = quantity;
-        Department = department;
-        Location = location;
+        DepartmentName = departmentName;
+        this.itemViewModels = detaillist;
     }
+
+    public String getRequestId() {
+        return RequestId;
+    }
+
+    public void setRequestId(String requestId) {
+        RequestId = requestId;
+    }
+
+    public String getDepartmentName() {
+        return DepartmentName;
+    }
+
+    public void setDepartmentName(String departmentName) {
+        DepartmentName = departmentName;
+    }
+
+    public List<ReturnItem> getItemViewModels() {
+        return itemViewModels;
+    }
+
+    public void setDetaillist(List<ReturnItem> detaillist) {
+        this.itemViewModels = detaillist;
+    }
+
+
 
     public static String getHost() {
         return host;
@@ -72,54 +95,6 @@ public class ReturntoWarehouseApi {
             Log.e("ReturntoWarehouse", "JSONArray error");
         }
         return (listreturn);
-    }
-
-    public String getRequestId() {
-        return RequestId;
-    }
-
-    public void setRequestId(String requestId) {
-        RequestId = requestId;
-    }
-
-    public String getItemId() {
-        return ItemId;
-    }
-
-    public void setItemId(String itemId) {
-        ItemId = itemId;
-    }
-
-    public String getDescription() {
-        return Description;
-    }
-
-    public void setDescription(String description) {
-        Description = description;
-    }
-
-    public int getQuantity() {
-        return Quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        Quantity = quantity;
-    }
-
-    public String getDepartment() {
-        return Department;
-    }
-
-    public void setDepartment(String department) {
-        Department = department;
-    }
-
-    public String getLocation() {
-        return Location;
-    }
-
-    public void setLocation(String location) {
-        Location = location;
     }
 
 
