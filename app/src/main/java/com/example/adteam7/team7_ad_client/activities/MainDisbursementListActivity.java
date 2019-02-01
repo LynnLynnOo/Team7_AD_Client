@@ -40,12 +40,16 @@ public class MainDisbursementListActivity extends AppCompatActivity  {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-        ///get data from api
-        new AsyncGetDisbursement().execute();
-
 
     }
 
+    @Override
+    protected void onResume() {
+        ///get data from api
+        new AsyncGetDisbursement().execute();
+
+        super.onResume();
+    }
 
     private class AsyncGetDisbursement extends AsyncTask<Void, Void, List<Disbursement>> {
 
