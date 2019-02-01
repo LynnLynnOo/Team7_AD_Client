@@ -1,12 +1,8 @@
 package com.example.adteam7.team7_ad_client.activities;
 
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -18,7 +14,6 @@ import com.example.adteam7.team7_ad_client.R;
 import com.example.adteam7.team7_ad_client.data.Employee;
 import com.example.adteam7.team7_ad_client.data.ManageDepRep;
 import com.example.adteam7.team7_ad_client.data.SessionManager;
-import com.example.adteam7.team7_ad_client.data.StationeryRequestApiModel;
 import com.example.adteam7.team7_ad_client.network.APIDataAgent;
 import com.example.adteam7.team7_ad_client.network.APIDataAgentImpl;
 import com.example.adteam7.team7_ad_client.network.SendMailTask;
@@ -38,7 +33,7 @@ public class ManageDepRepActivity extends AppCompatActivity {
     final ManageDepRep dep = new ManageDepRep();
 
     APIDataAgent agent = new APIDataAgentImpl();
-SessionManager sessionManager=SessionManager.getInstance();
+    SessionManager sessionManager = SessionManager.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -103,10 +98,10 @@ SessionManager sessionManager=SessionManager.getInstance();
 
                         @Override
                         protected void onPostExecute(String aVoid) {
-                            if(aVoid.equals("1\n")){
+                            if (aVoid.equals("1\n")) {
                                 String subject = "Deligation of authority";
-                                String content ="Kindly remind: \n You have been assigned as an department representative.\n Assigned by " + sessionManager.getUsername() + ".";
-                                new SendMailTask(ManageDepRepActivity.this).execute(new String[]{"kaythiswetun@u.nus.edu",subject,content});
+                                String content = "Kindly remind: \n You have been assigned as an department representative.\n Assigned by " + sessionManager.getUsername() + ".";
+                                new SendMailTask(ManageDepRepActivity.this).execute(new String[]{"kaythiswetun@u.nus.edu", subject, content});
 
                                 Toast.makeText(ManageDepRepActivity.this, "Assigned " + spinEmp.getSelectedItem() + " as Department Representative", Toast.LENGTH_SHORT).show();
                                 finish();

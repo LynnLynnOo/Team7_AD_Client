@@ -10,15 +10,10 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.adteam7.team7_ad_client.R;
-import com.example.adteam7.team7_ad_client.activities.DisbursementDetailActivity;
-import com.example.adteam7.team7_ad_client.data.DisbursementSationeryItem;
 import com.example.adteam7.team7_ad_client.data.ReturnItem;
 import com.example.adteam7.team7_ad_client.data.ReturnItemPostBack;
 import com.example.adteam7.team7_ad_client.network.APIDataAgent;
 import com.example.adteam7.team7_ad_client.network.APIDataAgentImpl;
-import com.travijuu.numberpicker.library.Enums.ActionEnum;
-import com.travijuu.numberpicker.library.Interface.ValueChangedListener;
-import com.travijuu.numberpicker.library.NumberPicker;
 
 import java.util.List;
 
@@ -30,11 +25,11 @@ public class ReturnItemAdapter extends RecyclerView.Adapter<ReturnItemAdapter.Rv
     List<ReturnItem> list;
     Boolean check;
     String reqId;
-    APIDataAgent agent=new APIDataAgentImpl();
+    APIDataAgent agent = new APIDataAgentImpl();
 
     public ReturnItemAdapter(Context c, List<ReturnItem> lv, Boolean check) {
         this.list = lv;
-        this.check=check;
+        this.check = check;
     }
 
     public String getReqId() {
@@ -56,13 +51,13 @@ public class ReturnItemAdapter extends RecyclerView.Adapter<ReturnItemAdapter.Rv
     public void onBindViewHolder(ReturnItemAdapter.RvHolder holder, final int position) {
 
 
-        holder.desc.setText(list.get(position).getDescription()+"");
+        holder.desc.setText(list.get(position).getDescription() + "");
 
-        holder.qty.setText(list.get(position).getQuantity()+"");
+        holder.qty.setText(list.get(position).getQuantity() + "");
 
         holder.cat.setText(list.get(position).getCategory() + "");
 
-        holder.itemid.setText(list.get(position).getItemId()+"");
+        holder.itemid.setText(list.get(position).getItemId() + "");
 
         holder.location.setText(list.get(position).getLocation() + "");
 
@@ -70,14 +65,15 @@ public class ReturnItemAdapter extends RecyclerView.Adapter<ReturnItemAdapter.Rv
             @Override
             public void onClick(View v) {
                 //call single return item
-                ReturnItemPostBack item=new ReturnItemPostBack(getReqId(),list.get(position).getItemId(),list.get(position).getQuantity());
-               new AsyncSetReturnByItem().execute(item);
-               list.remove(position);
+                ReturnItemPostBack item = new ReturnItemPostBack(getReqId(), list.get(position).getItemId(), list.get(position).getQuantity());
+                new AsyncSetReturnByItem().execute(item);
+                list.remove(position);
                 notifyItemRemoved(position);
             }
         });
 
     }
+
     @Override
     public int getItemCount() {
         return list.size();
@@ -85,7 +81,7 @@ public class ReturnItemAdapter extends RecyclerView.Adapter<ReturnItemAdapter.Rv
 
 
     class RvHolder extends RecyclerView.ViewHolder {
-        TextView desc,cat,qty,itemid,location;
+        TextView desc, cat, qty, itemid, location;
         Button returnto;
 
         public RvHolder(View itemView) {
@@ -94,14 +90,15 @@ public class ReturnItemAdapter extends RecyclerView.Adapter<ReturnItemAdapter.Rv
             qty = itemView.findViewById(R.id.qty);
             desc = itemView.findViewById(R.id.desc);
             cat = itemView.findViewById(R.id.category);
-            itemid=itemView.findViewById(R.id.itemid);
-            location=itemView.findViewById(R.id.location);
-            returnto=itemView.findViewById(R.id.returnto);
+            itemid = itemView.findViewById(R.id.itemid);
+            location = itemView.findViewById(R.id.location);
+            returnto = itemView.findViewById(R.id.returnto);
 
         }
 
     }
-    private class AsyncSetReturnByItem extends AsyncTask<ReturnItemPostBack, Void,String> {
+
+    private class AsyncSetReturnByItem extends AsyncTask<ReturnItemPostBack, Void, String> {
         @Override
         protected String doInBackground(ReturnItemPostBack... param) {
             return agent.returnSingleItem(param[0]);
@@ -110,7 +107,7 @@ public class ReturnItemAdapter extends RecyclerView.Adapter<ReturnItemAdapter.Rv
         @Override
         protected void onPostExecute(String result) {
 
-notifyDataSetChanged();
+            notifyDataSetChanged();
 
             //refresh the adapter
 

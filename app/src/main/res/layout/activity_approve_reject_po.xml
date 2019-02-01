@@ -54,21 +54,6 @@
         app:layout_constraintEnd_toEndOf="@+id/appCompatImageView"
         app:layout_constraintStart_toStartOf="@+id/appCompatImageView"
         app:layout_constraintTop_toTopOf="parent" />-->
-
-    <!--<TextView-->
-        <!--android:id="@+id/empty"-->
-        <!--android:layout_width="278dp"-->
-        <!--android:layout_height="92dp"-->
-        <!--android:layout_gravity="center"-->
-        <!--android:gravity="center"-->
-        <!--android:text="No Pending Requests!"-->
-        <!--android:textAppearance="@drawable/ic_menu_send"-->
-        <!--android:textColor="#050404"-->
-        <!--android:textSize="30dp"-->
-        <!--app:layout_constraintBottom_toBottomOf="@+id/polist"-->
-        <!--app:layout_constraintEnd_toEndOf="@+id/polist"-->
-        <!--app:layout_constraintStart_toStartOf="@+id/polist"-->
-        <!--app:layout_constraintTop_toTopOf="@+id/polist" />-->
     <View
         android:id="@+id/layoutpanel"
         android:layout_width="match_parent"

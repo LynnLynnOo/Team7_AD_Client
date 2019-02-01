@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/background1"
     tools:context=".activities.ReturnItemListActivity">
+
     <android.support.v7.widget.AppCompatImageView
         android:layout_width="match_parent"
         android:layout_height="243dp"
@@ -15,37 +16,39 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <android.support.constraint.Guideline
         android:id="@+id/guide75"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.75"/>
+        app:layout_constraintGuide_percent="0.75" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guide25"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.33"/>
+        app:layout_constraintGuide_percent="0.33" />
+
     <android.support.v7.widget.AppCompatImageView
         android:layout_width="match_parent"
         android:layout_height="243dp"
         android:layout_marginBottom="0dp"
         android:scaleType="centerCrop"
         android:src="@drawable/footer"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <View
-        android:layout_marginTop="3dp"
+        android:id="@+id/layoutpanel"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="3dp"
         android:background="@drawable/panelbg"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/guide75"
-        android:id="@+id/layoutpanel"/>
+        app:layout_constraintTop_toTopOf="parent" />
     <!--
         <TextView
             android:id="@+id/depname"
@@ -68,9 +71,8 @@
         android:layout_marginTop="@dimen/s_margin"
         android:layout_marginRight="@dimen/s_margin"
         android:weightSum="3"
-        app:layout_constraintTop_toTopOf="@id/layoutpanel"
-        app:layout_constraintLeft_toLeftOf="@id/layoutpanel">
-
+        app:layout_constraintLeft_toLeftOf="@id/layoutpanel"
+        app:layout_constraintTop_toTopOf="@id/layoutpanel">
 
 
         <LinearLayout
@@ -118,16 +120,15 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/detailrv"
-        android:layout_marginLeft="@dimen/s_margin"
-        android:layout_marginTop="@dimen/s_margin"
-        android:layout_marginRight="@dimen/s_margin"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_below="@+id/title"
-        app:layout_constraintLeft_toLeftOf="@id/layoutpanel"
-        app:layout_constraintTop_toBottomOf="@id/title"
+        android:layout_marginLeft="@dimen/s_margin"
+        android:layout_marginTop="@dimen/s_margin"
+        android:layout_marginRight="@dimen/s_margin"
         app:layout_constraintBottom_toBottomOf="@id/layoutpanel"
-        >
+        app:layout_constraintLeft_toLeftOf="@id/layoutpanel"
+        app:layout_constraintTop_toBottomOf="@id/title">
 
     </android.support.v7.widget.RecyclerView>
 
@@ -135,28 +136,29 @@
         android:id="@+id/cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/roundbtn"
         android:drawableTop="@drawable/reject"
         android:text="Cancel"
         android:textColor="@color/headingText"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="35dp"
 
-        app:layout_constraintTop_toBottomOf="@id/layoutpanel"
-        app:layout_constraintLeft_toLeftOf="@id/layoutpanel"/> />
+        app:layout_constraintLeft_toLeftOf="@id/layoutpanel"
+        app:layout_constraintTop_toBottomOf="@id/layoutpanel" />
+    />
 
     <Button
         android:id="@+id/returnall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="35dp"
         android:background="@drawable/roundbtn"
         android:drawableTop="@drawable/accept"
-        android:layout_marginRight="35dp"
-        android:layout_marginTop="30dp"
         android:text="Returned All"
         android:textColor="@color/headingText"
-        app:layout_constraintTop_toBottomOf="@id/layoutpanel"
-        app:layout_constraintRight_toRightOf="@id/layoutpanel" />
+        app:layout_constraintRight_toRightOf="@id/layoutpanel"
+        app:layout_constraintTop_toBottomOf="@id/layoutpanel" />
 
 
 </android.support.constraint.ConstraintLayout>

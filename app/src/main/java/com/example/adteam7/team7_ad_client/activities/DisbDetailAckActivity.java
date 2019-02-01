@@ -36,6 +36,7 @@ public class DisbDetailAckActivity extends AppCompatActivity {
     String disbOTP;
     List<DisbursementSationeryItem> itemlist;
     PopupWindow popWindow;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,6 +87,7 @@ public class DisbDetailAckActivity extends AppCompatActivity {
         super.onBackPressed();
         finish();
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         this.onBackPressed();
