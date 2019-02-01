@@ -82,6 +82,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="null"
+        android:textSize="15sp"
         android:textStyle="bold"
         android:textColor="@color/txtColor"
         app:layout_constraintStart_toStartOf="@+id/potextViewSerial"
@@ -184,7 +185,7 @@
         android:layout_marginRight="35dp"
         android:background="@drawable/roundbtn"
         android:drawableTop="@drawable/accept"
-        android:text="Accept"
+        android:text="Delegate"
         android:textColor="@color/headingText"
         app:layout_constraintRight_toRightOf="@id/layoutpanel"
         app:layout_constraintTop_toBottomOf="@+id/layoutpanel" />
