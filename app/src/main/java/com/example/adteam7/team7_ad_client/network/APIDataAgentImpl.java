@@ -38,7 +38,7 @@ import static android.content.ContentValues.TAG;
 public class APIDataAgentImpl implements APIDataAgent {
 
   // static String host = "localhost";
-  static String host = "192.168.1.100";
+  static String host = "172.17.81.182";
    // http://localhost/Team7API/Token
     static String baseURL;
     static String imageURL;
@@ -85,7 +85,7 @@ public class APIDataAgentImpl implements APIDataAgent {
         }
     }
 
-    @Override
+      @Override
     public ManageDepRep delegateDepHeadGet() {
         try {
             String id = session.getUserid();
@@ -390,7 +390,6 @@ public class APIDataAgentImpl implements APIDataAgent {
     @Override
     public String ApproveStationeryRequest(StationeryRequestApiModel request) {
         String status = "Error at approve.";
-
         try {
             String url = String.format("%s%s/%s/", baseURL, "stationeryrequest", "approve"); //url to controller
             Gson gson = new Gson();

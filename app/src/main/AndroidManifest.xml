@@ -26,8 +26,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.AcknowledgeDelivery"
-            android:parentActivityName=".activities.MainActivity" />
+        <activity android:name=".activities.ReturnItemListActivity"></activity>
+        <activity
+            android:name=".activities.AcknowledgeDelivery"
+            android:parentActivityName=".activities.MainDisbursementListActivity"/>
         <activity
             android:name=".activities.AcknowledgeDeliveryDetails"
             android:parentActivityName=".activities.AcknowledgeDelivery" />
@@ -65,13 +67,11 @@
             android:name=".activities.MainDisbursementListActivity"
             android:parentActivityName=".activities.MainActivity" />
         <activity android:name=".activities.ManageDepRepActivity"
-            android:parentActivityName=".activities.MainActivity" />/>
+            android:parentActivityName=".activities.MainActivity" />
         <activity android:name=".activities.RaiseAdjustmentActivity"
-            android:parentActivityName=".activities.MainActivity" />/>
+            android:parentActivityName=".activities.MainActivity" />
         <activity android:name=".activities.RetrievalListActivity"
             android:parentActivityName=".activities.MainDisbursementListActivity"/>
-        <activity android:name=".activities.ReturnItemListActivity"
-            android:parentActivityName=".activities.MainActivity" />
         <activity android:name=".activities.ReturntoWarehouseActivity"
         android:parentActivityName=".activities.MainActivity" />
         <activity android:name=".activities.SplashActivity" />
