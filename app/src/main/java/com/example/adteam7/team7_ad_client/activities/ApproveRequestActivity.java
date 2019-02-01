@@ -93,6 +93,8 @@ public class ApproveRequestActivity extends AppCompatActivity {
             String name = session.getUsername();
             StationeryRequestApiModel exactReq = agent.GetStationeryRequest(params[0]);
             exactReq.setApprovedBy(name);
+            String userid = session.getUserid();
+            exactReq.setUserid(userid);
             String result = agent.ApproveStationeryRequest(exactReq);
             Log.e("result", result);
             String title = "Request Approved!";
@@ -116,6 +118,8 @@ public class ApproveRequestActivity extends AppCompatActivity {
             String name = session.getUsername();
             StationeryRequestApiModel exactReq = agent.GetStationeryRequest(params[0]);
             exactReq.setApprovedBy(name);
+            String userid = session.getUserid();
+            exactReq.setUserid(userid);
             String result = agent.RejectStationeryRequest(exactReq);
             String title = "Request Rejected!";
             String body = "Your request was rejected!";

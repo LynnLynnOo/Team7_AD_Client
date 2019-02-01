@@ -11,7 +11,6 @@ import android.widget.Toast;
 
 import com.example.adteam7.team7_ad_client.R;
 import com.example.adteam7.team7_ad_client.adapters.ReturntoWarehouseAdapter;
-import com.example.adteam7.team7_ad_client.data.ReturnItem;
 import com.example.adteam7.team7_ad_client.data.ReturntoWarehouseApi;
 
 import java.io.Serializable;
@@ -21,7 +20,7 @@ import java.util.List;
 
 public class ReturntoWarehouseActivity extends AppCompatActivity {
 
-/*for list*/
+    /*for list*/
     ListView lw;
     ReturntoWarehouseAdapter lwAdapter;
     List<ReturntoWarehouseApi> items = new ArrayList<>();
@@ -75,13 +74,13 @@ public class ReturntoWarehouseActivity extends AppCompatActivity {
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                         ReturntoWarehouseApi detailitemlist;
-                        detailitemlist=(ReturntoWarehouseApi) parent.getAdapter().getItem(position);
+                        detailitemlist = (ReturntoWarehouseApi) parent.getAdapter().getItem(position);
 
                         Intent intent = new Intent(ReturntoWarehouseActivity.this, ReturnItemListActivity.class);
-                        Toast.makeText(ReturntoWarehouseActivity.this, " list "+detailitemlist.getItemViewModels().size(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ReturntoWarehouseActivity.this, " list " + detailitemlist.getItemViewModels().size(), Toast.LENGTH_SHORT).show();
 
                         intent.putExtra("LIST", (Serializable) detailitemlist.getItemViewModels());
-                        intent.putExtra("reqId",detailitemlist.getRequestId());
+                        intent.putExtra("reqId", detailitemlist.getRequestId());
                         //intent.putExtra("id", detailitemlist.);
                         startActivity(intent);
                     }

@@ -14,14 +14,12 @@ import com.example.adteam7.team7_ad_client.data.Employee;
 import com.example.adteam7.team7_ad_client.data.ManageDepRep;
 import com.example.adteam7.team7_ad_client.data.PendingPO;
 import com.example.adteam7.team7_ad_client.data.PendingPODetails;
-import com.example.adteam7.team7_ad_client.data.ReturnItem;
 import com.example.adteam7.team7_ad_client.data.ReturnItemPostBack;
 import com.example.adteam7.team7_ad_client.data.SessionManager;
 import com.example.adteam7.team7_ad_client.data.SetRetrievalApiModel;
 import com.example.adteam7.team7_ad_client.data.StationeryRequestApiModel;
 import com.example.adteam7.team7_ad_client.data.StationeryRetrievalApiModel;
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
@@ -243,7 +241,7 @@ public class APIDataAgentImpl implements APIDataAgent {
     @Override
     public String returnSingleItem(ReturnItemPostBack item) {
         String url = String.format("%sreturntowarehouse/return", baseURL);
-String status="";
+        String status = "";
         Gson gson = new Gson();
         String json = gson.toJson(item);
         Log.i("Json", json);
@@ -252,7 +250,7 @@ String status="";
         Log.i("PostResult", result);
         if (result != null && result != "")
             status = result;
-       // api/returntowarehouse/return
+        // api/returntowarehouse/return
         return status;
     }
 
@@ -260,21 +258,22 @@ String status="";
     public String returnAllItem(List<ReturnItemPostBack> item) {
 
         String url = String.format("%sreturntowarehouse/returnall", baseURL);
-        String status="";
+        String status = "";
 
-try{
-        Gson gson = new Gson();
+        try {
+            Gson gson = new Gson();
 
-       // List<MyModel> myModelList = gson.fromJson(jsonArray.toString(), listType);
-       Type type=new TypeToken<List<ReturnItemPostBack>>(){}.getType();
-       String jsonall=gson.toJson(item,type);
+            // List<MyModel> myModelList = gson.fromJson(jsonArray.toString(), listType);
+            Type type = new TypeToken<List<ReturnItemPostBack>>() {
+            }.getType();
+            String jsonall = gson.toJson(item, type);
 
-    String result = JSONParser.postStream(url, true, jsonall);
+            String result = JSONParser.postStream(url, true, jsonall);
 
 
-} catch (Exception e){
-    e.toString();
-}
+        } catch (Exception e) {
+            e.toString();
+        }
 
 
         return status;
@@ -331,6 +330,25 @@ try{
         }
         return status;
     }
+
+    @Override
+    public String delegateActingDepHeadRevoke() {
+        String status = "Error at saving.";
+        try {
+            //http://192.168.1.100/team7ad/api/
+            String url = String.format("%sdepartmenthead/revoke/", baseURL);
+            Log.i("Url", url);
+            String result = JSONParser.postStream(url, true, "dummy");
+
+            Log.i("PostResult", result);
+            if (result != null && result != "")
+                status = result;
+
+        } catch (Exception e) {
+            Log.e("JsonPost", e.toString());
+        }
+        return status;
+    }
     //endregion
 
 
@@ -351,6 +369,7 @@ try{
         List<StationeryRequestApiModel> list = new ArrayList<StationeryRequestApiModel>();
         String url = String.format("%s%s/%s/%s", baseURL, "stationeryrequest", "getall", id);
         JSONArray a = JSONParser.getJSONArrayFromUrl(url);
+        Log.e("StationeryRequest", "url");
         try {
             for (int i = 0; i < a.length(); i++) {
                 JSONObject b = a.getJSONObject(i);
@@ -358,7 +377,7 @@ try{
                         b.getString("RequestId"),
                         b.getString("RequestedBy"), "", "",
                         b.getString("RequestDate"),
-                        b.getString("Status"), null
+                        b.getString("Status"), b.getString("Userid"), null
                 ));
             }
         } catch (Exception e) {
@@ -372,7 +391,7 @@ try{
     public String ApproveStationeryRequest(StationeryRequestApiModel request) {
         String status = "Error at approve.";
         try {
-            String url = String.format("%s/%s/%s/", baseURL, "stationeryrequest", "approve"); //url to controller
+            String url = String.format("%s%s/%s/", baseURL, "stationeryrequest", "approve"); //url to controller
             Gson gson = new Gson();
             String json = gson.toJson(request);
             Log.i("Json", json);
@@ -395,7 +414,7 @@ try{
     public String RejectStationeryRequest(StationeryRequestApiModel request) {
         String status = "Error at reject.";
         try {
-            String url = String.format("%s/%s/%s/", baseURL, "stationeryrequest", "reject"); //url to controller
+            String url = String.format("%s%s/%s/", baseURL, "stationeryrequest", "reject"); //url to controller
             Gson gson = new Gson();
             String json = gson.toJson(request);
             Log.i("Json", json);
@@ -504,10 +523,10 @@ try{
         }
 
         if (btn == R.id.poButtonApprove)
-            JSONParser.postStream(baseURL + "/pendingpo/approve",true, jpo.toString());
+            JSONParser.postStream(baseURL + "/pendingpo/approve", true, jpo.toString());
 
         else if (btn == R.id.poButtonReject)
-            JSONParser.postStream(baseURL + "/pendingpo/reject", true,jpo.toString());
+            JSONParser.postStream(baseURL + "/pendingpo/reject", true, jpo.toString());
     }
 
     @Override
@@ -572,13 +591,13 @@ try{
                 jpo.put("AcceptedBy", ackDO.get("AcceptedBy"));
                 jpo.put("PONo", ackDO.get("PONo"));
                 jpoArr.put(jpo);
-                Log.d("Json",jpoArr.toString());
+                Log.d("Json", jpoArr.toString());
             }
 
         } catch (Exception e) {
             Log.e("AckDeliveryDetails", "Error");
         }
-        JSONParser.postStream(baseURL + "ackdelivery/addmm",true, jpoArr.toString());
+        JSONParser.postStream(baseURL + "ackdelivery/addmm", true, jpoArr.toString());
     }
 
     //endregion

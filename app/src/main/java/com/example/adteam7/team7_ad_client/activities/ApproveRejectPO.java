@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
 import com.example.adteam7.team7_ad_client.R;
 import com.example.adteam7.team7_ad_client.data.PendingPO;
@@ -47,12 +48,15 @@ public class ApproveRejectPO extends AppCompatActivity {
             @Override
             protected void onPostExecute(List<PendingPO> polist) {
                 ListView list = (ListView) findViewById(R.id.polist);
+
                 SimpleAdapter adapter = new SimpleAdapter(ApproveRejectPO.this, polist,
                         R.layout.porow,
                         new String[]{"PONo", "Date", "OrderedBy"},
                         new int[]{R.id.potextView1, R.id.potextView2, R.id.potextView3});
                 list.setAdapter(adapter);
                 //Log.i("list",polist.get(1).getPONo());
+//                TextView emptyText = (TextView)findViewById(android.R.id.empty);
+//                list.setEmptyView(emptyText);
 
                 list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
