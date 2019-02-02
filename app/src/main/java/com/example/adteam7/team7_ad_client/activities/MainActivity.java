@@ -130,9 +130,9 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_viewRequest) {
             Intent i = new Intent(MainActivity.this, ViewRequestActivity.class);
             startActivity(i);
-        } else if (id == R.id.nav_send) {
-            Intent i=new Intent(MainActivity.this,MainDisbursementListActivity.class);
-            startActivity(i);
+//        } else if (id == R.id.nav_send) {
+//            Intent i=new Intent(MainActivity.this,MainDisbursementListActivity.class);
+//            startActivity(i);
         } else if (id == R.id.nav_approveRejectPO) {
             Intent i = new Intent(MainActivity.this, ApproveRejectPO.class);
             startActivity(i);

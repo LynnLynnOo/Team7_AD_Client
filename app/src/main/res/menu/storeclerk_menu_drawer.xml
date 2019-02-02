@@ -6,28 +6,28 @@
 
     <item
         android:id="@+id/nav_withdrawwarehouse"
-        android:icon="@drawable/ic_menu_manage"
+        android:icon="@drawable/withdraw_warehouse"
         android:title="Withdraw from Warehouse" />
     <item
         android:id="@+id/nav_returnwarehouse"
-        android:icon="@drawable/ic_menu_manage"
+        android:icon="@drawable/return_warehouse"
         android:title="Return to Warehouse" />
 
     <item
         android:id="@+id/nav_generateRetrieval"
-        android:icon="@drawable/ic_menu_manage"
+        android:icon="@drawable/retri_list"
         android:title="Generate Retrieval List" />
     <item
         android:id="@+id/nav_viewdisb"
-        android:icon="@drawable/ic_menu_manage"
+        android:icon="@drawable/disb_list"
         android:title="Disbursement List" />
     <item
         android:id="@+id/nav_ackdelivery"
-        android:icon="@drawable/ic_menu_manage"
+        android:icon="@drawable/ack_deli"
         android:title="Acknowledge Delivery" />
     <item
         android:id="@+id/nav_raiseAdjustment"
-        android:icon="@drawable/ic_menu_manage"
+        android:icon="@drawable/adj_list"
         android:title="Raise Adjustment" />
 
 

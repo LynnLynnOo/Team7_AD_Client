@@ -4,18 +4,18 @@
     tools:showIn="navigation_view">
     <item
         android:id="@+id/nav_delegateHead"
-        android:icon="@drawable/ic_menu_slideshow"
+        android:icon="@drawable/dep_head"
         android:title="Delegate Acting Dep Head" />
 
     <item
         android:id="@+id/nav_viewRequest"
-        android:icon="@drawable/ic_menu_share"
+        android:icon="@drawable/req_list"
         android:title="View Request" />
 
 
     <item
         android:id="@+id/nav_manageDepRep"
-        android:icon="@drawable/ic_menu_share"
+        android:icon="@drawable/ic_deprep"
         android:title="Manage/Assign Department Dep Rep" />
 
 </menu>
