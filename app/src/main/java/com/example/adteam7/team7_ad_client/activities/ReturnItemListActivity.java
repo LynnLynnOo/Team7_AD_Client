@@ -81,6 +81,7 @@ public class ReturnItemListActivity extends AppCompatActivity {
         protected void onPostExecute(String result) {
 
             finish();
+            Toast.makeText(ReturnItemListActivity.this, "Successfully returned all the item to the warehouse.", Toast.LENGTH_SHORT).show();
             //refresh the adapter
 
         }
