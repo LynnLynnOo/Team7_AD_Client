@@ -55,10 +55,7 @@ public class MainActivity extends AppCompatActivity
         String role1 = "";
         if (session.getUserRole1().equals("")) {
 
-
-            if (role0.equals("Store Clerk")) {
-                navigationView.inflateMenu(R.menu.storeclerk_menu_drawer);
-            } else if (role0.equals("Department Head")) {
+            if (role0.equals("Department Head")) {
                 navigationView.inflateMenu(R.menu.dephead_menu_drawer);
             }
 
@@ -66,6 +63,9 @@ public class MainActivity extends AppCompatActivity
             role1 = session.getUserRole1();
             if (role0.equals("Department Head") && role1.equals("Store Manager")) {
                 navigationView.inflateMenu(R.menu.storemanager_menu_drawer);
+            }
+            else if (role0.equals("Employee") && role1.equals("Store Clerk")) {
+                navigationView.inflateMenu(R.menu.storeclerk_menu_drawer);
             }
         }
 
