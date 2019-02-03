@@ -67,6 +67,9 @@ public class MainActivity extends AppCompatActivity
             else if (role0.equals("Employee") && role1.equals("Store Clerk")) {
                 navigationView.inflateMenu(R.menu.storeclerk_menu_drawer);
             }
+            else if (role0.equals("Employee") && role1.equals("Store Supervisor")) {
+                navigationView.inflateMenu(R.menu.storeclerk_menu_drawer);
+            }
         }
 
     }
