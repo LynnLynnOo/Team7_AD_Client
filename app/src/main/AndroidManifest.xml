@@ -27,30 +27,35 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activities.ReturnItemListActivity"></activity>
-        <activity
-            android:name=".activities.AcknowledgeDelivery"
-            android:parentActivityName=".activities.MainDisbursementListActivity" />
+        <activity android:name=".activities.AcknowledgeDelivery"
+            android:parentActivityName=".activities.MainActivity" />
         <activity
             android:name=".activities.AcknowledgeDeliveryDetails"
             android:parentActivityName=".activities.AcknowledgeDelivery" />
+
         <activity android:name=".activities.AdjustmentDetailActivity"
             android:parentActivityName=".activities.MainActivity" />
         <activity
             android:name=".activities.ApproveRejectPO"
-            android:parentActivityName=".activities.MainDisbursementListActivity" />
+            android:parentActivityName=".activities.MainActivity" />
         <activity
             android:name=".activities.ApproveRejectPODetails"
             android:parentActivityName=".activities.ApproveRejectPO" />
+
         <activity android:name=".activities.ApproveRequestActivity"
             android:parentActivityName=".activities.MainActivity" />
+
         <activity android:name=".activities.DelegateDepHeadActivity"
             android:parentActivityName=".activities.MainActivity" />
+
         <activity
             android:name=".activities.DisbDetailAckActivity"
             android:parentActivityName=".activities.DisbursementDetailActivity" />
+
         <activity
             android:name=".activities.DisbursementDetailActivity"
             android:parentActivityName=".activities.MainDisbursementListActivity" />
+
         <activity android:name=".activities.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -58,6 +63,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".activities.MainActivity"
             android:exported="true"
@@ -66,17 +72,26 @@
         <activity
             android:name=".activities.MainDisbursementListActivity"
             android:parentActivityName=".activities.MainActivity" />
-        <!--<activity android:name=".activities.ManageDepRepActivity"
-            android:parentActivityName=".activities.MainActivity" />-->
+
+        <activity android:name=".activities.ManageDepRepActivity"
+            android:parentActivityName=".activities.MainActivity" />
+
         <activity android:name=".activities.RaiseAdjustmentActivity"
             android:parentActivityName=".activities.MainActivity" />
+
         <activity android:name=".activities.RetrievalListActivity"
             android:parentActivityName=".activities.MainDisbursementListActivity"/>
+
         <activity android:name=".activities.ReturntoWarehouseActivity"
         android:parentActivityName=".activities.MainActivity" />
-        <activity android:name=".activities.SplashActivity" />
+
+        <activity android:name=".activities.SplashActivity"
+            android:parentActivityName=".activities.MainActivity" />
+
         <activity android:name=".activities.ViewRequestActivity"
             android:parentActivityName=".activities.MainActivity" />
+
+
     </application>
 
 </manifest>

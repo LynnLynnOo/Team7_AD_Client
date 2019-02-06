@@ -4,6 +4,26 @@
     tools:showIn="navigation_view">
 
     <item
+        android:id="@+id/nav_delegateHead"
+        android:icon="@drawable/dep_head"
+        android:title="Delegate Acting Dep Head" />
+
+
+    <item
+        android:id="@+id/nav_manageDepRep"
+        android:icon="@drawable/ic_deprep"
+        android:title="Manage/Assign Department Dep Rep" />
+
+    <item
+        android:id="@+id/nav_viewRequest"
+        android:icon="@drawable/req_list"
+        android:title="View Request" />
+    <item
+        android:id="@+id/nav_approveRejectPO"
+        android:icon="@drawable/po_list"
+        android:title="Approve/Reject PO" />
+
+    <item
         android:id="@+id/nav_ackdelivery"
         android:icon="@drawable/ack_deli"
         android:title="Acknowledge Delivery" />
@@ -29,10 +49,4 @@
 
 
 
-
-
 </menu>
-
-
-
-

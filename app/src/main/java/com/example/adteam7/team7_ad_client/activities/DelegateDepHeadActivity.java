@@ -87,36 +87,41 @@ public class DelegateDepHeadActivity extends AppCompatActivity {
             final Calendar myCalendar = Calendar.getInstance();
             final Calendar myCalendarEnd = Calendar.getInstance();
             final EditText startDate = findViewById(R.id.startDate);
-            final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
 
-                @Override
-                public void onDateSet(DatePicker view, int year, int monthOfYear,
-                                      int dayOfMonth) {
-                    // TODO Auto-generated method stub
-                    myCalendar.set(Calendar.YEAR, year);
-                    myCalendar.set(Calendar.MONTH, monthOfYear);
-                    myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                    updateLabel();
-                }
+            String myFormat = "dd/MMMM/yyyy"; //In which you need put here
+            SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
-                private void updateLabel() {
-                    String myFormat = "dd/MMMM/yyyy"; //In which you need put here
-                    SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
-
-                    startDate.setText(sdf.format(myCalendar.getTime()));
-                }
-            };
-
-            startDate.setOnClickListener(new View.OnClickListener() {
-
-                @Override
-                public void onClick(View v) {
-                    // TODO Auto-generated method stub
-                    new DatePickerDialog(DelegateDepHeadActivity.this, date, myCalendar
-                            .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                            myCalendar.get(Calendar.DAY_OF_MONTH)).show();
-                }
-            });
+            startDate.setText(sdf.format(myCalendar.getTime()));
+//            final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+//
+//                @Override
+//                public void onDateSet(DatePicker view, int year, int monthOfYear,
+//                                      int dayOfMonth) {
+//                    // TODO Auto-generated method stub
+//                    myCalendar.set(Calendar.YEAR, year);
+//                    myCalendar.set(Calendar.MONTH, monthOfYear);
+//                    myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+//                    updateLabel();
+//                }
+//
+//                private void updateLabel() {
+//                    String myFormat = "dd/MMMM/yyyy"; //In which you need put here
+//                    SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+//
+//                    startDate.setText(sdf.format(myCalendar.getTime()));
+//                }
+//            };
+//
+//            startDate.setOnClickListener(new View.OnClickListener() {
+//
+//                @Override
+//                public void onClick(View v) {
+//                    // TODO Auto-generated method stub
+//                    new DatePickerDialog(DelegateDepHeadActivity.this, date, myCalendar
+//                            .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+//                            myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+//                }
+//            });
 
             //Converting EndDate text view to date spinner
             final EditText endDate = findViewById(R.id.endDate);

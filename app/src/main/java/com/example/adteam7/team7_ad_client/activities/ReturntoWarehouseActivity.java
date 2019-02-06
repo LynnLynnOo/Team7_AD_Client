@@ -38,9 +38,15 @@ public class ReturntoWarehouseActivity extends AppCompatActivity {
 
 
         ///get data from api
+
+
+    }
+
+    @Override
+    protected void onResume() {
         new AsyncGetItemList().execute();
 
-
+        super.onResume();
     }
 
 
