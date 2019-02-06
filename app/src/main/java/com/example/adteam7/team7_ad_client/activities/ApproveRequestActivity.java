@@ -96,9 +96,6 @@ public class ApproveRequestActivity extends AppCompatActivity {
             exactReq.setUserid(userid);
             String result = agent.ApproveStationeryRequest(exactReq);
             Log.e("result", result);
-            String title = "Request Approved!";
-            String body = "Your request was approved!";
-            //new SendMailTask(ApproveRequestActivity.this).execute("team7logicdb@gmail.com", title, body);
             return result;
         }
 
@@ -120,9 +117,6 @@ public class ApproveRequestActivity extends AppCompatActivity {
             String userid = session.getUserid();
             exactReq.setUserid(userid);
             String result = agent.RejectStationeryRequest(exactReq);
-            String title = "Request Rejected!";
-            String body = "Your request was rejected!";
-            //new SendMailTask(ApproveRequestActivity.this).execute("team7logicdb@gmail.com", title, body);
             return result;
         }
 
