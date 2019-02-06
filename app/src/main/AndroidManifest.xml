@@ -29,7 +29,7 @@
         <activity android:name=".activities.ReturnItemListActivity"></activity>
         <activity
             android:name=".activities.AcknowledgeDelivery"
-            android:parentActivityName=".activities.MainDisbursementListActivity"/>
+            android:parentActivityName=".activities.MainDisbursementListActivity" />
         <activity
             android:name=".activities.AcknowledgeDeliveryDetails"
             android:parentActivityName=".activities.AcknowledgeDelivery" />
@@ -66,8 +66,8 @@
         <activity
             android:name=".activities.MainDisbursementListActivity"
             android:parentActivityName=".activities.MainActivity" />
-        <activity android:name=".activities.ManageDepRepActivity"
-            android:parentActivityName=".activities.MainActivity" />
+        <!--<activity android:name=".activities.ManageDepRepActivity"
+            android:parentActivityName=".activities.MainActivity" />-->
         <activity android:name=".activities.RaiseAdjustmentActivity"
             android:parentActivityName=".activities.MainActivity" />
         <activity android:name=".activities.RetrievalListActivity"

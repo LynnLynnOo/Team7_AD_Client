@@ -18,7 +18,6 @@ import com.example.adteam7.team7_ad_client.data.SessionManager;
 import com.example.adteam7.team7_ad_client.data.StationeryRequestApiModel;
 import com.example.adteam7.team7_ad_client.network.APIDataAgent;
 import com.example.adteam7.team7_ad_client.network.APIDataAgentImpl;
-import com.example.adteam7.team7_ad_client.network.SendMailTask;
 
 import java.util.List;
 
@@ -99,7 +98,7 @@ public class ApproveRequestActivity extends AppCompatActivity {
             Log.e("result", result);
             String title = "Request Approved!";
             String body = "Your request was approved!";
-            new SendMailTask(ApproveRequestActivity.this).execute("team7logicdb@gmail.com", title, body);
+            //new SendMailTask(ApproveRequestActivity.this).execute("team7logicdb@gmail.com", title, body);
             return result;
         }
 
@@ -123,7 +122,7 @@ public class ApproveRequestActivity extends AppCompatActivity {
             String result = agent.RejectStationeryRequest(exactReq);
             String title = "Request Rejected!";
             String body = "Your request was rejected!";
-            new SendMailTask(ApproveRequestActivity.this).execute("team7logicdb@gmail.com", title, body);
+            //new SendMailTask(ApproveRequestActivity.this).execute("team7logicdb@gmail.com", title, body);
             return result;
         }
 
