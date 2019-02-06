@@ -28,6 +28,11 @@ public class ApproveRejectPO extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_approve_reject_po);
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle("Purchase Orders");
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
         // Get the list of Pending POs
 
         new AsyncTask<Void, Void, List<PendingPO>>() {
@@ -42,12 +47,15 @@ public class ApproveRejectPO extends AppCompatActivity {
             @Override
             protected void onPostExecute(List<PendingPO> polist) {
                 ListView list = (ListView) findViewById(R.id.polist);
+
                 SimpleAdapter adapter = new SimpleAdapter(ApproveRejectPO.this, polist,
                         R.layout.porow,
                         new String[]{"PONo", "Date", "OrderedBy"},
                         new int[]{R.id.potextView1, R.id.potextView2, R.id.potextView3});
                 list.setAdapter(adapter);
                 //Log.i("list",polist.get(1).getPONo());
+//                TextView emptyText = (TextView)findViewById(android.R.id.empty);
+//                list.setEmptyView(emptyText);
 
                 list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override

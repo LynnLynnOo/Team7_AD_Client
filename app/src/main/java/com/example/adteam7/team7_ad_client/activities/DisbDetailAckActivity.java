@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.PopupWindow;
@@ -22,6 +23,9 @@ import com.example.adteam7.team7_ad_client.network.APIDataAgentImpl;
 
 import java.util.List;
 
+/**
+ * Created by Kay Thi Swe Tun
+ **/
 public class DisbDetailAckActivity extends AppCompatActivity {
 
     private static final int REQUEST_CODE = 12;
@@ -32,6 +36,7 @@ public class DisbDetailAckActivity extends AppCompatActivity {
     String disbOTP;
     List<DisbursementSationeryItem> itemlist;
     PopupWindow popWindow;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,7 +80,18 @@ public class DisbDetailAckActivity extends AppCompatActivity {
             }
         });
 
+    }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        this.onBackPressed();
+        return true;
     }
 
 

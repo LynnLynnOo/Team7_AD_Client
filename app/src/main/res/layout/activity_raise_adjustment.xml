@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     android:background="@drawable/background">
 
+    <android.support.constraint.Guideline
+        android:id="@+id/guide75"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.75" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guide25"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.33" />
     <android.support.v7.widget.AppCompatImageView
         android:layout_width="match_parent"
         android:layout_height="243dp"
@@ -28,8 +41,9 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="380dp"
+        android:layout_height="0dp"
         android:background="@drawable/panelbg"
+        app:layout_constraintBottom_toBottomOf="@id/guide75"
         app:layout_constraintTop_toBottomOf="@+id/remarkLayout"
         android:id="@+id/layoutpanel"
         android:orientation="vertical">
@@ -136,18 +150,18 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <!--<TextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="Total: "-->
-            <!--android:textColor="@color/headingText"-->
-            <!--android:textSize="20sp"/>-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Total: "-->
+        <!--android:textColor="@color/headingText"-->
+        <!--android:textSize="20sp"/>-->
         <!--<TextView-->
-            <!--android:layout_width="140dp"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:textSize="20sp"-->
-            <!--android:textColor="@color/headingText"-->
-            <!--android:text="$0.00"-->
-            <!--android:id="@+id/total"/>-->
+        <!--android:layout_width="140dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:textSize="20sp"-->
+        <!--android:textColor="@color/headingText"-->
+        <!--android:text="$0.00"-->
+        <!--android:id="@+id/total"/>-->
 
         <TextView
             android:layout_width="wrap_content"
@@ -166,8 +180,8 @@
 
     <Button
         android:id="@+id/AddButton"
-        android:layout_width="70dp"
-        android:layout_height="90dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="35dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/roundbtn"
@@ -179,8 +193,8 @@
 
     <Button
         android:id="@+id/confirmButton"
-        android:layout_width="70dp"
-        android:layout_height="90dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginRight="35dp"
         android:background="@drawable/roundbtn"

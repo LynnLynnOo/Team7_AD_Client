@@ -1,5 +1,6 @@
 package com.example.adteam7.team7_ad_client.activities;
 
+import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -39,15 +40,27 @@ public class MainDisbursementListActivity extends AppCompatActivity  {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-        ///get data from api
-        new AsyncGetDisbursement().execute();
-
 
     }
 
+    @Override
+    protected void onResume() {
+        ///get data from api
+        new AsyncGetDisbursement().execute();
+
+        super.onResume();
+    }
 
     private class AsyncGetDisbursement extends AsyncTask<Void, Void, List<Disbursement>> {
 
+        ProgressDialog pdLoading = new ProgressDialog(MainDisbursementListActivity.this);
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            pdLoading.setMessage("\tLoading...");
+            pdLoading.show();
+        }
 
         @Override
         protected List<Disbursement> doInBackground(Void... voids) {
@@ -63,6 +76,7 @@ public class MainDisbursementListActivity extends AppCompatActivity  {
 
                 rv.setAdapter(rvAdapter);
 
+                pdLoading.dismiss();
             }
 
         }

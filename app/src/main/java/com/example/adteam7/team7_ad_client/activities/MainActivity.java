@@ -51,23 +51,27 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void inflateDrawerMenu(NavigationView navigationView) {
-        String role0=session.getUserRole0();
-        String role1="";
-        if(session.getUserRole1().equals("")){
+        String role0 = session.getUserRole0();
+        String role1 = "";
+        if (session.getUserRole1().equals("")) {
 
-
-            if(role0.equals("Store Clerk")){
-                navigationView.inflateMenu(R.menu.storeclerk_menu_drawer);
-            }
-
-            else if(role0.equals("Department Head")){
+            if (role0.equals("Department Head")) {
                 navigationView.inflateMenu(R.menu.dephead_menu_drawer);
             }
-
-        }else{
-            role1=session.getUserRole1();
-            if(role0.equals("Department Head" ) && role1.equals("Store Manager") ){
+        } else {
+            role1 = session.getUserRole1();
+            if (role0.equals("Department Head") && role1.equals("Store Manager")) {
                 navigationView.inflateMenu(R.menu.storemanager_menu_drawer);
+            } else if (role0.equals("Employee") && role1.equals("Store Clerk")) {
+                navigationView.inflateMenu(R.menu.storeclerk_menu_drawer);
+            } else if (role0.equals("Employee") && role1.equals("Store Supervisor")) {
+                navigationView.inflateMenu(R.menu.storesupervisor_menu_drawer);
+            } else if (role0.equals("Acting Department Head") && role1.equals("Store Supervisor")) {
+                navigationView.inflateMenu(R.menu.storemanager_menu_drawer);
+            } else if (role0.equals("Acting Department Head") && role1.equals("Store Clerk")) {
+                navigationView.inflateMenu(R.menu.storemanager_menu_drawer);
+            } else {
+                navigationView.inflateMenu(R.menu.general_fallback_menu);
             }
         }
 
@@ -132,30 +136,26 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_viewRequest) {
             Intent i = new Intent(MainActivity.this, ViewRequestActivity.class);
             startActivity(i);
-        } else if (id == R.id.nav_send) {
-            Intent i=new Intent(MainActivity.this,MainDisbursementListActivity.class);
-            startActivity(i);
+//        } else if (id == R.id.nav_send) {
+//            Intent i=new Intent(MainActivity.this,MainDisbursementListActivity.class);
+//            startActivity(i);
         } else if (id == R.id.nav_approveRejectPO) {
             Intent i = new Intent(MainActivity.this, ApproveRejectPO.class);
             startActivity(i);
         } else if (id == R.id.nav_raiseAdjustment) {
             Intent i = new Intent(MainActivity.this, RaiseAdjustmentActivity.class);
             startActivity(i);
-        }
-        else if (id == R.id.nav_returnwarehouse) {
+        } else if (id == R.id.nav_returnwarehouse) {
             Intent i = new Intent(MainActivity.this, ReturntoWarehouseActivity.class);
             startActivity(i);
-        }
-
-        else if (id == R.id.nav_manageDepRep) {
-            Intent i=new Intent(MainActivity.this,ManageDepRepActivity.class);
+        } else if (id == R.id.nav_manageDepRep) {
+            Intent i = new Intent(MainActivity.this, ManageDepRepActivity.class);
             startActivity(i);
-        }else if (id == R.id.nav_viewdisb) {
-            Intent i=new Intent(MainActivity.this,MainDisbursementListActivity.class);
+        } else if (id == R.id.nav_viewdisb) {
+            Intent i = new Intent(MainActivity.this, MainDisbursementListActivity.class);
             startActivity(i);
-        }
-        else if (id == R.id.nav_ackdelivery) {
-            Intent i=new Intent(MainActivity.this,AcknowledgeDelivery.class);
+        } else if (id == R.id.nav_ackdelivery) {
+            Intent i = new Intent(MainActivity.this, AcknowledgeDelivery.class);
             startActivity(i);
         }
 

@@ -21,6 +21,9 @@ import com.example.adteam7.team7_ad_client.network.APIDataAgentImpl;
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ * Created by Kay Thi Swe Tun
+ **/
 public class DisbursementDetailActivity extends AppCompatActivity  {
 
     RecyclerView itemsrv;
@@ -29,6 +32,7 @@ public class DisbursementDetailActivity extends AppCompatActivity  {
     Button voiddisb,ackwge;
     String disbno, disbotp, depname;
     List<DisbursementSationeryItem> itemlist;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +56,6 @@ public class DisbursementDetailActivity extends AppCompatActivity  {
                 getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             }
         }
-
 
 
         voiddisb.setOnClickListener(new View.OnClickListener() {

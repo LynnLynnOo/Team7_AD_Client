@@ -7,6 +7,7 @@ import com.example.adteam7.team7_ad_client.data.DisbursementSationeryItem;
 import com.example.adteam7.team7_ad_client.data.ManageDepRep;
 import com.example.adteam7.team7_ad_client.data.PendingPO;
 import com.example.adteam7.team7_ad_client.data.PendingPODetails;
+import com.example.adteam7.team7_ad_client.data.ReturnItemPostBack;
 import com.example.adteam7.team7_ad_client.data.StationeryRequestApiModel;
 import com.example.adteam7.team7_ad_client.data.StationeryRetrievalApiModel;
 
@@ -28,20 +29,28 @@ public interface APIDataAgent {
 
     String ackDisbursement(List<DisbursementSationeryItem> items);
 
+    String returnSingleItem(ReturnItemPostBack item);
+
+    String returnAllItem(List<ReturnItemPostBack> item);
+
+    //region Author Teh Li Heng
     String delegateActingDepHeadSet(DelegateDepHeadApiModel del);
     DelegateDepHeadApiModel delegateActingDepHeadGet();
 
-    /*method for approve request*//*
-    /* Create by GJX*/
-    StationeryRequestApiModel GetStationeryRequest(String requestId);
+    String delegateActingDepHeadRevoke();
     ArrayList<StationeryRetrievalApiModel> RetrievalListGet();
 
-    String ApproveStationeryRequest(StationeryRequestApiModel request);
-
-    String RejectStationeryRequest(StationeryRequestApiModel request);
-
-    List<StationeryRequestApiModel> ReadStationeryRequest();
     String RetrievalListSet(List<StationeryRetrievalApiModel> models);
+    //endregion
+
+    //region Author GJX
+    /*method for approve request*/
+    StationeryRequestApiModel GetStationeryRequest(String requestId);
+    String ApproveStationeryRequest(StationeryRequestApiModel request);
+    String RejectStationeryRequest(StationeryRequestApiModel request);
+    List<StationeryRequestApiModel> ReadStationeryRequest();
+
+    //endregion
 
     //region Author Zan Tun Khine
 
@@ -54,6 +63,7 @@ public interface APIDataAgent {
     void ApproveRejectPO(PendingPO po, int btn);
 
     void ConfirmDO(List<AckDeliveryDetails> ackDOList);
+
 
     //endregion
 }

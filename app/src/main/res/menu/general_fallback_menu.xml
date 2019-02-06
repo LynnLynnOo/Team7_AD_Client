@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item
+        android:id="@+id/nav_delegateHead"
+        android:icon="@drawable/dep_head"
+        android:title="Delegate Acting Dep Head" />
+
+
+    <item
+        android:id="@+id/nav_manageDepRep"
+        android:icon="@drawable/ic_deprep"
+        android:title="Manage/Assign Department Dep Rep" />
+
+    <item
+        android:id="@+id/nav_viewRequest"
+        android:icon="@drawable/req_list"
+        android:title="View Request" />
+    <item
+        android:id="@+id/nav_approveRejectPO"
+        android:icon="@drawable/po_list"
+        android:title="Approve/Reject PO" />
+
+    <item
+        android:id="@+id/nav_ackdelivery"
+        android:icon="@drawable/ack_deli"
+        android:title="Acknowledge Delivery" />
+    <item
+        android:id="@+id/nav_viewdisb"
+        android:icon="@drawable/disb_list"
+        android:title="Disbursement List" />
+
+    <item
+        android:id="@+id/nav_generateRetrieval"
+        android:icon="@drawable/retri_list"
+        android:title="Generate Retrieval List" />
+    <item
+        android:id="@+id/nav_raiseAdjustment"
+        android:icon="@drawable/adj_list"
+        android:title="Raise Adjustment" />
+
+    <item
+        android:id="@+id/nav_returnwarehouse"
+        android:icon="@drawable/return_warehouse"
+        android:title="Return to Warehouse" />
+
+
+</menu>

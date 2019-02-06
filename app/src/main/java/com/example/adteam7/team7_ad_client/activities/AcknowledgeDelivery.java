@@ -25,6 +25,11 @@ public class AcknowledgeDelivery extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_acknowledge_delivery);
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle("Acknowledge Delivery");
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
         new AsyncTask<Void, Void, List<String>>() {
 
             APIDataAgent dataAgent = new APIDataAgentImpl();
@@ -37,10 +42,15 @@ public class AcknowledgeDelivery extends AppCompatActivity {
             @Override
             protected void onPostExecute(List<String> listPos) {
                 ListView list = (ListView) findViewById(R.id.ackpolist);
+
+
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(AcknowledgeDelivery.this,
                         R.layout.ackrow, R.id.ackpotextView1, listPos);
 
                 list.setAdapter(adapter);
+
+                //TextView emptyText = (TextView)findViewById(android.R.id.empty);
+                //list.setEmptyView(emptyText);
 
                 list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override

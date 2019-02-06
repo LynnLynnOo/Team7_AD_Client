@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginLeft="@dimen/s_margin"
+        android:layout_marginTop="@dimen/s_margin"
+        android:layout_marginBottom="@dimen/s_margin"
+        android:background="#80E7F6FA"
+        android:gravity="center_vertical"
+        android:textAlignment="center">
+
+        <TextView
+            android:id="@+id/desc"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="@dimen/s_margin"
+            android:layout_toRightOf="@id/no"
+            android:gravity="center_vertical"
+            android:text="Item Name"
+            android:textColor="@color/txtColor"
+            android:textSize="16sp" />
+
+
+        <TextView
+
+            android:id="@+id/itemid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/m_margin"
+            android:layout_toRightOf="@id/desc"
+            android:gravity="center_vertical"
+            android:text="Requested"
+            android:textColor="@color/txtColor"
+            android:textSize="16sp" />
+
+        <TextView
+
+            android:id="@+id/location"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/desc"
+            android:layout_marginLeft="@dimen/s_margin"
+            android:gravity="center_vertical"
+            android:text="Location"
+            android:textColor="@color/txtColor"
+            android:textSize="16sp" />
+
+
+        <TextView
+            android:id="@+id/category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/location"
+            android:gravity="center_vertical"
+            android:text="category"
+            android:textColor="@color/txtColor"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/qty"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_below="@id/itemid"
+            android:layout_marginRight="@dimen/m_margin"
+            android:layout_toRightOf="@id/location"
+            android:gravity="center"
+            android:text="10"
+            android:textColor="@color/txtColor"
+
+            />
+
+        <LinearLayout
+            android:id="@+id/buttonLayout"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/itemid"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp">
+
+            <Button
+                android:id="@+id/returnto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:text="Return" />
+        </LinearLayout>
+    </RelativeLayout>
+
+
+</LinearLayout>

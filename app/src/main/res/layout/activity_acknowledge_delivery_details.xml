@@ -4,19 +4,87 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".activities.ApproveRejectPODetails">
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/appCompatImageView2"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_marginTop="4dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/heading"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/appCompatImageView3"
+        android:layout_width="match_parent"
+        android:layout_height="302dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/footer"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guide75"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.75" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guide25"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.33" />
+
+    <View
+        android:id="@+id/layoutpanel"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/panelbg"
+        app:layout_constraintBottom_toBottomOf="@id/guide75"
+        app:layout_constraintTop_toTopOf="@+id/ackDeliTextViewPono"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <!--<Button-->
+    <!--android:id="@+id/ackDeliButtonConfirm"-->
+    <!--android:layout_width="389dp"-->
+    <!--android:layout_height="66dp"-->
+    <!--android:layout_marginTop="8dp"-->
+    <!--android:onClick="ConfirmDelivery"-->
+    <!--android:text="Confirm"-->
+    <!--app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--app:layout_constraintEnd_toEndOf="parent"-->
+    <!--app:layout_constraintHorizontal_bias="0.727"-->
+    <!--app:layout_constraintStart_toStartOf="parent"-->
+    <!--app:layout_constraintTop_toBottomOf="@+id/layoutpanel"-->
+    <!--app:layout_constraintVertical_bias="0.237" />-->
 
     <Button
         android:id="@+id/ackDeliButtonConfirm"
-        android:layout_width="389dp"
-        android:layout_height="66dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/roundbtn"
+        android:drawableTop="@drawable/accept"
         android:onClick="ConfirmDelivery"
         android:text="Confirm"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.99" />
+        android:textColor="@color/headingText"
+        app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView3"
+        app:layout_constraintEnd_toEndOf="@+id/appCompatImageView3"
+        app:layout_constraintHorizontal_bias="0.485"
+        app:layout_constraintStart_toStartOf="@+id/appCompatImageView3"
+        app:layout_constraintTop_toBottomOf="@+id/layoutpanel"
+        app:layout_constraintVertical_bias="0.178" />
 
     <TextView
         android:id="@+id/ackDeliTextViewPono"
@@ -33,11 +101,11 @@
     <ListView
         android:id="@+id/ackDelilistDetails"
         android:layout_width="395dp"
-        android:layout_height="425dp"
-        android:layout_marginTop="92dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/layoutpanel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider4" />
+        app:layout_constraintTop_toBottomOf="@+id/ackDeliTextViewPono" />
 
 
     <EditText
@@ -46,22 +114,11 @@
         android:layout_height="79dp"
         android:hint="Delivery Order No:"
         android:textSize="22sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/guide25"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.945"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.024" />
-
-    <View
-        android:id="@+id/divider4"
-        android:layout_width="395dp"
-        android:layout_height="5dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:background="?android:attr/listDivider"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="102dp" />
+        app:layout_constraintVertical_bias="0.153" />
 
 
 </android.support.constraint.ConstraintLayout>

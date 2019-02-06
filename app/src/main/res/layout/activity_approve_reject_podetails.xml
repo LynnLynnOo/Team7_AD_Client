@@ -7,94 +7,125 @@
     android:background="@drawable/background"
     tools:context=".activities.ApproveRejectPODetails">
 
+    <android.support.constraint.Guideline
+        android:id="@+id/guide75"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.75" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guide25"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.33" />
     <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/appCompatImageView2"
         android:layout_width="match_parent"
-        android:layout_height="243dp"
-        android:layout_marginTop="0dp"
+        android:layout_height="267dp"
         android:scaleType="centerCrop"
         android:src="@drawable/heading"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/appCompatImageView3"
         android:layout_width="match_parent"
-        android:layout_height="243dp"
-        android:layout_marginBottom="0dp"
+        android:layout_height="348dp"
+        android:layout_marginBottom="4dp"
         android:scaleType="centerCrop"
         android:src="@drawable/footer"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <View
-        android:layout_marginTop="80dp"
-        android:layout_marginBottom="65dp"
+        android:id="@+id/layoutpanel"
         android:layout_width="match_parent"
-        android:layout_height="450dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="80dp"
         android:background="@drawable/panelbg"
         app:layout_constraintTop_toTopOf="parent"
-        android:id="@+id/layoutpanel"/>
+        app:layout_constraintBottom_toBottomOf="@id/guide75"
+        tools:layout_editor_absoluteX="0dp" />
 
     <Button
         android:id="@+id/poButtonReject"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="ApproveReject"
+        android:layout_marginLeft="52dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/roundbtn"
         android:drawableTop="@drawable/reject"
+        android:onClick="ApproveReject"
         android:text="Reject"
         android:textColor="@color/headingText"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="35dp"
+        app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView3"
+        app:layout_constraintLeft_toLeftOf="@id/layoutpanel"
         app:layout_constraintTop_toBottomOf="@id/layoutpanel"
-        app:layout_constraintLeft_toLeftOf="@id/layoutpanel"/>
+        app:layout_constraintVertical_bias="0.102" />
 
     <Button
         android:id="@+id/poButtonApprove"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="ApproveReject"
-        android:drawableTop="@drawable/accept"
+        android:layout_marginStart="215dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="56dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/roundbtn"
+        android:drawableTop="@drawable/accept"
+        android:onClick="ApproveReject"
         android:text="Confirm"
-        android:textColor="@color/headingText"
-        android:layout_marginRight="35dp"
-        android:layout_marginTop="30dp"
-        app:layout_constraintTop_toBottomOf="@id/layoutpanel"
-        app:layout_constraintRight_toRightOf="@id/layoutpanel"
 
-     />
+        android:textColor="@color/headingText"
+        app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView3"
+        app:layout_constraintRight_toRightOf="@id/layoutpanel"
+        app:layout_constraintStart_toStartOf="@+id/poButtonReject"
+        app:layout_constraintTop_toBottomOf="@id/layoutpanel"
+        app:layout_constraintVertical_bias="0.102" />
 
     <TextView
         android:id="@+id/poTextViewPono"
-        android:layout_width="match_parent"
+        android:layout_width="199dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:text="PONUM"
         android:textColor="@color/headingText"
-        android:textSize="45sp"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
+        android:textSize="23sp"
+        app:layout_constraintBottom_toTopOf="@+id/layoutpanel"
+        app:layout_constraintStart_toStartOf="@+id/appCompatImageView2"
+        app:layout_constraintTop_toTopOf="@+id/appCompatImageView2"
+        app:layout_constraintVertical_bias="0.523"
         tools:text="PO Number:" />
 
     <TextView
         android:id="@+id/poTextViewDate"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/headingText"
-        android:layout_marginTop="15dp"
-        android:layout_marginRight="10dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
         android:text=""
+        android:textColor="@color/headingText"
         android:textSize="22sp"
-        app:layout_constraintTop_toTopOf="@id/poTextViewPono"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/appCompatImageView2"
+        app:layout_constraintHorizontal_bias="0.512"
+        app:layout_constraintStart_toEndOf="@+id/poTextViewPono"
+        app:layout_constraintTop_toTopOf="@+id/appCompatImageView2"
         tools:text="" />
 
     <ListView
         android:id="@+id/polistDetails"
         android:layout_width="match_parent"
-        android:layout_height="350dp"
+        android:layout_height="313dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="95dp"
