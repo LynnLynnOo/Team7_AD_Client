@@ -120,6 +120,7 @@ public class DisbDetailAckActivity extends AppCompatActivity {
             Toast.makeText(this, "from frag " + resultMessage, Toast.LENGTH_SHORT).show();
             //call API to ack
             new AsyncAcknowledgeDisbursement().execute(itemlist);
+            finish();
         }
 
 
