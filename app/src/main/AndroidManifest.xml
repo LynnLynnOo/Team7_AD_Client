@@ -27,7 +27,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activities.ReturnItemListActivity"></activity>
-        <activity android:name=".activities.AcknowledgeDelivery"
+        <activity
+            android:name=".activities.AcknowledgeDelivery"
             android:parentActivityName=".activities.MainActivity" />
         <activity
             android:name=".activities.AcknowledgeDeliveryDetails"
@@ -73,7 +74,8 @@
             android:name=".activities.MainDisbursementListActivity"
             android:parentActivityName=".activities.MainActivity" />
 
-        <activity android:name=".activities.ManageDepRepActivity"
+        <activity
+            android:name=".activities.ManageDepRepActivity"
             android:parentActivityName=".activities.MainActivity" />
 
         <activity android:name=".activities.RaiseAdjustmentActivity"
@@ -85,14 +87,13 @@
         <activity android:name=".activities.ReturntoWarehouseActivity"
         android:parentActivityName=".activities.MainActivity" />
 
-        <activity android:name=".activities.SplashActivity"
+        <activity
+            android:name=".activities.SplashActivity"
             android:parentActivityName=".activities.MainActivity" />
 
         <activity android:name=".activities.ViewRequestActivity"
             android:parentActivityName=".activities.MainActivity" />
 
-        <activity android:name=".activities.ViewRequestActivity"
-            android:parentActivityName=".activities.MainActivity" />
 
     </application>
 
