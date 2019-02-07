@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.example.adteam7.team7_ad_client.R;
 import com.example.adteam7.team7_ad_client.network.APIDataAgent;
@@ -43,7 +42,6 @@ public class AcknowledgeDelivery extends AppCompatActivity {
             @Override
             protected void onPostExecute(List<String> listPos) {
                 ListView list = (ListView) findViewById(R.id.ackpolist);
-
 
 
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(AcknowledgeDelivery.this,

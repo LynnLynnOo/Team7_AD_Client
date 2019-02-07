@@ -58,14 +58,20 @@ public class MainActivity extends AppCompatActivity
             if (role0.equals("Department Head")) {
                 navigationView.inflateMenu(R.menu.dephead_menu_drawer);
             }
-
         } else {
             role1 = session.getUserRole1();
             if (role0.equals("Department Head") && role1.equals("Store Manager")) {
                 navigationView.inflateMenu(R.menu.storemanager_menu_drawer);
-            }
-            else if (role0.equals("Employee") && role1.equals("Store Clerk")) {
+            } else if (role0.equals("Employee") && role1.equals("Store Clerk")) {
                 navigationView.inflateMenu(R.menu.storeclerk_menu_drawer);
+            } else if (role0.equals("Employee") && role1.equals("Store Supervisor")) {
+                navigationView.inflateMenu(R.menu.storesupervisor_menu_drawer);
+            } else if (role0.equals("Acting Department Head") && role1.equals("Store Supervisor")) {
+                navigationView.inflateMenu(R.menu.storemanager_menu_drawer);
+            } else if (role0.equals("Acting Department Head") && role1.equals("Store Clerk")) {
+                navigationView.inflateMenu(R.menu.storemanager_menu_drawer);
+            } else {
+                navigationView.inflateMenu(R.menu.general_fallback_menu);
             }
         }
 

@@ -3,6 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
+
+    <item
+        android:id="@+id/nav_approveRejectPO"
+        android:icon="@drawable/po_list"
+        android:title="Approve/Reject PO" />
     <item
         android:id="@+id/nav_ackdelivery"
         android:icon="@drawable/ack_deli"
@@ -28,7 +33,3 @@
 
 
 </menu>
-
-
-
-
