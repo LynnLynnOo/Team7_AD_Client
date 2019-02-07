@@ -8,28 +8,28 @@
         android:id="@+id/nav_approveRejectPO"
         android:icon="@drawable/po_list"
         android:title="Approve/Reject PO" />
-    <item
-        android:id="@+id/nav_ackdelivery"
-        android:icon="@drawable/ack_deli"
-        android:title="Acknowledge Delivery" />
-    <item
-        android:id="@+id/nav_viewdisb"
-        android:icon="@drawable/disb_list"
-        android:title="Disbursement List" />
+    <!--<item-->
+        <!--android:id="@+id/nav_ackdelivery"-->
+        <!--android:icon="@drawable/ack_deli"-->
+        <!--android:title="Acknowledge Delivery" />-->
+    <!--<item-->
+        <!--android:id="@+id/nav_viewdisb"-->
+        <!--android:icon="@drawable/disb_list"-->
+        <!--android:title="Disbursement List" />-->
 
-    <item
-        android:id="@+id/nav_generateRetrieval"
-        android:icon="@drawable/retri_list"
-        android:title="Generate Retrieval List" />
-    <item
-        android:id="@+id/nav_raiseAdjustment"
-        android:icon="@drawable/adj_list"
-        android:title="Raise Adjustment" />
+    <!--<item-->
+        <!--android:id="@+id/nav_generateRetrieval"-->
+        <!--android:icon="@drawable/retri_list"-->
+        <!--android:title="Generate Retrieval List" />-->
+    <!--<item-->
+        <!--android:id="@+id/nav_raiseAdjustment"-->
+        <!--android:icon="@drawable/adj_list"-->
+        <!--android:title="Raise Adjustment" />-->
 
-    <item
-        android:id="@+id/nav_returnwarehouse"
-        android:icon="@drawable/return_warehouse"
-        android:title="Return to Warehouse" />
+    <!--<item-->
+        <!--android:id="@+id/nav_returnwarehouse"-->
+        <!--android:icon="@drawable/return_warehouse"-->
+        <!--android:title="Return to Warehouse" />-->
 
 
 </menu>
