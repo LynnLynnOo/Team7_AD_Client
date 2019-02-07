@@ -16,7 +16,7 @@ public class ReturntoWarehouseApi implements Serializable {
 
         //Region: Lynn Lynn Oo
 
-        static String host = "192.168.1.71";
+        static String host = "172.17.148.100";
         static String baseURL;
 
         static {

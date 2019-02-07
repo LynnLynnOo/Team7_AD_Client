@@ -92,7 +92,7 @@
             app:layout_constraintBottom_toBottomOf="@id/layoutpanel"
             app:layout_constraintLeft_toLeftOf="@id/layoutpanel"
             app:layout_constraintRight_toRightOf="@id/layoutpanel"
-            android:text="Remember to click submit at the end to save your changes" />
+            android:text="Remember to click Retrieve at the end to save your changes" />
 
         <Button
             android:id="@+id/submit"

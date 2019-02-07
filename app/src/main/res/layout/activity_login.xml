@@ -59,25 +59,26 @@
             android:textColorHint="#67817f"
             tools:ignore="HardcodedText" />
 
-    <EditText
-        android:id="@+id/password"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:paddingLeft="5dp"
-        android:layout_margin="10dp"
-        android:layout_gravity="center_horizontal"
-        android:background="@drawable/layout_bg"
-        android:ellipsize="end"
-        android:hint="Password"
-        android:drawableStart="@drawable/pass"
-        android:drawableLeft="@drawable/pass"
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:background="@drawable/layout_bg"
+            android:drawableStart="@drawable/pass"
+            android:drawableLeft="@drawable/pass"
+            android:ellipsize="end"
+            android:hint="Password"
+            android:inputType="textPassword"
 
-        android:text="Password1!"
-        android:maxLines="1"
-        android:minLines="1"
-        android:padding="5dp"
-        android:textColorHint="#67817f"
-        tools:ignore="HardcodedText"/>
+            android:maxLines="1"
+            android:minLines="1"
+            android:padding="5dp"
+            android:paddingLeft="5dp"
+            android:text="Password1!"
+            android:textColorHint="#67817f"
+            tools:ignore="HardcodedText" />
         <Button
             android:layout_gravity="center_horizontal"
             android:id="@+id/login"
