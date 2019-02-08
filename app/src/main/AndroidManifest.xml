@@ -58,11 +58,7 @@
             android:parentActivityName=".activities.MainDisbursementListActivity" />
 
         <activity android:name=".activities.LoginActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <activity
@@ -89,7 +85,14 @@
 
         <activity
             android:name=".activities.SplashActivity"
-            android:parentActivityName=".activities.MainActivity" />
+
+           >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <activity android:name=".activities.ViewRequestActivity"
             android:parentActivityName=".activities.MainActivity" />
