@@ -1,6 +1,4 @@
-package com.example.adteam7.team7_ad_client.data;
-
-import java.util.HashMap;
+package com.example.adteam7.team7_ad_client.model;
 
 public class AdjustmentItem {
 

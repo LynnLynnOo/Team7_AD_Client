@@ -13,7 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.adteam7.team7_ad_client.R;
-import com.example.adteam7.team7_ad_client.data.SessionManager;
+import com.example.adteam7.team7_ad_client.model.SessionManager;
 
 /**
  * Created by Kay Thi Swe Tun

@@ -9,7 +9,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.example.adteam7.team7_ad_client.R;
 import com.example.adteam7.team7_ad_client.adapters.MainDisburAdapter;
-import com.example.adteam7.team7_ad_client.data.Disbursement;
+import com.example.adteam7.team7_ad_client.model.Disbursement;
 import com.example.adteam7.team7_ad_client.network.APIDataAgent;
 import com.example.adteam7.team7_ad_client.network.APIDataAgentImpl;
 

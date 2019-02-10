@@ -6,7 +6,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import com.example.adteam7.team7_ad_client.activities.RaiseAdjustmentActivity;
-import com.example.adteam7.team7_ad_client.data.GMail;
+import com.example.adteam7.team7_ad_client.model.GMail;
 
 public class SendMailTask extends AsyncTask {
 

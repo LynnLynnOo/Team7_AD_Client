@@ -12,8 +12,8 @@ import android.widget.Toast;
 
 import com.example.adteam7.team7_ad_client.R;
 import com.example.adteam7.team7_ad_client.adapters.ReturnItemAdapter;
-import com.example.adteam7.team7_ad_client.data.ReturnItem;
-import com.example.adteam7.team7_ad_client.data.ReturnItemPostBack;
+import com.example.adteam7.team7_ad_client.model.ReturnItem;
+import com.example.adteam7.team7_ad_client.model.ReturnItemPostBack;
 import com.example.adteam7.team7_ad_client.network.APIDataAgent;
 import com.example.adteam7.team7_ad_client.network.APIDataAgentImpl;
 

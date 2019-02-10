@@ -10,7 +10,7 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
 import com.example.adteam7.team7_ad_client.R;
-import com.example.adteam7.team7_ad_client.data.PendingPO;
+import com.example.adteam7.team7_ad_client.model.PendingPO;
 import com.example.adteam7.team7_ad_client.network.APIDataAgent;
 import com.example.adteam7.team7_ad_client.network.APIDataAgentImpl;
 

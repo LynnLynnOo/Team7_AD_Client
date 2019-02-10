@@ -15,8 +15,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.adteam7.team7_ad_client.R;
-import com.example.adteam7.team7_ad_client.data.DelegateDepHeadApiModel;
-import com.example.adteam7.team7_ad_client.data.EmployeeDto;
+import com.example.adteam7.team7_ad_client.model.DelegateDepHeadApiModel;
+import com.example.adteam7.team7_ad_client.model.EmployeeDto;
 import com.example.adteam7.team7_ad_client.network.APIDataAgent;
 import com.example.adteam7.team7_ad_client.network.APIDataAgentImpl;
 

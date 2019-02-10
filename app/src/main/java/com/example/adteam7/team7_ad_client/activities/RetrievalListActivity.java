@@ -5,7 +5,6 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -24,7 +23,7 @@ import com.example.adteam7.team7_ad_client.R;
 import com.example.adteam7.team7_ad_client.adapters.RetrievalAdapter;
 import com.example.adteam7.team7_ad_client.controller.SwipeController;
 import com.example.adteam7.team7_ad_client.controller.SwipeControllerActions;
-import com.example.adteam7.team7_ad_client.data.StationeryRetrievalApiModel;
+import com.example.adteam7.team7_ad_client.model.StationeryRetrievalApiModel;
 import com.example.adteam7.team7_ad_client.network.APIDataAgent;
 import com.example.adteam7.team7_ad_client.network.APIDataAgentImpl;
 

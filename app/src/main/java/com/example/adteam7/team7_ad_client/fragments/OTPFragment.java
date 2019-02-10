@@ -1,4 +1,4 @@
-package com.example.adteam7.team7_ad_client.Fragments;
+package com.example.adteam7.team7_ad_client.fragments;
 
 import android.app.Activity;
 import android.content.Intent;

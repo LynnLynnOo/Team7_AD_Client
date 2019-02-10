@@ -11,7 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.adteam7.team7_ad_client.R;
-import com.example.adteam7.team7_ad_client.data.SessionManager;
+import com.example.adteam7.team7_ad_client.model.SessionManager;
 import com.example.adteam7.team7_ad_client.network.APIDataAgent;
 import com.example.adteam7.team7_ad_client.network.APIDataAgentImpl;
 import com.example.adteam7.team7_ad_client.network.JSONParser;

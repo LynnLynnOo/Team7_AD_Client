@@ -1,4 +1,4 @@
-package com.example.adteam7.team7_ad_client.data;
+package com.example.adteam7.team7_ad_client.model;
 
 /**
  * Created by Kay Thi Swe Tun

@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import com.example.adteam7.team7_ad_client.R;
 import com.example.adteam7.team7_ad_client.adapters.ReturntoWarehouseAdapter;
-import com.example.adteam7.team7_ad_client.data.ReturntoWarehouseApi;
+import com.example.adteam7.team7_ad_client.model.ReturntoWarehouseApi;
 
 import java.io.Serializable;
 import java.util.ArrayList;

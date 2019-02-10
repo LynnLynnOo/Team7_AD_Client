@@ -2,13 +2,11 @@ package com.example.adteam7.team7_ad_client.activities;
 
 import android.content.Intent;
 import android.os.CountDownTimer;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.widget.TextView;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.example.adteam7.team7_ad_client.R;
-import com.example.adteam7.team7_ad_client.data.SessionManager;
+import com.example.adteam7.team7_ad_client.model.SessionManager;
 import com.viksaa.sssplash.lib.activity.AwesomeSplash;
 import com.viksaa.sssplash.lib.cnst.Flags;
 import com.viksaa.sssplash.lib.model.ConfigSplash;
@@ -20,7 +18,6 @@ import java.util.Locale;
  **/
 public class SplashActivity extends AwesomeSplash {
 
-
     public static int clicked = 0;
     TextView please_wait;
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.ENGLISH);
@@ -29,7 +26,6 @@ public class SplashActivity extends AwesomeSplash {
 
     @Override
     public void initSplash (ConfigSplash configSplash){
-
 
         configSplash.setBackgroundColor(R.color.colorPrimary); //any color you want form colors.xml
         configSplash.setAnimCircularRevealDuration(2000); //int ms

@@ -14,10 +14,10 @@ import android.widget.Button;
 import android.widget.PopupWindow;
 import android.widget.Toast;
 
-import com.example.adteam7.team7_ad_client.Fragments.OTPFragment;
+import com.example.adteam7.team7_ad_client.fragments.OTPFragment;
 import com.example.adteam7.team7_ad_client.R;
 import com.example.adteam7.team7_ad_client.adapters.ItemListAdapter;
-import com.example.adteam7.team7_ad_client.data.DisbursementSationeryItem;
+import com.example.adteam7.team7_ad_client.model.DisbursementSationeryItem;
 import com.example.adteam7.team7_ad_client.network.APIDataAgent;
 import com.example.adteam7.team7_ad_client.network.APIDataAgentImpl;
 

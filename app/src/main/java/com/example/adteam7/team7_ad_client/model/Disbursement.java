@@ -1,6 +1,4 @@
-package com.example.adteam7.team7_ad_client.data;
-
-import java.util.Date;
+package com.example.adteam7.team7_ad_client.model;
 
 /**
  * Created by Kay Thi Swe Tun
