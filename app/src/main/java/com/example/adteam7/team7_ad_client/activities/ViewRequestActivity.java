@@ -11,7 +11,7 @@ import android.widget.ListView;
 
 import com.example.adteam7.team7_ad_client.R;
 import com.example.adteam7.team7_ad_client.adapters.RequestAdaptor;
-import com.example.adteam7.team7_ad_client.data.StationeryRequestApiModel;
+import com.example.adteam7.team7_ad_client.model.StationeryRequestApiModel;
 import com.example.adteam7.team7_ad_client.network.APIDataAgent;
 import com.example.adteam7.team7_ad_client.network.APIDataAgentImpl;
 

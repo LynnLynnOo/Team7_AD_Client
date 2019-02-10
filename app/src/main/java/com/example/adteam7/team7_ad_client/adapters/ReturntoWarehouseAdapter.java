@@ -10,7 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.example.adteam7.team7_ad_client.R;
-import com.example.adteam7.team7_ad_client.data.ReturntoWarehouseApi;
+import com.example.adteam7.team7_ad_client.model.ReturntoWarehouseApi;
 
 import java.util.List;
 

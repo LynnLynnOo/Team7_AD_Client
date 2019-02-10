@@ -1,15 +1,15 @@
 package com.example.adteam7.team7_ad_client.network;
 
-import com.example.adteam7.team7_ad_client.data.AckDeliveryDetails;
-import com.example.adteam7.team7_ad_client.data.DelegateDepHeadApiModel;
-import com.example.adteam7.team7_ad_client.data.Disbursement;
-import com.example.adteam7.team7_ad_client.data.DisbursementSationeryItem;
-import com.example.adteam7.team7_ad_client.data.ManageDepRep;
-import com.example.adteam7.team7_ad_client.data.PendingPO;
-import com.example.adteam7.team7_ad_client.data.PendingPODetails;
-import com.example.adteam7.team7_ad_client.data.ReturnItemPostBack;
-import com.example.adteam7.team7_ad_client.data.StationeryRequestApiModel;
-import com.example.adteam7.team7_ad_client.data.StationeryRetrievalApiModel;
+import com.example.adteam7.team7_ad_client.model.AckDeliveryDetails;
+import com.example.adteam7.team7_ad_client.model.DelegateDepHeadApiModel;
+import com.example.adteam7.team7_ad_client.model.Disbursement;
+import com.example.adteam7.team7_ad_client.model.DisbursementSationeryItem;
+import com.example.adteam7.team7_ad_client.model.ManageDepRep;
+import com.example.adteam7.team7_ad_client.model.PendingPO;
+import com.example.adteam7.team7_ad_client.model.PendingPODetails;
+import com.example.adteam7.team7_ad_client.model.ReturnItemPostBack;
+import com.example.adteam7.team7_ad_client.model.StationeryRequestApiModel;
+import com.example.adteam7.team7_ad_client.model.StationeryRetrievalApiModel;
 
 import java.util.ArrayList;
 import java.util.List;

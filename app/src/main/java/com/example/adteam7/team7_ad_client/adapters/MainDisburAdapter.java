@@ -11,8 +11,8 @@ import android.widget.TextView;
 
 import com.example.adteam7.team7_ad_client.R;
 import com.example.adteam7.team7_ad_client.activities.DisbursementDetailActivity;
-import com.example.adteam7.team7_ad_client.data.Disbursement;
-import com.example.adteam7.team7_ad_client.data.DisbursementSationeryItem;
+import com.example.adteam7.team7_ad_client.model.Disbursement;
+import com.example.adteam7.team7_ad_client.model.DisbursementSationeryItem;
 
 import java.util.List;
 

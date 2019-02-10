@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.adteam7.team7_ad_client.R;
-import com.example.adteam7.team7_ad_client.data.AdjustmentItem;
+import com.example.adteam7.team7_ad_client.model.AdjustmentItem;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;

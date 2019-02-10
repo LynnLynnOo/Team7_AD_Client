@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.adteam7.team7_ad_client.R;
-import com.example.adteam7.team7_ad_client.data.StationeryRetrievalApiModel;
+import com.example.adteam7.team7_ad_client.model.StationeryRetrievalApiModel;
 
 import java.util.List;
 
