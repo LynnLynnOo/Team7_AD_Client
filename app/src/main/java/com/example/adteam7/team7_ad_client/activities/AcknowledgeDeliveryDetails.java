@@ -37,12 +37,6 @@ public class AcknowledgeDeliveryDetails extends AppCompatActivity {
         }
 
         final TextView pono = findViewById(R.id.ackDeliTextViewPono);
-        final TextView itemID = findViewById(R.id.ackDeliTextViewItemId);
-        final TextView itemDesc = findViewById(R.id.ackDeliTextViewDescription);
-        final TextView qty = findViewById(R.id.ackDeliTextViewQty);
-        final EditText actualQty = findViewById(R.id.ackDelieditTextQty);
-        final EditText orderNo = findViewById(R.id.ackDeliEditTextDO);
-
 
         Intent intent = getIntent();
         if (intent.hasExtra("selectedpo")) {
@@ -82,12 +76,10 @@ public class AcknowledgeDeliveryDetails extends AppCompatActivity {
 
     public void ConfirmDelivery(View v) {
 
-        final TextView pono = findViewById(R.id.ackDeliTextViewPono);
-        final TextView itemID = findViewById(R.id.ackDeliTextViewItemId);
-        final TextView itemDesc = findViewById(R.id.ackDeliTextViewDescription);
-        final TextView qty = findViewById(R.id.ackDeliTextViewQty);
-        final EditText actualQty = findViewById(R.id.ackDelieditTextQty);
+        TextView itemID;
+        EditText actualQty;
         final EditText orderNo = findViewById(R.id.ackDeliEditTextDO);
+        final ListView list = findViewById(R.id.ackDelilistDetails);
 
         final APIDataAgent dataAgent = new APIDataAgentImpl();
 
@@ -96,8 +88,27 @@ public class AcknowledgeDeliveryDetails extends AppCompatActivity {
             isNew = false;
             String selectedpo = intent.getStringExtra("selectedpo");
 
-            AckDeliveryDetails delDetails = new AckDeliveryDetails(itemID.getText().toString(), actualQty.getText().toString(), "", "",
-                    orderNo.getText().toString(), "", SessionManager.getInstance().getUserid(), selectedpo);
+            int count = list.getAdapter().getCount();
+            AckDeliveryDetails[] delDetails = new AckDeliveryDetails[count];
+
+            for(int j=0;j<count;j++)
+            {
+                v = list.getChildAt(j);
+                itemID = v.findViewById(R.id.ackDeliTextViewItemId);
+                actualQty = v.findViewById(R.id.ackDelieditTextQty);
+                String item[] = new String[count];
+                String qty1[] = new String[count];
+                item[j] = itemID.getText().toString();
+                qty1[j] = actualQty.getText().toString();
+
+                AckDeliveryDetails delDetails1 = new AckDeliveryDetails(item[j],qty1[j] , "", "",
+                        orderNo.getText().toString(), "", SessionManager.getInstance().getUserid(), selectedpo);
+
+
+                delDetails[j]=delDetails1;
+
+            }
+
 
             new AsyncTask<AckDeliveryDetails, Void, Void>() {
                 @Override
