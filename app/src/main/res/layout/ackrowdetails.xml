@@ -15,7 +15,6 @@
             android:id="@+id/ackpoTextView1"
             android:layout_width="103dp"
             android:layout_height="wrap_content"
-            android:inputType="number"
             android:text="Item ID" />
 
         <TextView
@@ -72,6 +71,7 @@
             android:id="@+id/ackDeliTextViewActualQty"
             android:layout_width="101dp"
             android:layout_height="34dp"
+            android:inputType="number"
             android:text="Received Qty" />
 
         <EditText
@@ -79,14 +79,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:inputType="number"
             android:singleLine="true"
             android:textSize="16sp"
             android:visibility="visible" />
 
-
     </LinearLayout>
-
 
 </LinearLayout>
 

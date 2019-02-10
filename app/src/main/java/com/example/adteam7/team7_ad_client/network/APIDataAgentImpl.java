@@ -35,7 +35,7 @@ import static android.content.ContentValues.TAG;
 
 public class APIDataAgentImpl implements APIDataAgent {
 
-    static String host = "192.168.1.71";
+    static String host = "192.168.43.91";
     //static String host = "172.17.5.251";
     static String baseURL;
     static String imageURL;

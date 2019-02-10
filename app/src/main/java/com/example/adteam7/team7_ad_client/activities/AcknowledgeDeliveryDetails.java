@@ -4,10 +4,15 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+
 import android.util.Log;
 import android.view.View;
+
+import android.widget.AdapterView;
+
 import android.widget.EditText;
 import android.widget.ListView;
+
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,9 +21,12 @@ import com.example.adteam7.team7_ad_client.R;
 import com.example.adteam7.team7_ad_client.model.AckDeliveryDetails;
 import com.example.adteam7.team7_ad_client.model.PendingPODetails;
 import com.example.adteam7.team7_ad_client.model.SessionManager;
+
 import com.example.adteam7.team7_ad_client.network.APIDataAgent;
 import com.example.adteam7.team7_ad_client.network.APIDataAgentImpl;
 
+
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -67,19 +75,29 @@ public class AcknowledgeDeliveryDetails extends AppCompatActivity {
                             new int[]{R.id.ackDeliTextViewItemId, R.id.ackDeliTextViewDescription, R.id.ackDeliTextViewQty, R.id.ackDelieditTextQty});
                     list.setAdapter(adapter);
                     Log.i("userID", SessionManager.getInstance().getUserid());
+
+
+                    list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            String selecteditem = (String) parent.getAdapter().getItem(position);
+                            Log.i("Selecteditem", selecteditem);
+                        }
+                    });
+
                 }
             }.execute(selectedpo);
         }
 
     }
 
-
     public void ConfirmDelivery(View v) {
 
-        TextView itemID;
-        EditText actualQty;
+
         final EditText orderNo = findViewById(R.id.ackDeliEditTextDO);
         final ListView list = findViewById(R.id.ackDelilistDetails);
+
+
 
         final APIDataAgent dataAgent = new APIDataAgentImpl();
 
@@ -87,27 +105,30 @@ public class AcknowledgeDeliveryDetails extends AppCompatActivity {
         if (intent.hasExtra("selectedpo")) {
             isNew = false;
             String selectedpo = intent.getStringExtra("selectedpo");
-
             int count = list.getAdapter().getCount();
             AckDeliveryDetails[] delDetails = new AckDeliveryDetails[count];
+            ArrayList<String> qty1 = new ArrayList<String>();
+            ArrayList<String> item = new ArrayList<String>();
+            //String item[] = new String[count];
 
             for(int j=0;j<count;j++)
+
             {
+                TextView itemID;
+                EditText actualQty;
                 v = list.getChildAt(j);
                 itemID = v.findViewById(R.id.ackDeliTextViewItemId);
-                actualQty = v.findViewById(R.id.ackDelieditTextQty);
-                String item[] = new String[count];
-                String qty1[] = new String[count];
-                item[j] = itemID.getText().toString();
-                qty1[j] = actualQty.getText().toString();
+                actualQty = v.findViewById((R.id.ackDelieditTextQty));
+                //item[j] = itemID.getText().toString();
+                item.add(itemID.getText().toString());
+                qty1.add(actualQty.getText().toString());
 
-                AckDeliveryDetails delDetails1 = new AckDeliveryDetails(item[j],qty1[j] , "", "",
+                AckDeliveryDetails delDetails1 = new AckDeliveryDetails(item.get(j),qty1.get(j), "", "",
                         orderNo.getText().toString(), "", SessionManager.getInstance().getUserid(), selectedpo);
 
                 delDetails[j]=delDetails1;
-
             }
-
+            //list.setDescendantFocusability(ViewGroup.FOCUS_AFTER_DESCENDANTS);
 
             new AsyncTask<AckDeliveryDetails, Void, Void>() {
                 @Override
@@ -118,10 +139,12 @@ public class AcknowledgeDeliveryDetails extends AppCompatActivity {
                     Intent homepage = new Intent(AcknowledgeDeliveryDetails.this, AcknowledgeDelivery.class);
                     startActivity(homepage);
                     return null;
+
                 }
             }.execute(delDetails);
             Toast.makeText(AcknowledgeDeliveryDetails.this, "Successful!", Toast.LENGTH_SHORT).show();
             Log.i("po", selectedpo);
         }
     }
+
 }
