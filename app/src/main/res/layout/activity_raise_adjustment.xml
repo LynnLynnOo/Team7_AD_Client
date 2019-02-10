@@ -55,82 +55,82 @@
             android:weightSum="3">
 
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.5">
-
-            <TextView
-                android:textColor="@android:color/black"
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="Cat." />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.9"
-            >
+                android:layout_weight="0.5">
 
-            <!--<ListView-->
-            <!--android:id="@+id/AdjustmentList"-->
-            <!--android:layout_width="310dp"-->
-            <!--android:layout_height="432dp"-->
-            <!--android:layout_marginTop="10dp"-->
-            <!--app:layout_constraintTop_toTopOf="@id/layoutpanel"-->
-            <!--app:layout_constraintStart_toStartOf="@id/layoutpanel"-->
-            <!--app:layout_constraintEnd_toEndOf="@id/layoutpanel"/>-->
-            <TextView
-                android:textColor="@android:color/black"
-                android:layout_width="match_parent"
+                <TextView
+                    android:textColor="@android:color/black"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="Cat." />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:layout_marginLeft="@dimen/m_margin"
-                android:text="Item Name" />
-        </LinearLayout>
+                android:layout_weight="0.9"
+                >
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.35">
+                <!--<ListView-->
+                <!--android:id="@+id/AdjustmentList"-->
+                <!--android:layout_width="310dp"-->
+                <!--android:layout_height="432dp"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--app:layout_constraintTop_toTopOf="@id/layoutpanel"-->
+                <!--app:layout_constraintStart_toStartOf="@id/layoutpanel"-->
+                <!--app:layout_constraintEnd_toEndOf="@id/layoutpanel"/>-->
+                <TextView
+                    android:textColor="@android:color/black"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_marginLeft="@dimen/m_margin"
+                    android:text="Item Name" />
+            </LinearLayout>
 
-            <TextView
-                android:textColor="@android:color/black"
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="Qty." />
-        </LinearLayout>
+                android:layout_weight="0.35">
+
+                <TextView
+                    android:textColor="@android:color/black"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="Qty." />
+            </LinearLayout>
 
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.55">
-
-            <TextView
-                android:textColor="@android:color/black"
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="Amount" />
-        </LinearLayout>
+                android:layout_weight="0.55">
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.75">
+                <TextView
+                    android:textColor="@android:color/black"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="Amount" />
+            </LinearLayout>
 
-            <TextView
-                android:textColor="@android:color/black"
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="Action" />
-        </LinearLayout>
+                android:layout_weight="0.75">
 
-    </LinearLayout>
+                <TextView
+                    android:textColor="@android:color/black"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="Action" />
+            </LinearLayout>
+
+        </LinearLayout>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/AdjustmentList"

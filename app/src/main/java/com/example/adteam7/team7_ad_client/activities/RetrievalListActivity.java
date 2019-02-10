@@ -185,8 +185,8 @@ public class RetrievalListActivity extends AppCompatActivity {
                     //updating remaining quantity in warehouse, get ID, get chose, reduce for repeating items.
                     selectedRequest.getItemId();
                     for (StationeryRetrievalApiModel current:mAdapter.retrievals
-                         ) {if(current.getItemId().equals(selectedRequest.getItemId())){
-                             current.setQuantityInWarehouse(current.getQuantityInWarehouse()-picker.getValue());
+                    ) {if(current.getItemId().equals(selectedRequest.getItemId())){
+                        current.setQuantityInWarehouse(current.getQuantityInWarehouse()-picker.getValue());
                     }
                     }
 

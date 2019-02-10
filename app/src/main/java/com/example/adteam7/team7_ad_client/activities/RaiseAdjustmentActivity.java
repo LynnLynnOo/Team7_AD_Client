@@ -65,7 +65,7 @@ public class RaiseAdjustmentActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(getApplicationContext(), "You need to fill in the remark", Toast.LENGTH_LONG).show();
                 }
-           }
+            }
         });
         String[] ids = new String[adjustment.size()];
         for (int i = 0; i < adjustment.size(); i++) {

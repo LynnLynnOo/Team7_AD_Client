@@ -84,7 +84,7 @@ public class ManageDepRepActivity extends AppCompatActivity {
             public void onClick(View v) {
 
 
-               if (dep.getEmployees() != null) {
+                if (dep.getEmployees() != null) {
                     String repid = checkSelectedEmp();
                     rep.setText(spinEmp.getSelectedItem().toString());
                     dep.setDepartmentRepName(spinEmp.getSelectedItem().toString());

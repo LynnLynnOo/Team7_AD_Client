@@ -18,8 +18,8 @@ import com.example.adteam7.team7_ad_client.data.SessionManager;
 /**
  * Created by Kay Thi Swe Tun
  **/
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
     private SessionManager session;
 
     @Override
@@ -29,14 +29,6 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-      //  FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-       /* fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
         session = SessionManager.getInstance();
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -136,9 +128,6 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_viewRequest) {
             Intent i = new Intent(MainActivity.this, ViewRequestActivity.class);
             startActivity(i);
-//        } else if (id == R.id.nav_send) {
-//            Intent i=new Intent(MainActivity.this,MainDisbursementListActivity.class);
-//            startActivity(i);
         } else if (id == R.id.nav_approveRejectPO) {
             Intent i = new Intent(MainActivity.this, ApproveRejectPO.class);
             startActivity(i);
@@ -158,7 +147,6 @@ public class MainActivity extends AppCompatActivity
             Intent i = new Intent(MainActivity.this, AcknowledgeDelivery.class);
             startActivity(i);
         }
-
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

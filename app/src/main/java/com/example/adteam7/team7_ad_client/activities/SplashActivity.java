@@ -21,67 +21,65 @@ import java.util.Locale;
 public class SplashActivity extends AwesomeSplash {
 
 
-            public static int clicked = 0;
-            TextView please_wait;
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.ENGLISH);
-            private boolean state;
-          private SessionManager session;
+    public static int clicked = 0;
+    TextView please_wait;
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.ENGLISH);
+    private boolean state;
+    private SessionManager session;
 
+    @Override
+    public void initSplash (ConfigSplash configSplash){
+
+
+        configSplash.setBackgroundColor(R.color.colorPrimary); //any color you want form colors.xml
+        configSplash.setAnimCircularRevealDuration(2000); //int ms
+        configSplash.setRevealFlagX(Flags.REVEAL_TOP);  //or Flags.REVEAL_LEFT
+        configSplash.setRevealFlagY(Flags.REVEAL_RIGHT); //or Flags.REVEAL_TOP
+
+
+        //Customize Logo
+        configSplash.setLogoSplash(R.drawable.splash); //or any other drawable
+        configSplash.setAnimLogoSplashDuration(2000); //int ms
+        configSplash.setAnimLogoSplashTechnique(Techniques.Bounce); //choose one form Techniques (ref: https://github.com/daimajia/AndroidViewAnimations)
+
+        //Customize Title
+        configSplash.setTitleSplash("Stationery Request Management");
+        configSplash.setTitleTextColor(android.R.color.white);
+        configSplash.setTitleTextSize(20f); //float value
+
+    }
+
+    @Override
+    public void animationsFinished () {
+        //verifyStoragePermissions(this);
+
+        session = SessionManager.getInstance();
+        state = session.isLoggedIn();
+
+        new CountDownTimer(1800, 900) {
             @Override
-            public void initSplash (ConfigSplash configSplash){
-
-
-                configSplash.setBackgroundColor(R.color.colorPrimary); //any color you want form colors.xml
-                configSplash.setAnimCircularRevealDuration(2000); //int ms
-                configSplash.setRevealFlagX(Flags.REVEAL_TOP);  //or Flags.REVEAL_LEFT
-                configSplash.setRevealFlagY(Flags.REVEAL_RIGHT); //or Flags.REVEAL_TOP
-
-
-                //Customize Logo
-                configSplash.setLogoSplash(R.drawable.logo); //or any other drawable
-                configSplash.setAnimLogoSplashDuration(2000); //int ms
-                configSplash.setAnimLogoSplashTechnique(Techniques.Bounce); //choose one form Techniques (ref: https://github.com/daimajia/AndroidViewAnimations)
-
-
-                //Customize Title
-                configSplash.setTitleSplash("Stationery Request Management");
-                configSplash.setTitleTextColor(android.R.color.white);
-                configSplash.setTitleTextSize(20f); //float value
+            public void onTick(long millisUntilFinished) {
 
             }
 
-
             @Override
-            public void animationsFinished () {
-                //verifyStoragePermissions(this);
+            public void onFinish() {
+                if (state) {
 
-               session = SessionManager.getInstance();
-               state = session.isLoggedIn();
+                    Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                    startActivity(intent);
+                    finish();
 
-                new CountDownTimer(1800, 900) {
-                    @Override
-                    public void onTick(long millisUntilFinished) {
+                } else {
 
-                    }
+                    TextView txt = findViewById(R.id.wttv);
 
-                    @Override
-                    public void onFinish() {
-                        if (state) {
-
-                            Intent intent = new Intent(SplashActivity.this, MainActivity.class);
-                            startActivity(intent);
-                            finish();
-
-                        } else {
-
-                            TextView txt = findViewById(R.id.wttv);
-
-                            Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
-                            startActivity(intent);
-                            finish();
-                        }
-                    }
-                }.start();
-
+                    Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
             }
-        }
+        }.start();
+
+    }
+}

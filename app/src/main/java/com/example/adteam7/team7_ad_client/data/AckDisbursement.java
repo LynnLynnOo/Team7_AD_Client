@@ -3,7 +3,7 @@ package com.example.adteam7.team7_ad_client.data;
 import java.util.List;
 
 /**
- * Created by dodo
+ * Created by Kay Thi Swe Tun
  **/
 public class AckDisbursement {
 

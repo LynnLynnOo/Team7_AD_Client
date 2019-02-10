@@ -21,7 +21,7 @@ import com.example.adteam7.team7_ad_client.network.JSONParser;
  **/
 public class LoginActivity extends AppCompatActivity {
     EditText email, password;
-APIDataAgent agent=new APIDataAgentImpl();
+    APIDataAgent agent=new APIDataAgentImpl();
     EditText username,passwrod;
     private SessionManager session;
 

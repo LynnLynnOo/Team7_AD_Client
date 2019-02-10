@@ -17,7 +17,6 @@ public class SendMailTask extends AsyncTask {
         sendMailActivity = activity;
 
     }
-
     protected void onPreExecute() {
         statusDialog = new ProgressDialog(sendMailActivity);
         statusDialog.setMessage("Getting ready...");
@@ -57,7 +56,6 @@ public class SendMailTask extends AsyncTask {
         if (sendMailActivity instanceof RaiseAdjustmentActivity) {
             sendMailActivity.finish();
         }
-
     }
 
 }
