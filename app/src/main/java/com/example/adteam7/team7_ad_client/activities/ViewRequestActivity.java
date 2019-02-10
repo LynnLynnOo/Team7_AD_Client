@@ -32,30 +32,30 @@ public class ViewRequestActivity extends AppCompatActivity {
     /*Show request history when entered the page*/
 
     private class AsyncCallerGet extends AsyncTask<Void, Void, List<StationeryRequestApiModel>> {
-            @Override
-            protected List<StationeryRequestApiModel> doInBackground(Void... params) {
-                Log.i("already", "view");
-                return agent.ReadStationeryRequest();
-            }
+        @Override
+        protected List<StationeryRequestApiModel> doInBackground(Void... params) {
+            Log.i("already", "view");
+            return agent.ReadStationeryRequest();
+        }
 
-            @Override
-            protected void onPostExecute(List<StationeryRequestApiModel> result) {
-                RequestAdaptor adapter = new RequestAdaptor(getApplicationContext(), result);
-                Log.i("already", "view");
-                ListView list = (ListView) findViewById(R.id.RequestlistView);
-                list.setAdapter(adapter);
-                list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        StationeryRequestApiModel selected = (StationeryRequestApiModel) parent.getAdapter().getItem(position);
-                        Intent intent = new Intent(getApplicationContext(), ApproveRequestActivity.class);
-                        intent.putExtra("rid", selected.getRequestId());
-                        Log.e("Rid", selected.getRequestId());
-                        startActivity(intent);
+        @Override
+        protected void onPostExecute(List<StationeryRequestApiModel> result) {
+            RequestAdaptor adapter = new RequestAdaptor(getApplicationContext(), result);
+            Log.i("already", "view");
+            ListView list = (ListView) findViewById(R.id.RequestlistView);
+            list.setAdapter(adapter);
+            list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    StationeryRequestApiModel selected = (StationeryRequestApiModel) parent.getAdapter().getItem(position);
+                    Intent intent = new Intent(getApplicationContext(), ApproveRequestActivity.class);
+                    intent.putExtra("rid", selected.getRequestId());
+                    Log.e("Rid", selected.getRequestId());
+                    startActivity(intent);
 
-                    }
-                });
-            }
+                }
+            });
+        }
     }
 }
 

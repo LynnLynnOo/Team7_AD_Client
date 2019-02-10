@@ -156,16 +156,16 @@ public class DelegateDepHeadActivity extends AppCompatActivity {
 //                }
 //            });
 
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                DatePickerDialog dpdialog = new DatePickerDialog(DelegateDepHeadActivity.this, date2, myCalendarEnd
-                        .get(Calendar.YEAR), myCalendarEnd.get(Calendar.MONTH),
-                        myCalendarEnd.get(Calendar.DAY_OF_MONTH));
-                dpdialog.getDatePicker().setMinDate(System.currentTimeMillis()-1000);
-                dpdialog.show();
-            }
-        });
+                @Override
+                public void onClick(View v) {
+                    // TODO Auto-generated method stub
+                    DatePickerDialog dpdialog = new DatePickerDialog(DelegateDepHeadActivity.this, date2, myCalendarEnd
+                            .get(Calendar.YEAR), myCalendarEnd.get(Calendar.MONTH),
+                            myCalendarEnd.get(Calendar.DAY_OF_MONTH));
+                    dpdialog.getDatePicker().setMinDate(System.currentTimeMillis()-1000);
+                    dpdialog.show();
+                }
+            });
         }
 
         @Override

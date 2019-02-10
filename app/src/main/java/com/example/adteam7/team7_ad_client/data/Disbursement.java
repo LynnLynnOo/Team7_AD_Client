@@ -3,20 +3,20 @@ package com.example.adteam7.team7_ad_client.data;
 import java.util.Date;
 
 /**
- * Created by dodo
+ * Created by Kay Thi Swe Tun
  **/
 public class Disbursement {
 
 
-   private String DisbursementNo;
-   private String DepartmentId;
-   private String DepartmentName;
-   private String EmployeeName;
-   private String CollectionDescription;
-   private String AcknowledgedBy;
-   private String DisbursedBy;
-   private String Status;
-   private String OTP;
+    private String DisbursementNo;
+    private String DepartmentId;
+    private String DepartmentName;
+    private String EmployeeName;
+    private String CollectionDescription;
+    private String AcknowledgedBy;
+    private String DisbursedBy;
+    private String Status;
+    private String OTP;
 
     public Disbursement() {
     }

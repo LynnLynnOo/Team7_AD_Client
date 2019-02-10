@@ -14,14 +14,14 @@ import java.util.List;
 public class ReturntoWarehouseApi implements Serializable {
 
 
-        //Region: Lynn Lynn Oo
+    //Region: Lynn Lynn Oo
 
-        static String host = "172.17.148.100";
-        static String baseURL;
+    static String host = "172.17.148.100";
+    static String baseURL;
 
-        static {
-            baseURL = String.format("http://%s/team7ad/api", host);
-        }
+    static {
+        baseURL = String.format("http://%s/team7ad/api", host);
+    }
 
     private String RequestId;
     private String DepartmentName;
@@ -99,8 +99,8 @@ public class ReturntoWarehouseApi implements Serializable {
 
 
 
-        //endregion
-    }
+    //endregion
+}
 
 
 

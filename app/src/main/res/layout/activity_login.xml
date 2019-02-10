@@ -11,7 +11,7 @@
         android:background="#c7ffffff"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-      >
+        >
 
         <TextView
             android:id="@+id/zarla_name"
@@ -26,70 +26,70 @@
             android:textColor="@color/txtColor"
             android:textSize="30sp" />
 
-    <android.support.v7.widget.LinearLayoutCompat
-        android:id="@+id/identity"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_centerInParent="true"
-        android:layout_width="match_parent"
-        android:layout_marginLeft="20dp"
-        android:paddingBottom="30dp"
-        android:layout_marginRight="20dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-
-        <EditText
-            android:id="@+id/email"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="10dp"
-            android:background="@drawable/layout_bg"
-            android:drawableStart="@drawable/email"
-            android:drawableLeft="@drawable/email"
-            android:ellipsize="end"
-            android:hint="Email"
-            android:inputType="textEmailAddress"
-            android:maxLines="1"
-            android:minLines="1"
-            android:padding="5dp"
-            android:paddingLeft="5dp"
-            android:text="Andrew-Jackson@logic.u.edu"
-            android:textColorHint="#67817f"
-            tools:ignore="HardcodedText" />
-
-        <EditText
-            android:id="@+id/password"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="10dp"
-            android:background="@drawable/layout_bg"
-            android:drawableStart="@drawable/pass"
-            android:drawableLeft="@drawable/pass"
-            android:ellipsize="end"
-            android:hint="Password"
-            android:inputType="textPassword"
-
-            android:maxLines="1"
-            android:minLines="1"
-            android:padding="5dp"
-            android:paddingLeft="5dp"
-            android:text="Password1!"
-            android:textColorHint="#67817f"
-            tools:ignore="HardcodedText" />
-        <Button
-            android:layout_gravity="center_horizontal"
-            android:id="@+id/login"
-            android:layout_width="150dp"
-            android:layout_height="40dp"
-            android:text="@string/login"
-            android:background="@drawable/loginbtn"
-            android:layout_marginTop="12dp"
-            android:layout_below="@+id/loginpwd"
+        <android.support.v7.widget.LinearLayoutCompat
+            android:id="@+id/identity"
             android:layout_centerHorizontal="true"
-            android:textColor="#ffffff"/>
-</android.support.v7.widget.LinearLayoutCompat>
+            android:layout_centerVertical="true"
+            android:layout_centerInParent="true"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="20dp"
+            android:paddingBottom="30dp"
+            android:layout_marginRight="20dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="10dp"
+                android:background="@drawable/layout_bg"
+                android:drawableStart="@drawable/email"
+                android:drawableLeft="@drawable/email"
+                android:ellipsize="end"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:minLines="1"
+                android:padding="5dp"
+                android:paddingLeft="5dp"
+                android:text="Andrew-Jackson@logic.u.edu"
+                android:textColorHint="#67817f"
+                tools:ignore="HardcodedText" />
+
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="10dp"
+                android:background="@drawable/layout_bg"
+                android:drawableStart="@drawable/pass"
+                android:drawableLeft="@drawable/pass"
+                android:ellipsize="end"
+                android:hint="Password"
+                android:inputType="textPassword"
+
+                android:maxLines="1"
+                android:minLines="1"
+                android:padding="5dp"
+                android:paddingLeft="5dp"
+                android:text="Password1!"
+                android:textColorHint="#67817f"
+                tools:ignore="HardcodedText" />
+            <Button
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/login"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:text="@string/login"
+                android:background="@drawable/loginbtn"
+                android:layout_marginTop="12dp"
+                android:layout_below="@+id/loginpwd"
+                android:layout_centerHorizontal="true"
+                android:textColor="#ffffff"/>
+        </android.support.v7.widget.LinearLayoutCompat>
     </RelativeLayout>
 </FrameLayout>

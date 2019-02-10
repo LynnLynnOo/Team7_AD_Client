@@ -3,7 +3,7 @@ package com.example.adteam7.team7_ad_client.data;
 /**
  * Created by Kay Thi Swe Tun
  **/
-public class Employee {
+public class  Employee {
 
     String name;
     String empid;
