@@ -104,7 +104,6 @@ public class AcknowledgeDeliveryDetails extends AppCompatActivity {
                 AckDeliveryDetails delDetails1 = new AckDeliveryDetails(item[j],qty1[j] , "", "",
                         orderNo.getText().toString(), "", SessionManager.getInstance().getUserid(), selectedpo);
 
-
                 delDetails[j]=delDetails1;
 
             }

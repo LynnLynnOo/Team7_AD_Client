@@ -15,6 +15,7 @@
             android:id="@+id/ackpoTextView1"
             android:layout_width="103dp"
             android:layout_height="wrap_content"
+            android:inputType="number"
             android:text="Item ID" />
 
         <TextView
